@@ -1,0 +1,15 @@
+import = ["/Users/junot/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+
+[font]
+size = 20
+
+[font.normal]
+family = "UbuntuMono Nerd Font"
+
+[window]
+decorations = "none"
+opacity = 0.85
+
+[window.padding]
+x = 9
+y = 9
