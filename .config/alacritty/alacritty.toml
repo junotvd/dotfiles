@@ -1,4 +1,4 @@
-import = ["/Users/junot/.config/alacritty/themes/gruvbox_dark.toml"]
+import = ["/Users/junot/.config/alacritty/theme/gruvbox_dark.toml"]
 
 [font]
 size = 20
