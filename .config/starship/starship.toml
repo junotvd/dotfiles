@@ -1,0 +1,6 @@
+# Completions based on config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Insert blank line between shell prompts
+add_newline = false
+
