@@ -1,2 +1,10 @@
 echo ".DS_Store" >> .gitignore
 echo "*.swp" >> .gitignore
+~/dotfiles/.config/fish/
+~/dotfiles/.config/htop/
+~/dotfiles/.config/spotify/
+~/dotfiles/.config/dconf/
+~/dotfiles/.config/pulse/
+~/dotfiles/.config/systemd/
+~/dotfiles/.config/nvim/
+~/dotfiles/.config/neofetch/
