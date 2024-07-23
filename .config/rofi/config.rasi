@@ -2,7 +2,7 @@ configuration{
 	modi: "run,window,combi";
 	show-icons: true;
 	terminal: "alacritty";
-	font: "JetBrains Mono Nerd Font 12";
+	font: "LigaSFMonoNerdFont 19";
 }
 
 @import "gruvbox-dark.rasi"
