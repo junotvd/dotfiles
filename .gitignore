@@ -6,7 +6,6 @@ echo "*.swp" >> .gitignore
 .config/dconf/
 .config/pulse/
 .config/systemd/
-.config/nvim/
 .config/neofetch/
 .config/KTailctlrc
 .config/mimeapps.list
