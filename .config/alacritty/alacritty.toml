@@ -1,4 +1,5 @@
-import= ["/home/junot/.config/alacritty/gruvbox_dark.toml"] 
+# import= ["/home/junot/.config/alacritty/gruvbox_dark.toml"] 
+import= ["/home/junot/.config/alacritty/gruvbox.toml"] 
 
 
 [env]
