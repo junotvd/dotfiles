@@ -24,6 +24,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false
 vim.opt.clipboard = "unnamedplus"
+vim.cmd("set tabstop=4")
+vim.cmd("set shiftwidth=4")
 
 
 -- Basic keymaps
@@ -36,9 +38,9 @@ require("lazy").setup("plugins")
 
 -- Plugin Keymaps
 -- Markdown-preview
-vim.api.nvim_set_keymap("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ms", ":MarkdownPreviewStop<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>mt", ":MarkdownPreviewToggle<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>ms", ":MarkdownPreviewStop<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>mt", ":MarkdownPreviewToggle<CR>", { noremap = true, silent = true })
 
 -- Telescope
 local builtin = require('telescope.builtin')
