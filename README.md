@@ -1,4 +1,4 @@
 # Dotfiles
-- Theme: Gruvbox
+- Theme: Gruvbox (modified)
 - Shell: Bash
-- Terminal Emulator: Alacritty
+- Terminal Emulator: Kitty (test) | tmux
