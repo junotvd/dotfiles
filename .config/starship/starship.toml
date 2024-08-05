@@ -1,19 +1,23 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
 add_newline = false
 
-# [gruvbox]
-# orange = '#FF6200'
-# white = '#ebdbb2'
-# gray = '#585858'
-# black = '#282828'
-# red = '#cc241d'
-# green = '#98971a'
-# yellow = '#d79921'
-# blue = '#458588'
-# magenta = '#b16286'
-# cyan = '#689d6a'
-# transparent = '#000000'
+palette = "gruvbox"
+
+[palettes.gruvbox]
+aqua = "#689d6a"
+black = "#111111"
+black_gb = "#282828"
+blue = "#458588"
+gray = "#a89984"
+green = "#98971a"
+orange = "#fe8019"
+purple = "#b16286"
+red = "#cc241d"
+yellow = "#d79921"
+white = "#ebdbb2"
+transparent = "#000000"
+
 
 [aws]
 symbol = "  "
@@ -27,6 +31,11 @@ symbol = " "
 [conda]
 symbol = " "
 
+[character]
+disabled = false
+success_symbol = '[󰘧](white)'
+error_symbol = '[!=](red)'
+
 [crystal]
 symbol = " "
 
@@ -34,7 +43,11 @@ symbol = " "
 symbol = " "
 
 [directory]
+format = "[@$path]($style)"
+style = "gray"
 read_only = " 󰌾"
+truncation_length = 2
+truncation_symbol = ".../"
 
 [docker_context]
 symbol = " "
@@ -53,6 +66,11 @@ symbol = " "
 
 [git_branch]
 symbol = " "
+style = "bold purple"
+format = "[ $symbol$branch ]($style)"
+
+[git_status]
+style = "bold red"
 
 [golang]
 symbol = " "
@@ -83,6 +101,8 @@ symbol = " "
 
 [lua]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version]($style) "
 
 [memory_usage]
 symbol = "󰍛 "
@@ -161,6 +181,8 @@ symbol = " "
 
 [python]
 symbol = " "
+style = "bold yellow"
+format = "[$symbol$version]($style) "
 
 [rlang]
 symbol = "󰟔 "
@@ -176,6 +198,12 @@ symbol = " "
 
 [swift]
 symbol = " "
+
+[username]
+format = "[$user]($style)"
+style_user = "bold orange"
+style_root = "bold red"
+show_always = true
 
 [zig]
 symbol = " "
