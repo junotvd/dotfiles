@@ -9,3 +9,4 @@ echo "*.swp" >> .gitignore
 .config/neofetch/
 .config/KTailctlrc
 .config/mimeapps.list
+.config/spicetify
