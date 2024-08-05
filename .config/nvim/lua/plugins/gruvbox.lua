@@ -4,7 +4,8 @@ return {
 		require("gruvbox").setup({
 			transparent_mode = false,
 			contrast = "hard",
-			palette_overrides = {dark0_hard = "#0E1018"},
+-- #0E1018
+			palette_overrides = {dark0_hard = "#111111"},
 			overrides = {NormalFloat = {fg = "#ebdbb2", bg = "#504945"},
 				Comment = {fg = "#81878f", italic = true, bold = true},
 				Define = {link = "GruvboxPurple"},
