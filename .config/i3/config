@@ -22,7 +22,7 @@ font pango:JetBrains Mono Nerd Font 12
 
 
 # Windows (borders and gaps)
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 1
 client.focused #d65d0e #d65d0e #d65d0e #d65d0e #d65d0e
 
 gaps inner 5
