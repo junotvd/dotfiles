@@ -108,6 +108,15 @@ html#main-window {
     margin-inline-end: auto;
 }
 
+.tabbrowser-tab[selected="true"] .tab-label {
+	color: var(--orange) !important;
+}
+
+#titlebar,
+#TabsToolbar {
+	background-color: var(--black) !important;
+}
+
 /* ========================================================== */
 
 /* Removal of black bottom 1px line */
