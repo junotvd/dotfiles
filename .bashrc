@@ -9,6 +9,7 @@ alias l='ls -la'
 alias q=exit
 alias mi='cd ~/school/ingenieurswetenschappen/Methodiek\ van\ de\ Informatica/'
 alias vmi='v ~/school/ingenieurswetenschappen/Methodiek/Methodiek\ van\ de\ Informatica/'
+alias ff=fastfetch
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
