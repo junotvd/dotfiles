@@ -1,21 +1,27 @@
-/* 
-┌─┐┬┌┬┐┌─┐┬  ┌─┐
-└─┐││││├─┘│  ├┤ 
-└─┘┴┴ ┴┴  ┴─┘└─┘
-┌─┐┌─┐─┐ ┬      
-├┤ │ │┌┴┬┘      
-└  └─┘┴ └─
+:root {
+	--black: #111111;
+}
 
-by Miguel Avila
-
-*/
+/* Removes white loading page */
+@-moz-document url(about:blank), url(about:newtab), url(about:home) {
+    html:not(#ublock0-epicker), html:not(#ublock0-epicker) body, #newtab-customize-overlay {
+      background: var(--black) !important;
+    }
+  }
 
 :root {
   scrollbar-width: none !important;
 }
+
+@-moz-document url(about:blank), url(about:newtab), url(about:home) {
+    html:not(#ublock0-epicker), html:not(#ublock0-epicker) body, #newtab-customize-overlay {
+      background: var(--black) !important;
+    }
+  }
 
 @-moz-document url(about:privatebrowsing) {
   :root {
     scrollbar-width: none !important;
   }
 }
+

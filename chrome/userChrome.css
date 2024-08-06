@@ -144,3 +144,29 @@ menupopup {
 }
 
 /* ========================================================== */
+
+/*Transition color while opening websites - disable if you like flashbangs */
+#browser vbox#appcontent tabbrowser,
+#content,
+#tabbrowser-tabpanels,
+browser[type="content-primary"],
+browser[type="content"] > html {  
+    background: #111 !important;
+}
+
+#tabbrowser-tabpanels,
+#webextpanels-window,
+#webext-panels-stack,
+#webext-panels-browser {
+        background: #111 !important;
+}
+
+url(chrome://browser/content/browser.xhtml) { 
+    #main-window, browser[type="content-primary"], browser[type="content"], tabbrowser#content, #content, browser[type="content"] > html { 
+        background: #111111 !important;
+    }
+}
+
+#tabs-newtab-button {
+    display: none !important;
+}
