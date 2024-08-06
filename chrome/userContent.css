@@ -25,3 +25,74 @@
   }
 }
 
+
+@-moz-document domain("github.com") {
+  body {
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+  }
+
+	.header,
+	.footer,
+	.Header,
+	.Header-item,
+	.Header-item-full,
+	.AppHeader,
+	.dashboard,
+	.feed-left-sidebar,
+	.d-md-flex,
+	.repository-container-header {
+		background-color: var(--black) !important;
+		color: var(--white) !important;
+	}
+
+  }
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .btn,
+  .btn-primary,
+  .btn-secondary {
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+    border-color: #333333 !important;
+  }
+
+  button:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover,
+  input[type="reset"]:hover,
+  .btn:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+    border-color: #555555 !important;
+  }
+
+  button:active,
+  input[type="button"]:active,
+  input[type="submit"]:active,
+  input[type="reset"]:active,
+  .btn:active,
+  .btn-primary:active,
+  .btn-secondary:active {
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+    border-color: #000000 !important;
+  }
+
+  button[disabled],
+  input[type="button"][disabled],
+  input[type="submit"][disabled],
+  input[type="reset"][disabled],
+  .btn[disabled],
+  .btn-primary[disabled],
+  .btn-secondary[disabled] {
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+    border-color: #2a2a2a !important;
+  }
+}
+}
