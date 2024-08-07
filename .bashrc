@@ -2,6 +2,9 @@
 
 # [ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit;}
 
+export EDITOR=nvim
+export VISUAL=nvim
+
 # Alias
 alias v=nvim
 alias py=python
