@@ -1,5 +1,15 @@
 :root {
+	--aqua: #689d6a;
 	--black: #111111;
+	--black_gb: #282828;
+	--blue: #458588;
+	--gray: #a89984;
+	--green: #98971a;
+	--orange: #fe8019;
+	--purple: #b16286;
+	--red: #cc241d;
+	--yellow: #d79921;
+	--white: #ebdbb2;
 }
 
 :root {
@@ -88,4 +98,18 @@
     border-color: #2a2a2a !important;
   }
 }
+}
+
+@moz-document domain("reddit.com") {
+	body {
+		background-color: var(--green) !important;
+		color: var(--white) !important;
+	}
+}
+
+@moz-document domain("chatgpt.com") {
+	body {
+		background-color: var(--green) !important;
+		color: var(--white) !important;
+	}
 }
