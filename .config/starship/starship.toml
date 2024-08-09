@@ -6,8 +6,7 @@ palette = "gruvbox"
 
 [palettes.gruvbox]
 aqua = "#689d6a"
-black = "#111111"
-black_gb = "#282828"
+black = "#282828"
 blue = "#458588"
 gray = "#a89984"
 green = "#98971a"
@@ -207,7 +206,7 @@ symbol = " "
 
 [username]
 format = "[$user]($style)"
-style_user = "bold orange"
+style_user = "bold green"
 style_root = "bold red"
 show_always = true
 
