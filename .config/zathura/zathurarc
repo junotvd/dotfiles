@@ -1,8 +1,8 @@
-set notification-error-bg       "#111111" # bg
+set notification-error-bg       "#282828" # bg
 set notification-error-fg       "#fb4934" # bright:red
 set notification-warning-bg     "#111111" # bg
 set notification-warning-fg     "#fabd2f" # bright:yellow
-set notification-bg             "#111111" # bg
+set notification-bg             "#282828" # bg
 set notification-fg             "#b8bb26" # bright:green
 
 set completion-bg               "#504945" # bg2
