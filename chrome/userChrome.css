@@ -1,6 +1,6 @@
 :root {
 	--aqua: #689d6a;
-	--black: #111111;
+	--black: #282828;
 	--black_gb: #282828;
 	--blue: #458588;
 	--gray: #a89984;
@@ -109,7 +109,7 @@ html#main-window {
 }
 
 .tabbrowser-tab[selected="true"] .tab-label {
-	color: var(--orange) !important;
+	color: var(--green) !important;
 }
 
 #titlebar,
