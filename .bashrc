@@ -2,6 +2,7 @@
 
 # [ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit;}
 
+export TERM="xterm-256color"
 export EDITOR=nvim
 export VISUAL=nvim
 
