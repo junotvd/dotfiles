@@ -27,3 +27,16 @@
     scrollbar-width: none !important;
   }
 }
+
+@-moz-document domain("ulta.edu.kuleuven.cloud") {
+	body {
+		background-color: var(--black) !important;
+		color: var(--white) !important;
+	}
+
+	.course-content-container,
+	.panel-content {
+		background-color: var(--black) !important;
+		color: var(--white) !important;
+	}
+}
