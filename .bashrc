@@ -1,7 +1,5 @@
 # ~/.bashrc
 
-# [ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit;}
-
 export EDITOR=nvim
 export VISUAL=nvim
 
@@ -22,3 +20,5 @@ alias grep='grep --color=auto'
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init bash)"
+export PATH=$PATH:~/.cargo/bin
+. "$HOME/.cargo/env"
