@@ -1,8 +1,0 @@
-configuration{
-	modi: "run,window,combi";
-	show-icons: true;
-	terminal: "alacritty";
-	font: "LigaSFMonoNerdFont 25";
-}
-
-@import "gruvbox-dark.rasi"
