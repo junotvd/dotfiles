@@ -36,12 +36,6 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open NetRW"})
 require("lazy").setup("plugins")
 
 
--- Plugin Keymaps
--- Markdown-preview
--- vim.api.nvim_set_keymap("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>ms", ":MarkdownPreviewStop<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>mt", ":MarkdownPreviewToggle<CR>", { noremap = true, silent = true })
-
 -- Telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
