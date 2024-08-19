@@ -5,7 +5,7 @@ set $mod Mod4
 
 
 # Applications on startup
-exec --no-startup-id feh --bg-scale ~/dotfiles/Wallpapers/solar-system-minimal.jpg
+exec --no-startup-id feh --bg-scale ~/dotfiles/Wallpapers/"Screenshot 2024-08-19 at 14-27-05 461-rosepine.png (WEBP Image 4096 × 4096 pixels) — Scaled (19_).png"
 exec --no-startup-id picom
 exec --no-startup-id redshift
 
@@ -56,7 +56,7 @@ tiling_drag modifier titlebar
 
 
 # Basic shortcuts
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 bindsym $mod+b exec firefox
 bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
