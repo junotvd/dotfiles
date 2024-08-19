@@ -8,8 +8,13 @@ set $mod Mod4
 exec --no-startup-id feh --bg-scale ~/dotfiles/Wallpapers/solar-system-minimal.jpg
 exec --no-startup-id picom
 exec --no-startup-id redshift
-exec_always killall polybar
-exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+        tray_output primary
+}
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -22,7 +27,7 @@ font pango:JetBrains Mono Nerd Font 12
 
 # Windows (borders and gaps)
 for_window [class="^.*"] border pixel 1
-client.focused #98971a #98971a #98971a #98971a #98971a
+# client.focused #98971a #98971a #98971a #98971a #98971a
 
 gaps inner 5
 gaps outer 4
@@ -54,7 +59,7 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec kitty
 bindsym $mod+b exec firefox
 bindsym $mod+q kill
-bindsym $mod+d exec --no-startup-id rofi -show combi
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 
 # change focus
