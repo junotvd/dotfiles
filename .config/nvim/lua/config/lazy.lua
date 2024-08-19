@@ -24,6 +24,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false
 vim.opt.clipboard = "unnamedplus"
+vim.o.termguicolors = true
 vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
 

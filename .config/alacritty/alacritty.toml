@@ -1,35 +1,38 @@
 [colors.primary]
-background = '#1d2021'
-# background= '#282828'
-# background= '#0E1018'
-foreground= '#ebdbb2'
+background = '#181616'
+foreground = '#c5c9c5'
 
 [colors.normal]
-black =   '#282828'
-red =     '#cc241d'
-green=   '#98971a'
-yellow=  '#d79921'
-blue=    '#458588'
-magenta= '#b16286'
-# cyan =   '#98971a'
-cyan=    '#689d6a'
-# white=   '#a89984'
-white= "#dfaf87"
+black = '#0d0c0c'
+red = '#c4746e'
+green = '#8a9a7b'
+yellow = '#c4b28a'
+blue = '#8ba4b0'
+magenta = '#a292a3'
+cyan = '#8ea4a2'
+white = '#C8C093'
 
 [colors.bright]
-black=   '#928374'
-red=     '#fb4934'
-green=   '#b8bb26'
-yellow=  '#fabd2f'
-blue=    '#83a598'
-magenta= '#d3869b'
-cyan=    '#8ec07c'
-white=   '#ebdbb2'
+black = '#a6a69c'
+red = '#E46876'
+green = '#87a987'
+yellow = '#E6C384'
+blue = '#7FB4CA'
+magenta = '#938AA9'
+cyan = '#7AA89F'
+white = '#c5c9c5'
 
+[colors.selection]
+background = '#2D4F67'
+foreground = '#C8C093'
 
-[env]
-TERM = "xterm-256color"
+[[colors.indexed_colors]]
+index = 16
+color = '#b6927b'
 
+[[colors.indexed_colors]]
+index = 17
+color = '#b98d7b'
 
 [font]
 normal = {family = "LigaSFMonoNerdFont", style = "Regular"}
@@ -37,6 +40,8 @@ bold = {family = "LigaSFMonoNerdFont", style = "Bold"}
 italic = {family = "LigaSFMonoNerdFont", style = "Italic"}
 size = 15
 
+[env]
+TERM = "alacritty"
 
 [window]
 padding.x = 9
