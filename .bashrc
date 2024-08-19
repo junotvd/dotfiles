@@ -20,5 +20,7 @@ alias grep='grep --color=auto'
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init bash)"
+
 export PATH=$PATH:~/.cargo/bin
 . "$HOME/.cargo/env"
+export PATH=$HOME/.local/bin:$PATH
