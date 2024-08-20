@@ -24,7 +24,6 @@ exec --no-startup-id nm-applet
 # Font
 font pango:JetBrains Mono Nerd Font 12
 
-
 # Windows (borders and gaps)
 for_window [class="^.*"] border pixel 1
 
