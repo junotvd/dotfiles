@@ -6,14 +6,7 @@ return {
 				"L3MON4D3/LuaSnip",
 				build = function()
 				end,
-				dependencies = {
-					{
-					  'rafamadriz/friendly-snippets',
-					  config = function()
-					    require('luasnip.loaders.from_vscode').lazy_load()
-					  end,
-					},
-				},
+				dependencies = {},
 			},
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
