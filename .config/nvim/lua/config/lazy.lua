@@ -14,33 +14,3 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 vim.opt.rtp:prepend(lazypath)
-
-
--- Basic settings
-vim.opt.guicursor = ""
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.g.have_nerd_font = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.showmode = false
-vim.opt.clipboard = "unnamedplus"
-vim.o.termguicolors = true
-vim.cmd("set tabstop=4")
-vim.cmd("set shiftwidth=4")
-
-
--- Basic keymaps
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open NetRW"})
-
-
--- Load plugins
-require("lazy").setup("plugins")
-
-
--- Telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
