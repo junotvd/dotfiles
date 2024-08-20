@@ -7,3 +7,4 @@ vim.o.termguicolors = true
 vim.g.have_nerd_font = true
 vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
+vim.opt.scrolloff = 10
