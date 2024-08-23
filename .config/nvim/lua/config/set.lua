@@ -1,10 +1,21 @@
 -- Basic settings
 vim.opt.guicursor = ""
-vim.opt.number = true
+
+vim.opt.nu = true
 vim.opt.relativenumber = true
-vim.opt.clipboard = "unnamedplus"
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.scrolloff = 8
+
 vim.o.termguicolors = true
-vim.g.have_nerd_font = true
-vim.cmd("set tabstop=4")
-vim.cmd("set shiftwidth=4")
-vim.opt.scrolloff = 10
+
+vim.opt.colorcolumn = "80"
