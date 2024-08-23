@@ -10,3 +10,4 @@ echo "*.swp" >> .gitignore
 .config/KTailctlrc
 .config/mimeapps.list
 .config/spicetify
+.config/kitty
