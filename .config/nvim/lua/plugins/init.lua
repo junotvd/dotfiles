@@ -14,4 +14,11 @@ return {
 		opts = {},
 		dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
 	},
+
+    {
+        "mbbill/undotree",
+        config = function()
+            vim.keymap.set('n', '<leader><u>', vim.cmd.UndotreeToggle)
+        end
+    },
 }
