@@ -11,3 +11,4 @@ echo "*.swp" >> .gitignore
 .config/mimeapps.list
 .config/spicetify
 .config/kitty
+.config/neomutt
