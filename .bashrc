@@ -20,10 +20,9 @@ alias v=nvim
 alias py=python
 alias l='ls -la'
 alias q=exit
-alias mi='cd ~/school/ingenieurswetenschappen/Methodiek\ van\ de\ Informatica/'
 alias ff=fastfetch
 alias dot='cd ~/dotfiles/'
-alias inv='nvim $(fzf -m --preview"bat --color=always {}")'
+alias sem='cd ~/Wiskunde/Bachelor/Fase 1/'
 
 
 alias ls='ls --color=auto'
