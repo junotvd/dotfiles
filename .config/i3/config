@@ -86,6 +86,7 @@ bindsym $mod+Shift+space floating toggle
 
 
 # Define workspaces
+set $ws0 "0"
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -95,7 +96,6 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
 
 
 # switch to workspace
@@ -108,7 +108,7 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+0 workspace number $ws0
 
 
 # move focused container to workspace
