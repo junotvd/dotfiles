@@ -19,3 +19,5 @@ vim.opt.scrolloff = 8
 vim.o.termguicolors = true
 
 vim.opt.colorcolumn = "80"
+
+vim.opt.spell = false

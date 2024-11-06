@@ -4,16 +4,17 @@ return {
     config = function()
         require("nvim-treesitter.configs").setup({
             ensure_installed = {
-                "bash", "c", "latex", "lua", "markdown", "matlab", "python", "rust",
+                "bash", "c", "lua", "markdown", "matlab", "python", "rust",
             },
             sync_install = false,
             auto_install = true,
-            ignore_install = {},
+            ignore_install = {"latex"},
             indent = {
                 enable = true
             },
             highlight = {
                 enable = true,
+                disable = { "latex" },
                 additional_vim_regex_highlighting = { "markdown" },
             },
             modules = {},
