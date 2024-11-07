@@ -1,2 +1,2 @@
 .git/
-*.txt linguist-language=MarkDown 
+*.txt linguist-language=reStructuredText 
