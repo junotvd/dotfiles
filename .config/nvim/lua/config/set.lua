@@ -21,3 +21,6 @@ vim.o.termguicolors = true
 vim.opt.colorcolumn = "80"
 
 vim.opt.spell = false
+
+-- vim.cmd("filetype on")
+-- vim.cmd("filetype plugin on")
