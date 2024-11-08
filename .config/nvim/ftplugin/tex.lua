@@ -1,8 +1,9 @@
 -- load template when opening empty .tex file
 local template_path = vim.fn.expand("~/.config/nvim/templates/default.tex")
 local current_file = vim.api.nvim_buf_get_name(0)
+local filename = vim.fn.fnamemodify(current_file, ":t")
 
-if vim.fn.filereadable(template_path) == 1 and vim.fn.getfsize(current_file) <= 0 then
+if filename == "main.tex" and vim.fn.filereadable(template_path) == 1 and vim.fn.getfsize(current_file) <= 0 then
     vim.cmd("0r " .. template_path)
 end
 
@@ -27,3 +28,7 @@ map("n", "<leader>Q", "i\\mathbb{Q}", opts)
 map("n", "<leader>R", "i\\mathbb{R}", opts)
 map("n", "<leader>N", "i\\mathbb{N}", opts)
 map("n", "<leader>Z", "i\\mathbb{Z}", opts)
+
+-- Symbolen
+map("i", "=>", "\\Rightarrow", opts)
+map("i", "==>", "\\Longrightarrow", opts)
