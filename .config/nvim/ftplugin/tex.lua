@@ -32,3 +32,15 @@ map("n", "<leader>Z", "i\\mathbb{Z}", opts)
 -- Symbolen
 map("i", "=>", "\\Rightarrow", opts)
 map("i", "==>", "\\Longrightarrow", opts)
+
+
+-- Snippets
+local ls = require("luasnip")
+local s = ls.snippet
+local i = ls.insert_node
+local t = ls.text_node
+local fmt = require("luasnip.extras.fmt").fmt
+
+local snippets = {}
+
+ls.add_snippets("tex", snippets)
