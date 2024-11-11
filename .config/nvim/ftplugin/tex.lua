@@ -26,4 +26,4 @@ vim.opt.spelllang = { "nl", "en_gb" }
 --
 -- ls.add_snippets("tex", snippets)
 --
-vim.cmd.colorscheme("nordic")
+-- vim.cmd.colorscheme("nordic")

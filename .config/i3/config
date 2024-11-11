@@ -5,7 +5,6 @@ set $mod Mod4
 
 
 # Applications on startup
-# exec --no-startup-id feh --bg-scale ~/dotfiles/Wallpapers/"Screenshot 2024-08-19 at 14-27-05 461-rosepine.png (WEBP Image 4096 × 4096 pixels) — Scaled (19_).png"
 exec --no-startup-id picom
 exec --no-startup-id redshift
 
@@ -25,7 +24,7 @@ exec --no-startup-id nm-applet
 font pango:FiraCode Nerd Font 12
 
 # Windows (borders and gaps)
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 
 
 # Brightnessctl
@@ -65,10 +64,10 @@ bindsym $mod+k focus up
 
 
 # move focused window
-bindsym $mod+Shift+h focus left
-bindsym $mod+Shift+l focus right
-bindsym $mod+Shift+j focus down
-bindsym $mod+Shift+k focus up
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
 
 
 # enter fullscreen mode for the focused container
