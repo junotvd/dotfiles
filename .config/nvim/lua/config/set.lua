@@ -22,5 +22,7 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.spell = false
 
+vim.opt.conceallevel = 1
+
 -- vim.cmd("filetype on")
 -- vim.cmd("filetype plugin on")

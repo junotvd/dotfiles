@@ -1,13 +1,13 @@
 return {
-	{
-		'rose-pine/neovim',
-		name = 'rose-pine',
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
         lazy = false,
         priority = 1000,
-		config = function()
-			require("rose-pine").setup({
+        config = function()
+            require("rose-pine").setup({
                 variant = "main",
-				disable_background = true,
+                disable_background = true,
                 disable_float_background = false,
                 styles = {
                     italic = false,
@@ -18,13 +18,28 @@ return {
                     TreesitterContextLineNumber = { bg = "NONE" },
 
                 }
-			})
+            })
             vim.api.nvim_set_hl(0, "Float", { bg = "none" })
             vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
             vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
             vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
             vim.cmd.colorscheme("rose-pine")
-
-		end,
-	},
+        end,
+    },
+    {
+        'shaunsingh/nord.nvim',
+        config = function()
+            -- vim.cmd('colorscheme nord')
+        end,
+    },
+    -- {
+    --     'sainnhe/gruvbox-material',
+    --     config = function()
+    --     end,
+    -- },
+    {
+        'AlexvZyl/nordic.nvim',
+        config = function()
+        end,
+    },
 }
