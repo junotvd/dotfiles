@@ -21,13 +21,6 @@ alias py=python
 alias l='ls -la'
 alias q=exit
 alias ff=fastfetch
-alias dot='cd ~/dotfiles/'
-alias sem='cd ~/Wiskunde/Bachelor/Fase\ 1/'
-alias an='cd ~/Wiskunde/Bachelor/Fase\ 1/Algemene\ Natuurkunde\ 1:\ Mechanica/'
-alias bnr='cd ~/Wiskunde/Bachelor/Fase\ 1/Bewijzen\ en\ redeneren/'
-alias calc='cd ~/Wiskunde/Bachelor/Fase\ 1/Calculus\ 1/'
-alias la='cd ~/Wiskunde/Bachelor/Fase\ 1/Lineaire\ Algebra/'
-
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -46,4 +39,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
