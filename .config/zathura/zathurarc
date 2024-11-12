@@ -1,7 +1,7 @@
 set recolor
 # set default-bg \#2E3440
 # set recolor-lightcolor \#2E3440
-set default-bg \#343434
-set recolor-lightcolor \#343434
+set default-bg \#222222
+set recolor-lightcolor \#222222
 set recolor-keephue
 set font "FiraCode Nerd Font"
