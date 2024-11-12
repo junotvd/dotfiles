@@ -16,7 +16,6 @@ return {
 			-- See `:help cmp`
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			luasnip.config.setup({})
 
 			cmp.setup({
 				snippet = {
@@ -33,6 +32,7 @@ return {
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					['<C-y>'] = cmp.mapping.confirm { select = true },
+					['<Tab>'] = cmp.mapping.confirm { select = true },
 
 				}),
 				sources = {
