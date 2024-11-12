@@ -32,11 +32,11 @@ return {
             -- vim.cmd('colorscheme nord')
         end,
     },
-    -- {
-    --     'sainnhe/gruvbox-material',
-    --     config = function()
-    --     end,
-    -- },
+    {
+        'sainnhe/gruvbox-material',
+        config = function()
+        end,
+    },
     {
         'AlexvZyl/nordic.nvim',
         config = function()

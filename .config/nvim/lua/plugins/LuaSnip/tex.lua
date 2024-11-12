@@ -27,39 +27,76 @@ return {
         s("mk", {
             t("$"), i(1), t("$"), i(0)
         }),
+
         s("md", {
             t({"\\[", "\t"}),
             i(1),
             t({"\t", "\\]", "\t"}),
             i(0)
         }),
+
         s({ trig = ";a"},
             {
                 t("\\alpha"),
             }
         ),
+
         s({ trig = ";b"},
             {
                 t("\\beta"),
             }
         ),
+
         s({ trig = ";c"},
             {
                 t("\\gamma"),
             }
         ),
+
+        s({ trig = ";l"},
+            {
+                t("\\lambda"),
+            }
+        ),
+
+        s({ trig = "->"},
+            {
+                t("\\rightarrow"),
+            }
+        ),
+
+        s({ trig = "-->"},
+            {
+                t("\\longrightarrow"),
+            }
+        ),
+
+        s({ trig = "=>"},
+            {
+                t("\\Rightarrow"),
+            }
+        ),
+
+        s({ trig = "==>"},
+            {
+                t("\\Longrightarrow"),
+            }
+        ),
+
         s({trig = "bf"},
         fmta(
                 "\\textbf{<>}",
                 { i(1) }
             )
         ),
+
         s({trig = "tt"},
         fmta(
                 "\\texttt{<>}",
                 { i(1) }
             )
         ),
+
         s({trig = "it"},
         fmta(
                 "\\textit{<>}",
@@ -98,5 +135,17 @@ return {
             "<>^2",
             { f(function(_, snip) return snip.captures[1] end) }
         )
+    ),
+
+    s({ trig = "NN" },
+        {
+            t("\\N")
+        }
+    ),
+
+    s({ trig = "min" },
+        {
+            t("\\setminus")
+        }
     )
 }
