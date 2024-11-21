@@ -6,6 +6,7 @@
 
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
+set -o vi
 
 export EDITOR=nvim
 export VISUAL=nvim
