@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/junot/wiskunde/bachelor-1/semester-1/lineaire-algebra'
+let g:netrw_dirhist_3='/home/junot/wiskunde/bachelor-1/semester-1/bewijzen-en-redeneren'
+let g:netrw_dirhist_2='/home/junot/wiskunde/bachelor-1/semester-1'
+let g:netrw_dirhist_1='/home/junot/wiskunde/bachelor-1/semester-1/lineaire-algebra'
+let g:netrw_dirhist_0='/home/junot/wiskunde/bachelor-1/semester-1'
+let g:netrw_dirhist_9='/home/junot/wiskunde/bachelor-1/semester-1/bewijzen-en-redeneren'
+let g:netrw_dirhist_8='/home/junot/dotfiles'
+let g:netrw_dirhist_7='/home/junot/wiskunde/bachelor-1/semester-1'
+let g:netrw_dirhist_6='/home/junot/wiskunde/bachelor-1/semester-1/lineaire-algebra'
+let g:netrw_dirhist_5='/home/junot/wiskunde/bachelor-1/semester-1'
