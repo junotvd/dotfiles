@@ -1,0 +1,1 @@
+/home/junot/.local/bin/tmux-cht.sh
