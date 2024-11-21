@@ -12,3 +12,4 @@ echo "*.swp" >> .gitignore
 .config/spicetify
 .config/kitty
 .config/neomutt
+vim/.vim/plugged
