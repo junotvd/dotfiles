@@ -1,0 +1,19 @@
+# Packages needed for new installation
+- vim
+- neovim
+- firefox
+- nerd-fonts
+- alacritty
+- virt-manager
+- qemu
+- libvirt
+- tmux
+- i3
+- i3lock
+- Thunar
+- zathura
+- inkscape (test)
+- network-manager
+- mini-conda
+- python3:
+    - jupyter-notebook
