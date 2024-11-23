@@ -2,16 +2,21 @@
 - vim
 - neovim
 - firefox
+    - extensions: darkreader, vimium, clickbait remover yt, socialfocus
 - nerd-fonts
 - alacritty
 - virt-manager
 - qemu
 - libvirt
 - tmux
-- i3
-- i3lock
+- i3:
+    - i3lock
+    - lightdm / other lock screen things...
+    - i3status
 - Thunar
-- zathura
+- zathura:
+    - pdf-poppler
+- LaTeX
 - inkscape (test)
 - network-manager
 - mini-conda
