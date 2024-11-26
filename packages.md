@@ -9,6 +9,9 @@
 - qemu
 - libvirt
 - tmux
+- x11:
+    - xrandr
+    - brightnessctl
 - i3:
     - i3lock
     - lightdm / other lock screen things...

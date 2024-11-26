@@ -27,20 +27,15 @@ return {
         end,
     },
     {
-        "shaunsingh/nord.nvim",
+        "rebelot/kanagawa.nvim",
         config = function()
-            -- vim.cmd('colorscheme nord')
-        end,
+            -- vim.cmd.colorscheme("kanagawa-dragon")
+        end
     },
     {
-        "sainnhe/gruvbox-material",
+        "shausingh/nord.nvim",
         config = function()
-        end,
+            vim.cmd.colorscheme("nord")
+        end
     },
-    {
-        'rebelot/kanagawa.nvim',
-        config = function()
-            vim.cmd.colorscheme("kanagawa-dragon")
-        end,
-    }
 }

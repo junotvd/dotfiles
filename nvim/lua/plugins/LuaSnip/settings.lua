@@ -1,4 +1,5 @@
 return {
+    require("luasnip.loaders.from_snipmate").load({ path = { ./tex.snippets } })
     -- Jump to the next placeholder
     vim.api.nvim_set_keymap("i", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", {silent = true}),
     vim.api.nvim_set_keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", {silent = true}),

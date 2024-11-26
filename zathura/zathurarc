@@ -1,19 +1,9 @@
 set recolor
 
 # Nord colors
-# set default-bg \#2E3440
-# set recolor-lightcolor \#2E3440
-
-# Gruvbox colors
-# set default-bg \#282828
-# set recolor-lightcolor \#282828
-
-# Kanagawa colors (dragon)
-set default-bg \#181616
-set recolor-lightcolor \#181616
-set recolor-darkcolor \#727169
-# set default-fg \#DCD7B
-
+set default-bg \#2E3440
+set recolor-lightcolor \#2E3440
+set recolor-darkcolor \#D8DEE
 set recolor-keephue
 
 set font "FiraCode Nerd Font"
