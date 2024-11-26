@@ -12,9 +12,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
-export PATH=$PATH:~/.cargo/bin
-. "$HOME/.cargo/env"
-export PATH=$HOME/.local/bin:$PATH
 
 # Alias
 alias v=nvim
@@ -40,3 +37,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

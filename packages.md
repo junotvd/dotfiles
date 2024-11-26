@@ -12,6 +12,7 @@
 - i3:
     - i3lock
     - lightdm / other lock screen things...
+    - xss-lock
     - i3status
 - Thunar
 - zathura:

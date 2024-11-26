@@ -4,6 +4,9 @@ show_hidden = true
 show_symlink = true
 
 [opener]
-edit = {
-    { run = '$EDITOR "$@"', block = true, for = "unix" }
-}
+edit = [ { run = '$EDITOR "$@"', block = true, for = "unix" } ]
+
+pdff = [ { run = 'zathura "$@"', block = true, desc = open } ]
+
+[open]
+{ mime = "application/pdf", use = ["pdff", "reveal" ] }
