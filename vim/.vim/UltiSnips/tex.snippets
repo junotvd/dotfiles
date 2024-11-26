@@ -59,6 +59,10 @@ snippet td "superscript" iA
 ^{$1}$0
 endsnippet
 
+snippet deriv "d/dx" w
+\\fraction{d${1:y}}{d${2:x}} $0
+endsnippet
+
 snippet ;a "alpha" iA
 \alpha
 endsnippet
@@ -95,11 +99,11 @@ snippet ;o "omega" iA
 \omega
 endsnippet
 
-snippet ;p "phi" iA
+snippet ;ph "phi" iA
 \phi
 endsnippet
 
-snippet ;P "Phi" iA
+snippet ;Ph "Phi" iA
 \Phi
 endsnippet
 
@@ -107,47 +111,63 @@ snippet ;vp "varphi" iA
 \varphi
 endsnippet
 
+snippet ;pi "pi" iA
+\pi
+endsnippet
+
 snippet ;t "theta" iA
 \theta
 endsnippet
 
-snippet NN "Natuurlijke getallen" wA
+snippet NN "Natuurlijke getallen" iA
 \mathbb{N}
 endsnippet
 
-snippet RR "Reële getallen" wA
+snippet RR "Reële getallen" iA
 \mathbb{R}
 endsnippet
 
-snippet QQ "Rationale getallen" wA
+snippet QQ "Rationale getallen" iA
 \mathbb{Q}
 endsnippet
 
-snippet ZZ "Gehele getallen" wA
+snippet ZZ "Gehele getallen" iA
 \mathbb{Z}
 endsnippet
 
-snippet CC "Complexe getallen" wA
+snippet CC "Complexe getallen" iA
 \mathbb{C}
 endsnippet
 
-snippet FF "Veld" wA
+snippet FF "Veld" iA
 \mathbb{F}
 endsnippet
 
-snippet * "Scalaire vermenigvuldiging" wA
+snippet OO "Leeg" iA
+\emptyset
+endsnippet
+
+snippet set "verzameling" i
+\{$1, ${2:\ldots}, $3\}$0
+endsnippet
+
+snippet ** "Scalaire vermenigvuldiging" iA
 \cdot
 endsnippet
 
-snippet xx "Vectoriële vermenigvuldiging" w
+snippet xx "Vectoriële vermenigvuldiging" iA
 \times
 endsnippet
 
-snippet -> "enkele kleine pijl" wA
+snippet -> "naar" Ai
 \rightarrow
 endsnippet
 
-snippet => "dubbele kleine pijl" wA
+snippet => "impliceert" Ai
+\implies
+endsnippet
+
+snippet <= "geïmpliceerd" Ai
 \implies
 endsnippet
 
@@ -224,8 +244,32 @@ snippet bf
 \textbf{$1}$0
 endsnippet
 
+snippet == "is gelijk aan" iA
+&=
+endsnippet
+
+snippet != "niet gelijk aan" iA
+\neq
+endsnippet
+
 snippet lim "limiet" w
 \lim_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+snippet lin-t "Lineaire transformatie" iA
+${1:L}: ${2:V} \to ${3:V}$0
+endsnippet
+
+snippet invs "Inverse" iA
+^{-1}
+endsnippet
+
+snippet pmat "pmatrix" iA
+\begin{pmatrix} $1 \end{pmatrix}$0
+endsnippet
+
+snippet cvec "kolomvector" iA
+\begin{pmatrix} ${1:x}_${2:1}\\\\ \vdots\\\\ $1_${2:n} \end{pmatrix}
 endsnippet
 
 snippet sympy "sympy block " w
