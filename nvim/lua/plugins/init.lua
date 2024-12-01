@@ -21,12 +21,4 @@ return {
             vim.keymap.set('n', '<leader><u>', vim.cmd.UndotreeToggle)
         end
     },
-
-    {
-    "L3MON4D3/LuaSnip",
-    config = function()
-        require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/lua/plugins/LuaSnip/"})
-    end
-    },
-
 }

@@ -29,13 +29,13 @@ return {
     {
         "rebelot/kanagawa.nvim",
         config = function()
-            -- vim.cmd.colorscheme("kanagawa-dragon")
+            vim.cmd.colorscheme("kanagawa-dragon")
         end
     },
     {
         "shausingh/nord.nvim",
         config = function()
-            vim.cmd.colorscheme("nord")
+            -- vim.cmd.colorscheme("nord")
         end
     },
 }
