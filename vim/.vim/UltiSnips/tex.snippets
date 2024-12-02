@@ -8,6 +8,12 @@ snippet beg "begin{} \ end{}" bA
 \end{$1}
 endsnippet
 
+snippet def "definitie"
+\begin{definitie}
+	$0
+\end{definitie}
+endsnippet
+
 snippet enum "Enumerate" bA
 \begin{enumerate}
 	\item $0
@@ -31,8 +37,8 @@ endsnippet
 
 snippet md "Math" wA
 \[
-	$1
-.\]$0
+	$1.
+\]$0
 endsnippet
 
 snippet '([A-Za-z])(\d)' "auto subscript" wrA
@@ -239,8 +245,16 @@ snippet OO "Leeg" iA
 \emptyset
 endsnippet
 
+snippet EE "er bestaat" iA
+\exists
+endsnippet
+
+snippet AA "voor alle" iA
+\forall
+endsnippet
+
 snippet set "verzameling" i
-\{$1, ${2:\ldots}, $3\}$0
+\\{$1, ${2:\ldots}, $3\\}$0
 endsnippet
 
 snippet ** "Scalaire vermenigvuldiging" iA
@@ -358,6 +372,10 @@ endsnippet
 
 snippet lim "limiet" w
 \lim_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+snippet sum "som" i
+\sum_{${1:n}}^{${2:\infty}} $0
 endsnippet
 
 snippet lin-t "Lineaire transformatie" iA

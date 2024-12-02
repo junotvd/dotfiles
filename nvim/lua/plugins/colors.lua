@@ -8,9 +8,9 @@ return {
             require("rose-pine").setup({
                 variant = "main",
                 disable_background = true,
-                disable_float_background = false,
+                disable_float_background = true,
                 styles = {
-                    italic = false,
+                    italic = true,
                     transparent = false,
                 },
                 highlight_groups = {
@@ -23,19 +23,13 @@ return {
             vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
             vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
             vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-            -- vim.cmd.colorscheme("rose-pine")
-        end,
+            vim.cmd.colorscheme("rose-pine")
+        end
     },
     {
         "rebelot/kanagawa.nvim",
         config = function()
-            vim.cmd.colorscheme("kanagawa-dragon")
-        end
-    },
-    {
-        "shausingh/nord.nvim",
-        config = function()
-            -- vim.cmd.colorscheme("nord")
+            -- vim.cmd.colorscheme("kanagawa-dragon")
         end
     },
 }
