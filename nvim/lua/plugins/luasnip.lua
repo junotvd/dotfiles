@@ -13,6 +13,6 @@ return {
             enable_autosnippets = true,
             store_selection_keys = "<Tab>",
         })
-        require("luasnip.loaders.from_lua").load({paths = {"~/.config/nvim/snippets/", "~/.config/nvim/snippets/all.lua"}})
+        require("luasnip.loaders.from_lua").load({paths = {"~/.config/nvim/snippets/tex/", "~/.config/nvim/snippets/"}})
     end
 }
