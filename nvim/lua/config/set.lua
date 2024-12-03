@@ -23,3 +23,5 @@ vim.opt.colorcolumn = "80"
 vim.opt.spell = false
 
 vim.opt.conceallevel = 1
+
+vim.g.tex_flavor = "latex"
