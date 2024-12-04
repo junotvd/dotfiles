@@ -30,10 +30,31 @@ snippet def "definitie"
 \end{definitie}
 endsnippet
 
+snippet al* "align*" iA
+\begin{align*}
+	$1 &= $2 \\\
+	$3	&= $4
+\end{align*}$0
+endsnippet
+
 snippet enum "Enumerate" bA
 \begin{enumerate}
 	\item $0
 \end{enumerate}
+endsnippet
+
+snippet anum "Enumerate alpha" bA
+\begin{enumerate}[label = (\alph*)]
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet abs "Absolute waarde" i
+\lvert $1\rvert
+endsnippet
+
+snippet nor "Normaal" iw
+\lVert $1\rVert
 endsnippet
 
 snippet item "Itemize" bA
@@ -77,7 +98,7 @@ snippet sq "vierkantswortel" iA
 \sqrt{$1}$0
 endsnippet
 
-snippet compl "complement" iA
+snippet compl "complement" i
 ^{c}
 endsnippet
 
@@ -125,7 +146,7 @@ snippet ;z "zeta" iA
 \zeta
 endsnippet
 
-snippet ;e "eta" iA
+snippet ;et "eta" iA
 \eta
 endsnippet
 
@@ -269,8 +290,12 @@ snippet AA "voor alle" iA
 \forall
 endsnippet
 
-snippet set "verzameling" i
-\\{$1, ${2:\ldots}, $3\\}$0
+snippet vset "verzameling van vectoren" i
+\\{${1:v_1}, ${2:\ldots}, ${3:v}_{${4:n}}\\}$0
+endsnippet
+
+snippet cset "verzameling met voorwaarde" i
+\\{$1 \mid $2\\}$0
 endsnippet
 
 snippet ** "Scalaire vermenigvuldiging" iA
@@ -345,7 +370,7 @@ snippet fun "Functie" W
 f: $1 \to $2: x \mapsto $3 $0
 endsnippet
 
-snippet || "mid"
+snippet | "mid"
 \mid
 endsnippet
 
@@ -354,15 +379,15 @@ snippet ek
 \frac{1}{2} m \vec{v}^2
 endsnippet
 
-snippet tt
+snippet tt "gewone tekst" i
 \text{$1}$0
 endsnippet
 
-snippet it
+snippet it "cursieve tekst" i
 \textit{$1}$0
 endsnippet
 
-snippet bf
+snippet bf "vette tekst" i
 \textbf{$1}$0
 endsnippet
 
@@ -386,8 +411,16 @@ snippet !> "afbeelding op" iA
 \mapsto
 endsnippet
 
-snippet lim "limiet" w
+snippet lim "limiet" i
 \lim_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+snippet limsup "limsup" i
+\limsup_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+snippet liminf "limsup" i
+\liminf_{${1:n} \to ${2:\infty}} 
 endsnippet
 
 snippet sum "som" i
@@ -427,4 +460,36 @@ snip.rv = eval('latex(' + match.group(1).replace('\\', '') \
     .replace('{', '(') \
     .replace('}', ')') + ')')
 `
+endsnippet
+
+snippet bpow "haakjes tot macht" i
+\{$1\}^{${2:2}}
+endsnippet
+
+snippet bsub "haakjes van iets" i
+\{$1\}_{${2:\beta}}
+endsnippet
+
+snippet lr "left right" i
+\left${1:(} $2 \right${3:)}
+endsnippet
+
+snippet [ "gesloten links" i
+\lbrack
+endsnippet
+
+snippet [ "gesloten rechts" i
+\rbrack
+endsnippet
+
+snippet en "wiskundige en" i
+\land
+endsnippet
+
+snippet of "wiskundige of" i
+\lor
+endsnippet
+
+snippet rij "rij notatie" i
+\{(${1:a}_${2:n})}_$2
 endsnippet
