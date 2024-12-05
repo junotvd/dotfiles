@@ -14,4 +14,5 @@ echo "*.swp" >> .gitignore
 .config/neomutt
 vim/.vim/plugged
 vim/.vim/.netrwhist
+vim/.vim/autoload/
 nvim/lazy-lock.json
