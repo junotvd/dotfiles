@@ -1,8 +1,0 @@
-Commands / Macros / Keybinds (WIP)
-=================================
-
-* **neovim**:
-    * **Global**:
-    * **LaTeX**:
-        * **Normal mode**:
-            * ``<leader>bf`` inserts ``\textbf{}`` and puts you in insert mode between the curly braces.
