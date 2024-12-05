@@ -478,7 +478,7 @@ snippet [ "gesloten links" i
 \lbrack
 endsnippet
 
-snippet [ "gesloten rechts" i
+snippet ] "gesloten rechts" i
 \rbrack
 endsnippet
 
@@ -492,4 +492,24 @@ endsnippet
 
 snippet rij "rij notatie" i
 \{(${1:a}_${2:n})}_$2
+endsnippet
+
+snippet int "onbepaalde integraal" i
+\int $1 \, d${2:x}$0
+endsnippet
+
+snippet intt "bepaalde integraal" i
+\int_${1:0}^${2:1} $3 \, d${4:x}$0
+endsnippet
+
+snippet cd "cdots" i
+\cdots
+endsnippet
+
+snippet ld "ldots" i
+\ldots
+endsnippet
+
+snippet vd "vdots" i
+\vdots
 endsnippet
