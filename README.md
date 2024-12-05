@@ -1,2 +1,1 @@
-# Dotfiles
-- Junot Van Dijck
+dotfiles junot
