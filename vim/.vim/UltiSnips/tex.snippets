@@ -24,16 +24,28 @@ snippet beg "begin{} \ end{}" bA
 \end{$1}
 endsnippet
 
-snippet def "definitie"
+snippet def "definitie" i
 \begin{definitie}
 	$0
 \end{definitie}
 endsnippet
 
+snippet opl "oplossing" i
+\begin{oplossing}
+	$0
+\end{oplossing}
+endsnippet
+
+snippet bew "bewijs" i
+\begin{bewijs}
+	$0
+\end{bewijs}
+endsnippet
+
 snippet al* "align*" iA
 \begin{align*}
 	$1 &= $2 \\\
-	$3	&= $4
+	$3 &= $4
 \end{align*}$0
 endsnippet
 
@@ -471,7 +483,7 @@ snippet bsub "haakjes van iets" i
 endsnippet
 
 snippet lr "left right" i
-\left${1:(} $2 \right${3:)}
+\left${1:(}$2\right${3:)}
 endsnippet
 
 snippet [ "gesloten links" i
@@ -512,4 +524,8 @@ endsnippet
 
 snippet vd "vdots" i
 \vdots
+endsnippet
+
+snippet cc "cancel" i
+\cancel{$1}$0
 endsnippet
