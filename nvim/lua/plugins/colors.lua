@@ -2,7 +2,10 @@ return {
   {
     "rebelot/kanagawa.nvim",
     config = function()
-      -- vim.cmd.colorscheme("kanagawa-dragon")
+      require("kanagawa").setup({
+        transparent = false
+      })
+      vim.cmd.colorscheme("kanagawa-dragon")
     end
   },
   {
@@ -14,12 +17,19 @@ return {
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,
-    priority = 1000,
+    -- priority = 1000,
     config = function()
       require("solarized-osaka").setup({
         transparent = false
       })
-      vim.cmd.colorscheme("solarized-osaka")
+      -- vim.cmd.colorscheme("solarized-osaka")
     end
   },
+  -- {
+  --   "ppoxx",
+  --   dir = "~/colors/",
+  --   config = function()
+  --     vim.cmd.colorscheme("ppoxx")
+  --   end
+  -- }
 }
