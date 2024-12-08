@@ -30,6 +30,12 @@ snippet def "definitie" i
 \end{definitie}
 endsnippet
 
+snippet vb "definitie" i
+\begin{voorbeeld}
+	$0
+\end{voorbeeld}
+endsnippet
+
 snippet opl "oplossing" i
 \begin{oplossing}
 	$0
@@ -514,18 +520,26 @@ snippet intt "bepaalde integraal" i
 \int_${1:0}^${2:1} $3 \, d${4:x}$0
 endsnippet
 
-snippet cd "cdots" i
+snippet .cd "cdots" i
 \cdots
 endsnippet
 
-snippet ld "ldots" i
+snippet .ld "ldots" i
 \ldots
 endsnippet
 
-snippet vd "vdots" i
+snippet .vd "vdots" i
 \vdots
 endsnippet
 
 snippet cc "cancel" i
 \cancel{$1}$0
+endsnippet
+
+snippet bm "bold math" i
+\bm{$1}$0
+endsnippet
+
+snippet part "d/dx" w
+\frac{\partial ${1:V}}{\partial ${2:x}}$0
 endsnippet
