@@ -1,11 +1,16 @@
 set recolor
 
 # Nord colors
-set default-bg \#2E3440
-set recolor-lightcolor \#2E3440
-set recolor-darkcolor \#D8DEE
+# set default-bg \#2E3440
+# set recolor-lightcolor \#2E3440
+# set recolor-darkcolor \#D8DEE
 set recolor-keephue
 
-set font "FiraCode Nerd Font"
+# Other colors
+set default-bg \#09363b
+set recolor-lightcolor \#09363b
+set recolor-darkcolor \#bdb395
+
+set font "Iosevka Nerd Font"
 
 set selection-clipboard clipboard
