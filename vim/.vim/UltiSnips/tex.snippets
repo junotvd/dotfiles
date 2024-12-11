@@ -15,7 +15,7 @@ snippet >> "langle" iA
 endsnippet
 
 snippet today "Date"
-`date +%F`
+`date`
 endsnippet
 
 snippet beg "begin{} \ end{}" bA
@@ -200,8 +200,12 @@ snippet ;m "mu" iA
 \mu
 endsnippet
 
-snippet ;n "nu" iA
+snippet ;nu "nu" iA
 \nu
+endsnippet
+
+snippet ;na "nabla" iA
+\nabla
 endsnippet
 
 snippet ;o "omicron" iA
@@ -282,6 +286,10 @@ endsnippet
 
 snippet QQ "Rationale getallen" iA
 \mathbb{Q}
+endsnippet
+
+snippet II "Rationale getallen" iA
+\mathbb{I}
 endsnippet
 
 snippet ZZ "Gehele getallen" iA
@@ -542,4 +550,8 @@ endsnippet
 
 snippet part "d/dx" w
 \frac{\partial ${1:V}}{\partial ${2:x}}$0
+endsnippet
+
+snippet ~ "tilde" i
+\tilde{$1}$0
 endsnippet
