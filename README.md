@@ -6,7 +6,7 @@
 #### st
 - [ ] st uses dpi settings of Xresources
 #### dmenu
-- [ ] manage monitors
+- [x] manage monitors (works but not complete yet)
 #### dwm
 - [ ] bar
 - [ ] audio
