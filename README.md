@@ -3,10 +3,21 @@
 - [x] netrw opens pdf with zathura
 - [ ] vim snippets and autocompletion
 - [ ] compile tex files using the minted package
+#### st
+- [ ] st uses dpi settings of Xresources
+#### dmenu
+- [ ] manage monitors
+#### dwm
+- [ ] bar
+- [ ] audio
+- [ ] lockscreen
+- [ ] best way to map keys?
+#### x11
+- [ ] x11 files in repo
+- [ ] ctrl:swapcaps only needs to work on laptop keyboard
 #### overall system
 - [ ] manage scripts
-- [ ] st uses dpi settings of Xresources
-- [ ] manage monitors with dmenu
 - [ ] adv360 volume and screen control
-- [ ] x11 files in repo
 - [ ] configure neomutt or other mailing client
+- [ ] shortcut for yq
+- [ ] uni system
