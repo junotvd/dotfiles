@@ -21,3 +21,4 @@
 - [ ] configure neomutt or other mailing client
 - [ ] shortcut for yq
 - [ ] uni system
+- [ ] suckless repo nested in dotfiles repo
