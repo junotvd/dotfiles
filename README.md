@@ -9,3 +9,4 @@
 - [ ] manage monitors with dmenu
 - [ ] adv360 volume and screen control
 - [ ] x11 files in repo
+- [ ] configure neomutt or other mailing client
