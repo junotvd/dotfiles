@@ -25,3 +25,5 @@ vim.opt.spell = false
 vim.opt.conceallevel = 1
 
 vim.g.tex_flavor = "latex"
+
+vim.g.netrw_browsex_viewer = "xdg-open"
