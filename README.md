@@ -3,6 +3,7 @@
 - [x] netrw opens pdf with zathura
 - [ ] vim snippets and autocompletion
 - [ ] compile tex files using the minted package
+- [ ] switch to blink.cmp
 #### st
 - [ ] st uses dpi settings of Xresources
 #### dmenu
