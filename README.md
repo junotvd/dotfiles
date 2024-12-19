@@ -13,12 +13,12 @@
 - [ ] lockscreen
 - [ ] best way to map keys?
 #### x11
-- [ ] x11 files in repo
+- [x] x11 files in repo
 - [ ] ctrl:swapcaps only needs to work on laptop keyboard
 #### overall system
-- [ ] manage scripts
+- [x] manage scripts
 - [ ] adv360 volume and screen control
 - [ ] configure neomutt or other mailing client
 - [ ] shortcut for yq
 - [ ] uni system
-- [ ] suckless repo nested in dotfiles repo
+- [x] suckless repo nested in dotfiles repo
