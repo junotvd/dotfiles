@@ -15,7 +15,7 @@
 - [ ] best way to map keys?
 #### x11
 - [x] x11 files in repo
-- [ ] ctrl:swapcaps only needs to work on laptop keyboard
+- [x] ctrl:swapcaps only needs to work on laptop keyboard
 #### overall system
 - [x] manage scripts
 - [ ] adv360 volume and screen control
