@@ -1,9 +1,9 @@
 ### TODO
 #### neovim
-- [x] netrw opens pdf with zathura
+- [x] netrw opens pdf with zathura (waits for exit)
 - [ ] vim snippets and autocompletion
 - [ ] compile tex files using the minted package
-- [ ] switch to blink.cmp
+- [x] switch to blink.cmp (gives error)
 #### st
 - [ ] st uses dpi settings of Xresources
 #### dmenu
