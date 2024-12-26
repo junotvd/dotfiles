@@ -19,7 +19,6 @@ alias v=nvim
 alias py=python
 alias l='ls -la'
 alias q=exit
-alias ff=fastfetch
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -40,3 +39,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+# Created by `pipx` on 2024-12-23 10:05:10
+export PATH="$PATH:/home/junot/.local/bin"
