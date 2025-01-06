@@ -6,4 +6,4 @@ xrdb ~/.Xresources
 pipewire &
 pipewire-pulse &
 
-exec dwm
+exec bspwm

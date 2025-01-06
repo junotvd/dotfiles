@@ -3,11 +3,11 @@
 # This script is made for single monitor use
 
 monoscreen() {
+
     [ "$1" = "eDP" ] &&
         rate=$(echo "60\n120" | dmenu -i -p "refresh rate:")
         { xrandr --output eDP --mode 2880x1920 --rate "$rate" --scale 1x1; exit; }
 
-    res=$(xrandr --query | sed -n "/^$1/,/\+/p" | tail -n 1 | awk '{print $1}')
     xrandr --output "$1" --auto --scale 1x1
 }
 
@@ -27,4 +27,5 @@ mirror=$(echo "no\nyes" | dmenu -i -p "want to mirror $selected onto $other?")
 [ "$mirror" = "yes" ] &&
     { mirrorscreen $selected $other; exit; }
 
-monoscreen "$selected" && xrandr --output "$other" --off
+
+xrandr --output  "$selected" --auto && xrandr --output "$other" --off

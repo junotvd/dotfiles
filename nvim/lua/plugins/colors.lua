@@ -5,13 +5,18 @@ return {
       require("kanagawa").setup({
         transparent = false
       })
-      vim.cmd.colorscheme("kanagawa-dragon")
+      -- vim.cmd.colorscheme("kanagawa-dragon")
+    end
+  },
+  { "phha/zenburn.nvim",
+    config = function()
+      vim.cmd.colorscheme("zenburn")
     end
   },
   {
-    "ricardoraposo/gruvbox-minor.nvim",
+    "shaunsingh/nord.nvim",
     config = function()
-      -- vim.cmd.colorscheme("gruvbox-minor")
+      -- vim.cmd.colorscheme("nord")
     end
   },
 }

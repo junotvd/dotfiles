@@ -1,7 +1,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Mod key
-set $mod Mod4
+set $mod Mod1
 
 # Applications on startup
 # exec --no-startup-id picom
@@ -51,6 +51,7 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # monitor switching
 bindsym $mod+m exec ~/bin/select-display.sh
+bindsym $mod+c exec ~/bin/swapcaps.sh
 
 # change focus
 bindsym $mod+h focus left
