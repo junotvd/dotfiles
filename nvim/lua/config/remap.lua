@@ -10,10 +10,5 @@ vim.keymap.set("n", "<leader>p", '"+p')
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
--- vim.api.nvim_create_autocmd("FileType", {
---     pattern = "netrw",
---     callback = function()
---         vim.api.nvim_buf_set_keymap(0, "n", "<CR>", ":if vim.fn.expand('%:e') == pdf then vim.cmd('silent !zathura % &') end<CR>",
---         { noremap = true, silent = true })
---     end,
--- })
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
