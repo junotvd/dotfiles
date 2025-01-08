@@ -60,11 +60,10 @@ snippet bew "bewijs" i
 \end{bewijs}
 endsnippet
 
-snippet al* "align*" iA
-\begin{align*}
-	$1 &= $2 \\\
-	$3 &= $4
-\end{align*}$0
+snippet eq "equation" i
+\begin{equation}
+	$0. \label{eq:$1}
+\end{equation}
 endsnippet
 
 snippet enum "Enumerate" bA
@@ -75,6 +74,12 @@ endsnippet
 
 snippet anum "Enumerate alpha" bA
 \begin{enumerate}[label = (\alph*)]
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet arnum "Enumerate arabic" bA
+\begin{enumerate}[label = (\arabic*)]
 	\item $0
 \end{enumerate}
 endsnippet
@@ -594,6 +599,14 @@ endsnippet
 
 snippet bm "bold math" i
 \bm{$1}$0
+endsnippet
+
+snippet rm "mathrm" i
+\mathrm{$1}$0
+endsnippet
+
+snippet emph "emphasize" i
+\emph{$1}$0
 endsnippet
 
 snippet part "d/dx" w
