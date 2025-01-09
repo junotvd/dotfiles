@@ -16,6 +16,8 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 Plug 'nordtheme/vim'
+Plug 'pgdouyon/vim-yin-yang'
+Plug 'pgdouyon/vim-alayas'
 
 Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
@@ -23,8 +25,18 @@ Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 let mapleader="\<Space>"
+
 map <leader>pv :Ex<Cr>
 map <leader>ll :VimtexCompile<Cr>
+
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+vnoremap <leader>y "+y
+
+set nocompatible
+
+setlocal spell
+set spelllang=nl,en_gb
 
 set autoindent
 set smartindent
@@ -34,14 +46,9 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-setlocal spell
-set spelllang=nl,en_gb
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-
 set number relativenumber
 set scrolloff=8
 
 set termguicolors
 syntax enable
-colorscheme nord
-set background=dark
+colorscheme yang
