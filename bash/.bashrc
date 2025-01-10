@@ -14,7 +14,7 @@ export VISUAL=nvim
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
-# Alias
+# alias
 alias v=nvim
 alias py=python
 alias l='ls -la'
@@ -22,6 +22,8 @@ alias q=exit
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+
+alias pdf='firefox http://100.124.103.23:8080/'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
