@@ -1,0 +1,10 @@
+theme = zenwritten_dark
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+window-decoration = false
+window-theme = dark
+
+font-family = Iosevka NF
+font-size = 11

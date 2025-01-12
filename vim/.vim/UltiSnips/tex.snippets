@@ -103,6 +103,7 @@ snippet eig "eigenschap" i
 \begin{eigenschap}{}{$1}
 	$0.
 \end{eigenschap}
+endsnippet
 
 snippet enum "Enumerate" bA
 \begin{enumerate}
@@ -179,7 +180,7 @@ endsnippet
 
 context "math()"
 snippet deriv "d/dx" iA
-\\fraction{d${1:y}}{d${2:x}} $0
+\\frac{d${1:y}}{d${2:x}} $0
 endsnippet
 
 snippet ;a "alpha" iA
@@ -452,13 +453,9 @@ snippet Cc "deelverzameling" iA
 \subset
 endsnippet
 
-# snippet // "Fraction" iA
-# \\frac{$1}{$2}$0
-# endsnippet
-
 context "math()"
-snippet / "Fraction" iA
-\\frac{${VISUAL}}{$1}$0
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
 endsnippet
 
 context "math()"
@@ -499,23 +496,23 @@ snippet | "mid" A
 \mid
 endsnippet
 
-snippet tt "gewone tekst" i
+snippet tt "gewone tekst" w
 \text{$1}$0
 endsnippet
 
-snippet it "cursieve tekst" i
+snippet it "cursieve tekst" w
 \textit{$1}$0
 endsnippet
 
-snippet bf "vette tekst" i
+snippet bf "vette tekst" w
 \textbf{$1}$0
 endsnippet
 
-snippet sl "slanted tekst" i
+snippet sl "slanted tekst" w
 \textsl{$1}$0
 endsnippet
 
-snippet ttt "tt tekst" i
+snippet ttt "tt tekst" w
 \texttt{$1}$0
 endsnippet
 
@@ -674,7 +671,7 @@ snippet rm "mathrm" i
 \mathrm{$1}$0
 endsnippet
 
-snippet emph "emphasize" i
+snippet em "emphasize" i
 \emph{$1}$0
 endsnippet
 
