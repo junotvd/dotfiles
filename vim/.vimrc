@@ -18,6 +18,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 Plug 'yankcrime/direwolf'
 Plug 'nordtheme/vim'
+Plug 'lunacookies/vim-colors-xcode'
 
 Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
@@ -31,19 +32,6 @@ map <leader>ll :VimtexCompile<Cr>
 
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 vnoremap <leader>y "+y
-let g:color_mode = "light"
-function! ToggleColors()
-    if g:color_mode == "light"
-        colorscheme nord
-        let g:color_mode = "dark"
-    else
-        colorscheme direwolf
-        let g:color_mode = "light"
-    endif
-endfunction
-
-nnoremap <C-r> :call ToggleColors()<CR>
-
 
 set nocompatible
 
@@ -63,4 +51,5 @@ set scrolloff=8
 
 set termguicolors
 syntax enable
-colorscheme direwolf
+set background=dark
+colorscheme nord
