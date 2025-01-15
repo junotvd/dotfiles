@@ -30,6 +30,6 @@ for event in calendar.events:
         break
 
 if next_event:
-    print(f"Next event: {next_event.name} at {next_event.begin.humanize()}")
+    print(f"{next_event.begin.strftime("%H:%S")}: {next_event.name}")
 else:
     print("No upcoming events")
