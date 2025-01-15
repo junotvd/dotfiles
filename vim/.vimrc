@@ -32,11 +32,16 @@ map <leader>ll :VimtexCompile<Cr>
 
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 vnoremap <leader>y "+y
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+
 
 set nocompatible
 
 setlocal spell
-set spelllang=nl,en_gb
+set spelllang=nl
+"set spelllang=nl,en_gb
 
 set autoindent
 set smartindent
