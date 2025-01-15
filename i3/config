@@ -145,6 +145,19 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-        status_command i3status
-        tray_output primary
+    status_command i3status
+    font pango:Iosevka Nerd Font 10
+
+    colors {
+        background #2E3440
+        statusline #ECEFF4
+        separator  #4C566A
+
+        focused_workspace  #2E3440 #2E3440 #ECEFF4
+        active_workspace   #2E3440 #2E3440 #ECEFF4
+        inactive_workspace #2E3440 #2E3440 #616E88
+        urgent_workspace   #2E3440 #2E3440 #BF616A
+    }
+# status_command ~/dotfiles/i3status/bar.sh
+    tray_output primary
 }
