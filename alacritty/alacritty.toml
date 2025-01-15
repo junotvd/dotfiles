@@ -1,14 +1,22 @@
 [font]
 normal = {family = "JuliaMono", style = "Regular"}
+bold = {family = "JuliaMono", style = "Bold"}
+italic = {family = "JuliaMono", style = "Italic"}
 #normal = {family = "Iosevka Nerd Font", style = "Regular"}
-bold = {family = "Iosevka Nerd Font", style = "Bold"}
-italic = {family = "Iosevka Nerd Font", style = "Italic"}
+# bold = {family = "Iosevka Nerd Font", style = "Bold"}
+# italic = {family = "Iosevka Nerd Font", style = "Italic"}
 size = 10
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.offset]
+x = 0
+y = 0
 
 [env]
 TERM = "xterm-256color"
 
-
-# [colors.primary]
-# background = "#09363B"
-# foreground = "#bdb395"
+[general]
+import = ["nord.toml"]
