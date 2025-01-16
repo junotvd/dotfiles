@@ -1,18 +1,11 @@
 return {
   {
-    "zenbones-theme/zenbones.nvim",
-    dependencies = "rktjmp/lush.nvim",
-    lazy = false,
-    config = function()
-      vim.o.background = "dark"
-      vim.g.zenwritten_lightness = bright
-      -- vim.cmd.colorscheme("nordbones")
-    end
-  },
-  {
     "shaunsingh/nord.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
       vim.cmd.colorscheme("nord")
-    end
+    end,
   },
+  "morhetz/gruvbox",
 }
