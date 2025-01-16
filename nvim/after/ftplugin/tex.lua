@@ -1,3 +1,8 @@
+local set = vim.opt_local
+
 -- Spell checking
-vim.opt_local.spell = true
-vim.opt.spelllang = { "nl", "en_gb" }
+set.spell = true
+set.spelllang = {
+  "nl",
+  -- "en_gb"
+}
