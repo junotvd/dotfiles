@@ -1,47 +1,15 @@
 return {
---   'saghen/blink.cmp',
---   -- optional: provides snippets for the snippet source
---   version = 'v0.*',
---
---   dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
---
---   opts = {
---     snippets = {
---       expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
---       active = function(filter)
---         if filter and filter.direction then
---           return require('luasnip').jumpable(filter.direction)
---         end
---         return require('luasnip').in_snippet()
---       end,
---       jump = function(direction) require('luasnip').jump(direction) end,
---     },
---     sources = {
---       default = { 'lsp', 'path', 'luasnip', 'buffer' },
---     },
---
---     keymap = { preset = 'default' },
---
---     appearance = {
---       -- will be removed in a future release
---       use_nvim_cmp_as_default = true,
---       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
---       -- Adjusts spacing to ensure icons are aligned
---       nerd_font_variant = 'normal'
---     },
---
---     -- default list of enabled providers defined so that you can extend it
---     -- elsewhere in your config, without redefining it, via `opts_extend`
---     sources = {
---       default = { 'lsp', 'path', 'snippets', 'buffer' },
---       -- optionally disable cmdline completions
---       -- cmdline = {},
---     },
---
---     -- experimental signature help support
---     -- signature = { enabled = true }
---   },
---   -- allows extending the providers array elsewhere in your config
---   -- without having to redefine it
---   opts_extend = { "sources.default" }
+  'saghen/blink.cmp',
+  dependencies = 'rafamadriz/friendly-snippets',
+  version = '*',
+  opts = {
+    -- See the full "keymap" documentation for information on defining your own keymap.
+    keymap = { preset = 'default' },
+
+    appearance = {
+      use_nvim_cmp_as_default = true,
+      nerd_font_variant = 'mono'
+    },
+    signature = { enabled = true}
+  },
 }
