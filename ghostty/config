@@ -1,4 +1,4 @@
-theme = zenwritten_dark
+theme = nord
 cursor-style = block
 cursor-style-blink = false
 mouse-hide-while-typing = true
