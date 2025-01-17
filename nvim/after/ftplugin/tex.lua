@@ -4,5 +4,5 @@ local set = vim.opt_local
 set.spell = true
 set.spelllang = {
   "nl",
-  -- "en_gb"
+  "en_gb"
 }
