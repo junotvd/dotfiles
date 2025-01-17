@@ -29,6 +29,7 @@ let mapleader="\<Space>"
 
 map <leader>pv :Ex<Cr>
 map <leader>ll :VimtexCompile<Cr>
+map <leader>lv :VimtexView<Cr>
 
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 vnoremap <leader>y "+y
@@ -36,9 +37,9 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 
-
 set nocompatible
 
+"set encoding-utf-8
 setlocal spell
 set spelllang=nl
 "set spelllang=nl,en_gb

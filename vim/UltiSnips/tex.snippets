@@ -6,7 +6,7 @@ def comment():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 
 def env():
-	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
 	return x != '0' and x != '0'
 
 endglobal

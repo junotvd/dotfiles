@@ -1,20 +1,8 @@
 echo ".DS_Store" >> .gitignore
 echo "*.swp" >> .gitignore
-.config/fish/
-.config/htop/
-.config/spotify/
-.config/dconf/
-.config/pulse/
-.config/systemd/
-.config/neofetch/
-.config/KTailctlrc
-.config/mimeapps.list
-.config/spicetify
-.config/kitty
-.config/neomutt
-vim/.vim/plugged
-vim/.vim/.netrwhist
-vim/.vim/autoload/
+vim/plugged
+vim/.netrwhist
+vim/autoload/
 nvim/lazy-lock.json
 *.add.spl
 *.sug
