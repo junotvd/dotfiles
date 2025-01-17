@@ -28,4 +28,4 @@ vim.g.tex_flavor = "latex"
 
 vim.g.netrw_browsex_viewer = "xdg-open"
 
-vim.opt.spelllang = "nl"
+vim.opt.spelllang = { "nl", "en_gb" }
