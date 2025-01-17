@@ -11,8 +11,36 @@ def env():
 
 endglobal
 
-snippet asa "Als en slechts als" i
+snippet asa "Als en slechts als" w
 als en slechts als
+endsnippet
+
+snippet maw "met andere woorden," w
+met andere woorden
+endsnippet
+
+snippet Maw "Met andere woorden," w
+Met andere woorden
+endsnippet
+
+snippet tov "ten opzichte van" w
+ten opzichte van
+endsnippet
+
+snippet Tov "Ten opzichte van" w
+Ten opzichte van
+endsnippet
+
+snippet mbt "met betrekking tot" w
+met betrekking tot
+endsnippet
+
+snippet Mbt "Met betrekking tot" w
+Met betrekking tot
+endsnippet
+
+snippet resp "respectievelijk" w
+respectievelijk
 endsnippet
 
 snippet oo "Oneindig" i
@@ -83,25 +111,20 @@ snippet bew "bewijs" i
 endsnippet
 
 snippet eq "equation" i
-\begin{equation}
-	$0. \label{eq:$1}
-\end{equation}
+\begin{equation}\label{eq:$1}
+	$2.
+\end{equation}$0
 endsnippet
 
 snippet stel "stelling" i
-\begin{stelling}{$1}{`!p
-if len(t[1]) == 0:
-	snip.rv = t[2].replace(' ', '-').lower()
-else:
-	snip.rv = t[1].replace(' ', '-').lower()
-`${2:}}
-	$0.
+\begin{stelling}{$1}{$2}
+	$0
 \end{stelling}
 endsnippet
 
 snippet eig "eigenschap" i
 \begin{eigenschap}{}{$1}
-	$0.
+	$0
 \end{eigenschap}
 endsnippet
 
