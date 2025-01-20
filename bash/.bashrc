@@ -24,6 +24,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 alias pdf='firefox http://100.124.103.23:8080/'
+alias print='firefox https://print.kuleuven.be/app?service=page/UserWebPrint'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
