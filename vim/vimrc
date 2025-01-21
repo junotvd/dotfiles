@@ -16,7 +16,6 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
-Plug 'yankcrime/direwolf'
 Plug 'nordtheme/vim'
 Plug 'lunacookies/vim-colors-xcode'
 
@@ -39,7 +38,7 @@ vnoremap K :m '<-2<CR>gv=gv
 
 set nocompatible
 
-"set encoding-utf-8
+
 setlocal spell
 set spelllang=nl
 "set spelllang=nl,en_gb
