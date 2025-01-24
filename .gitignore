@@ -6,5 +6,6 @@ vim/.netrwhist
 vim/autoload/
 nvim/lazy-lock.json
 suckless/
+*.spl
 *.add.spl
 *.sug
