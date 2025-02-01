@@ -7,5 +7,4 @@ return {
       vim.cmd.colorscheme("nord")
     end,
   },
-  "morhetz/gruvbox",
 }
