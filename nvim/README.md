@@ -14,7 +14,7 @@
 ### Visual mode
 - `J` moves selected line down
 - `K` moves selected line up
-- `<leader>y` yanks selection into system clipboard ("+ register")
+- `<leader>y` yanks selection into system clipboard ("+ register)
 - `<leader>x` sources current selection
 
 ### Insert mode
