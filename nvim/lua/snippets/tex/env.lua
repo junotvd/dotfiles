@@ -1,29 +1,124 @@
--- local tex = {}
--- tex.in_mathzone = function() return vim.fn['vimtex#syntax#in_mathzone']() == 1 end
--- tex.in_text = function() return not tex.in_mathzone() end
--- local extras = require("luasnip.extras")
--- local i = ls.insert_node
--- local sn = ls.snippet_node
--- local isn = ls.indent_snippet_node
--- local f = ls.function_node
--- local c = ls.choice_node
--- local d = ls.dynamic_node
--- local r = ls.restore_node
--- local events = require("luasnip.util.events")
--- local ai = require("luasnip.nodes.absolute_indexer")
--- local l = extras.lambda
--- local rep = extras.rep
--- local p = extras.partial
--- local m = extras.match
--- local n = extras.nonempty
--- local dl = extras.dynamic_lambda
--- local fmt = require("luasnip.extras.fmt").fmt
--- local fmta = require("luasnip.extras.fmt").fmta
--- local conds = require("luasnip.extras.expand_conditions")
--- local postfix = require("luasnip.extras.postfix").postfix
--- local types = require("luasnip.util.types")
--- local parse = require("luasnip.util.parser").parse_snippet
--- local ms = ls.multi_snippet
--- local k = require("luasnip.nodes.key_indexer").new_key
+return {
 
-return {}
+  -- Environments
+
+  s({ trig = 'eq', descr = 'equation environment' },
+    fmta([[
+  \begin{equation}\label{eq:<>}
+  <>.
+  \end{equation}]],
+      { i(1), i(0) }
+    )),
+
+  s({ trig = 'beg', snippetType = 'autosnippet', descr = 'begin environment' },
+    fmta([[
+      \begin{<>}
+          <>
+      \end{<>}]],
+      { i(1), i(0), rep(1) }
+    )),
+
+  s({ trig = 'bbeg', snippetType = 'autosnippet', descr = 'begin environment for tcolorbox' },
+    fmta([[
+      \begin{<>}{<>}
+          <>
+      \end{<>}]],
+      { i(1), i(2), i(0), rep(1) }
+    )),
+
+  s({ trig = 'bbbeg', snippetType = 'autosnippet', descr = 'begin environment for tcbtheorem' },
+    fmta([[
+      \begin{<>}{<>}{<>}
+          <>
+      \end{<>}]],
+      { i(1), i(2), i(3), i(0), rep(1) }
+    )),
+
+  s({ trig = 'mk', snippetType = 'autosnippet', descr = 'inline math' },
+    fmta('$<>$<>',
+      { i(1), i(2) }
+    )),
+
+  s({ trig = 'md', snippetType = 'autosnippet', descr = 'display math' },
+    fmta([[
+      <>.
+    <>]],
+      { i(1), i(0), }
+    )),
+
+  s({ trig = 'item', snippetType = 'autosnippet', descr = 'itemize' },
+    fmta([[
+      \begin{itemize}
+          \item <>
+      \end{itemize}]],
+      { i(0) }
+    )),
+
+  s({ trig = 'enum', snippetType = 'autosnippet', descr = 'enumerate' },
+    fmta([[
+      \begin{enumerate}
+          \item <>
+      \end{enumerate}]],
+      { i(0) }
+    )),
+
+  s({ trig = 'alnum', snippetType = 'autosnippet', descr = 'enumerate with (alpha) label' },
+    fmta([[
+      \begin{enumerate}[label = (\alph*)]
+          \item <>
+      \end{enumerate}]],
+      { i(0) }
+    )),
+
+  s({ trig = 'arnum', snippetType = 'autosnippet', descr = 'enumerate with (arabic) label' },
+    fmta([[
+      \begin{enumerate}[label = (\arabic*)]
+          \item <>
+      \end{enumerate}]],
+      { i(0) }
+    )),
+
+
+  -- Theorems (TColorbox)
+
+  s({ trig = 'bew', descr = 'bewijs theorem' },
+    fmta([[
+      \begin{bewijs}{}{}
+          <>
+      \end{bewijs}]],
+      { i(0) }
+    )),
+
+  s({ trig = 'def', descr = 'definitie theorem' },
+    fmta([[
+      \begin{definitie}{<>}{<>}
+          <>
+      \end{definitie}]],
+      { i(1), i(2), i(0) }
+    )),
+
+  s({ trig = 'eig', descr = 'eigenschap theorem' },
+    fmta([[
+      \begin{eigenschap}{<>}{<>}
+          <>
+      \end{eigenschap}]],
+      { i(1), i(2), i(0) }
+    )),
+
+
+  s({ trig = 'stel', descr = 'stelling theorem' },
+    fmta([[
+      \begin{stelling}{<>}{<>}
+          <>
+      \end{stelling}]],
+      { i(1), i(2), i(0) }
+    )),
+
+  s({ trig = 'vb', descr = 'voorbeeld theorem' },
+    fmta([[
+      \begin{voorbeeld}{}{}
+          <>
+      \end{voorbeeld}]],
+      { i(0) }
+    )),
+}
