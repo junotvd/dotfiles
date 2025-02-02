@@ -1,5 +1,4 @@
 return {
-
   -- Colorscheme(s)
   {
     "shaunsingh/nord.nvim",
@@ -9,7 +8,6 @@ return {
       vim.cmd.colorscheme("nord")
     end,
   },
-
   -- Colorizer
   {
     "norcalli/nvim-colorizer.lua",
