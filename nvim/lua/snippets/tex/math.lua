@@ -13,4 +13,18 @@ return {
     ),
     { condition = tex.in_mathzone }
   ),
+
+  s({ trig = '(%a)(%d)', snippetType = 'autosnippet', regTrig = true, name = 'auto subscript', dscr = 'hi' },
+    fmt([[<>_<>]],
+      { f(function(_, snip) return snip.captures[1] end),
+        f(function(_, snip) return snip.captures[2] end) },
+      { delimiters = '<>' }),
+    { condition = math }),
+
+  s({ trig = '(%a)_(%d%d)', snippetType = 'autosnippet', regTrig = true, name = 'auto subscript 2', dscr = 'auto subscript for 2+ digits' },
+    fmt([[<>_{<>}]],
+      { f(function(_, snip) return snip.captures[1] end),
+        f(function(_, snip) return snip.captures[2] end) },
+      { delimiters = '<>' }),
+    { condition = tex.in_mathzone }),
 }
