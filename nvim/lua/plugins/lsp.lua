@@ -17,6 +17,7 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     lspconfig.lua_ls.setup({ capabilities = capabilities })
     lspconfig.texlab.setup({ capabilities = capabilities })
+    lspconfig.hls.setup({ capabilities = capabilities })
 
     vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end)
   end,
