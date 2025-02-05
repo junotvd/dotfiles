@@ -7,9 +7,7 @@ local M =  {
         f(function(_, snip) return snip.captures[2] end) }),
     { condition = tex.in_math }),
 
-  s(
-    { trig = '([%a\\]+)_(%d%d)', snippetType = 'autosnippet', regTrig = true, name = 'auto subscript 2', dscr =
-    'auto subscript for 2+ digits' },
+  s({ trig = '([%a\\]+)_(%d%d)', snippetType = 'autosnippet', regTrig = true, name = 'auto subscript 2', dscr = 'auto subscript for 2+ digits' },
     fmta([[<>_{<>}]],
       { f(function(_, snip) return snip.captures[1] end),
         f(function(_, snip) return snip.captures[2] end) }),
@@ -47,7 +45,7 @@ vim.list_extend(M, postfix_text_snippets)
 
 
 local postfix_math = {
-  [',.'] = {
+  ['.,'] = {
     context = {
       name = 'vec',
       dscr = 'vector'
