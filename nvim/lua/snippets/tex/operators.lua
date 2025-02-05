@@ -17,6 +17,10 @@ return {
     { t("^3") },
     { condition = tex.in_math }),
 
+  s({ trig = "invs", snippetType = "autosnippet", name = "Inverse" },
+    { t("^{-1}") },
+    { condition = tex.in_math }),
+
   s({ trig = "xx", snippetType = "autosnippet", name = "Vectorproduct" },
     { t("\\times") },
     { condition = tex.in_math }),
@@ -80,6 +84,36 @@ return {
   s({ trig = "td", snippetType = "autosnippet", name = "superscript" },
     fmta([[^{<>}<>]],
       { i(1), i(0) }),
+    { condition = tex.in_math }),
+
+  s({ trig = "lim",  name = "Limit" },
+    fmta([[\lim_{<> \to <>}]],
+      { i(1, "n"), i(2, "\\infty") }),
+    { condition = tex.in_math }),
+
+  s({ trig = "limsup",  name = "Limsup" },
+    fmta([[\limsup_{<> \to <>}]],
+      { i(1, "n"), i(2, "\\infty") }),
+    { condition = tex.in_math }),
+
+  s({ trig = "liminf",  name = "Liminf" },
+    fmta([[\liminf{<> \to <>}]],
+      { i(1, "n"), i(2, "\\infty") }),
+    { condition = tex.in_math }),
+
+  s({ trig = "sum",  name = "Sum" },
+    fmta([[\sum_{<>}^{<>}]],
+      { i(1, "i=1"), i(2, "\\infty") }),
+    { condition = tex.in_math }),
+
+  s({ trig = "prod",  name = "Product" },
+    fmta([[\prod{<>}^{<>}]],
+      { i(1, "i=1"), i(2, "\\infty") }),
+    { condition = tex.in_math }),
+
+  s({ trig = "int",  name = "Integral (defined)" },
+    fmta([[\int{<>}^{<>} <>\,d<>]],
+      { i(1, "a"), i(2, "b"), i(3), i(4, "x") }),
     { condition = tex.in_math }),
 
 }

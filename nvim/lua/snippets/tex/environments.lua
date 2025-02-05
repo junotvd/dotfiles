@@ -1,8 +1,10 @@
+local tex = require("snippets.tex.utils").conditions
+
 return {
 
   -- Environments
 
-  s({ trig = 'eq', descr = 'equation environment' },
+  s({ trig = "eq", descr = "equation environment" },
     fmta([[
   \begin{equation}\label{eq:<>}
   <>.
@@ -10,7 +12,7 @@ return {
       { i(1), i(0) }
     )),
 
-  s({ trig = 'beg', snippetType = 'autosnippet', descr = 'begin environment' },
+  s({ trig = "beg", snippetType = "autosnippet", descr = "begin environment" },
     fmta([[
       \begin{<>}
           <>
@@ -18,7 +20,7 @@ return {
       { i(1), i(0), rep(1) }
     )),
 
-  s({ trig = 'bbeg', snippetType = 'autosnippet', descr = 'begin environment for tcolorbox' },
+  s({ trig = "bbeg", snippetType = "autosnippet", descr = "begin environment for tcolorbox" },
     fmta([[
       \begin{<>}{<>}
           <>
@@ -26,7 +28,7 @@ return {
       { i(1), i(2), i(0), rep(1) }
     )),
 
-  s({ trig = 'bbbeg', snippetType = 'autosnippet', descr = 'begin environment for tcbtheorem' },
+  s({ trig = "bbbeg", snippetType = "autosnippet", descr = "begin environment for tcbtheorem" },
     fmta([[
       \begin{<>}{<>}{<>}
           <>
@@ -34,19 +36,19 @@ return {
       { i(1), i(2), i(3), i(0), rep(1) }
     )),
 
-  s({ trig = 'mk', snippetType = 'autosnippet', descr = 'inline math' },
-    fmta('$<>$<>',
+  s({ trig = "mk", snippetType = "autosnippet", descr = "inline math" },
+    fmta("$<>$<>",
       { i(1), i(2) }
     )),
 
-  s({ trig = 'md', snippetType = 'autosnippet', descr = 'display math' },
+  s({ trig = "md", snippetType = "autosnippet", descr = "display math" },
     fmta([[
       <>.
     <>]],
       { i(1), i(0), }
     )),
 
-  s({ trig = 'item', snippetType = 'autosnippet', descr = 'itemize' },
+  s({ trig = "item", snippetType = "autosnippet", descr = "itemize" },
     fmta([[
       \begin{itemize}
           \item <>
@@ -54,7 +56,7 @@ return {
       { i(0) }
     )),
 
-  s({ trig = 'enum', snippetType = 'autosnippet', descr = 'enumerate' },
+  s({ trig = "enum", snippetType = "autosnippet", descr = "enumerate" },
     fmta([[
       \begin{enumerate}
           \item <>
@@ -62,7 +64,7 @@ return {
       { i(0) }
     )),
 
-  s({ trig = 'alnum', snippetType = 'autosnippet', descr = 'enumerate with (alpha) label' },
+  s({ trig = "alnum", snippetType = "autosnippet", descr = "enumerate with (alpha) label" },
     fmta([[
       \begin{enumerate}[label = (\alph*)]
           \item <>
@@ -70,7 +72,7 @@ return {
       { i(0) }
     )),
 
-  s({ trig = 'arnum', snippetType = 'autosnippet', descr = 'enumerate with (arabic) label' },
+  s({ trig = "arnum", snippetType = "autosnippet", descr = "enumerate with (arabic) label" },
     fmta([[
       \begin{enumerate}[label = (\arabic*)]
           \item <>
@@ -78,36 +80,51 @@ return {
       { i(0) }
     )),
 
-  s({ trig = 'tt', name = 'Text' },
+  s({ trig = "tt", name = "Text" },
     fmta([[\text{<>}<>]],
       { i(1), i(0) })),
 
-  s({ trig = 'it', name = 'Italic text' },
+  s({ trig = "it", name = "Italic text" },
     fmta([[\textit{<>}<>]],
       { i(1), i(0) })),
 
-  s({ trig = 'bf', name = 'Bold text' },
+  s({ trig = "bf", name = "Bold text" },
     fmta([[\textbf{<>}<>]],
       { i(1), i(0) })),
 
-  s({ trig = 'sl', name = 'Slanted text' },
+  s({ trig = "sl", name = "Slanted text" },
     fmta([[\textsl{<>}<>]],
       { i(1), i(0) })),
 
-  s({ trig = 'em', name = 'Emphasize' },
+  s({ trig = "em", name = "Emphasize" },
     fmta([[\emph{<>}<>]],
       { i(1), i(0) })),
 
-  s({ trig = 'ttt', name = 'tt text' },
+  s({ trig = "ttt", name = "tt text" },
     fmta([[\texttt{<>}<>]],
       { i(1), i(0) })),
+
+  s({ trig = "cc", name = "Cancel math" },
+    fmta([[\cancel{<>}]],
+      { i(1) }),
+    { condition = tex.in_math }),
+
+  s({ trig = "bm", name = "Bold math" },
+    fmta([[\bm{<>}]],
+      { i(1) }),
+    { condition = tex.in_math }),
+
+  s({ trig = "rm", name = "Roman math" },
+    fmta([[\mathrm{<>}]],
+      { i(1) }),
+    { condition = tex.in_math }),
 
 
 
 
   -- Theorems (TColorbox)
 
-  s({ trig = 'bew', descr = 'bewijs theorem' },
+  s({ trig = "bew", descr = "bewijs theorem" },
     fmta([[
       \begin{bewijs}{}{}
           <>
@@ -115,7 +132,7 @@ return {
       { i(0) }
     )),
 
-  s({ trig = 'def', descr = 'definitie theorem' },
+  s({ trig = "def", descr = "definitie theorem" },
     fmta([[
       \begin{definitie}{<>}{<>}
           <>
@@ -123,7 +140,7 @@ return {
       { i(1), i(2), i(0) }
     )),
 
-  s({ trig = 'eig', descr = 'eigenschap theorem' },
+  s({ trig = "eig", descr = "eigenschap theorem" },
     fmta([[
       \begin{eigenschap}{<>}{<>}
           <>
@@ -132,7 +149,7 @@ return {
     )),
 
 
-  s({ trig = 'stel', descr = 'stelling theorem' },
+  s({ trig = "stel", descr = "stelling theorem" },
     fmta([[
       \begin{stelling}{<>}{<>}
           <>
@@ -140,7 +157,7 @@ return {
       { i(1), i(2), i(0) }
     )),
 
-  s({ trig = 'vb', descr = 'voorbeeld theorem' },
+  s({ trig = "vb", descr = "voorbeeld theorem" },
     fmta([[
       \begin{voorbeeld}{}{}
           <>
