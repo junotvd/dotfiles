@@ -49,4 +49,24 @@ return {
     { t("\\impliedby") },
     { condition = tex.in_math }),
 
+  s({ trig = "[", snippetType = "autosnippet", name = "Left bracket" },
+    { t("\\lbrack") },
+    { condition = tex.in_math }),
+
+  s({ trig = "]", snippetType = "autosnippet", name = "Right bracket" },
+    { t("\\rbrack") },
+    { condition = tex.in_math }),
+
+  s({ trig = "c.", name = "Centered dots" },
+    { t("\\cdots") }),
+
+  s({ trig = "l.", name = "Lower dots" },
+    { t("\\ldots") }),
+
+  s({ trig = "v.", name = "Vertical dots" },
+    { t("\\vdots") }),
+
+  s({ trig = "d.", name = "Diagonal dots" },
+    { t("\\ddots") }),
+
 }
