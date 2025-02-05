@@ -78,6 +78,32 @@ return {
       { i(0) }
     )),
 
+  s({ trig = 'tt', name = 'Text' },
+    fmta([[\text{<>}<>]],
+      { i(1), i(0) })),
+
+  s({ trig = 'it', name = 'Italic text' },
+    fmta([[\textit{<>}<>]],
+      { i(1), i(0) })),
+
+  s({ trig = 'bf', name = 'Bold text' },
+    fmta([[\textbf{<>}<>]],
+      { i(1), i(0) })),
+
+  s({ trig = 'sl', name = 'Slanted text' },
+    fmta([[\textsl{<>}<>]],
+      { i(1), i(0) })),
+
+  s({ trig = 'em', name = 'Emphasize' },
+    fmta([[\emph{<>}<>]],
+      { i(1), i(0) })),
+
+  s({ trig = 'ttt', name = 'tt text' },
+    fmta([[\texttt{<>}<>]],
+      { i(1), i(0) })),
+
+
+
 
   -- Theorems (TColorbox)
 
