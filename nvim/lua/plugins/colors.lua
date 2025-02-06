@@ -10,7 +10,7 @@ return {
     priority = 1000,
     config = function()
       vim.g.nord_bold = false
-      vim.cmd.colorscheme("nord")
+      vim.cmd.colorscheme("kanagawa-dragon")
     end,
   },
   {
@@ -27,6 +27,9 @@ return {
         variant = "spring",
       })
     end,
+  },
+  {
+    "rebelot/kanagawa.nvim"
   },
   { "slugbyte/lackluster.nvim" },
   { "aktersnurra/no-clown-fiesta.nvim" },
