@@ -1,15 +1,15 @@
 local tex = require("snippets.tex.utils").conditions
 
 return {
-  s({ trig = "oo", snippetType = "autosnippet", name = "infinity" },
+  s({ trig = "oo", snippetType = "autosnippet", name = "Infinity" },
     { t("\\infty") },
     { condition = tex.in_math }),
 
-  s({ trig = "NN", snippetType = "autosnippet", name = "Natuurlijke getallen" },
+  s({ trig = "NN", snippetType = "autosnippet", name = "Natural numbers" },
     { t("\\mathbb{N}") },
     { condition = tex.in_math }),
 
-  s({ trig = "QQ", snippetType = "autosnippet", name = "Rationale Getallen" },
+  s({ trig = "QQ", snippetType = "autosnippet", name = "Rational numbers" },
     { t("\\mathbb{Q}") },
     { condition = tex.in_math }),
 
@@ -17,7 +17,11 @@ return {
     { t("\\mathbb{I}") },
     { condition = tex.in_math }),
 
-  s({ trig = "ZZ", snippetType = "autosnippet", name = "Gehele getallen" },
+  s({ trig = "RR", snippetType = "autosnippet", name = "Real numbers" },
+    { t("\\mathbb{R}") },
+    { condition = tex.in_math }),
+
+  s({ trig = "ZZ", snippetType = "autosnippet", name = "Integers" },
     { t("\\mathbb{Z}") },
     { condition = tex.in_math }),
 
@@ -25,7 +29,7 @@ return {
     { t("\\mathbb{F}") },
     { condition = tex.in_math }),
 
-  s({ trig = "CC", snippetType = "autosnippet", name = "Complexe getallen" },
+  s({ trig = "CC", snippetType = "autosnippet", name = "Complex numbers" },
     { t("\\mathbb{C}") },
     { condition = tex.in_math }),
 

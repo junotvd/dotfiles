@@ -9,15 +9,15 @@ return {
     { t("\\rangle") },
     { condition = tex.in_math }),
 
-  s({ trig = "sr", snippetType = "autosnippet", name = "square" },
+  s({ trig = "sr", wordTrig = false, snippetType = "autosnippet", name = "square" },
     { t("^2") },
     { condition = tex.in_math }),
 
-  s({ trig = "cb", snippetType = "autosnippet", name = "cube" },
+  s({ trig = "cb", wordTrig = false, snippetType = "autosnippet", name = "cube" },
     { t("^3") },
     { condition = tex.in_math }),
 
-  s({ trig = "invs", snippetType = "autosnippet", name = "Inverse" },
+  s({ trig = "invs", wordTrig = false, snippetType = "autosnippet", name = "Inverse" },
     { t("^{-1}") },
     { condition = tex.in_math }),
 
@@ -81,7 +81,7 @@ return {
       { i(1), i(2), i(0) }),
     { condition = tex.in_math }),
 
-  s({ trig = "td", snippetType = "autosnippet", name = "superscript" },
+  s({ trig = "td", wordTrig = false, snippetType = "autosnippet", name = "superscript" },
     fmta([[^{<>}<>]],
       { i(1), i(0) }),
     { condition = tex.in_math }),

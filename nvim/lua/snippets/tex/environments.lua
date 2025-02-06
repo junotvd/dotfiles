@@ -43,8 +43,9 @@ return {
 
   s({ trig = "md", snippetType = "autosnippet", descr = "display math" },
     fmta([[
+    \[
       <>.
-    <>]],
+    \]<>]],
       { i(1), i(0), }
     )),
 
