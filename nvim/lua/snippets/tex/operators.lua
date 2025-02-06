@@ -49,6 +49,22 @@ return {
     { t("\\neq") },
     { condition = tex.in_math }),
 
+  s({ trig = "eqq", snippetType = "autosnippet", name = "Equivalent to" },
+    { t("\\equiv") },
+    { condition = tex.in_math }),
+
+  s({ trig = "px", snippetType = "autosnippet", name = "Approximate to" },
+    { t("\\approx") },
+    { condition = tex.in_math }),
+
+  s({ trig = "pt", snippetType = "autosnippet", name = "Proportional to" },
+    { t("\\propto") },
+    { condition = tex.in_math }),
+
+  s({ trig = "::", wordTrig = false, snippetType = "autosnippet", name = "Colon" },
+    { t("\\colon") },
+    { condition = tex.in_math }),
+
   s({ trig = "<=", snippetType = "autosnippet", name = "Les than or equal to" },
     { t("\\leq") },
     { condition = tex.in_math }),

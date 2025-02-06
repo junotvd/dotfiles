@@ -61,16 +61,23 @@ return {
     { t("\\rbrack") },
     { condition = tex.in_math }),
 
-  s({ trig = "c.", name = "Centered dots" },
-    { t("\\cdots") }),
+  s({ trig = "cdd", snippetType = "autosnippet", name = "Centered dots" },
+    { t("\\cdots") },
+    { condition = tex.in_math }),
 
-  s({ trig = "l.", name = "Lower dots" },
+  s({ trig = "ldd", snippetType = "autosnippet", name = "Lower dots" },
     { t("\\ldots") }),
 
-  s({ trig = "v.", name = "Vertical dots" },
-    { t("\\vdots") }),
+  s({ trig = "vdd", snippetType = "autosnippet", name = "Vertical dots" },
+    { t("\\vdots") },
+    { condition = tex.in_math }),
 
-  s({ trig = "d.", name = "Diagonal dots" },
-    { t("\\ddots") }),
+  s({ trig = "ddd", snippetType = "autosnippet", name = "Diagonal dots" },
+    { t("\\ddots") },
+    { condition = tex.in_math }),
+
+  s({ trig = "||", snippetType = "autosnippet", name = "Parallel sign" },
+    { t("\\parallel") },
+    { condition = tex.in_math }),
 
 }
