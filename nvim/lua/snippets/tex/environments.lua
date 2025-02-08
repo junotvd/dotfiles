@@ -49,7 +49,7 @@ return {
       { i(1), i(0), }
     )),
 
-  s({ trig = "item", snippetType = "autosnippet", descr = "itemize" },
+  s({ trig = "item", wordTrig = true, snippetType = "autosnippet", descr = "itemize" },
     fmta([[
       \begin{itemize}
           \item <>
