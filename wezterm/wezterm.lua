@@ -1,8 +1,9 @@
 local wezterm = require "wezterm" 
 local config = {
-  color_scheme = 'nord',
 
-  font = wezterm.font("Iosevka Nerd Font"),
+  color_scheme = 'Monokai (terminal.sexy)',
+
+  font = wezterm.font("JuliaMono"),
   font_size = 11.0,
 
   enable_tab_bar = false,
