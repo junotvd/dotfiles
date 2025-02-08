@@ -10,7 +10,7 @@ return {
     priority = 1000,
     config = function()
       vim.g.nord_bold = false
-      vim.cmd.colorscheme("kanagawa-dragon")
+      vim.cmd.colorscheme("monokai-pro-classic")
     end,
   },
   {
@@ -28,11 +28,13 @@ return {
       })
     end,
   },
-  {
-    "rebelot/kanagawa.nvim"
-  },
+  { "rebelot/kanagawa.nvim" },
   { "slugbyte/lackluster.nvim" },
   { "aktersnurra/no-clown-fiesta.nvim" },
+  { "ellisonleao/gruvbox.nvim" },
+  { "loctvl842/monokai-pro.nvim" },
+  { "rmehri01/onenord.nvim" },
+  { "nanotech/jellybeans.vim" },
 
 
   {
