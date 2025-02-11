@@ -5,8 +5,10 @@ import requests
 import ics
 from datetime import datetime, timedelta
 import pytz
+from agenda import ics_url
 
-ics_url = "https://outlook.office365.com/owa/calendar/6313bbb4a7f849428d5b2eb6d5022e07@student.kuleuven.be/a15ecbe230554c9e9d3a4c9ebf99d40d4322806224493210965/calendar.ics"
+# ics_url = "https://outlook.office365.com/owa/calendar/6313bbb4a7f849428d5b2eb6d5022e07@student.kuleuven.be/7a0173bb4a84485ebaa1f0e0b38bc6182479167579211136462/calendar.ics"
+ics_url = ics_url()
 
 response = requests.get(ics_url)
 calendar = ics.Calendar(response.text)
@@ -25,7 +27,7 @@ next_event = None
 for event in calendar.events:
     event_time = event.begin.datetime.replace(tzinfo=TZ)
     if event.begin.datetime > now:
-        # print(f"{event.name} at {event.begin.humanize()}")
+        print(f"{event.name} at {event.begin.humanize()}")
         next_event = event
         break
 
