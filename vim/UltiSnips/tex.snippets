@@ -424,6 +424,11 @@ snippet ;dig "digamma" iA
 endsnippet
 
 context "math()"
+snippet :: "colon" iA
+\colon
+endsnippet
+
+context "math()"
 snippet NN "Natuurlijke getallen" iA
 \mathbb{N}
 endsnippet
@@ -516,12 +521,12 @@ snippet UU "cup" iA
 endsnippet
 
 context "math()"
-snippet Nn "cap" i
+snippet Nn "cap" iA
 \cap
 endsnippet
 
 context "math()"
-snippet Cc "deelverzameling" iA
+snippet sub "deelverzameling" iA
 \subset
 endsnippet
 
@@ -556,6 +561,16 @@ endsnippet
 priority 100
 snippet "([a-zA-Z])hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
+endsnippet
+
+priority 100
+snippet "([a-zA-Z])cal" "math cali" riA
+\mathcal{`!p snip.rv=match.group(1)`}
+endsnippet
+
+priority 100
+snippet "([a-zA-Z])rak" "math fraktur" riA
+\mathfrak{`!p snip.rv=match.group(1)`}
 endsnippet
 
 context "math()"
