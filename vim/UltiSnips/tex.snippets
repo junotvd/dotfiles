@@ -83,22 +83,32 @@ snippet Ipv "In plaats van" w
 In plaats van
 endsnippet
 
+context "math()"
 snippet oo "Oneindig" i
 \infty
 endsnippet
 
-snippet abs "Absolute waarde" i
+context "math()"
+snippet q "quad" i
+\quad
+endsnippet
+
+context "math()"
+snippet abs "Absolute waarde" iA
 \lvert $1\rvert
 endsnippet
 
-snippet nor "Normaal" iw
+context "math()"
+snippet nor "Normaal" iA
 \lVert $1\rVert
 endsnippet
 
+context "math()"
 snippet << "langle" iA
 \langle
 endsnippet
 
+context "math()"
 snippet >> "rangle" iA
 \rangle
 endsnippet
@@ -135,7 +145,6 @@ snippet vb "voorbeeld" i
 \begin{voorbeeld}{}{$1}
 	$2
 \end{voorbeeld}
-$1
 endsnippet
 
 snippet opl "oplossing" i
