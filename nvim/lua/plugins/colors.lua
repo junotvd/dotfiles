@@ -9,17 +9,14 @@ return {
     lazy = false,
     config = function()
       vim.g.nord_bold = false
-      vim.cmd.colorscheme("rose-pine")
-      NoBackground()
+      vim.cmd.colorscheme("zenburn")
+      -- NoBackground()
     end,
   },
   "rose-pine/neovim",
-  "maxmx03/solarized.nvim",
+  "jnurmine/zenburn",
   "rebelot/kanagawa.nvim",
-  "slugbyte/lackluster.nvim",
   "aktersnurra/no-clown-fiesta.nvim",
-  "ellisonleao/gruvbox.nvim",
   "loctvl842/monokai-pro.nvim",
   "rmehri01/onenord.nvim",
-  "nanotech/jellybeans.vim",
 }
