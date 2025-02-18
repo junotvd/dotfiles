@@ -1,6 +1,6 @@
-function NoBackground()
-  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+function ColorBackground()
+  vim.api.nvim_set_hl(0, "Normal", { bg = "#1C1917" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1C1917" })
 end
 
 return {
@@ -9,14 +9,14 @@ return {
     lazy = false,
     config = function()
       vim.g.nord_bold = false
-      vim.cmd.colorscheme("zenburn")
-      -- NoBackground()
+      vim.cmd.colorscheme("rose-pine")
+      ColorBackground()
     end,
   },
   "rose-pine/neovim",
-  "jnurmine/zenburn",
-  "rebelot/kanagawa.nvim",
-  "aktersnurra/no-clown-fiesta.nvim",
   "loctvl842/monokai-pro.nvim",
-  "rmehri01/onenord.nvim",
+  {
+    "zenbones-theme/zenbones.nvim",
+    dependencies = "rktjmp/lush.nvim",
+  },
 }
