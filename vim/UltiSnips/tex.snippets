@@ -43,6 +43,14 @@ snippet mbt "met betrekking tot" w
 met betrekking tot
 endsnippet
 
+snippet tgv "ten gevolge van" w
+ten gevolge van
+endsnippet
+
+snippet Tgv "Ten gevolge van" w
+Ten gevolge van
+endsnippet
+
 snippet Mbt "Met betrekking tot" w
 Met betrekking tot
 endsnippet
@@ -146,21 +154,33 @@ snippet def "definitie" i
 endsnippet
 
 snippet vb "voorbeeld" i
-\begin{voorbeeld}{}{$1}
+\begin{voorbeeld}{$1}{$2}
 	$2
 \end{voorbeeld}
-endsnippet
-
-snippet opl "oplossing" i
-\begin{oplossing}{}{}
-	$0
-\end{oplossing}
 endsnippet
 
 snippet bew "bewijs" i
 \begin{bewijs}{}{}
 	$0
 \end{bewijs}
+endsnippet
+
+snippet hint "hint" i
+\begin{hint}{}
+	$0
+\end{hint}
+endsnippet
+
+snippet oef "bewijs" i
+\begin{oefening}{$1}{$2}
+	$0
+\end{oefening}
+endsnippet
+
+snippet opl "oplossing" i
+\begin{oplossing}{}
+	$0
+\end{oplossing}
 endsnippet
 
 snippet eq "equation" i
