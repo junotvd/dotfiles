@@ -2,9 +2,9 @@
 
 # this makes you choose wheter or not to swap ctrl and capslock key
 
-choice=$(echo "swap\nregular\nexit" |dmenu -i -p "ctrl and caplocks keys:")
+choice=$(echo "swap\nregular\nexit" |rofi -dmenu -i -p "ctrl and caplocks keys:" -theme ~/dotfiles/rofi/black-white-selector.rasi)
 case "$choice" in
-    "swap")
+    "swapcaps")
         setxkbmap -layout us -option ctrl:swapcaps
         ;;
     "regular")

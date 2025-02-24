@@ -1,0 +1,56 @@
+* {
+    // General settings
+    font: "JuliaMono 16";
+    background-color: #000000; // Black background
+    text-color: #FFFFFF; // White text
+    padding: 20; // Padding around the menu
+    width: 20%; // Width of the menu (50% of screen width)
+    fixed-height: false; // Fixed height based on lines
+}
+
+configuration {
+    kb-accept-entry: "Return";
+    kb-row-down: "j";
+    kb-row-up: "k";
+    kb-row-left: "h";
+    kb-row-right: "l";
+}
+
+window {
+    // Center the window on the screen
+    location: center;
+    anchor: center;
+    transparency: "real";
+    background-color: #000000; // Black background
+    border-color: #FFFFFF; // White border
+    border-width: 1px; // Border width
+}
+
+inputbar {
+    // Hide the input bar (if you don't want it)
+    enabled: false;
+}
+
+listview {
+    // Center text in the list
+    spacing: 10; // Space between items
+    padding: 10; // Padding inside the list
+    dynamic: true; // Dynamically adjust height
+    scrollbar: false; // Hide scrollbar
+    layout: vertical; // Vertical layout
+    align: 0.5; // Center-align text
+}
+
+element {
+    // Style for each list item
+    background-color: #000000; // Black background
+    text-color: #FFFFFF; // White text
+    padding: 5; // Padding around each item
+}
+
+element selected {
+    // Style for the selected item
+    background-color: #FFFFFF; // White background
+    text-color: #000000; // Black text
+}
+

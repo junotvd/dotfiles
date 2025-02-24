@@ -14,12 +14,6 @@ fi
 CHOSEN_DIR=$(printf "%s\n" "${DIRS[@]}" | rofi \
     -dmenu -p "" \
     -theme ~/dotfiles/rofi/black-white-selector.rasi \
-    -lines 6 \
-    -kb-accept-entry "Return" \
-    -kb-row-down "j" \
-    -kb-row-up "k" \
-    -kb-row-left "h" \
-    -kb-row-right "l" \
     -show)
 
 
