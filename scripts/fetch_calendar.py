@@ -7,7 +7,6 @@ from datetime import datetime, timedelta
 import pytz
 from agenda import ics_url
 
-# ics_url = "https://outlook.office365.com/owa/calendar/6313bbb4a7f849428d5b2eb6d5022e07@student.kuleuven.be/7a0173bb4a84485ebaa1f0e0b38bc6182479167579211136462/calendar.ics"
 ics_url = ics_url()
 
 response = requests.get(ics_url)
