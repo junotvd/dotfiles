@@ -53,6 +53,8 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+m exec ~/bin/select-display.sh
 bindsym $mod+c exec ~/bin/swapcaps.sh
 
+bindsym $mod+p exec ~/dotfiles/scripts/zathura_lectures.sh   
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+l focus right
