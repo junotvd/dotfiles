@@ -47,13 +47,14 @@ tiling_drag modifier titlebar
 bindsym $mod+t exec alacritty
 bindsym $mod+b exec firefox
 bindsym $mod+q kill
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # monitor switching
 bindsym $mod+m exec ~/bin/select-display.sh
 bindsym $mod+c exec ~/bin/swapcaps.sh
 
 bindsym $mod+p exec ~/dotfiles/scripts/zathura_lectures.sh   
+bindsym $mod+y exec ~/dotfiles/scripts/yazi.sh   
 
 # change focus
 bindsym $mod+h focus left
