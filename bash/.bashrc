@@ -9,6 +9,7 @@ set -o vi
 
 export PATH="${PATH}:${HOME}/bin"
 
+export TERMINAL=alacritty
 export EDITOR=nvim
 export VISUAL=nvim
 
