@@ -183,6 +183,12 @@ snippet opl "oplossing" i
 \end{oplossing}
 endsnippet
 
+snippet opm "opmerking" i
+\begin{opmerking}{}
+	$0
+\end{opmerking}
+endsnippet
+
 snippet eq "equation" i
 \begin{equation}\label{eq:$1}
 	$2.
@@ -561,6 +567,11 @@ snippet sub "deelverzameling" iA
 endsnippet
 
 context "math()"
+snippet sup "deelverzameling reverse" iA
+\supset
+endsnippet
+
+context "math()"
 snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
@@ -763,8 +774,8 @@ snippet lor "wiskundige of" wA
 endsnippet
 
 context "math()"
-snippet rij "rij notatie" i
-\{(${1:a}_${2:n})}_$2
+snippet rij "rij notatie" iA
+\{(${1:a}_${2:n})}_{$2}
 endsnippet
 
 context "math()"
