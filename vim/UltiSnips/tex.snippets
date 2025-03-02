@@ -189,6 +189,12 @@ snippet opm "opmerking" i
 \end{opmerking}
 endsnippet
 
+snippet prop "propositie" i
+\begin{propositie}{$1}{$2}
+	$3
+\end{propositie}$0
+endsnippet
+
 snippet eq "equation" i
 \begin{equation}\label{eq:$1}
 	$2.
@@ -197,14 +203,14 @@ endsnippet
 
 snippet stel "stelling" i
 \begin{stelling}{$1}{$2}
-	$0
-\end{stelling}
+	$3
+\end{stelling}$0
 endsnippet
 
 snippet eig "eigenschap" i
 \begin{eigenschap}{}{$1}
-	$0
-\end{eigenschap}
+	$2
+\end{eigenschap}$0
 endsnippet
 
 snippet enum "Enumerate" bA
@@ -775,7 +781,7 @@ endsnippet
 
 context "math()"
 snippet rij "rij notatie" iA
-\{(${1:a}_${2:n})}_{$2}
+\{(${1:a}_${2:n})}_{${3:n}}
 endsnippet
 
 context "math()"
