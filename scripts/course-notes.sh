@@ -1,13 +1,14 @@
 #!/bin/bash
 
 
-choice=$(echo -e "1\n2" | rofi -dmenu -i -p "semester" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+SEMESTER=$(echo -e "2\n1" | rofi -dmenu -i -p "semester" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+OPTIE=$(echo -e "hoorcolleges\noefenzittingen" | rofi -dmenu -i -p "hoorcolleges of oefenzittingen" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 
-if [ -z "$choice" ]; then
-    exit 1
+if [ -z "$SEMESTER" ] || [ -z "$OPTIE" ]; then
+    exit 0
 fi
 
-case "$choice" in
+case "$SEMESTER" in
     "1")
         BASE_DIR=${1:-$HOME/uni/bachelor-1/semester-1}
         ;;
@@ -21,7 +22,7 @@ DIRS=($(find "$BASE_DIR" -maxdepth 1 -type d -not -path "$BASE_DIR" -exec basena
 
 if [ ${#DIRS[@]} -eq 0 ]; then
     rofi -e "No course directories found in $BASE_DIR"
-    exit 1
+    exit 0
 fi
 
 CHOSEN_DIR=$(printf "%s\n" "${DIRS[@]}" | rofi \
@@ -30,14 +31,16 @@ CHOSEN_DIR=$(printf "%s\n" "${DIRS[@]}" | rofi \
 
 
 if [ -z "$CHOSEN_DIR" ]; then
-    exit 1
+    exit 0
 fi
 
-PDF_FILE="$BASE_DIR/$CHOSEN_DIR/hoorcolleges/main.pdf"
+CHOSEN_PATH="$BASE_DIR/$CHOSEN_DIR/$OPTIE"
 
-if [ -f "$PDF_FILE" ]; then
+PDF_FILE=$(find "$CHOSEN_PATH" -type f \( -name "main.pdf" -o -name "master.pdf" \) -print -quit)
+
+if [ -n "$PDF_FILE" ]; then
     zathura "$PDF_FILE"
 else
-    rofi -e "main.pdf not found in $CHOSEN_DIR/hoorcolleges"
+    rofi -e "Neither main.pdf nor master.pdf found in $CHOSEN_DIR/$OPTIE"
     exit 1
 fi
