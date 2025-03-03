@@ -97,8 +97,8 @@ snippet oo "Oneindig" iA
 endsnippet
 
 context "math()"
-snippet q "quad" wA
-\quad
+snippet qtq "quad text quad" bA
+\quad \text{$1} \quad$0
 endsnippet
 
 context "math()"
@@ -540,11 +540,13 @@ snippet xx "Vectoriële vermenigvuldiging" iA
 \times
 endsnippet
 
-snippet -> "enkele pijl" Ai
+context "math()"
+snippet rar "enkele pijl" wA
 \rightarrow
 endsnippet
 
-snippet --> "enkele grote pijl" wA
+context "math()"
+snippet raar "enkele grote pijl" wA
 \longrightarrow
 endsnippet
 
@@ -558,7 +560,7 @@ snippet pmi "geïmpliceerd" iA
 endsnippet
 
 context "math()"
-snippet UU "cup" iA
+snippet Uu "cup" iA
 \cup
 endsnippet
 
@@ -568,12 +570,12 @@ snippet Nn "cap" iA
 endsnippet
 
 context "math()"
-snippet sub "deelverzameling" iA
+snippet Cc "deelverzameling" iA
 \subset
 endsnippet
 
 context "math()"
-snippet sup "deelverzameling reverse" iA
+snippet Dd "deelverzameling" iA
 \supset
 endsnippet
 
@@ -653,74 +655,107 @@ snippet ttt "tt tekst" w
 \texttt{$1}$0
 endsnippet
 
+context "math()"
 snippet == "is gelijk aan" iA
 &=
 endsnippet
 
+context "math()"
+snippet eqq "equivalent" iA
+\equiv
+endsnippet
+
+context "math()"
+snippet pt "proportional to" iA
+\propto
+endsnippet
+
+context "math()"
+snippet px "approximately" iA
+\approx
+endsnippet
+
+context "math()"
 snippet != "niet gelijk aan" iA
 \neq
 endsnippet
 
+context "math()"
 snippet <= "kleiner of gelijk aan" iA
 \leq
 endsnippet
 
+context "math()"
 snippet >= "groter of gelijk aan" iA
 \geq
 endsnippet
 
+context "math()"
 snippet !> "afbeelding op" iA
 \mapsto
 endsnippet
 
+context "math()"
 snippet lim "limiet" i
 \lim_{${1:n} \to ${2:\infty}} 
 endsnippet
 
+context "math()"
 snippet limsup "limsup" i
 \limsup_{${1:n} \to ${2:\infty}} 
 endsnippet
 
+context "math()"
 snippet liminf "limsup" i
 \liminf_{${1:n} \to ${2:\infty}} 
 endsnippet
 
+context "math()"
 snippet sum "som" i
 \sum_{${1:i=${2:1}}}^{${3:\infty}} $0
 endsnippet
 
+context "math()"
 snippet prod "product" i
 \prod_{${1:i=${2:1}}}^{${3:\infty}} ${4:${VISUAL}} $0
 endsnippet
 
+context "math()"
 snippet invs "Inverse" iA
 ^{-1}
 endsnippet
 
+context "math()"
 snippet mat "matrix" i
 \begin{matrix} $1 \end{matrix}$0
 endsnippet
 
+context "math()"
 snippet pmat "pmatrix" iA
 \begin{pmatrix} $1 \end{pmatrix}$0
 endsnippet
 
+context "math()"
 snippet Bmat "Bmatrix" iA
 \begin{Bmatrix} $1 \end{Bmatrix}$0
 endsnippet
 
+context "math()"
 snippet bmat "bmatrix" iA
 \begin{vmatrix} $1 \end{bmatrix}$0
 endsnippet
 
+context "math()"
 snippet Vmat "Vmatrix" iA
 \begin{Vmatrix} $1 \end{Vmatrix}$0
 endsnippet
 
+context "math()"
 snippet vmat "vmatrix" iA
 \begin{vmatrix} $1 \end{vmatrix}$0
 endsnippet
 
+context "math()"
 snippet cvec "kolomvector" iA
 \begin{pmatrix} ${1:x}_${2:1}\\\\ \vdots\\\\ $1_${2:n} \end{pmatrix}
 endsnippet
