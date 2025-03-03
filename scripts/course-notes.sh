@@ -1,6 +1,17 @@
 #!/bin/bash
 
-BASE_DIR=${1:-~/uni/bachelor-1/semester-1}
+choice=$(echo -e "1\n2" | rofi -dmenu -i -p "semester" -theme ~/dotfiles/rofi/black-white-selector.rasi)
+if [ -z "$choice" ]; then
+    exit 1
+fi
+case "$choice" in
+    "1")
+        BASE_DIR=${1:-$HOME/uni/bachelor-1/semester-1}
+        ;;
+    "2")
+        BASE_DIR=${1:-$HOME/uni/bachelor-1/semester-2}
+        ;;
+esac
 
 BASE_DIR=$(eval echo "$BASE_DIR")
 
@@ -13,8 +24,7 @@ fi
 
 CHOSEN_DIR=$(printf "%s\n" "${DIRS[@]}" | rofi \
     -dmenu -p "" \
-    -theme ~/dotfiles/rofi/black-white-selector.rasi \
-    -show)
+    -theme ~/dotfiles/rofi/black-white-selector.rasi)
 
 
 if [ -z "$CHOSEN_DIR" ]; then
