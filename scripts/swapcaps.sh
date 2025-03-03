@@ -4,7 +4,7 @@
 
 choice=$(echo "swap\nregular\nexit" |rofi -dmenu -i -p "ctrl and caplocks keys:" -theme ~/dotfiles/rofi/black-white-selector.rasi)
 case "$choice" in
-    "swapcaps")
+    "swap")
         setxkbmap -layout us -option ctrl:swapcaps
         ;;
     "regular")
