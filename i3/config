@@ -53,8 +53,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+m exec ~/bin/select-display.sh
 bindsym $mod+c exec ~/bin/swapcaps.sh
 
-bindsym $mod+Shift+p exec ~/dotfiles/scripts/zathura_lectures.sh   
-bindsym $mod+p exec ~/dotfiles/scripts/zathura.sh   
+bindsym $mod+p exec ~/dotfiles/scripts/course-notes.sh
 bindsym $mod+y exec ~/dotfiles/scripts/yazi.sh   
 
 # change focus
