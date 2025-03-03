@@ -1,9 +1,12 @@
 #!/bin/bash
 
-choice=$(echo -e "1\n2" | rofi -dmenu -i -p "semester" -theme ~/dotfiles/rofi/black-white-selector.rasi)
+
+choice=$(echo -e "1\n2" | rofi -dmenu -i -p "semester" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+
 if [ -z "$choice" ]; then
     exit 1
 fi
+
 case "$choice" in
     "1")
         BASE_DIR=${1:-$HOME/uni/bachelor-1/semester-1}
@@ -14,7 +17,6 @@ case "$choice" in
 esac
 
 BASE_DIR=$(eval echo "$BASE_DIR")
-
 DIRS=($(find "$BASE_DIR" -maxdepth 1 -type d -not -path "$BASE_DIR" -exec basename {} \;))
 
 if [ ${#DIRS[@]} -eq 0 ]; then
@@ -24,7 +26,7 @@ fi
 
 CHOSEN_DIR=$(printf "%s\n" "${DIRS[@]}" | rofi \
     -dmenu -p "" \
-    -theme ~/dotfiles/rofi/black-white-selector.rasi)
+    -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 
 
 if [ -z "$CHOSEN_DIR" ]; then
