@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # This script is made for single monitor use
 

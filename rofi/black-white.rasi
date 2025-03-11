@@ -4,8 +4,6 @@
     background-color: #000000; // Black background
     text-color: #FFFFFF; // White text
     padding: 20; // Padding around the menu
-    width: 40%; // Width of the menu (50% of screen width)
-    lines: 10; // Number of visible lines
     hide-scrollbar: true; // Hide the scrollbar
 }
 
@@ -28,7 +26,6 @@ listview {
     // Center text in the list
     spacing: 10; // Space between items
     padding: 10; // Padding inside the list
-    dynamic: true; // Dynamically adjust height
     scrollbar: false; // Hide scrollbar
     layout: vertical; // Vertical layout
     align: 0.5; // Center-align text
@@ -46,4 +43,3 @@ element selected {
     background-color: #FFFFFF; // White background
     text-color: #000000; // Black text
 }
-
