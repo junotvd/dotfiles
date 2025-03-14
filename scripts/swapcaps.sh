@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-choice=$(echo "swap\nregular" |rofi -dmenu -i -p "ctrl and caplocks keys:" -theme ~/dotfiles/rofi/black-white-selector.rasi)
+choice=$(printf "swap\nregular" |rofi -dmenu -i -p "ctrl and caplocks keys:" -theme ~/dotfiles/rofi/black-white-selector.rasi)
 
 if [ -z "$choice" ]; then
     exit 1
@@ -11,6 +11,8 @@ case "$choice" in
         setxkbmap -layout us -option ctrl:swapcaps
         ;;
     "regular")
-        setxkbmap -layout us -option
+        setxkbmap -layout us -option ""
         ;;
 esac
+
+exit 0
