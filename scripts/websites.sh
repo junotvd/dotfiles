@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CHOICE=$(echo -e "pdf\nprint\napollo\ntoledo" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+CHOICE=$(echo -e "pdf\nprint\napollo\ntoledo\ngithub" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 
 if [ -z "$CHOICE" ]; then
     exit 0
@@ -19,5 +19,8 @@ case "$CHOICE" in
         ;;
     "toledo")
         xdg-open https://toledo.kuleuven.be/
+        ;;
+    "github")
+        xdg-open https://github.com/
         ;;
 esac

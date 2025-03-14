@@ -29,7 +29,7 @@ echo "Starting rsync..." > "$STATUS_FILE"
     done
     echo "Rsynced $CHOSEN_DIR!" > "$STATUS_FILE"
     
-    sleep 5
+    sleep 10
     echo "" > "$STATUS_FILE"
 ) &
 
