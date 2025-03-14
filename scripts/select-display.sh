@@ -1,21 +1,20 @@
 #!/bin/bash
 
 monoscreen() {
-    local display="$1"
 
-    available_rates=$(xrandr --verbose | grep -A 1 "^$display" | awk '/[0-9]+\.[0-9]+/ {print $1}' | sort -u)
+    if [ "$1" = "eDP" ]; then
+        rate=$(printf "60\n120" | rofi -dmenu -i -p "refresh rate:" \
+            -theme ~/dotfiles/rofi/black-white-selector.rasi)
 
-    if [ -z "$available_rates" ]; then
-        available_rates="60\n120"
+        [ -z "$rate" ] && exit 1
+
+        xrandr --output eDP --mode 2880x1920 --auto --rate "$rate" --scale 1x1
+        exit 0
     fi
 
-    rate=$(echo -e "$available_rates" | rofi -dmenu -i -p "Select refresh rate for $display:" -theme ~/dotfiles/rofi/black-white-selector.rasi)
+    resolution=$(xrandr | grep -A1 "^$1" | awk '/\*/ {print $1}')
 
-    [ -z "$rate" ] && exit 1
-
-    resolution=$(xrandr | grep -A1 "^$display" | awk '/\*/ {print $1}')
-
-    xrandr --output "$display" --mode "$resolution" --rate "$rate" --scale 1x1
+    xrandr --output "$1" --mode "$resolution" --rate "$rate" --scale 1x1
     exit 0
 }
 
@@ -24,7 +23,7 @@ mirrorscreen() {
     xrandr --output "$2" --auto --same-as "$1" --scale 0.75x0.75
 }
 
-screens=$(xrandr --listmonitors | awk 'NR>1 {print $4}')
+screens=$(xrandr | grep " connected" | awk '{print $1}')
 
 screen_count=$(echo "$screens" | wc -l)
 
