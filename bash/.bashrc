@@ -3,17 +3,17 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-eval "$(fzf --bash)"
-eval "$(starship init bash)"
-set -o vi
 
 export PATH="${PATH}:${HOME}/bin"
-
 export TERMINAL=alacritty
+export BROWSER=firefox
 export EDITOR=nvim
 export VISUAL=nvim
-
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+eval "$(starship init bash)"
+eval "$(fzf --bash)"
+set -o vi
 
 # alias
 alias v=nvim
@@ -26,6 +26,7 @@ alias grep='grep --color=auto'
 
 alias pdf='firefox http://100.124.103.23:8080/'
 alias print='firefox https://print.kuleuven.be/app?service=page/UserWebPrint'
+alias apollo='firefox https://apollo.saga-pollux.ts.net/'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
