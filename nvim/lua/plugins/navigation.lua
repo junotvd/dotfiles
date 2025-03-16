@@ -1,4 +1,5 @@
 return {
+
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -15,6 +16,7 @@ return {
       vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
     end
   },
+
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
@@ -29,4 +31,14 @@ return {
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, {})
     end,
   },
+
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    lazy = false,
+  },
+
 }
