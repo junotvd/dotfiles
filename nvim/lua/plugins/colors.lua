@@ -4,6 +4,7 @@ function ColorBackground()
 end
 
 return {
+
   {
     "shaunsingh/nord.nvim",
     lazy = false,
@@ -13,10 +14,19 @@ return {
       ColorBackground()
     end,
   },
-  "rose-pine/neovim",
-  "loctvl842/monokai-pro.nvim",
+
+  {
+    "rose-pine/neovim",
+    config = function()
+      require("rose-pine").setup({
+        disable_background = false,
+      })
+    end
+  },
+
   {
     "zenbones-theme/zenbones.nvim",
     dependencies = "rktjmp/lush.nvim",
   },
+
 }
