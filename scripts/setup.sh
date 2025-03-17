@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTION=$(echo -e "monitor\nkeys" | rofi -dmenu -i -p "hoorcolleges of oefenzittingen" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+OPTION=$(echo -e "monitor\nkeys\nwallpaper" | rofi -dmenu -i -p "hoorcolleges of oefenzittingen" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 
 case "$OPTION" in
     "keys")
@@ -8,5 +8,8 @@ case "$OPTION" in
         ;;
     "monitor")
         exec $HOME/dotfiles/scripts/select-display.sh
+        ;;
+    "wallpaper")
+        exec $HOME/dotfiles/scripts/wallpaper.sh
         ;;
 esac
