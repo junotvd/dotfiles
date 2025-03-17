@@ -8,9 +8,9 @@ fi
 
 case "$OPTION" in
     "on")
-        exec $HOME/.fehbg
+        feh --no-fehbg --bg-scale '/home/junot/dotfiles/wallpaper/wallpaper.jpg' 
         ;;
     "off")
-        xsetroot
+        feh --no-fehbg --bg-scale '/home/junot/dotfiles/wallpaper/black.png' 
         ;;
 esac
