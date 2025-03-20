@@ -267,7 +267,7 @@ endsnippet
 
 snippet mk "math inline" wA
 $${1}$`!p
-if t[2] and t[2][0] not in [',', '.', '?', '-', ' ', ':']:
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ', ':', ';', '!', ')', ']', '}']:
 	snip.rv = ' '
 else:
 	snip.rv = ''
@@ -577,6 +577,7 @@ snippet imp "impliceert" iA
 \implies
 endsnippet
 
+context "math()"
 snippet pmi "geïmpliceerd" iA
 \impliedby
 endsnippet
@@ -587,8 +588,18 @@ snippet Uu "cup" iA
 endsnippet
 
 context "math()"
+snippet \cupu "cup" iA
+\bigcup
+endsnippet
+
+context "math()"
 snippet Nn "cap" iA
 \cap
+endsnippet
+
+context "math()"
+snippet \capn "cap" iA
+\bigcap
 endsnippet
 
 context "math()"
@@ -889,7 +900,7 @@ snippet em "emphasize" i
 endsnippet
 
 context "math()"
-snippet part "partial derivative" wA
+snippet pvd "partial derivative" w
 \frac{\partial ${1:V}}{\partial ${2:x}}$0
 endsnippet
 
