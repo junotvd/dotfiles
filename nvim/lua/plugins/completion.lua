@@ -49,9 +49,9 @@ return {
           hide_during_completion = false,
           debounce = 25,
           keymap = {
-            accept = "<Tab>",
+            accept = false,
             accept_word = false,
-            -- accept_line = "<Tab>",
+            accept_line = "<Tab>",
             next = false,
             prev = false,
             dismiss = false,
