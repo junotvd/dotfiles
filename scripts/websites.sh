@@ -12,7 +12,7 @@ case "$CHOICE" in
         xdg-open http://100.124.103.23:8080/
         ;;
     "print")
-        xdg-open https://print.kuleuven.be/app?service=page/UserWebPrint
+        xdg-open https://print.kuleuven.be/
         ;;
     "apollo")
         xdg-open https://apollo.saga-pollux.ts.net/
