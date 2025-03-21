@@ -24,6 +24,9 @@ Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
 
 Plug 'github/copilot.vim'
+let g:copilot_filetypes = {
+            \ 'tex' : v:false,
+            \}
 
 call plug#end()
 
