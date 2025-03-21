@@ -10,8 +10,6 @@ return {
     lazy = false,
     config = function()
       vim.g.nord_bold = false
-      vim.cmd.colorscheme("rose-pine")
-      ColorBackground()
     end,
   },
 
@@ -21,12 +19,18 @@ return {
       require("rose-pine").setup({
         disable_background = false,
       })
+      vim.cmd.colorscheme("rose-pine")
+      ColorBackground()
     end
   },
 
   {
     "zenbones-theme/zenbones.nvim",
     dependencies = "rktjmp/lush.nvim",
+  },
+
+  {
+    "vague2k/vague.nvim",
   },
 
 }
