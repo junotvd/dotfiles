@@ -19,6 +19,7 @@ return {
     lspconfig.texlab.setup({ capabilities = capabilities })
     lspconfig.pyright.setup({ capabilities = capabilities })
     lspconfig.bashls.setup({ capabilities = capabilities })
+    lspconfig.tinymist.setup({ capabilities = capabilities })
 
     vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end)
   end,
