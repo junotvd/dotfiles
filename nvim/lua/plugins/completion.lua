@@ -50,8 +50,8 @@ return {
           debounce = 25,
           keymap = {
             accept = false,
-            accept_word = false,
-            accept_line = "<Tab>",
+            accept_word = "<Tab>",
+            accept_line = false,
             next = false,
             prev = false,
             dismiss = false,
