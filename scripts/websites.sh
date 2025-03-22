@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CHOICE=$(echo -e "pdf\nprint\napollo\ntoledo\ngithub\nspotify\npearson" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+CHOICE=$(echo -e "pdf\nprint\napollo\ntoledo\ngithub\nspotify\npearson\nai" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 
 if [ -z "$CHOICE" ]; then
     exit 0
@@ -28,5 +28,8 @@ case "$CHOICE" in
         ;;
     "pearson")
         xdg-open https://www.pearson.com/en-gb/higher-education/products-services/mylab-and-mastering-login.html
+        ;;
+    "ai")
+        xdg-open https://openwebui.saga-pollux.ts.net/
         ;;
 esac
