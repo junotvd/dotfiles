@@ -13,14 +13,29 @@ return {
     },
   },
   config = function()
+
     local lspconfig = require("lspconfig")
     local capabilities = require('blink.cmp').get_lsp_capabilities()
-    lspconfig.lua_ls.setup({ capabilities = capabilities })
-    lspconfig.texlab.setup({ capabilities = capabilities })
-    lspconfig.pyright.setup({ capabilities = capabilities })
-    lspconfig.bashls.setup({ capabilities = capabilities })
-    lspconfig.tinymist.setup({ capabilities = capabilities })
+    local setup_servers = function(servers)
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup({
+          capabilities = capabilities
+        })
+      end
+    end
+
+    local servers = {
+      "lua_ls",
+      "texlab",
+      "pyright",
+      "bashls",
+      "tinymist"
+    }
+
+    setup_servers(servers)
 
     vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end)
-  end,
+
+  end
+
 }
