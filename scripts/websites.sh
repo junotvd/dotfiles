@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CHOICE=$(echo -e "pdf\nprint\napollo\ntoledo\ngithub\nspotify\npearson\nai" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+CHOICE=$(echo -e "pdf\nprint\ntoledo\ngithub\nspotify\npearson\ntailscale" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 
 if [ -z "$CHOICE" ]; then
     exit 0
@@ -14,14 +14,28 @@ case "$CHOICE" in
     "print")
         xdg-open https://print.kuleuven.be/
         ;;
-    "apollo")
-        xdg-open https://apollo.saga-pollux.ts.net/
-        ;;
     "toledo")
         xdg-open https://toledo.kuleuven.be/
         ;;
     "github")
-        xdg-open https://github.com/
+        GITHUB=$(echo -e "bachelor-1\ndotfiles\nlatex\nlijstjes" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+        case "$GITHUB" in
+            "bachelor-1")
+                xdg-open https://github.com/junotvd/bachelor-1/
+            ;;
+            "latex")
+                xdg-open https://github.com/junotvd/latex/
+            ;;
+            "dotfiles")
+                xdg-open https://github.com/junotvd/dotfiles/
+            ;;
+            "lijstjes")
+                xdg-open https://github.com/junotvd/lijstjes/
+            ;;
+        esac
+        if [ -z "$GITHUB" ]; then
+            xdg-open https://github.com/
+        fi
         ;;
     "spotify")
         xdg-open https://open.spotify.com/collection/tracks
@@ -29,7 +43,18 @@ case "$CHOICE" in
     "pearson")
         xdg-open https://www.pearson.com/en-gb/higher-education/products-services/mylab-and-mastering-login.html
         ;;
-    "ai")
-        xdg-open https://openwebui.saga-pollux.ts.net/
+    "tailscale")
+        TAILSCALE=$(echo -e "apollo\nai" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+        case "$TAILSCALE" in
+            "apollo")
+                xdg-open https://apollo.saga-pollux.ts.net/
+            ;;
+            "ai")
+                xdg-open https://openwebui.saga-pollux.ts.net/
+            ;;
+        esac
+        if [ -z "$TAILSCALE" ]; then
+            exit 0
+        fi
         ;;
 esac
