@@ -23,12 +23,6 @@ Plug 'lunacookies/vim-colors-xcode'
 Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
 
-Plug 'github/copilot.vim'
-let g:copilot_filetypes = {
-            \ 'tex' : v:false,
-            \ 'typst' : v:false,
-            \}
-
 Plug 'kaarmu/typst.vim'
 
 call plug#end()
@@ -50,6 +44,7 @@ nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/
 
 set nocompatible
 
+set guicursor=""
 
 setlocal spell
 set spelllang=nl

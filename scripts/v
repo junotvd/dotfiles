@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Check if filename is a LaTeX-related file
+is_latex_file() {
+  case "$1" in
+    *.tex|*.typ|*.bib|*.aux|*.toc|*.out|*.log)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+# Check if a directory has LaTeX-related files
+dir_has_latex_files() {
+  find "$1" -maxdepth 1 -type f \( \
+    -name "*.tex" -o -name "*.typ" -o -name "*.bib" -o \
+    -name "*.aux" -o -name "*.toc" -o -name "*.out" -o -name "*.log" \
+  \) | grep -q .
+}
+
+# === Main Script ===
+
+# Default to current directory if no args
+if [ $# -eq 0 ]; then
+  target="."
+else
+  target="$1"
+fi
+
+# If opening a LaTeX-related file directly
+if is_latex_file "$target"; then
+  NVIM_APPNAME=nvim-plug nvim "$@"
+  exit
+fi
+
+# If it's a directory, or a path to a file in a dir
+if [ -d "$target" ]; then
+  dir="$target"
+else
+  dir=$(dirname "$target")
+fi
+
+# Use nvim-plug if directory contains LaTeX files
+if dir_has_latex_files "$dir"; then
+  NVIM_APPNAME=nvim-plug nvim "$@"
+else
+  nvim "$@"
+fi

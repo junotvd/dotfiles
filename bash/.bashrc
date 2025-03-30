@@ -16,7 +16,7 @@ eval "$(fzf --bash)"
 set -o vi
 
 # alias
-alias v=nvim
+# alias v=nvim
 alias py=python
 alias l='ls -la'
 alias q=exit
