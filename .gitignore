@@ -4,6 +4,7 @@ echo "*.swp" >> .gitignore
 vim/plugged
 vim/.netrwhist
 vim/autoload/
+nvim-plug/autoload/
 nvim/lazy-lock.json
 suckless/
 *.spl
