@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 choice=$(printf "swap\nregular" |rofi -dmenu -i -p "ctrl and caplocks keys:" -theme ~/dotfiles/rofi/black-white-selector.rasi)
 

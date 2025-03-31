@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 
 CHOICE=$(echo -e "pdf\nprint\ntoledo\ngithub\nspotify\npearson\ntailscale" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/use/bin/env bash
 
 
 SEMESTER=$(echo -e "2\n1" | rofi -dmenu -i -p "semester" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
