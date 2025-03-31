@@ -57,6 +57,9 @@ set spelllang=nl
 set autoindent
 set smartindent
 
+set nohlsearch
+set incsearch
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
