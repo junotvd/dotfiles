@@ -3,7 +3,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
 export PATH="${PATH}:${HOME}/bin"
 export TERMINAL=alacritty
 export BROWSER=firefox
@@ -27,6 +26,21 @@ alias grep='grep --color=auto'
 alias pdf='firefox http://100.124.103.23:8080/'
 alias print='firefox https://print.kuleuven.be/app?service=page/UserWebPrint'
 alias apollo='firefox https://apollo.saga-pollux.ts.net/'
+
+cd() {
+  if [ $# -eq 0 ]; then
+    if [ -n "$TMUX" ]; then
+      root=$(tmux show-environment TMUX_SESSION_ROOT 2>/dev/null | cut -d= -f2-)
+      if [ -n "$root" ]; then
+        builtin cd "$root"
+        return
+      fi
+    fi
+    builtin cd ~
+  else
+    builtin cd "$@"
+  fi
+}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
