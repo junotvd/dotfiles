@@ -25,11 +25,15 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'kaarmu/typst.vim'
 
+Plug 'stevearc/oil.nvim'
+
 call plug#end()
+
+lua require("oil").setup()
 
 let mapleader="\<Space>"
 
-map <leader>pv :Ex<Cr>
+map <leader>pv :Oil<Cr>
 map <leader>ll :VimtexCompile<Cr>
 map <leader>lv :VimtexView<Cr>
 
