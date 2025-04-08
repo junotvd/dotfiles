@@ -20,7 +20,7 @@ esac
 BASE_DIR=$(eval echo "$BASE_DIR")
 
 if [ "$OPTIE" == "planning" ]; then
-    PDF_FILE=$(find "$BASE_DIR" -type f \(-name "planning.pdf"\) -print -quit)
+    PDF_FILE=$(find "$BASE_DIR" -type f -name "planning.pdf" -print -quit)
 fi
 
 if [ -n "$PDF_FILE" ]; then
