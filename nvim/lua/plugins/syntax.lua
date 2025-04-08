@@ -8,7 +8,7 @@ return {
       },
       sync_install = false,
       auto_install = true,
-      ignore_install = {"latex"},
+      ignore_install = { "latex" },
       indent = {
         enable = true
       },

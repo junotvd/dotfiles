@@ -29,7 +29,7 @@ return {
       "texlab",
       "pyright",
       "bashls",
-      "tinymist"
+      "tinymist",
     }
 
     setup_servers(servers)
