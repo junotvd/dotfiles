@@ -24,6 +24,7 @@ Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
 
 Plug 'kaarmu/typst.vim'
+Plug 'chomosuke/typst-preview.nvim'
 
 Plug 'stevearc/oil.nvim'
 
@@ -34,8 +35,6 @@ lua require("oil").setup()
 let mapleader="\<Space>"
 
 map <leader>pv :Oil<Cr>
-map <leader>ll :VimtexCompile<Cr>
-map <leader>lv :VimtexView<Cr>
 
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 vnoremap <leader>y "+y
