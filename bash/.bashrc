@@ -16,6 +16,7 @@ set -o vi
 
 # alias
 # alias v=nvim
+alias write="NVIM_APPNAME=nvim-write nvim"
 alias py=python
 alias l='ls -la'
 alias q=exit
