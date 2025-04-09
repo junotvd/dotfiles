@@ -20,6 +20,5 @@ vim.o.termguicolors = true
 
 vim.opt.colorcolumn = "80"
 
-vim.opt.spell = false
-
--- vim.opt.spelllang = { "nl", "en_gb" }
+vim.opt.spell = true
+vim.opt.spelllang = { "nl" }
