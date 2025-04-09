@@ -1,11 +1,10 @@
 echo ".DS_Store" >> .gitignore
 echo "*.swp" >> .gitignore
 
-vim/plugged
-vim/.netrwhist
-vim/autoload/
-nvim-plug/autoload/
-nvim/lazy-lock.json
+**/plugged
+**/.netrwhist
+**/autoload
+**/lazy-lock.json
 suckless/
 *.spl
 *.add.spl
