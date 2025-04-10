@@ -4,12 +4,12 @@ OPTION=$(echo -e "monitor\nkeys\nwallpaper" | rofi -dmenu -i -p "hoorcolleges of
 
 case "$OPTION" in
     "keys")
-        exec $HOME/dotfiles/scripts/swapcaps.sh
+        exec $HOME/dotfiles/scripts/swapcaps
         ;;
     "monitor")
         exec $HOME/dotfiles/scripts/select-display
         ;;
     "wallpaper")
-        exec $HOME/dotfiles/scripts/wallpaper.sh
+        exec $HOME/dotfiles/scripts/wallpaper
         ;;
 esac
