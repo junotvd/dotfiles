@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CHOICE=$(echo -e "pdf\nprint\ntoledo\ngithub\nspotify\npearson\ntailscale" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+CHOICE=$(echo -e "pdf\nprint\nkuleuven\ngithub\nspotify\npearson\ntailscale" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 
 if [ -z "$CHOICE" ]; then
     exit 0
@@ -13,24 +13,35 @@ case "$CHOICE" in
     "print")
         xdg-open https://print.kuleuven.be/
         ;;
-    "toledo")
-        xdg-open https://toledo.kuleuven.be/
+    "kuleuven")
+        KUL=$(echo -e "Toledo\nKU Loket\nKURT" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+        case "$KUL" in
+            "Toledo")
+                xdg-open https://toledo.kuleuven.be/
+                ;;
+            "KU Loket")
+                xdg-open https://www.kuleuven.be/kuloket
+                ;;
+            "KURT")
+                xdg-open https://kurt3.ghum.kuleuven.be/
+                ;;
+        esac
         ;;
     "github")
         GITHUB=$(echo -e "bachelor-1\ndotfiles\nlatex\nlijstjes" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
         case "$GITHUB" in
             "bachelor-1")
                 xdg-open https://github.com/junotvd/bachelor-1/
-            ;;
+                ;;
             "latex")
                 xdg-open https://github.com/junotvd/latex/
-            ;;
+                ;;
             "dotfiles")
                 xdg-open https://github.com/junotvd/dotfiles/
-            ;;
+                ;;
             "lijstjes")
                 xdg-open https://github.com/junotvd/lijstjes/
-            ;;
+                ;;
         esac
         if [ -z "$GITHUB" ]; then
             xdg-open https://github.com/
@@ -47,10 +58,10 @@ case "$CHOICE" in
         case "$TAILSCALE" in
             "apollo")
                 xdg-open https://apollo.saga-pollux.ts.net/
-            ;;
+                ;;
             "ai")
                 xdg-open https://openwebui.saga-pollux.ts.net/
-            ;;
+                ;;
         esac
         if [ -z "$TAILSCALE" ]; then
             exit 0
