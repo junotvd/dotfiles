@@ -7,7 +7,7 @@ case "$OPTION" in
         exec $HOME/dotfiles/scripts/swapcaps.sh
         ;;
     "monitor")
-        exec $HOME/dotfiles/scripts/select-display.sh
+        exec $HOME/dotfiles/scripts/select-display
         ;;
     "wallpaper")
         exec $HOME/dotfiles/scripts/wallpaper.sh

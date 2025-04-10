@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+ROFI_THEME=~/dotfiles/rofi/black-white-selector.rasi
+
+select_from_list() {
+    echo "$1" | rofi -dmenu -i -p "$2" -theme "$ROFI_THEME"
+}
+
+get_refresh_rates() {
+    local monitor="$1"
+    xrandr | awk -v mon="$monitor" '
+        $0 ~ mon { in_monitor=1; next }
+        in_monitor && /^[[:space:]]*[0-9]+x[0-9]+/ {
+            for (i=1; i<=NF; i++) {
+                if ($i ~ /^[0-9]+(\.[0-9]+)?$/) print $i
+            }
+        }
+        in_monitor && NF == 0 { in_monitor=0 }
+    ' | sort -n -r | uniq
+}
+
+get_resolutions() {
+    local monitor="$1"
+    xrandr | awk -v mon="$monitor" '
+        $0 ~ mon { in_monitor=1; next }
+        in_monitor && /^[[:space:]]*[0-9]+x[0-9]+/ {
+            print $1
+        }
+        in_monitor && NF == 0 { in_monitor=0 }
+    ' | sort -u
+}
+
+get_orientations() {
+    echo -e "normal\nleft\nright\ninverted"
+}
+
+get_scaling_options() {
+    echo -e "1.0\n1.25\n1.5\n1.75\n2.0"
+}
+
+configure_monitor() {
+    local monitor="$1"
+
+    resolution=$(select_from_list "$(get_resolutions "$monitor")" "Resolution for $monitor")
+    [ -z "$resolution" ] && exit 1
+
+    rate=$(select_from_list "$(get_refresh_rates "$monitor")" "Refresh rate for $monitor")
+    [ -z "$rate" ] && exit 1
+
+    orientation=$(select_from_list "$(get_orientations)" "Orientation for $monitor")
+    [ -z "$orientation" ] && exit 1
+
+    # scale=$(select_from_list "$(get_scaling_options)" "Scaling for $monitor (e.g. 1.0 = 100%)")
+    # [ -z "$scale" ] && exit 1
+
+    xrandr --output "$monitor" --mode "$resolution" --rate "$rate" --rotate "$orientation"
+    # --scale "${scale}x${scale}"
+}
+
+mirror_monitors() {
+    local primary="$1"
+    local secondary="$2"
+    configure_monitor "$primary"
+    xrandr --output "$secondary" --auto --same-as "$primary" --scale 0.75x0.75
+}
+
+extend_monitors() {
+    local primary="$1"
+    local secondary="$2"
+
+    configure_monitor "$primary"
+    configure_monitor "$secondary"
+
+    xrandr --output "$secondary" --right-of "$primary"
+}
+
+# ---- Start Script Logic ----
+
+screens=$(xrandr | grep " connected" | awk '{print $1}')
+screen_count=$(echo "$screens" | wc -l)
+
+if [ "$screen_count" -eq 1 ]; then
+    primary=$(echo "$screens")
+    configure_monitor "$primary"
+    exit 0
+fi
+
+# More than one screen
+primary=$(select_from_list "$screens" "Select primary display")
+[ -z "$primary" ] && exit 1
+
+secondary=$(echo "$screens" | grep -v "^$primary")
+secondary=$(select_from_list "$secondary" "Select secondary display")
+[ -z "$secondary" ] && exit 1
+
+mode=$(select_from_list "Extend (two screens)\nMirror" "Setup mode")
+[ -z "$mode" ] && exit 1
+
+if [[ "$mode" == "Mirror" ]]; then
+    mirror_monitors "$primary" "$secondary"
+else
+    extend_monitors "$primary" "$secondary"
+fi
