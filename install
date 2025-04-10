@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 ln -s ~/dotfiles/alacritty/ ~/.config/
 ln -s ~/dotfiles/i3/ ~/.config/
@@ -11,4 +11,5 @@ ln -s ~/dotfiles/bash/.bashrc ~/
 ln -s ~/dotfiles/tmux/.tmux.conf ~/
 
 mkdir ~/.local/bin/
+ln -s ~/dotfiles/bin/ ~/.local/
 ln -s ~/dotfiles/scripts/ ~/.local/bin/
