@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if ! tmux has-session 2>/dev/null; then
+  tmux new-session "~/dotfiles/scripts/tmux-sessionizer"
+else
+  tmux attach
+fi
