@@ -4,6 +4,7 @@
 [[ $- != *i* ]] && return
 
 export PATH="${PATH}:${HOME}/bin"
+export PATH="$HOME/.local/bin:$PATH"
 export TERMINAL=alacritty
 export BROWSER=firefox
 export EDITOR=nvim
