@@ -1,15 +1,47 @@
 #!/usr/bin/env bash
 
-ln -s ~/dotfiles/alacritty/ ~/.config/
-ln -s ~/dotfiles/i3/ ~/.config/
-ln -s ~/dotfiles/i3status/ ~/.config/
-cp -r ~/.vim ~/.vim_old; mkdir ~/.vim/; ln -s ~/dotfiles/vim/ftplugin/ ~/.vim/; ln -s ~/dotfiles/vim/spell/ ~/.vim/; ln -s ~/dotfiles/vim/UltiSnips/ ~/.config/; ln -s ~/dotfiles/nvim/ ~/.config/
-ln -s ~/dotfiles/vim/vimrc ~/.vimrc
-ln -s ~/dotfiles/zathura/ ~/.config/
 
-ln -s ~/dotfiles/bash/.bashrc ~/
-ln -s ~/dotfiles/tmux/.tmux.conf ~/
+DOTFILES="$HOME/dotfiles"
+BACKUP="$HOME/.dotfiles_backup_$(date +%s)"
+CONFIG="$HOME/.config"
 
-mkdir ~/.local/bin/
-ln -s ~/dotfiles/bin/ ~/.local/
-ln -s ~/dotfiles/scripts/ ~/.local/bin/
+declare -A CONFIG_MAP=(
+    [alacritty]="$CONFIG/alacritty"
+    [bash]="$HOME/.bashrc"
+    [i3]="$CONFIG/i3"
+    [i3status]="$CONFIG_DIR/i3status"
+    [nvim]="$CONFIG_DIR/nvim"
+    [nvim-write]="$CONFIG_DIR/nvim-write"
+    [picom]="$CONFIG_DIR/picom"
+    [rofi]="$CONFIG_DIR/rofi"
+    [scripts]="$HOME/.local/bin"
+    [starship]="$CONFIG_DIR/starship"
+    [tmux]="$CONFIG_DIR/tmux"
+    [vim]="$HOME/.vim"
+    [wallpaper]="$HOME/Pictures/wallpaper"
+    [wezterm]="$CONFIG_DIR/wezterm"
+    [x11]="$HOME/.x11"
+    [xmonad]="$CONFIG_DIR/xmonad"
+    [xournalpp]="$CONFIG_DIR/xournalpp"
+    [zathura]="$CONFIG_DIR/zathura"
+)
+
+mkdir -p "$BACKUP_DIR"
+
+echo "Installing dotfiles..."
+for dir in "${!CONFIG_MAP[@]}"; do
+  src="$DOTFILES_DIR/$dir"
+  dest="${CONFIG_MAP[$dir]}"
+
+  if [ -e "$dest" ] || [ -L "$dest" ]; then
+    echo "Backing up $dest to $BACKUP_DIR"
+    mkdir -p "$(dirname "$BACKUP_DIR/$dest")"
+    mv "$dest" "$BACKUP_DIR/"
+  fi
+
+  mkdir -p "$(dirname "$dest")"
+  echo "Linking $src → $dest"
+  ln -s "$src" "$dest"
+done
+
+echo "Done! Backup saved to: $BACKUP_DIR"
