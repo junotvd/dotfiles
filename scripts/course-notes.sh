@@ -1,59 +1,72 @@
 #!/usr/bin/env bash
 
+ROFI_THEME="$HOME/dotfiles/rofi/black-white-selector.rasi"
 
-SEMESTER=$(echo -e "2\n1" | rofi -dmenu -i -p "semester" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
-OPTIE=$(echo -e "hoorcolleges\noefenzittingen\nplanning\nsamenvatting" | rofi -dmenu -i -p "hoorcolleges of oefenzittingen" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 
-if [ -z "$SEMESTER" ] || [ -z "$OPTIE" ]; then
-    exit 0
-fi
+SEMESTER=$(echo -e "2\n1" | rofi -dmenu -i -p "semester" -theme "$ROFI_THEME")
+[ -z "$SEMESTER" ] && exit 0
 
-case "$SEMESTER" in
-    "1")
-        BASE_DIR=${1:-$HOME/uni/bachelor-1/semester-1}
-        ;;
-    "2")
-        BASE_DIR=${1:-$HOME/uni/bachelor-1/semester-2}
-        ;;
-esac
 
-BASE_DIR=$(eval echo "$BASE_DIR")
+BASE_DIR="$HOME/uni/bachelor-1/semester-$SEMESTER"
+[ ! -d "$BASE_DIR" ] && rofi -e "Semester path not found: $BASE_DIR" && exit 1
 
-if [ "$OPTIE" == "planning" ]; then
-    PDF_FILE=$(find "$BASE_DIR" -type f -name "planning.pdf" -print -quit)
-    if [ -n "$PDF_FILE" ]; then
+
+COURSES=($(find "$BASE_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort))
+COURSES+=("planning")
+[ ${#COURSES[@]} -eq 0 ] && rofi -e "No courses found in $BASE_DIR" && exit 1
+
+
+COURSE=$(printf "%s\n" "${COURSES[@]}" | rofi -dmenu -i -p "Course" -theme "$ROFI_THEME")
+[ -z "$COURSE" ] && exit 0
+
+
+if [[ "$COURSE" == "planning" ]]; then
+    PDF_FILE="$BASE_DIR/planning.pdf"
+    if [ -f "$PDF_FILE" ]; then
         zathura "$PDF_FILE"
-        exit 1
-        # else
-        #     rofi -e "No planning.pdf found in $BASE_DIR/"
-        #     exit 1
+    else
+        rofi -e "No planning.pdf found in $BASE_DIR"
     fi
-fi
-
-
-DIRS=($(find "$BASE_DIR" -maxdepth 1 -type d -not -path "$BASE_DIR" -exec basename {} \;))
-
-if [ ${#DIRS[@]} -eq 0 ]; then
-    rofi -e "No course directories found in $BASE_DIR"
     exit 0
 fi
 
-CHOSEN_DIR=$(printf "%s\n" "${DIRS[@]}" | rofi \
-    -dmenu -p "" \
-    -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+
+COURSE_PATH="$BASE_DIR/$COURSE"
 
 
-if [ -z "$CHOSEN_DIR" ]; then
-    exit 0
-fi
+SUBDIRS=($(find "$COURSE_PATH" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;))
 
-CHOSEN_PATH="$BASE_DIR/$CHOSEN_DIR/$OPTIE"
+SUBDIR=$(printf "%s\n" "${SUBDIRS[@]}" | rofi -dmenu -i -p "Option" -theme "$ROFI_THEME")
+[ -z "$SUBDIR" ] && exit 0
 
-PDF_FILE=$(find "$CHOSEN_PATH" -type f \( -name "main.pdf" -o -name "master.pdf" -o -name "planning.pdf" \) -print -quit)
+FINAL_PATH="$COURSE_PATH/$SUBDIR"
 
-if [ -n "$PDF_FILE" ]; then
-    zathura "$PDF_FILE"
-else
-    rofi -e "Neither main.pdf nor master.pdf found in $CHOSEN_DIR/$OPTIE"
+
+# Sort pdfs by date
+# mapfile -t PDFS < <(find "$FINAL_PATH" -maxdepth 1 -type f -iname "*.pdf" -printf "%T@ %p\n" | sort -nr | cut -d ' ' -f2 -)
+mapfile -t PDFS < <(find "$FINAL_PATH" -maxdepth 1 -type f -iname "*.pdf" | sort)
+
+if [ ${#PDFS[@]} -eq 0 ]; then
+    rofi -e "No pdf files found in $FINAL_PATH"
     exit 1
+
+elif [ ${#PDFS[@]} -eq 1 ]; then
+    zathura "${PDFS[0]}"
+    exit 0
+
+else
+    CHOICES=()
+    for FILE in "${PDFS[@]}"; do
+        NAME=$(basename "$FILE" .pdf)
+        DATE=$(date -r "$FILE" "+%d-%m-%Y")
+        CHOICES+=("$NAME ($DATE)")
+    done
+
+    CHOSEN_DISPLAY=$(printf "%s\n" "${CHOICES[@]}" | rofi -dmenu -i -p "Choose pdf" -theme "$ROFI_THEME")
+    [ -z "$CHOSEN_DISPLAY" ] && exit 0
+
+    CHOSEN_FILE=$(echo "$CHOSEN_DISPLAY" | sed 's/ ([0-9]\{2\}-[0-9]\{2\}-[0-9]\{4\})$//')
+    # CHOSEN_FILE=$(echo "$CHOSEN_DISPLAY" | sed 's/ (.*)//')
+    zathura "$FINAL_PATH/$CHOSEN_FILE.pdf"
+    exit 0
 fi
