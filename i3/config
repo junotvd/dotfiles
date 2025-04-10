@@ -51,10 +51,10 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # Scripts
-bindsym $mod+s exec ~/dotfiles/scripts/setup
-bindsym $mod+p exec ~/dotfiles/scripts/course-notes
-bindsym $mod+Shift+s exec --no-startup-id bash ~/dotfiles/scripts/rsync
-bindsym $mod+w exec ~/dotfiles/scripts/websites
+bindsym $mod+s exec setup
+bindsym $mod+p exec course-notes
+bindsym $mod+Shift+s exec --no-startup-id rsync
+bindsym $mod+w exec websites
 
 # change focus
 bindsym $mod+h focus left
