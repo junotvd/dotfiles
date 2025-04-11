@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+entries=$(cat)
+longest=$(echo "$entries" | awk '{ print length }' | sort -nr | head -n1)
+width=$(( (longest * 100 / 80) + 5 ))
+[ $width -gt 80 ] && width=80
+[ $width -lt 20 ] && width=20
+
+# Create temporary theme file
+theme=$(mktemp)
+
+cat <<EOF > "$theme"
+configuration {
+  kb-row-up: "k";
+  kb-row-down: "j";
+  kb-accept-entry: "l,Return";
+  kb-cancel: "h,Escape";
+  kb-custom-1: "slash";
+  fixed-num-lines: false;
+  show-entry: false;
+}
+
+* {
+  font: "JetBrainsMono Nerd Font 12";
+  background: #000000;
+  foreground: #ffffff;
+  selected: #ffffff;
+  selected-text: #000000;
+  border-color: #ffffff;
+  padding: 10;
+  spacing: 5;
+}
+
+window {
+  width: ${width}%;
+  location: 4;
+  border: 2px;
+  padding: 10px;
+  background-color: @background;
+}
+
+mainbox {
+  background-color: @background;
+}
+
+listview {
+  background-color: @background;
+  border: 0;
+  scrollbar: false;
+}
+
+element {
+  background-color: @background;
+  text-color: @foreground;
+  padding: 6px 10px;
+  border: 0;
+}
+
+element selected {
+  background-color: @selected;
+  text-color: @selected-text;
+}
+EOF
+
+# Launch rofi with this theme
+selection=$(echo "$entries" | rofi -dmenu -theme "$theme" -kb-custom-1 "slash" -format i)
+
+if [ "$?" = 10 ]; then
+  # User hit '/', enter typing mode
+  echo "$entries" | rofi -dmenu
+else
+  echo "$entries" | sed -n "$((selection + 1))p"
+fi
+
+rm -f "$theme"
