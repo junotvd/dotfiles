@@ -4,7 +4,7 @@ return {
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
-        "bash", "c", "lua", "markdown", "matlab", "python",
+        "bash", "c", "lua", "markdown", "matlab", "python", "typst", "vimdoc",
       },
       sync_install = false,
       auto_install = true,
