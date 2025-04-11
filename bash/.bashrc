@@ -6,6 +6,7 @@
 export PATH="${PATH}:${HOME}/bin"
 export PATH="$HOME/.local/bin:$PATH"
 export TERMINAL=alacritty
+export PDF_VIEWER=zathura
 export BROWSER=firefox
 export EDITOR=nvim
 export VISUAL=nvim
@@ -16,8 +17,9 @@ eval "$(fzf --bash)"
 set -o vi
 
 # alias
-# alias v=nvim
+alias v=nvim
 alias write="NVIM_APPNAME=nvim-write nvim"
+alias exp="NVIM_APPNAME=nvim-exp nvim"
 alias py=python
 alias l='ls -la'
 alias q=exit
