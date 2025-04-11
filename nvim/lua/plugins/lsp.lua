@@ -1,4 +1,5 @@
 return {
+
   "neovim/nvim-lspconfig",
   dependencies = {
     "saghen/blink.cmp",
@@ -18,7 +19,11 @@ return {
       texlab = {},
       pyright = {},
       bashls = {},
-      tinymist = {},
+      tinymist = {
+        settings = {
+          formatterMode = "typstyle"
+        }
+      },
     },
   },
 
