@@ -32,3 +32,9 @@
 
 ### Insert mode
 - `<C-c>` = `<Escape>`
+
+### Notes
+**LSP** `:h lsp`
+- `C-]` goes to def, terug met `C-t`
+- `grr` go to references
+- `grn` rename
