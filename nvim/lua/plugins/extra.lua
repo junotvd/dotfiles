@@ -1,15 +1,16 @@
 return {
   {
-    "echasnovski/mini.nvim",
+    'echasnovski/mini.nvim',
     config = function()
-      require("mini.surround").setup()
-      require("mini.comment").setup()
-    end
+      require('mini.surround').setup()
+      require('mini.comment').setup()
+    end,
   },
+
   {
-    "mbbill/undotree",
+    'mbbill/undotree',
     config = function()
       vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-    end
+    end,
   },
 }

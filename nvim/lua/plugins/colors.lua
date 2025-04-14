@@ -1,16 +1,22 @@
 local active_colorscheme = 'gruvbox-minor'
 local use_custom_background = false
+local disable_statusline = false
 
-local function ColorBackground()
-  vim.api.nvim_set_hl(0, 'Normal', { bg = '#1C1917' })
-  vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1C1917' })
-  vim.cmd('hi statusline guibg=NONE')
+local function ColorBackground(use_bg, disable_sl)
+  if use_bg then
+    vim.api.nvim_set_hl(0, 'Normal', { bg = '#1C1917' })
+    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1C1917' })
+  end
+  if disable_sl then
+    vim.cmd('hi statusline guibg=NONE')
+    -- vim.cmd('hi statusline guifg=')
+  end
 end
 
 local function SetColors()
   vim.cmd.colorscheme(active_colorscheme)
-  if use_custom_background then
-    ColorBackground()
+  if use_custom_background or disable_statusline then
+    ColorBackground(use_custom_background, disable_statusline)
   end
 end
 
