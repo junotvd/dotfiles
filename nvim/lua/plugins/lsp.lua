@@ -12,6 +12,19 @@ return {
     },
 
     config = function()
+      vim.diagnostic.config({
+        severity_sort = true,
+        float = {
+          style = 'minimal',
+          border = 'rounded',
+          source = 'always',
+          header = '',
+          prefix = '',
+        },
+        -- underline = {},
+        -- signs = {},
+        -- virtual_text = {},
+      })
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local servers = {
         lua_ls = {

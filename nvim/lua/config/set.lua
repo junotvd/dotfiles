@@ -1,32 +1,36 @@
-local set = vim.opt
+local opt = vim.opt
 
-set.guicursor = ""
+opt.guicursor = ""
 
-set.undofile = true
+opt.undofile = true
 
-set.number = true
-set.relativenumber = true
+opt.number = true
+opt.relativenumber = true
 
-set.tabstop = 4
-set.softtabstop = 4
-set.shiftwidth = 4
-set.expandtab = true
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
 
-set.smartindent = true
+opt.smartindent = true
 
-set.ignorecase = true
-set.smartcase = true
-set.incsearch = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.incsearch = true
 
-set.list = true
-set.listchars = { trail = '·' }
+-- opt.list = true
+-- opt.listchars = { trail = '·' }
 
-set.scrolloff = 10
+opt.scrolloff = 10
 
-set.confirm = true
+opt.confirm = true
 
-set.colorcolumn = "80"
+opt.spell = true
 
-set.spell = true
+opt.spelllang = { "nl", "en_gb" }
 
-set.spelllang = { "nl", "en_gb" }
+opt.signcolumn = "yes"
+
+opt.inccommand = "split"
+
+opt.formatoptions:remove "o"
