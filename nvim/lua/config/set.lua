@@ -1,31 +1,32 @@
--- Basic settings
-vim.opt.guicursor = ""
+local set = vim.opt
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
+set.guicursor = ""
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+set.undofile = true
 
-vim.opt.smartindent = true
+set.number = true
+set.relativenumber = true
 
--- vim.opt.hlsearch = false
-vim.opt.incsearch = true
+set.tabstop = 4
+set.softtabstop = 4
+set.shiftwidth = 4
+set.expandtab = true
 
-vim.opt.scrolloff = 8
+set.smartindent = true
 
-vim.o.termguicolors = true
+set.ignorecase = true
+set.smartcase = true
+set.incsearch = true
 
-vim.opt.colorcolumn = "80"
+set.list = true
+set.listchars = { trail = '·' }
 
-vim.opt.spell = false
+set.scrolloff = 10
 
--- vim.opt.conceallevel = 1
+set.confirm = true
 
-vim.g.tex_flavor = "latex"
+set.colorcolumn = "80"
 
-vim.g.netrw_browsex_viewer = "xdg-open"
+set.spell = true
 
-vim.opt.spelllang = { "nl", "en_gb" }
+set.spelllang = { "nl", "en_gb" }

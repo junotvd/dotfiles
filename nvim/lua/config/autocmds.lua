@@ -1,20 +1,7 @@
--- local M = {}
---
--- function M.setup()
---   vim.cmd.colorscheme("rose-pine")
---
---   local function switch_colorscheme(name)
---     if vim.g.colors_name ~= name then
---       vim.cmd.colorscheme("" .. name)
---     end
---   end
---
---   vim.api.nvim_create_autocmd("FileType", {
---     pattern = { "tex", "plaintex", "latex" },
---     callback = function ()
---       switch_colorscheme("nord")
---     end,
---   })
--- end
---
--- return M
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true}),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
