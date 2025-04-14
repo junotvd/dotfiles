@@ -32,12 +32,7 @@ return {
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
       require("mason-lspconfig").setup({
-        ensure_installed = {
-          "pyright",
-          "tinymist",
-          "texlab", "vale", "latexindent", "tex-fmt", "bibtex-tidy",
-          "bashls"
-        },
+        ensure_installed = { "pyright", "tinymist", "texlab", "bashls" },
         automatic_installation = false,
         handlers = {
           function(server_name)
@@ -57,6 +52,7 @@ return {
       require("conform").setup({
         formatters_by_ft = {
           lua = { "stylua" },
+          tex = { "tex-fmt" },
         },
       })
     end,
