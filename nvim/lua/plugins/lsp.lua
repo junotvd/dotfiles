@@ -1,26 +1,26 @@
 return {
 
   {
-    "neovim/nvim-lspconfig",
+    'neovim/nvim-lspconfig',
     dependencies = {
-      { "williamboman/mason.nvim", opts = {} },
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "saghen/blink.cmp",
-      "folke/lazydev.nvim",
-      { "j-hui/fidget.nvim", opts = {} },
+      { 'williamboman/mason.nvim', opts = {} },
+      'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'saghen/blink.cmp',
+      'folke/lazydev.nvim',
+      { 'j-hui/fidget.nvim', opts = {} },
     },
 
     config = function()
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
       local servers = {
         lua_ls = {
           settings = {
             Lua = {
               completion = {
-                callSnippet = "Replace",
+                callSnippet = 'Replace',
               },
-              diagnostics = { disable = { "missing-fields" } },
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
@@ -28,78 +28,100 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        "stylua",
+        'stylua',
+        -- 'tex-fmt',
       })
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-      require("mason-lspconfig").setup({
-        ensure_installed = { "pyright", "tinymist", "texlab", "bashls" },
+      require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
+      require('mason-lspconfig').setup({
+        ensure_installed = {},
         automatic_installation = false,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend("force", {}, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
-          end
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+          end,
         },
       })
     end,
   },
 
-  {
-    "stevearc/conform.nvim",
-    opts = {},
-    config = function()
-      require("conform").setup({
-        formatters_by_ft = {
-          lua = { "stylua" },
-          tex = { "tex-fmt" },
-        },
-      })
-    end,
+  { -- Autoformat
+    'stevearc/conform.nvim',
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
+    keys = {
+      {
+        '<leader>f',
+        function()
+          require('conform').format({ async = true, lsp_format = 'fallback' })
+        end,
+        mode = '',
+        desc = 'Format buffer',
+      },
+    },
+    opts = {
+      notify_on_error = false,
+      format_on_save = function(bufnr)
+        local disable_filetypes = { c = true, cpp = true }
+        if disable_filetypes[vim.bo[bufnr].filetype] then
+          return nil
+        else
+          return {
+            timeout_ms = 500,
+            lsp_format = 'fallback',
+          }
+        end
+      end,
+      formatters_by_ft = {
+        lua = { 'stylua' },
+        -- python = { "isort", "black" },
+        -- javascript = { "prettierd", "prettier" },
+      },
+    },
   },
 
   {
-    "saghen/blink.cmp",
-    version = "*",
+    'saghen/blink.cmp',
+    version = '*',
     dependencies = {
       -- 'rafamadriz/friendly-snippets',
       {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
+        'L3MON4D3/LuaSnip',
+        version = 'v2.*',
         config = function()
-          require("luasnip").config.set_config({
+          require('luasnip').config.set_config({
             history = true,
             enable_autosnippets = true,
-            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets/" }),
+            require('luasnip.loaders.from_lua').load({ paths = '~/.config/nvim/lua/snippets/' }),
           })
         end,
       },
     },
     opts = {
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
         providers = {
-          lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         },
       },
-      snippets = { preset = "luasnip" },
-      keymap = { preset = "default" },
+      snippets = { preset = 'luasnip' },
+      keymap = { preset = 'default' },
       appearance = {
         use_nvim_cmp_as_default = true,
-        nerd_font_variant = "mono",
+        nerd_font_variant = 'mono',
       },
       signature = { enabled = true },
     },
   },
 
   {
-    "folke/lazydev.nvim",
-    ft = "lua",
+    'folke/lazydev.nvim',
+    ft = 'lua',
     opts = {
       library = {
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
     },
   },
-
 }
