@@ -59,9 +59,32 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
-        'beautysh',
-        'tex-fmt',
-        'nixfmt',
+
+        'pyright',
+        'black',
+        'isort',
+
+        'bashls',
+        'shfmt',
+
+        'digestif',
+        -- 'texlab', ; trager dan digestif
+        'latexindent',
+        'bibtex-tidy',
+        -- 'chktex', ; Mason doesn't provide this
+
+        'nil',
+        'alejandra',
+
+        'prettier',
+        'vale',
+
+        'tinymist',
+        'typstyle',
+        -- 'typstfmt',
+
+        -- 'fourmolu',
+        -- 'hlint',
       })
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
       require('mason-lspconfig').setup({
@@ -85,9 +108,7 @@ return {
     keys = {
       {
         '<leader>f',
-        function()
-          require('conform').format({ async = true, lsp_format = 'fallback' })
-        end,
+        function() require('conform').format({ async = true, lsp_format = 'fallback' }) end,
         mode = '',
         desc = 'Format buffer',
       },
@@ -107,8 +128,15 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- python = { "isort", "black" },
-        -- javascript = { "prettierd", "prettier" },
+        python = { 'black', 'isort' },
+        tex = { 'latexindent' },
+        bib = { 'bibtex-tidy' },
+        markdown = { 'prettier' },
+        sh = { 'shfmt' },
+        nix = { 'alejandra' },
+        typst = { 'typstyle' },
+        -- typst = { 'typstfmt' },
+        -- haskell = { 'fourmolu' },
       },
     },
   },
@@ -145,5 +173,22 @@ return {
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
     },
+  },
+
+  {
+    'mfussenegger/nvim-lint',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      local lint = require('lint')
+      lint.linters_by_ft = {
+        tex = { 'chktex' },
+        markdown = { 'vale' },
+        typst = { 'typstyle' },
+      }
+
+      vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'InsertLeave' }, {
+        callback = function() lint.try_lint() end,
+      })
+    end,
   },
 }
