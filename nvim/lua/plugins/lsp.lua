@@ -15,16 +15,33 @@ return {
       vim.diagnostic.config({
         severity_sort = true,
         float = {
-          style = 'minimal',
           border = 'rounded',
-          source = 'always',
-          header = '',
-          prefix = '',
+          source = 'if_many',
         },
-        -- underline = {},
-        -- signs = {},
-        -- virtual_text = {},
+        underline = { severity = vim.diagnostic.severity.ERROR },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '󰅚 ',
+            [vim.diagnostic.severity.WARN] = '󰀪 ',
+            [vim.diagnostic.severity.INFO] = '󰋽 ',
+            [vim.diagnostic.severity.HINT] = '󰌶 ',
+          },
+        } or {},
+        virtual_text = {
+          source = 'if_many',
+          spacing = 2,
+          format = function(diagnostic)
+            local diagnostic_message = {
+              [vim.diagnostic.severity.ERROR] = diagnostic.message,
+              [vim.diagnostic.severity.WARN] = diagnostic.message,
+              [vim.diagnostic.severity.INFO] = diagnostic.message,
+              [vim.diagnostic.severity.HINT] = diagnostic.message,
+            }
+            return diagnostic_message[diagnostic.severity]
+          end,
+        },
       })
+
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local servers = {
         lua_ls = {
@@ -42,7 +59,9 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
-        -- 'tex-fmt',
+        'beautysh',
+        'tex-fmt',
+        'nixfmt',
       })
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
       require('mason-lspconfig').setup({
@@ -99,17 +118,7 @@ return {
     version = '*',
     dependencies = {
       -- 'rafamadriz/friendly-snippets',
-      {
-        'L3MON4D3/LuaSnip',
-        version = 'v2.*',
-        config = function()
-          require('luasnip').config.set_config({
-            history = true,
-            enable_autosnippets = true,
-            require('luasnip.loaders.from_lua').load({ paths = '~/.config/nvim/lua/snippets/' }),
-          })
-        end,
-      },
+      'folke/lazydev.nvim',
     },
     opts = {
       sources = {
