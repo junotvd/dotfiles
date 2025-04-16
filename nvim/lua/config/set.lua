@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-opt.guicursor = ""
+opt.guicursor = ''
 
 opt.undofile = true
 
@@ -27,10 +27,10 @@ opt.confirm = true
 
 opt.spell = true
 
-opt.spelllang = { "nl", "en_gb" }
+opt.spelllang = { 'nl', 'en_gb' }
 
-opt.signcolumn = "yes"
+opt.signcolumn = 'yes'
 
-opt.inccommand = "split"
+opt.inccommand = 'split'
 
-opt.formatoptions:remove "o"
+opt.formatoptions:remove({ 'o', 'O' })
