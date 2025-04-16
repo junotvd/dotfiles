@@ -54,7 +54,7 @@ return {
             },
           },
         },
-        digestif = {},
+        -- digestif = {},
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
