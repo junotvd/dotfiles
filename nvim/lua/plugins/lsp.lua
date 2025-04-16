@@ -21,12 +21,12 @@ return {
         underline = { severity = vim.diagnostic.severity.ERROR },
         signs = {
           text = {
-            [vim.diagnostic.severity.ERROR] = '󰅚 ',
-            [vim.diagnostic.severity.WARN] = '󰀪 ',
-            [vim.diagnostic.severity.INFO] = '󰋽 ',
-            [vim.diagnostic.severity.HINT] = '󰌶 ',
+            [vim.diagnostic.severity.ERROR] = 'E',
+            [vim.diagnostic.severity.WARN] = 'W',
+            [vim.diagnostic.severity.INFO] = 'I',
+            [vim.diagnostic.severity.HINT] = 'H',
           },
-        } or {},
+        },
         virtual_text = {
           source = 'if_many',
           spacing = 2,
@@ -54,6 +54,7 @@ return {
             },
           },
         },
+        digestif = {},
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
@@ -98,6 +99,7 @@ return {
           end,
         },
       })
+      require('lspconfig').digestif.setup({ capabilities = capabilities })
     end,
   },
 
@@ -142,30 +144,6 @@ return {
   },
 
   {
-    'saghen/blink.cmp',
-    version = '*',
-    dependencies = {
-      -- 'rafamadriz/friendly-snippets',
-      'folke/lazydev.nvim',
-    },
-    opts = {
-      sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
-        providers = {
-          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-        },
-      },
-      snippets = { preset = 'luasnip' },
-      keymap = { preset = 'default' },
-      appearance = {
-        use_nvim_cmp_as_default = true,
-        nerd_font_variant = 'mono',
-      },
-      signature = { enabled = true },
-    },
-  },
-
-  {
     'folke/lazydev.nvim',
     ft = 'lua',
     opts = {
@@ -179,15 +157,14 @@ return {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      local lint = require('lint')
-      lint.linters_by_ft = {
+      require('lint').linters_by_ft = {
         tex = { 'chktex' },
         markdown = { 'vale' },
         typst = { 'typstyle' },
       }
 
       vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'InsertLeave' }, {
-        callback = function() lint.try_lint() end,
+        callback = function() require('lint').try_lint() end,
       })
     end,
   },

@@ -4,6 +4,7 @@ return {
     'L3MON4D3/LuaSnip',
     dependencies = {},
     version = 'v2.*',
+    build = 'make install_jsregexp',
     config = function()
       require('luasnip').config.set_config({
         history = true,
@@ -14,8 +15,8 @@ return {
   },
 
   {
-    -- url = 'https://gitlab.com/repetitivesin/madol.nvim.git',
-    dir = '~/repos/madol.nvim/',
+    url = 'https://gitlab.com/repetitivesin/madol.nvim.git',
+    -- dir = '~/repos/madol.nvim/',
     dependencies = {
       'L3M0N4D3/LuaSnip',
       'nvim-treesitter/nvim-treesitter',
@@ -41,12 +42,8 @@ return {
           return '<C-k>'
         end
       end, { silent = true })
-      vim.keymap.set({ 'i', 's' }, '<Tab>', function()
-        ls.jump(1)
-      end, { silent = true })
-      vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
-        ls.jump(-1)
-      end, { silent = true })
+      vim.keymap.set({ 'i', 's' }, '<Tab>', function() ls.jump(1) end, { silent = true })
+      vim.keymap.set({ 'i', 's' }, '<S-Tab>', function() ls.jump(-1) end, { silent = true })
 
       require('madol').setup()
     end,
