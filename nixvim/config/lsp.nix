@@ -32,7 +32,7 @@
               end
             end
           '';
-          modes = [ "i", "s" ];
+          modes = [ "i" "s" ];
         };
       };
     };
