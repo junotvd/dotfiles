@@ -17,7 +17,7 @@ exec --no-startup-id picom -b
 
 
 # Font
-font pango:FiraCode Nerd Font 12
+font pango:JuliaMono 12
 
 # Windows (borders and gaps)
 for_window [class="^.*"] border pixel 0
@@ -155,22 +155,13 @@ bar {
     font pango:JuliaMono 12
 
     colors {
-    #     background #2E3440
-    #     statusline #ECEFF4
-    #     separator  #4C566A
-    #
-        # focused_workspace  #2E3440 #2E3440 #ECEFF4
-        # active_workspace   #2E3440 #2E3440 #ECEFF4
-        # inactive_workspace #2E3440 #2E3440 #616E88
-        # urgent_workspace   #2E3440 #2E3440 #BF616A
-        #
         background #000000
-        statusline #ECEFF4
+        statusline #FFFFFF
         separator #707070
 
-        focused_workspace  #000000 #000000 #ECEFF4
-        active_workspace   #000000 #000000 #ECEFF4
-        inactive_workspace #000000 #000000 #616E88
+        focused_workspace  #000000 #000000 #FFFFFF
+        active_workspace   #000000 #000000 #FFFFFF
+        inactive_workspace #000000 #000000 #707070
         urgent_workspace   #000000 #000000 #BF616A
     }
 # status_command ~/dotfiles/i3status/bar.sh
