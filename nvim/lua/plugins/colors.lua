@@ -8,8 +8,7 @@ local function ColorBackground(use_bg, disable_sl)
     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1C1917' })
   end
   if disable_sl then
-    vim.cmd('hi statusline guibg=NONE')
-    -- vim.cmd('hi statusline guifg=')
+    vim.cmd('hi statusline guibg=NONE') -- vim.cmd('hi statusline guifg=')
   end
 end
 
@@ -57,6 +56,15 @@ return {
     dependencies = 'rktjmp/lush.nvim',
   },
 
-  'ellisonleao/gruvbox.nvim',
-  'ricardoraposo/gruvbox-minor.nvim',
+  { 'ellisonleao/gruvbox.nvim', opts = {
+    contrast = 'hard',
+  } },
+  {
+    {
+      'ricardoraposo/gruvbox-minor.nvim',
+      config = function()
+        vim.api.nvim_set_hl(0, 'BlinkCmpMenu', { bg = '#1C1917' })
+      end,
+    },
+  },
 }
