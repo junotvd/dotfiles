@@ -2,23 +2,18 @@
 
 ROFI_THEME="$HOME/dotfiles/rofi/black-white-selector.rasi"
 
-
 SEMESTER=$(echo -e "2\n1" | rofi -dmenu -i -p "semester" -theme "$ROFI_THEME")
 [ -z "$SEMESTER" ] && exit 0
 
-
 BASE_DIR="$HOME/uni/bachelor-1/semester-$SEMESTER"
 [ ! -d "$BASE_DIR" ] && rofi -e "Semester path not found: $BASE_DIR" && exit 1
-
 
 COURSES=($(find "$BASE_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort))
 COURSES+=("planning")
 [ ${#COURSES[@]} -eq 0 ] && rofi -e "No courses found in $BASE_DIR" && exit 1
 
-
 COURSE=$(printf "%s\n" "${COURSES[@]}" | rofi -dmenu -i -p "Course" -theme "$ROFI_THEME")
 [ -z "$COURSE" ] && exit 0
-
 
 if [[ "$COURSE" == "planning" ]]; then
     PDF_FILE="$BASE_DIR/planning.pdf"
@@ -30,9 +25,7 @@ if [[ "$COURSE" == "planning" ]]; then
     exit 0
 fi
 
-
 COURSE_PATH="$BASE_DIR/$COURSE"
-
 
 SUBDIRS=($(find "$COURSE_PATH" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;))
 
@@ -40,7 +33,6 @@ SUBDIR=$(printf "%s\n" "${SUBDIRS[@]}" | rofi -dmenu -i -p "Option" -theme "$ROF
 [ -z "$SUBDIR" ] && exit 0
 
 FINAL_PATH="$COURSE_PATH/$SUBDIR"
-
 
 # Sort pdfs by date
 # mapfile -t PDFS < <(find "$FINAL_PATH" -maxdepth 1 -type f -iname "*.pdf" -printf "%T@ %p\n" | sort -nr | cut -d ' ' -f2 -)
