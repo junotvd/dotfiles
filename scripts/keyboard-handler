@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+export DISPLAY=:0
+export XAUTHORITY=/home/YOUR_USERNAME/.Xauthority
+LOGFILE="/tmp/keyboard-check.log"
+
+# Give udev a bit of time to finish creating/removing devices
+sleep 1
+
+# Count connected keyboard devices (excluding the laptop keyboard)
+external_keyboards=$(ls /sys/class/input/event*/device/name 2>/dev/null | \
+    grep -v -i "AT Translated Set 2 keyboard" | \
+    xargs -I{} cat {} | \
+    grep -i "keyboard" | wc -l)
+
+echo "$(date): $external_keyboards external keyboards detected" >> $LOGFILE
+
+if [ "$external_keyboards" -ge 1 ]; then
+    # External keyboard plugged in
+    setxkbmap us
+    echo "Applied normal layout" >> $LOGFILE
+else
+    # Only laptop keyboard
+    setxkbmap us -option ctrl:swapcaps
+    echo "Applied laptop swapcaps layout" >> $LOGFILE
+fi

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+export DISPLAY=:0
+export XAUTHORITY=/home/junot/.Xauthority
+
+case "$1" in
+external)
+    /usr/bin/setxkbmap us
+    ;;
+laptop)
+    /usr/bin/setxkbmap us -option ctrl:swapcaps
+    ;;
+esac
