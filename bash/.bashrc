@@ -65,3 +65,5 @@ unset __conda_setup
 
 # Created by `pipx` on 2024-12-23 10:05:10
 export PATH="$PATH:/home/junot/.local/bin"
+
+[ -f "/home/junot/.ghcup/env" ] && . "/home/junot/.ghcup/env" # ghcup-env

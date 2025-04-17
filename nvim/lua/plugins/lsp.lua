@@ -54,40 +54,41 @@ return {
             },
           },
         },
+        pyright = {},
+        bashls = {},
         -- digestif = {},
+        texlab = {},
+        ['nil'] = {},
+        tinymist = {},
+        hls = {
+          filetypes = { 'haskell', 'lhaskell', 'cabal' },
+        },
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
 
-        'pyright',
         'black',
         'isort',
 
-        'bashls',
         'shfmt',
 
-        'digestif',
-        -- 'texlab', ; trager dan digestif
         'latexindent',
         'bibtex-tidy',
-        -- 'chktex', ; Mason doesn't provide this
 
-        'nil',
-        'alejandra',
+        'nixfmt',
 
         'prettier',
         'vale',
 
-        'tinymist',
         'typstyle',
-        -- 'typstfmt',
 
-        -- 'fourmolu',
-        -- 'hlint',
+        'fourmolu',
+        'hlint',
       })
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
+
       require('mason-lspconfig').setup({
         ensure_installed = {},
         automatic_installation = false,
@@ -99,11 +100,12 @@ return {
           end,
         },
       })
-      require('lspconfig').digestif.setup({ capabilities = capabilities })
+      -- require('lspconfig').digestif.setup({ capabilities = capabilities })
+      -- require('lspconfig').hls.setup({ capabilities = capabilities })
     end,
   },
 
-  { -- Autoformat
+  {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
@@ -135,10 +137,9 @@ return {
         bib = { 'bibtex-tidy' },
         markdown = { 'prettier' },
         sh = { 'shfmt' },
-        nix = { 'alejandra' },
+        nix = { 'nixfmt' },
         typst = { 'typstyle' },
-        -- typst = { 'typstfmt' },
-        -- haskell = { 'fourmolu' },
+        haskell = { 'fourmolu' },
       },
     },
   },
@@ -160,7 +161,8 @@ return {
       require('lint').linters_by_ft = {
         tex = { 'chktex' },
         markdown = { 'vale' },
-        typst = { 'typstyle' },
+        haskell = { 'hlint' },
+        nix = { 'statix' },
       }
 
       vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'InsertLeave' }, {
