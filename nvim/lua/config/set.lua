@@ -23,8 +23,6 @@ opt.incsearch = true
 
 opt.scrolloff = 10
 
-opt.confirm = true
-
 opt.spell = true
 
 opt.spelllang = { 'nl', 'en_gb' }
