@@ -1,20 +1,28 @@
 return {
 
   {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
 
     config = function()
-      local harpoon = require("harpoon")
+      local harpoon = require('harpoon')
       harpoon:setup()
 
-      vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-      vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+      vim.keymap.set('n', '<leader>a', function()
+        harpoon:list():add()
+      end)
+      vim.keymap.set('n', '<C-e>', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
 
-      vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
-      vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
-    end
+      vim.keymap.set('n', '<C-p>', function()
+        harpoon:list():prev()
+      end)
+      vim.keymap.set('n', '<C-n>', function()
+        harpoon:list():next()
+      end)
+    end,
   },
 
   {
@@ -34,17 +42,14 @@ return {
 
   {
     'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
     config = function()
-      require("oil").setup({
+      require('oil').setup({
         view_options = {
           show_hidden = true,
         },
       })
     end,
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
     lazy = false,
   },
-
 }

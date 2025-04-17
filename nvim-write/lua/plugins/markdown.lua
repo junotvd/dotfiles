@@ -1,11 +1,10 @@
 return {
 
   {
-    "OXY2DEV/markview.nvim",
+    'OXY2DEV/markview.nvim',
     lazy = false,
     dependencies = {
-        "saghen/blink.cmp"
+      'saghen/blink.cmp',
     },
   },
-
 }
