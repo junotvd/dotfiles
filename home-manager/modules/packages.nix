@@ -11,6 +11,8 @@
     librewolf
     fzf
     statix
+    meslo-lg
+    meslo-lgs-nf
     haskell-language-server
   ];
 }
