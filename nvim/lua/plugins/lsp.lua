@@ -63,6 +63,7 @@ return {
         hls = {
           filetypes = { 'haskell', 'lhaskell', 'cabal' },
         },
+        matlab_ls = {},
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})

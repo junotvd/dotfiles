@@ -1,4 +1,4 @@
 return {
-  'idossha/matlab.nvim',
-  opts = {},
+  -- 'idossha/matlab.nvim',
+  -- opts = {},
 }
