@@ -56,7 +56,7 @@ return {
         },
         pyright = {},
         bashls = {},
-        -- digestif = {},
+        digestif = {},
         texlab = {},
         ['nil'] = {},
         tinymist = {},
@@ -81,6 +81,7 @@ return {
 
         'prettier',
         'vale',
+        'yamllint',
 
         'typstyle',
 
@@ -100,8 +101,9 @@ return {
           end,
         },
       })
-      -- require('lspconfig').digestif.setup({ capabilities = capabilities })
+      -- require('lspconfig').digestif.setup({capabilities = capabilities })
       -- require('lspconfig').hls.setup({ capabilities = capabilities })
+      require('lspconfig').r_language_server.setup({ capabilities = capabilities })
     end,
   },
 
@@ -112,7 +114,9 @@ return {
     keys = {
       {
         '<leader>f',
-        function() require('conform').format({ async = true, lsp_format = 'fallback' }) end,
+        function()
+          require('conform').format({ async = true, lsp_format = 'fallback' })
+        end,
         mode = '',
         desc = 'Format buffer',
       },
@@ -136,6 +140,7 @@ return {
         tex = { 'latexindent' },
         bib = { 'bibtex-tidy' },
         markdown = { 'prettier' },
+        yaml = { 'prettier' },
         sh = { 'shfmt' },
         nix = { 'nixfmt' },
         typst = { 'typstyle' },
@@ -161,12 +166,15 @@ return {
       require('lint').linters_by_ft = {
         tex = { 'chktex' },
         markdown = { 'vale' },
+        yaml = { 'yamllint' },
         haskell = { 'hlint' },
         nix = { 'statix' },
       }
 
       vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'InsertLeave' }, {
-        callback = function() require('lint').try_lint() end,
+        callback = function()
+          require('lint').try_lint()
+        end,
       })
     end,
   },
