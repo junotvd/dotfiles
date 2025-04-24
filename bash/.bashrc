@@ -11,6 +11,7 @@ export BROWSER=firefox
 export EDITOR=nvim
 export VISUAL=nvim
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export MANPAGER="nvim +Man!"
 
 eval "$(starship init bash)"
 eval "$(fzf --bash)"
@@ -32,23 +33,23 @@ alias print='firefox https://print.kuleuven.be/app?service=page/UserWebPrint'
 alias apollo='firefox https://apollo.saga-pollux.ts.net/'
 
 cd() {
-  if [ $# -eq 0 ]; then
-    if [ -n "$TMUX" ]; then
-      root=$(tmux show-environment TMUX_SESSION_ROOT 2>/dev/null | cut -d= -f2-)
-      if [ -n "$root" ]; then
-        builtin cd "$root"
-        return
-      fi
+    if [ $# -eq 0 ]; then
+        if [ -n "$TMUX" ]; then
+            root=$(tmux show-environment TMUX_SESSION_ROOT 2>/dev/null | cut -d= -f2-)
+            if [ -n "$root" ]; then
+                builtin cd "$root"
+                return
+            fi
+        fi
+        builtin cd ~
+    else
+        builtin cd "$@"
     fi
-    builtin cd ~
-  else
-    builtin cd "$@"
-  fi
 }
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/usr/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -67,3 +68,4 @@ unset __conda_setup
 export PATH="$PATH:/home/junot/.local/bin"
 
 [ -f "/home/junot/.ghcup/env" ] && . "/home/junot/.ghcup/env" # ghcup-env
+
