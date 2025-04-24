@@ -1,6 +1,6 @@
 local active_colorscheme = 'gruvbox-minor'
 local use_custom_background = false
-local disable_statusline = false
+local disable_statusline = true
 
 local function ColorBackground(use_bg, disable_sl)
   if use_bg then
@@ -8,7 +8,8 @@ local function ColorBackground(use_bg, disable_sl)
     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1C1917' })
   end
   if disable_sl then
-    vim.cmd('hi statusline guibg=NONE') -- vim.cmd('hi statusline guifg=')
+    vim.cmd('hi statusline guibg=NONE')
+    vim.cmd('hi statusline guifg=#ebdbb2')
   end
 end
 
@@ -56,15 +57,10 @@ return {
     dependencies = 'rktjmp/lush.nvim',
   },
 
-  { 'ellisonleao/gruvbox.nvim', opts = {
-    contrast = 'hard',
-  } },
   {
-    {
-      'ricardoraposo/gruvbox-minor.nvim',
-      config = function()
-        vim.api.nvim_set_hl(0, 'BlinkCmpMenu', { bg = '#1C1917' })
-      end,
-    },
+    'ricardoraposo/gruvbox-minor.nvim',
+    config = function()
+      vim.api.nvim_set_hl(0, 'BlinkCmpMenu', { bg = '#1C1917' })
+    end,
   },
 }
