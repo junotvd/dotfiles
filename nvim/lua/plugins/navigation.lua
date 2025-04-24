@@ -8,12 +8,30 @@ return {
     config = function()
       local harpoon = require('harpoon')
       harpoon:setup()
-
-      vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end)
-      vim.keymap.set('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
-      vim.keymap.set('n', '<C-p>', function() harpoon:list():prev() end)
-      vim.keymap.set('n', '<C-n>', function() harpoon:list():next() end)
+      vim.keymap.set('n', '<leader>a', function()
+        harpoon:list():add()
+      end)
+      vim.keymap.set('n', '<C-e>', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
+      vim.keymap.set('n', '<C-p>', function()
+        harpoon:list():prev()
+      end)
+      vim.keymap.set('n', '<C-n>', function()
+        harpoon:list():next()
+      end)
+      vim.keymap.set('n', '<leader>1', function()
+        harpoon:list():select(1)
+      end)
+      vim.keymap.set('n', '<leader>2', function()
+        harpoon:list():select(2)
+      end)
+      vim.keymap.set('n', '<leader>3', function()
+        harpoon:list():select(3)
+      end)
+      vim.keymap.set('n', '<leader>4', function()
+        harpoon:list():select(4)
+      end)
     end,
   },
 
@@ -29,7 +47,7 @@ return {
       require('telescope').setup({
         extensions = {
           ['ui-select'] = {
-            require('telescope.themes').get_dropdown(opts),
+            require('telescope.themes').get_dropdown({}),
           },
         },
       })
@@ -42,25 +60,17 @@ return {
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, {})
       vim.keymap.set('n', '<leader>sb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, {})
-      vim.keymap.set(
-        'n',
-        '<leader>/',
-        function()
-          builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-            previewer = false,
-          }))
-        end
-      )
-      vim.keymap.set(
-        'n',
-        '<leader>s/',
-        function()
-          builtin.live_grep({
-            grep_open_files = true,
-            prompt_title = 'Live Grep in Open Files',
-          })
-        end
-      )
+      vim.keymap.set('n', '<leader>/', function()
+        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
+          previewer = false,
+        }))
+      end)
+      vim.keymap.set('n', '<leader>s/', function()
+        builtin.live_grep({
+          grep_open_files = true,
+          prompt_title = 'Live Grep in Open Files',
+        })
+      end)
     end,
   },
 
@@ -70,6 +80,7 @@ return {
     lazy = false,
     config = function()
       require('oil').setup({
+        default_file_explorer = true,
         view_options = {
           show_hidden = true,
         },

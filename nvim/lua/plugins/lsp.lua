@@ -69,8 +69,8 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua',
 
-        'black',
-        'isort',
+        'pyright',
+        'ruff',
 
         'shfmt',
 
@@ -87,6 +87,8 @@ return {
 
         'fourmolu',
         'hlint',
+
+        'matlab-language-server',
       })
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
@@ -136,7 +138,7 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        python = { 'black', 'isort' },
+        python = { 'ruff' },
         tex = { 'latexindent' },
         bib = { 'bibtex-tidy' },
         markdown = { 'prettier' },
@@ -164,7 +166,9 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('lint').linters_by_ft = {
+        -- lua = { 'luacheck' },
         tex = { 'chktex' },
+        python = { 'ruff' },
         markdown = { 'vale' },
         yaml = { 'yamllint' },
         haskell = { 'hlint' },
@@ -173,7 +177,10 @@ return {
 
       vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'InsertLeave' }, {
         callback = function()
-          require('lint').try_lint()
+          local ft = vim.bo.filetype
+          if require('lint').linters_by_ft[ft] then
+            require('lint').try_lint()
+          end
         end,
       })
     end,
