@@ -6,5 +6,4 @@ local function TogglePeak()
     peek.open()
   end
 end
-
 vim.keymap.set('n', '<leader>ll', TogglePeak, { desc = 'Toggle Peek', buffer = true })
