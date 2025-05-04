@@ -54,7 +54,7 @@ bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 # Scripts
 bindsym $mod+s exec --no-startup-id setup
 bindsym $mod+p exec --no-startup-id course-notes
-bindsym $mod+Shift+s exec --no-startup-id rsync
+bindsym $mod+Shift+s exec --no-startup-id rsync-sync
 bindsym $mod+w exec --no-startup-id websites
 
 # change focus
