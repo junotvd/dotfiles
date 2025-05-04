@@ -52,7 +52,6 @@
 
   imports = [
     ./modules/packages.nix
-    # ./modules/programs.nix
-    # ./modules/dotfiles.nix
+    # ./modules/octave.nix
   ];
 }
