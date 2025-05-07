@@ -67,4 +67,11 @@ return {
   {
     'vague2k/vague.nvim',
   },
+
+  {
+    'webhooked/kanso.nvim',
+    opts = {
+      theme = 'zen',
+    },
+  },
 }
