@@ -1,0 +1,33 @@
+* {
+  font-family: "JuliaMono", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+window#waybar {
+  background-color: rgba(30, 30, 30, 0.95);
+  border-bottom: 2px solid #61afef;
+}
+
+#clock,
+#cpu,
+#memory,
+#network,
+#battery,
+#tray,
+#workspaces,
+#window {
+  padding: 0 10px;
+}
+
+#workspaces button {
+  border: none;
+  background: transparent;
+  color: #888;
+}
+
+#workspaces button.active {
+  color: #ffffff;
+  background: #61afef;
+  border-radius: 5px;
+}
