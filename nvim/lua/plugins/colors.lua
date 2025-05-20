@@ -1,11 +1,13 @@
 local active_colorscheme = 'gruvbox-minor'
-local use_custom_background = false
+local use_custom_background = true
 local disable_statusline = true
 
 local function ColorBackground(use_bg, disable_sl)
   if use_bg then
-    vim.api.nvim_set_hl(0, 'Normal', { bg = '#1C1917' })
-    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1C1917' })
+    -- vim.api.nvim_set_hl(0, 'Normal', { bg = '#1C1917' })
+    -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1C1917' })
+    vim.api.nvim_set_hl(0, 'Normal', { bg = '#181818' })
+    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#181818' })
   end
   if disable_sl then
     vim.cmd('hi statusline guibg=NONE')
@@ -60,18 +62,11 @@ return {
   {
     'ricardoraposo/gruvbox-minor.nvim',
     config = function()
-      vim.api.nvim_set_hl(0, 'BlinkCmpMenu', { bg = '#1C1917' })
+      vim.api.nvim_set_hl(0, 'BlinkCmpMenu', { bg = '#181818' })
     end,
   },
 
   {
     'vague2k/vague.nvim',
-  },
-
-  {
-    'webhooked/kanso.nvim',
-    opts = {
-      theme = 'zen',
-    },
   },
 }

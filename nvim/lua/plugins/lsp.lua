@@ -148,6 +148,8 @@ return {
         nix = { 'nixfmt' },
         typst = { 'typstyle' },
         haskell = { 'fourmolu' },
+        json = { 'prettier' },
+        jsonc = { 'prettier' },
       },
     },
   },
