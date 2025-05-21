@@ -9,7 +9,7 @@ return {
       require('luasnip').config.set_config({
         history = true,
         enable_autosnippets = true,
-        -- require('luasnip.loaders.from_lua').load({ paths = '~/.config/nvim/lua/snippets/' }),
+        require('luasnip.loaders.from_lua').load({ paths = './lua/luasnips' }),
       })
     end,
   },
