@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+tmpbg="/tmp/lockscreen.png"
+
+scrot "$tmpbg"
+magick "$tmpbg" -filter Gaussian -thumbnail 20% -sample 500% "$tmpbg"
+
+i3lock -i "$tmpbg"
+
+rm /tmp/lockscreen.png
