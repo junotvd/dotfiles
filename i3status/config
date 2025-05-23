@@ -28,7 +28,7 @@ read_file rsync_status {
 }
 
 wireless _first_ {
-        format_up = "W: %essid"
+        format_up = "W:%quality %essid"
         format_down = "W: /"
 }
 
