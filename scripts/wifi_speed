@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+INTERFACE="wlan0"
+
+i3status | while :; do
+    read line
+
+    if [[ -d /sys/class/net/$INTERFACE ]]; then
+        SPEED=$(iw dev $INTERFACE link | grep "tx bitrate" | awk '{print $3 " " $4}')
+        if [[ -z "$SPEED" ]]; then
+            echo "WiFi: down"
+        else
+            echo "WiFi: $SPEED"
+        fi
+    else
+        echo "WiFi: N/A"
+    fi
+
+    echo "${line}" | sed "s/^\[\(.*\)\]/[{\"full_text\":\"$WIFI\"},\1]/"
+done
