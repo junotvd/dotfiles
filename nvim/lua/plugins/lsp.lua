@@ -60,9 +60,7 @@ return {
         texlab = {},
         ['nil'] = {},
         tinymist = {},
-        hls = {
-          filetypes = { 'haskell', 'lhaskell', 'cabal' },
-        },
+        hls = {},
         matlab_ls = {},
       }
 
@@ -105,7 +103,7 @@ return {
         },
       })
       -- require('lspconfig').digestif.setup({capabilities = capabilities })
-      -- require('lspconfig').hls.setup({ capabilities = capabilities })
+      vim.lsp.enable('hls')
       require('lspconfig').r_language_server.setup({ capabilities = capabilities })
     end,
   },
