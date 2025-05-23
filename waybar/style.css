@@ -1,6 +1,6 @@
 * {
   font-family: JuliaMono;
-  font-size: 20px;
+  font-size: 16px;
   min-height: 0;
   padding-right: 2px;
   padding-left: 2px;
@@ -8,32 +8,21 @@
 }
 
 #waybar {
-  background: transparent;
-  color: #ebdbb2;
-  margin: 2px 2px;
+  background: #282828;
+  color: #ffffff;
 }
 
 #workspaces {
-  border-radius: 5px;
-  margin: 5px;
+  margin: 0px;
   background: #282828;
-  margin-left: 1rem;
 }
 
 #workspaces button {
-  color: #928374;
-  border-radius: 5px;
-  padding: 0.4rem;
+  color: #707070;
 }
 
 #workspaces button.active {
-  color: #ebdbb2;
-  border-radius: 5px;
-}
-
-#workspaces button:hover {
-  color: #ebdbb2;
-  border-radius: 5px;
+  color: #ffffff;
 }
 
 #custom-music,
@@ -54,60 +43,50 @@
 }
 
 #memory {
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 0px 0px 0px;
 }
 
 #clock {
-  color: #ebdbb2;
-  border-radius: 5px;
-  margin-right: 1rem;
+  color: #ffffff;
 }
 
 #battery {
-  color: #ebdbb2;
+  color: #ffffff;
 }
 
 #battery.charging {
-  color: #ebdbb2;
+  color: #ffffff;
 }
 
 #battery.warning:not(.charging) {
-    color: #ebdbb2;
+  color: #ffffff;
 }
 
 #backlight {
-  color: #ebdbb2;
+  color: #ffffff;
 }
 
 #backlight,
 #battery {
-  border-radius: 0;
+  color: #ffffff;
 }
 
 #pulseaudio {
-  color: #ebdbb2;
-  border-radius: 5px 0px 0px 5%;
-  margin-left: 1rem;
+  color: #ffffff;
 }
 
 #custom-music {
-  color: #ebdbb2;
-  border-radius: 5px;
+  color: #ffffff;
 }
 
 #custom-lock {
-  border-radius: 5px 0px 0px 5px;
-  color: #ebdbb2;
+  color: #ffffff;
 }
 
 #custom-power {
-  margin-right: 1rem;
-  border-radius: 0px 5px 5px 0px;
-  color: #ebdbb2;
+  color: #ffffff;
 }
 
 #tray {
-  margin-right: 1rem;
-  margin-left: 1rem;
-  border-radius: 5px;
+  color: #ffffff;
 }
