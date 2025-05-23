@@ -1,7 +1,9 @@
 # ~/.bashrc
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# [[ $- != *i* ]] && return
+
+eval "$(starship init bash)"
 
 export PATH="${PATH}:${HOME}/bin"
 export PATH="$HOME/.local/bin:$PATH"
@@ -13,14 +15,12 @@ export VISUAL=nvim
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export MANPAGER="nvim +Man!"
 
-eval "$(starship init bash)"
 eval "$(fzf --bash)"
 set -o vi
 
 # alias
 alias v=nvim
-alias write="NVIM_APPNAME=nvim-write nvim"
-alias exp="NVIM_APPNAME=nvim-exp nvim"
+alias vplug="NVIM_APPNAME=nvim-plug nvim"
 alias py=python
 alias l='ls -la'
 alias q=exit
@@ -68,4 +68,3 @@ unset __conda_setup
 export PATH="$PATH:/home/junot/.local/bin"
 
 [ -f "/home/junot/.ghcup/env" ] && . "/home/junot/.ghcup/env" # ghcup-env
-
