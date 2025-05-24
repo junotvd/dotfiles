@@ -114,15 +114,17 @@ local iv = function(i, ...)
   return d(i, get_visual, ...)
 end
 
+local asm = ls.extend_decorator.apply(s, { snippetType = 'autosnippet', condition = in_mathzone })
+
 local M = {
   --------------
   --[[ Math ]]
   --------------
 
-  as({ trig = 'mk' }, fmta('$<>$<>', { i(1), i(0) })),
-  as({ trig = 'dmk' }, fmta('$display(<>)$<>', { i(1), i(0) })),
+  as({ trig = 'mk', name = 'inline math' }, fmta('$<>$<>', { i(1), i(0) })),
+  as({ trig = 'dmk', name = 'display math inline' }, fmta('$display(<>)$<>', { i(1), i(0) })),
   as(
-    { trig = 'md', wordTrig = false, regTrig = false },
+    { trig = 'md', name = 'display math', wordTrig = false, regTrig = false },
     fmta(
       [[
 $
@@ -137,12 +139,12 @@ $<>]],
   ),
 
   -- sub/super
-  as({ trig = 'sr', wordTrig = false }, { t('^2') }, { condition = in_mathzone }),
-  as({ trig = 'cb', wordTrig = false }, { t('^3') }, { condition = in_mathzone }),
-  as({ trig = 'td' }, fmta('^(<>)', { i(1) }), { condition = in_mathzone }),
-  as({ trig = 'inv', wordTrig = false }, fmt('^(-1)', {}), { condition = in_mathzone }),
+  asm({ trig = 'sr', name = 'squared', wordTrig = false }, { t('^2') }),
+  asm({ trig = 'cb', name = 'cubed', wordTrig = false }, { t('^3') }),
+  asm({ trig = 'td', name = 'tot de ...', wordTrig = false }, fmta('^(<>)<>', { i(1), i(0) })),
+  asm({ trig = 'inv', name = 'inverse', wordTrig = false }, t('^(-1)')),
   -- TODO: originele subscripts zoals bij tex
-  as(
+  asm(
     {
       trig = '([%w%)%]%}|])jj',
       desc = 'Subscript(no ambiguity)',
@@ -154,52 +156,26 @@ $<>]],
         return snip.captures[1]
       end),
       d(1, get_visual),
-    }),
-    { condition = in_mathzone }
+    })
   ),
-  as({ trig = 'int', wordTrig = false }, fmta('integral', {}), { condition = in_mathzone }),
-  as({ trig = 'dint', wordTrig = false }, fmta('integral.double', {}), { condition = in_mathzone }),
-  as({ trig = 'tint', wordTrig = false }, fmta('integral.double', {}), { condition = in_mathzone }),
-  as({ trig = '//', wordTrig = false }, fmta('(<>)/(<>) <>', { i(1), i(2), i(0) }), { condition = in_mathzone }),
-  as(
-    { trig = 'Int', wordTrig = false },
-    fmta('integral_(<>)^(<>)<>', {
-      i(1),
-      i(2),
-      i(0),
-    }),
-    { condition = in_mathzone }
-  ),
-  as(
-    { trig = 'dInt', wordTrig = false },
-    fmta('integral.double_(<>)^(<>)<>', {
-      i(1),
-      i(2),
-      i(0),
-    }),
-    { condition = in_mathzone }
-  ),
-  as(
-    { trig = 'tInt', wordTrig = false },
-    fmta('integral.triple_(<>)^(<>)<>', {
-      i(1),
-      i(2),
-      i(0),
-    }),
-    { condition = in_mathzone }
-  ),
+  asm({ trig = 'bnd', name = 'boundaries', wordTrig = false }, fmta('_(<>)^(<>)<>', { i(1), i(2), i(0) })),
 
-  as(
+  -------------------
+  --[[ Functions ]]
+  -------------------
+
+  asm({ trig = '//', name = 'fraction', wordTrig = false }, fmta('frac(<>, <>)<>', { i(1), i(2), i(0) })),
+
+  asm(
     { trig = 'cases', wordTrig = false },
     fmta(
       [[cases(
     <>
     )<>]],
       { i(1), i(0) }
-    ),
-    { condition = in_mathzone }
+    )
   ),
-  as(
+  asm(
     { trig = 'attach', wordTrig = false },
     fmta(
       [[attach(
@@ -207,32 +183,45 @@ $<>]],
     tl: , tr: , bl: , br: ,
     )<>]],
       { i(1), i(0) }
-    ),
-    { condition = in_mathzone }
+    )
   ),
-  as({ trig = 'ubre', wordTrig = false }, fmta('underbrace(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
-  as({ trig = 'obre', wordTrig = false }, fmta('overbrace(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
-  as({ trig = 'ubrk', wordTrig = false }, fmta('underbracket(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
-  as({ trig = 'obrk', wordTrig = false }, fmta('overbracket(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
-  as({ trig = 'ubrk', wordTrig = false }, fmta('underparen(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
-  as({ trig = 'obrk', wordTrig = false }, fmta('overparen(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
-  as({ trig = 'ubrk', wordTrig = false }, fmta('undershell(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
-  as({ trig = 'obrk', wordTrig = false }, fmta('overshell(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
+
+  -- TODO
+  asm({ trig = 'ubre' }, fmta('underbrace(<>, )<>', { i(1), i(0) })),
+  asm({ trig = 'obre' }, fmta('overbrace(<>, )<>', { i(1), i(0) })),
+  asm({ trig = 'ubrk' }, fmta('underbracket(<>, )<>', { i(1), i(0) })),
+  asm({ trig = 'obrk' }, fmta('overbracket(<>, )<>', { i(1), i(0) })),
+  asm({ trig = 'ubrk' }, fmta('underparen(<>, )<>', { i(1), i(0) })),
+  asm({ trig = 'obrk' }, fmta('overparen(<>, )<>', { i(1), i(0) })),
+  asm({ trig = 'ubrk' }, fmta('undershell(<>, )<>', { i(1), i(0) })),
+  asm({ trig = 'obrk' }, fmta('overshell(<>, )<>', { i(1), i(0) })),
+
+  asm({ trig = 'stretch' }, fmta('stretch(<>)^"<>"<>', { i(1), i(2), i(0) })),
+
+  asm({ trig = 'cnl' }, fmta('cancel(<>)<>', { i(1), i(0) })),
+
+  asm({ trig = 'sq', name = 'square root' }, fmta('sqrt(<>)<>', { i(1), i(0) })),
+
+  -- TODO
+  s(
+    { trig = 'eq', name = 'numbered equation' },
+    fmta(
+      [[#math.equation(block: true, numbering: (1),
+    $
+    <>
+    $
+    )<>]],
+      { i(1), i(0) }
+    ),
+    { condition = in_textzone }
+  ),
 
   --------------
   --[[ Text ]]
   --------------
 
   as(
-    { trig = 'tt', wordTrig = false },
-    fmta([["<>"<>]], {
-      d(1, get_visual),
-      i(0),
-    }),
-    { condition = trigger_does_not_follow_alpha_char * in_mathzone }
-  ),
-  as(
-    { trig = 'tii', wordTrig = false },
+    { trig = 'tii', name = 'italic', dscr = 'italic text', wordTrig = false },
     fmta([[italic(<>)<>]], {
       d(1, get_visual),
       i(0),
@@ -240,30 +229,46 @@ $<>]],
     { condition = trigger_does_not_follow_alpha_char * in_mathzone }
   ),
   as(
-    { trig = 'tbb', wordTrig = false },
+    { trig = 'bld', name = 'bold', dscr = 'bold text', wordTrig = false },
     fmta([[bold(<>)<>]], {
       d(1, get_visual),
       i(0),
     }),
     { condition = trigger_does_not_follow_alpha_char * in_mathzone }
   ),
-  as(
-    { trig = 'tbb', wordTrig = false },
-    fmta([[*<>*<>]], {
-      d(1, get_visual),
-      i(0),
-    }),
-    { condition = trigger_does_not_follow_alpha_char * in_textzone }
-  ),
 
   -----------------
   --[[ Symbols ]]
   -----------------
 
-  as({ trig = 'iff' }, fmt('<==>', {}), { condition = in_mathzone }),
-  as({ trig = 'imp' }, fmt('==>', {}), { condition = in_mathzone }),
-  as({ trig = 'pmi' }, fmt('<==', {}), { condition = in_mathzone }),
-  as({ trig = 'xx' }, fmt('times', {}), { condition = in_mathzone }),
+  asm({ trig = 'iff', name = 'if and only if' }, t('<==>')),
+  asm({ trig = 'imp', name = 'implies' }, t('==>')),
+  asm({ trig = 'pmi', name = 'implied by' }, t('<==')),
+  asm({ trig = 'xx' }, t('times')),
+  asm({ trig = 'odot' }, t('dot.circle')),
+  asm({ trig = 'Odot' }, t('dot.circle.big')),
+  asm({ trig = 'oplus' }, t('plus.circle.big')),
+  asm({ trig = 'hdot', name = 'horizontal dots' }, t('dots.h.c')),
+  asm({ trig = 'vdot', name = 'vertical dots' }, t('dots.v')),
+  asm({ trig = 'ddot', name = 'downwards dots' }, t('dots.d')),
+  asm({ trig = 'udot', name = 'upwards dots' }, t('dots.u')),
+  asm({ trig = 'px' }, t('approx')),
+  asm({ trig = 'pm' }, t('plus.minus')),
+  asm({ trig = 'mp' }, t('minus.plus')),
+  asm({ trig = 'exi' }, t('exists')),
+  asm({ trig = 'exin' }, t('exists.not')),
+  asm({ trig = 'fal' }, t('forall')),
+  asm({ trig = 'int' }, t('integral')),
+  asm({ trig = 'Inter' }, t('inter.big')),
+  asm({ trig = 'Union' }, t('union.big')),
+  asm({ trig = 'subs' }, t('subset')),
+  asm({ trig = 'sups' }, t('supset')),
+  asm({ trig = 'dint' }, t('integral.double')),
+  asm({ trig = 'tint' }, t('integral.double')),
+  asm({ trig = 'oint' }, t('integral.cont')),
+  asm({ trig = 'sint' }, t('integral.surf')),
+  asm({ trig = 'vint' }, t('integral.vol')),
+  asm({ trig = 'quad' }, t('space.quad')),
 
   -- Greek
   as({ trig = ';a', wordTrig = false }, {
@@ -455,7 +460,7 @@ local postfix_math = {
   bb = {
     context = {
       name = 'blackboard',
-      dscr = 'blackboard',
+      dscr = 'blackboard font',
     },
     command = {
       pre = 'bb(',
@@ -466,7 +471,7 @@ local postfix_math = {
   san = {
     context = {
       name = 'sans',
-      dscr = 'sans',
+      dscr = 'sans font',
     },
     command = {
       pre = 'sans(',
@@ -477,7 +482,7 @@ local postfix_math = {
   frak = {
     context = {
       name = 'frak',
-      dscr = 'fraktur',
+      dscr = 'fraktur font',
     },
     command = {
       pre = 'frak(',
@@ -488,10 +493,10 @@ local postfix_math = {
   mon = {
     context = {
       name = 'mono',
-      dscr = 'mono',
+      dscr = 'monosize font',
     },
     command = {
-      pre = 'frak(',
+      pre = 'mono(',
       post = ')',
     },
   },
