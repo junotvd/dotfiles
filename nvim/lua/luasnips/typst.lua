@@ -189,6 +189,36 @@ $<>]],
     { condition = in_mathzone }
   ),
 
+  as(
+    { trig = 'cases', wordTrig = false },
+    fmta(
+      [[cases(
+    <>
+    )<>]],
+      { i(1), i(0) }
+    ),
+    { condition = in_mathzone }
+  ),
+  as(
+    { trig = 'attach', wordTrig = false },
+    fmta(
+      [[attach(
+    <>, t: , b: ,
+    tl: , tr: , bl: , br: ,
+    )<>]],
+      { i(1), i(0) }
+    ),
+    { condition = in_mathzone }
+  ),
+  as({ trig = 'ubre', wordTrig = false }, fmta('underbrace(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
+  as({ trig = 'obre', wordTrig = false }, fmta('overbrace(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
+  as({ trig = 'ubrk', wordTrig = false }, fmta('underbracket(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
+  as({ trig = 'obrk', wordTrig = false }, fmta('overbracket(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
+  as({ trig = 'ubrk', wordTrig = false }, fmta('underparen(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
+  as({ trig = 'obrk', wordTrig = false }, fmta('overparen(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
+  as({ trig = 'ubrk', wordTrig = false }, fmta('undershell(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
+  as({ trig = 'obrk', wordTrig = false }, fmta('overshell(<>, )<>', { i(1), i(0) }), { condition = in_mathzone }),
+
   --------------
   --[[ Text ]]
   --------------
@@ -407,6 +437,61 @@ local postfix_math = {
     },
     command = {
       pre = 'tilde(',
+      post = ')',
+    },
+  },
+
+  cal = {
+    context = {
+      name = 'cal',
+      dscr = 'calligraphic',
+    },
+    command = {
+      pre = 'cal(',
+      post = ')',
+    },
+  },
+
+  bb = {
+    context = {
+      name = 'blackboard',
+      dscr = 'blackboard',
+    },
+    command = {
+      pre = 'bb(',
+      post = ')',
+    },
+  },
+
+  san = {
+    context = {
+      name = 'sans',
+      dscr = 'sans',
+    },
+    command = {
+      pre = 'sans(',
+      post = ')',
+    },
+  },
+
+  frak = {
+    context = {
+      name = 'frak',
+      dscr = 'fraktur',
+    },
+    command = {
+      pre = 'frak(',
+      post = ')',
+    },
+  },
+
+  mon = {
+    context = {
+      name = 'mono',
+      dscr = 'mono',
+    },
+    command = {
+      pre = 'frak(',
       post = ')',
     },
   },
