@@ -23,7 +23,10 @@ return {
       ignore_install = { 'latex' },
       highlight = {
         enable = true,
-        disable = { 'latex', 'typst' },
+        disable = {
+          'latex',
+          'typst',
+        },
         additional_vim_regex_highlighting = { 'markdown' },
       },
       indent = { enable = true },
