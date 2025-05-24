@@ -1,0 +1,52 @@
+[theme]
+theme = "plain"
+[theme.overrides]
+good_fg = "#ffffff"
+warning_fg = "#ffffff"
+idle_fg = "#ffffff"
+
+[settings]
+interval = 5
+
+[[block]]
+block = "custom"
+command = "cat /tmp/rsync_status.log"
+interval = 5
+
+[[block]]
+block = "net"
+format = " $icon {$signal_strength $ssid $frequency $speed_down|Wired connection} "
+[[block.click]]
+button = "left"
+cmd = "nm-connection-editor"
+
+[[block]]
+block = "battery"
+format = " $icon $percentage "
+charging_format = " CHR $percentage "
+
+[[block]]
+block = "sound"
+# step_width = 3
+format = " $icon {$volume.eng(w:2)|} "
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "disk_space"
+info_type = "available"
+format = " $used "
+format_alt = " $icon $used/$total "
+
+[[block]]
+block = "load"
+format = " $1m.eng(w:4) "
+
+[[block]]
+block = "memory"
+format = "$mem_used "
+
+[[block]]
+block = "time"
+format = " $timestamp.datetime(f:'%d-%m-%Y %H:%M:%S') "
