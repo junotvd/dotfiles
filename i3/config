@@ -146,7 +146,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    status_command i3status
+    # status_command i3status
+    status_command i3status-rs
 
 
     font pango:JuliaMono 12
