@@ -1,4 +1,5 @@
 -- https://github.com/evesdropper/dotfiles/blob/main/nvim/lua/snippets/tex/utils/conditions.lua
+-- https://forum.typst.app/t/giles-castel-like-snippets-for-typst-in-neovim/3961
 
 local M = {}
 

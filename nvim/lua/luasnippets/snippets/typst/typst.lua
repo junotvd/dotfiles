@@ -1,5 +1,25 @@
 -- TODO: alles wat recursief is
 
+local generate_matrix = function(args, snip)
+  local rows = tonumber(snip.captures[2])
+  local cols = tonumber(snip.captures[3])
+  local nodes = {}
+  local ins_indx = 1
+  for j = 1, rows do
+    table.insert(nodes, r(ins_indx, tostring(j) .. 'x1', i(1)))
+    ins_indx = ins_indx + 1
+    for k = 2, cols do
+      table.insert(nodes, t(' , '))
+      table.insert(nodes, r(ins_indx, tostring(j) .. 'x' .. tostring(k), i(1)))
+      ins_indx = ins_indx + 1
+    end
+    table.insert(nodes, t({ ';', '' }))
+  end
+  -- fix last node.
+  nodes[#nodes] = t(';')
+  return sn(nil, nodes)
+end
+
 local postfix_snippet = require('luasnippets.snippets.typst.utils.scaffolding').postfix_snippet
 local typst = require('luasnippets.snippets.typst.utils').conditions
 local line_begin = require('luasnip.extras.conditions.expand').line_begin
@@ -36,6 +56,40 @@ $<>]],
   asm({ trig = 'td', name = 'tot de ...', wordTrig = false }, fmta('^(<>)<>', { i(1), i(0) })),
   asm({ trig = 'inv', name = 'inverse', wordTrig = false }, t('^(-1)')),
   -- TODO: originele subscripts zoals bij tex
+  asm(
+    {
+      trig = '([%a]+)(%d)',
+      wordTrig = false,
+      regTrig = true,
+      name = 'Auto-subscript 1D',
+      dscr = 'Auto-subscript with 1 digit',
+    },
+    fmta('<>_<>', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      f(function(_, snip)
+        return snip.captures[2]
+      end),
+    })
+  ),
+  asm(
+    {
+      trig = '(%w)_(%d%d)',
+      wordTrig = false,
+      regTrig = true,
+      name = 'Auto-subscript 2D',
+      dscr = 'Auto-subscript for 2 digits',
+    },
+    fmt([[{}_({})]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      f(function(_, snip)
+        return snip.captures[2]
+      end),
+    })
+  ),
   asm(
     {
       trig = '([%w%)%]%}|])jj',
@@ -98,8 +152,26 @@ $<>]],
     <>, t: , b: ,
     tl: , tr: , bl: , br: ,
     )<>]],
-      { i(1), i(0) }
+      { d(1, get_visual), i(0) }
     )
+  ),
+
+  asm(
+    { trig = 'limit' },
+    fmt('limit({})_({} --> {}){}', {
+      d(1, get_visual),
+      i(2, 'x'),
+      i(3, 'infinity'),
+      i(0),
+    })
+  ),
+  asm(
+    { trig = 'lims' },
+    fmta('limits(<>)_(<>)<>', {
+      d(1, get_visual),
+      i(2),
+      i(0),
+    })
   ),
 
   -- TODO
@@ -113,9 +185,9 @@ $<>]],
   asm({ trig = 'obrk' }, fmta('overshell(<>)<>', { d(1, get_visual), i(0) })),
 
   asm({ trig = 'stretch' }, fmta('stretch(<>)^"<>"<>', { d(1, get_visual), i(2), i(0) })),
-
   asm({ trig = 'cnl' }, fmta('cancel(<>)<>', { d(1, get_visual), i(0) })),
-
+  asm({ trig = 'abs' }, fmta('abs(<>)<>', { d(1, get_visual), i(0) })),
+  asm({ trig = 'norm' }, fmta('norm(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'sq', name = 'square root' }, fmta('sqrt(<>)<>', { d(1, get_visual), i(0) })),
 
   -- TODO
@@ -183,6 +255,7 @@ $<>]],
   asm({ trig = 'sint' }, t('integral.surf')),
   asm({ trig = 'vint' }, t('integral.vol')),
   asm({ trig = 'quad' }, t('space.quad')),
+  asm({ trig = 'oo' }, t('infinity')),
 
   -- Greek
   as({ trig = ';a', wordTrig = false }, {
