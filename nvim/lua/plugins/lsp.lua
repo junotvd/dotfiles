@@ -103,7 +103,7 @@ return {
         },
       })
       -- require('lspconfig').digestif.setup({capabilities = capabilities })
-      vim.lsp.enable('hls')
+      -- vim.lsp.enable('hls')
       require('lspconfig').r_language_server.setup({ capabilities = capabilities })
     end,
   },
@@ -158,6 +158,7 @@ return {
     opts = {
       library = {
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        { path = vim.fn.stdpath('config') .. '/lua/snippets/' },
       },
     },
   },
