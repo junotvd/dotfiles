@@ -25,7 +25,7 @@ return {
         enable = true,
         disable = {
           'latex',
-          'typst',
+          -- 'typst',
         },
         additional_vim_regex_highlighting = { 'markdown' },
       },
