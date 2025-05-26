@@ -234,10 +234,16 @@ $<>]],
   asm({ trig = 'odot' }, t('dot.circle')),
   asm({ trig = 'Odot' }, t('dot.circle.big')),
   asm({ trig = 'oplus' }, t('plus.circle.big')),
-  asm({ trig = 'hdot', name = 'horizontal dots' }, t('dots.h.c')),
-  asm({ trig = 'vdot', name = 'vertical dots' }, t('dots.v')),
-  asm({ trig = 'ddot', name = 'downwards dots' }, t('dots.d')),
-  asm({ trig = 'udot', name = 'upwards dots' }, t('dots.u')),
+  asm(
+    { trig = '([hvdu])dot', regTrig = true, name = 'dots' },
+    fmta('<><>', {
+      f(function(_, snip)
+        local map = { h = 'h.c', v = 'v', d = 'd', u = 'u' }
+        return 'dots.' .. map[snip.captures[1]]
+      end),
+      i(0),
+    })
+  ),
   asm({ trig = 'px' }, t('approx')),
   asm({ trig = 'pm' }, t('plus.minus')),
   asm({ trig = 'mp' }, t('minus.plus')),
@@ -249,11 +255,22 @@ $<>]],
   asm({ trig = 'Union' }, t('union.big')),
   asm({ trig = 'subs' }, t('subset')),
   asm({ trig = 'sups' }, t('supset')),
-  asm({ trig = 'dint' }, t('integral.double')),
-  asm({ trig = 'tint' }, t('integral.double')),
-  asm({ trig = 'oint' }, t('integral.cont')),
-  asm({ trig = 'sint' }, t('integral.surf')),
-  asm({ trig = 'vint' }, t('integral.vol')),
+  asm(
+    { trig = '([dtosv])int', name = 'integrals', regTrig = true },
+    fmta('<><>', {
+      f(function(_, snip)
+        local map = {
+          d = 'double',
+          t = 'triple',
+          o = 'cont',
+          s = 'surf',
+          v = 'vol',
+        }
+        return 'integral.' .. map[snip.captures[1]]
+      end),
+      i(0),
+    })
+  ),
   asm({ trig = 'quad' }, t('space.quad')),
   asm({ trig = 'oo' }, t('infinity')),
 
