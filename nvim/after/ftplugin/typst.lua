@@ -1,2 +1,3 @@
-vim.keymap.set('n', '<leader>ll', vim.cmd.TypstPreviewToggle, { buffer = true })
+local typst_watch = require('typst').watch
+vim.keymap.set('n', '<leader>ll', typst_watch)
 vim.keymap.set('n', '<leader>lc', ':!typst compile %<CR>')
