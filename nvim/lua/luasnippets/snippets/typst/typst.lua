@@ -1,4 +1,7 @@
 -- TODO: alles wat recursief is
+--
+-- local test = function(_, snip)
+-- end
 
 local generate_matrix = function(args, snip)
   local rows = tonumber(snip.captures[2])
@@ -53,8 +56,8 @@ $<>]],
   -- sub/super
   asm({ trig = 'sr', name = 'squared', wordTrig = false }, { t('^2') }),
   asm({ trig = 'cb', name = 'cubed', wordTrig = false }, { t('^3') }),
-  asm({ trig = 'td', name = 'tot de ...', wordTrig = false }, fmta('^(<>)<>', { i(1), i(0) })),
   asm({ trig = 'inv', name = 'inverse', wordTrig = false }, t('^(-1)')),
+  asm({ trig = 'td', name = 'tot de ...', wordTrig = false }, fmta('^(<>)<>', { i(1), i(0) })),
   -- TODO: originele subscripts zoals bij tex
   asm(
     {
@@ -81,7 +84,7 @@ $<>]],
       name = 'Auto-subscript 2D',
       dscr = 'Auto-subscript for 2 digits',
     },
-    fmt([[{}_({})]], {
+    fmta([[<>_(<>)]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -92,16 +95,24 @@ $<>]],
   ),
   asm(
     {
-      trig = '([%w%)%]%}|])jj',
-      desc = 'Subscript(no ambiguity)',
+      trig = 'jj',
+      desc = 'Subscript',
       wordTrig = false,
-      regTrig = true,
     },
-    fmta('<>_(<>)', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
+    fmta('_(<>)<>', {
       i(1),
+      i(0),
+    })
+  ),
+  asm(
+    {
+      trig = 'jt',
+      desc = 'Subscript',
+      wordTrig = false,
+    },
+    fmta('_("<>")<>', {
+      i(1),
+      i(0),
     })
   ),
   asm({ trig = 'bnd', name = 'boundaries', wordTrig = false }, fmta('_(<>)^(<>)<>', { i(1), i(2), i(0) })),
@@ -145,6 +156,7 @@ $<>]],
       { i(1), i(0) }
     )
   ),
+  -- TODO
   asm(
     { trig = 'attach', wordTrig = false },
     fmta(
@@ -157,11 +169,11 @@ $<>]],
   ),
 
   asm(
-    { trig = 'limit' },
-    fmt('limit({})_({} --> {}){}', {
-      d(1, get_visual),
-      i(2, 'x'),
-      i(3, 'infinity'),
+    { trig = 'limt' },
+    fmt('lim_({} --> {}){}{}', {
+      i(1, 'x'),
+      i(2, 'infinity'),
+      d(3, get_visual),
       i(0),
     })
   ),
@@ -179,16 +191,16 @@ $<>]],
   asm({ trig = 'obre' }, fmta('overbrace(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'ubrk' }, fmta('underbracket(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'obrk' }, fmta('overbracket(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'ubrk' }, fmta('underparen(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'obrk' }, fmta('overparen(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'ubrk' }, fmta('undershell(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'obrk' }, fmta('overshell(<>)<>', { d(1, get_visual), i(0) })),
+  asm({ trig = 'upar' }, fmta('underparen(<>)<>', { d(1, get_visual), i(0) })),
+  asm({ trig = 'opar' }, fmta('overparen(<>)<>', { d(1, get_visual), i(0) })),
+  asm({ trig = 'ushe' }, fmta('undershell(<>)<>', { d(1, get_visual), i(0) })),
+  asm({ trig = 'oshe' }, fmta('overshell(<>)<>', { d(1, get_visual), i(0) })),
 
   asm({ trig = 'stretch' }, fmta('stretch(<>)^"<>"<>', { d(1, get_visual), i(2), i(0) })),
   asm({ trig = 'cnl' }, fmta('cancel(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'abs' }, fmta('abs(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'norm' }, fmta('norm(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'sq', name = 'square root' }, fmta('sqrt(<>)<>', { d(1, get_visual), i(0) })),
+  asm({ trig = 'sqrt', name = 'square root' }, fmta('sqrt(<>)<>', { d(1, get_visual), i(0) })),
 
   -- TODO
   s(
@@ -222,6 +234,18 @@ $<>]],
       i(0),
     })
   ),
+  asm(
+    {
+      trig = 'pdv',
+      name = 'partial differential equation',
+      dscr = 'pdv from the physica package (required)',
+      wordTrig = false,
+    },
+    fmta([[pdv(<>)<>]], {
+      d(1, get_visual),
+      i(0),
+    })
+  ),
 
   -----------------
   --[[ Symbols ]]
@@ -238,7 +262,7 @@ $<>]],
     { trig = '([hvdu])dot', regTrig = true, name = 'dots' },
     fmta('<><>', {
       f(function(_, snip)
-        local map = { h = 'h.c', v = 'v', d = 'd', u = 'u' }
+        local map = { h = 'h.c', v = 'v', d = 'down', u = 'up' }
         return 'dots.' .. map[snip.captures[1]]
       end),
       i(0),
@@ -250,29 +274,43 @@ $<>]],
   asm({ trig = 'exi' }, t('exists')),
   asm({ trig = 'exin' }, t('exists.not')),
   asm({ trig = 'fal' }, t('forall')),
-  asm({ trig = 'int' }, t('integral')),
   asm({ trig = 'Inter' }, t('inter.big')),
   asm({ trig = 'Union' }, t('union.big')),
-  asm({ trig = 'subs' }, t('subset')),
-  asm({ trig = 'sups' }, t('supset')),
-  asm(
-    { trig = '([dtosv])int', name = 'integrals', regTrig = true },
-    fmta('<><>', {
-      f(function(_, snip)
-        local map = {
-          d = 'double',
-          t = 'triple',
-          o = 'cont',
-          s = 'surf',
-          v = 'vol',
-        }
-        return 'integral.' .. map[snip.captures[1]]
-      end),
-      i(0),
-    })
-  ),
-  asm({ trig = 'quad' }, t('space.quad')),
-  asm({ trig = 'oo' }, t('infinity')),
+  asm({ trig = 'bset' }, t('subset')),
+  asm({ trig = 'pset' }, t('supset')),
+  asm({ trig = 'OO' }, t('emptyset')),
+  asm({ trig = 'iint' }, t('integral')),
+  asm({ trig = 'dint' }, t('integral.double')),
+  asm({ trig = 'tint' }, t('integral.triple')),
+  asm({ trig = 'qint' }, t('integral.quad')),
+  asm({ trig = 'oint' }, t('integral.cont')),
+  asm({ trig = 'sint' }, t('integral.surf')),
+  asm({ trig = 'vint' }, t('integral.vol')),
+  -- asm(
+  --   { trig = '([idtosv])int', name = 'integrals', regTrig = true },
+  --   fmta('<><>', {
+  --     f(function(_, snip)
+  --       local map = {
+  --         i = '',
+  --         d = '.double',
+  --         t = '.triple',
+  --         o = '.cont',
+  --         s = '.surf',
+  --         v = '.vol',
+  --       }
+  --       return 'integral' .. map[snip.captures[1]]
+  --     end),
+  --     i(0),
+  --   })
+  -- ),
+  asm({ trig = 'spq' }, t('space.quad')),
+  asm({ trig = 'spe' }, t('space.en')),
+  asm({ trig = 'spt' }, t('space.thin')),
+  asm({ trig = 'sph' }, t('space.hair')),
+  asm({ trig = 'sp3' }, t('space.third')),
+  asm({ trig = 'sp4' }, t('space.quarter')),
+  asm({ trig = 'sp6' }, t('space.sixth')),
+  asm({ trig = 'oo', wordTrig = false }, t('infinity')),
 
   -- Greek
   as({ trig = ';a', wordTrig = false }, {
@@ -439,16 +477,16 @@ local postfix_math = {
     },
   },
 
-  ['~'] = {
-    context = {
-      name = 'tilde',
-      dscr = 'tilde',
-    },
-    command = {
-      pre = 'tilde(',
-      post = ')',
-    },
-  },
+  -- ['~'] = {
+  --   context = {
+  --     name = 'tilde',
+  --     dscr = 'tilde',
+  --   },
+  --   command = {
+  --     pre = 'tilde(',
+  --     post = ')',
+  --   },
+  -- },
 
   cal = {
     context = {
@@ -490,17 +528,6 @@ local postfix_math = {
     },
     command = {
       pre = 'frak(',
-      post = ')',
-    },
-  },
-
-  mon = {
-    context = {
-      name = 'mono',
-      dscr = 'monosize font',
-    },
-    command = {
-      pre = 'mono(',
       post = ')',
     },
   },
