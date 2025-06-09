@@ -1,4 +1,4 @@
-local tex = require('luasnips.tex.utils').conditions
+local tex = require('luasnippets.snippets.tex.utils').conditions
 
 return {
 
