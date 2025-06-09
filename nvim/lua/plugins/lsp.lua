@@ -3,7 +3,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'williamboman/mason.nvim', opts = {} },
+      { 'williamboman/mason.nvim', opts = {}, version = '1.9' },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       'saghen/blink.cmp',
@@ -142,6 +142,7 @@ return {
         bib = { 'bibtex-tidy' },
         markdown = { 'prettier' },
         yaml = { 'prettier' },
+        html = { 'prettier' },
         sh = { 'shfmt' },
         nix = { 'nixfmt' },
         typst = { 'typstyle' },
