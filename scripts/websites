@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
 
-CHOICE=$(echo -e "pdf\nkuleuven\ngithub\nspotify\npearson\ntailscale" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+CHOICE=$(echo -e "kuleuven\ngithub\nspotify\npearson\ntailscale" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
 
 if [ -z "$CHOICE" ]; then
     exit 0
 fi
 
 case "$CHOICE" in
-"pdf")
-    xdg-open http://100.124.103.23:8080/
-    ;;
 "kuleuven")
     KUL=$(echo -e "Toledo\nKU Loket\nKURT\nprint" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
     case "$KUL" in
@@ -54,13 +51,16 @@ case "$CHOICE" in
     xdg-open https://www.pearson.com/en-gb/higher-education/products-services/mylab-and-mastering-login.html
     ;;
 "tailscale")
-    TAILSCALE=$(echo -e "apollo\nai" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+    TAILSCALE=$(echo -e "pdf\napollo\nai" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
     case "$TAILSCALE" in
     "apollo")
         xdg-open https://apollo.saga-pollux.ts.net/
         ;;
     "ai")
         xdg-open https://openwebui.saga-pollux.ts.net/
+        ;;
+    "pdf")
+        xdg-open http://100.124.103.23:8080/
         ;;
     esac
     if [ -z "$TAILSCALE" ]; then
