@@ -161,24 +161,23 @@ $<>]],
     { trig = 'attach', wordTrig = false },
     fmta(
       [[attach(
-    <>, t: , b: ,
-    tl: , tr: , bl: , br: ,
+    <>, <>
     )<>]],
-      { d(1, get_visual), i(0) }
+      { d(1, get_visual), i(2), i(0) }
     )
   ),
 
   asm(
     { trig = 'limt' },
     fmt('lim_({} --> {}){}{}', {
-      i(1, 'x'),
+      i(1, 'n'),
       i(2, 'infinity'),
       d(3, get_visual),
       i(0),
     })
   ),
   asm(
-    { trig = 'lims' },
+    { trig = 'limits' },
     fmta('limits(<>)_(<>)<>', {
       d(1, get_visual),
       i(2),
@@ -186,7 +185,7 @@ $<>]],
     })
   ),
 
-  -- TODO
+  -- TOD{O
   asm({ trig = 'ubre' }, fmta('underbrace(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'obre' }, fmta('overbrace(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'ubrk' }, fmta('underbracket(<>)<>', { d(1, get_visual), i(0) })),
