@@ -157,15 +157,7 @@ $<>]],
     )
   ),
   -- TODO
-  asm(
-    { trig = 'attach', wordTrig = false },
-    fmta(
-      [[attach(
-    <>, <>
-    )<>]],
-      { d(1, get_visual), i(2), i(0) }
-    )
-  ),
+  asm({ trig = 'attach', wordTrig = false }, fmta([[attach(<>, <>)<>]], { d(1, get_visual), i(2), i(0) })),
 
   asm(
     { trig = 'limt' },
@@ -185,7 +177,7 @@ $<>]],
     })
   ),
 
-  -- TOD{O
+  -- TODO
   asm({ trig = 'ubre' }, fmta('underbrace(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'obre' }, fmta('overbrace(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'ubrk' }, fmta('underbracket(<>)<>', { d(1, get_visual), i(0) })),
@@ -195,7 +187,7 @@ $<>]],
   asm({ trig = 'ushe' }, fmta('undershell(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'oshe' }, fmta('overshell(<>)<>', { d(1, get_visual), i(0) })),
 
-  asm({ trig = 'stretch' }, fmta('stretch(<>)^"<>"<>', { d(1, get_visual), i(2), i(0) })),
+  asm({ trig = 'stretch' }, fmta('stretch(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'cnl' }, fmta('cancel(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'abs' }, fmta('abs(<>)<>', { d(1, get_visual), i(0) })),
   asm({ trig = 'norm' }, fmta('norm(<>)<>', { d(1, get_visual), i(0) })),
@@ -242,6 +234,45 @@ $<>]],
     },
     fmta([[pdv(<>)<>]], {
       d(1, get_visual),
+      i(0),
+    })
+  ),
+  asm(
+    {
+      trig = 'open',
+      name = 'open interval',
+      dscr = 'open interval with lr',
+      wordTrig = true,
+    },
+    fmta('lr(\\]<>,<>\\[)<>', {
+      d(1, get_visual),
+      i(2),
+      i(0),
+    })
+  ),
+  asm(
+    {
+      trig = 'lopen',
+      name = 'half-open interval left',
+      dscr = 'left half-open interval with lr',
+      wordTrig = true,
+    },
+    fmta('lr(\\]<>,<>\\])<>', {
+      d(1, get_visual),
+      i(2),
+      i(0),
+    })
+  ),
+  asm(
+    {
+      trig = 'ropen',
+      name = 'half-open interval right',
+      dscr = 'right half-open interval with lr',
+      wordTrig = true,
+    },
+    fmta('lr(\\[<>,<>\\[)<>', {
+      d(1, get_visual),
+      i(2),
       i(0),
     })
   ),
