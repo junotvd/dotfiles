@@ -5,9 +5,6 @@ good_fg = "#ffffff"
 warning_fg = "#ffffff"
 idle_fg = "#ffffff"
 
-[settings]
-interval = 5
-
 [[block]]
 block = "custom"
 command = "cat /tmp/rsync_status.log"
@@ -49,4 +46,5 @@ format = "$mem_used "
 
 [[block]]
 block = "time"
-format = " $timestamp.datetime(f:'%d-%m-%Y %H:%M:%S') "
+format = " $timestamp.datetime(f:'%d %H:%M:%S') "
+interval = 5
