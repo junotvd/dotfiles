@@ -1,4 +1,4 @@
-local active_colorscheme = 'lettapa'
+local active_colorscheme = 'nord'
 local use_custom_background = false
 local disable_statusline = false
 
@@ -68,5 +68,9 @@ return {
 
   {
     'vague2k/vague.nvim',
+  },
+
+  {
+    'RostislavArts/naysayer.nvim',
   },
 }
