@@ -1,7 +1,7 @@
 local wezterm = require('wezterm')
 local config = {}
 
-config.leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000 }
+-- config.leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000 }
 -- config.keys = {
 --   {
 --     mods = 'LEADER',
