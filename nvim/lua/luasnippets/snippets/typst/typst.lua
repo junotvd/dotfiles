@@ -445,6 +445,28 @@ $<>]],
   as({ trig = ';W', wordTrig = false }, {
     t('Omega'),
   }),
+
+  as({ trig = 'definieren', wordTrig = false }, {
+    t('definiëren'),
+  }),
+  as({ trig = 'continuiteit', wordTrig = false }, {
+    t('continuïteit'),
+  }),
+  as({ trig = 'reele', wordTrig = false }, {
+    t('reële'),
+  }),
+  as({ trig = 'reeel', wordTrig = false }, {
+    t('reëel'),
+  }),
+  as({ trig = 'coefficient', wordTrig = false }, {
+    t('coëfficiënt'),
+  }),
+  as({ trig = 'quotient', wordTrig = false }, {
+    t('quotiënt'),
+  }),
+  as({ trig = ':e:', wordTrig = false }, {
+    t('ë'),
+  }),
 }
 
 ----------------
