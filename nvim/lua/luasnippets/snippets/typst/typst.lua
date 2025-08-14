@@ -395,7 +395,7 @@ $<>]],
     t('mu'),
   }),
   as({ trig = ';n', wordTrig = false }, {
-    t('nu'),
+    t('nabla'),
   }),
   as({ trig = ';x', wordTrig = false }, {
     t('xi'),
@@ -419,7 +419,7 @@ $<>]],
     t('Sigma'),
   }),
   as({ trig = ';t', wordTrig = false }, {
-    t('tau'),
+    t('theta'),
   }),
   as({ trig = ';f', wordTrig = false }, {
     t('phi'),
@@ -466,6 +466,78 @@ $<>]],
   }),
   as({ trig = ':e:', wordTrig = false }, {
     t('ë'),
+  }),
+  as({ trig = [['e']], wordTrig = false }, {
+    t('é'),
+  }),
+  as({ trig = 'coordinaten', wordTrig = false }, {
+    t('coördinaten'),
+  }),
+  as({ trig = 'algebraisch', wordTrig = false }, {
+    t('algebraïsch'),
+  }),
+  as({ trig = 'coordinaat', wordTrig = false }, {
+    t('coördinaat'),
+  }),
+  as({ trig = 'Coordinaat', wordTrig = false }, {
+    t('Coördinaat'),
+  }),
+  as({ trig = 'geisoleerd', wordTrig = false }, {
+    t('geïsoleerd'),
+  }),
+  as({ trig = 'intuitief', wordTrig = false }, {
+    t('intuïtief'),
+  }),
+  as({ trig = 'intuitieve', wordTrig = false }, {
+    t('intuïtieve'),
+  }),
+  as({ trig = 'partiele', wordTrig = false }, {
+    t('partiële'),
+  }),
+  as({ trig = 'gradient', wordTrig = false }, {
+    t('gradiënt'),
+  }),
+  as({ trig = 'georienteerd', wordTrig = false }, {
+    t('georiënteerd'),
+  }),
+  as({ trig = 'orienteerbaar', wordTrig = false }, {
+    t('oriënteerbaar'),
+  }),
+  as({ trig = 'solenoidaal', wordTrig = false }, {
+    t('solenoïdaal'),
+  }),
+  as({ trig = 'Solenoidaal', wordTrig = false }, {
+    t('Solenoïdaal'),
+  }),
+  as({ trig = 'solenoidale', wordTrig = false }, {
+    t('solenoïdale'),
+  }),
+  as({ trig = 'Solenoidale', wordTrig = false }, {
+    t('Solenoïdale'),
+  }),
+  as({ trig = 'potentiele', wordTrig = false }, {
+    t('potentiële'),
+  }),
+  as({ trig = 'Potentiele', wordTrig = false }, {
+    t('Potentiële'),
+  }),
+  as({ trig = 'dielektrisch', wordTrig = false }, {
+    t('diëlektrisch'),
+  }),
+  as({ trig = 'Dielektrisch', wordTrig = false }, {
+    t('Diëlektrisch'),
+  }),
+  as({ trig = 'dielektrica', wordTrig = false }, {
+    t('diëlektrica'),
+  }),
+  as({ trig = 'Dielektrica', wordTrig = false }, {
+    t('Diëlektrica'),
+  }),
+  as({ trig = 'vacuum', wordTrig = false }, {
+    t('vacuüm'),
+  }),
+  as({ trig = 'Vacuum', wordTrig = false }, {
+    t('Vacuüm'),
   }),
 }
 
