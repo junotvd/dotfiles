@@ -1,8 +1,8 @@
 set recolor
 
-set default-bg \#000000
-set recolor-lightcolor \#000
-set recolor-darkcolor \#ECEFF4
+set default-bg \#2E3440
+set recolor-lightcolor \#FAF395
+set recolor-darkcolor \#000000
 set recolor-keephue
 
 set statusbar-fg \#ECEFF4
