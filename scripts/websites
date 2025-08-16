@@ -51,7 +51,7 @@ case "$CHOICE" in
     xdg-open https://www.pearson.com/en-gb/higher-education/products-services/mylab-and-mastering-login.html
     ;;
 "tailscale")
-    TAILSCALE=$(echo -e "pdf\napollo\nai" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
+    TAILSCALE=$(echo -e "pdf\napollo\nai\nemby" | rofi -dmenu -i -p "" -theme $HOME/dotfiles/rofi/black-white-selector.rasi)
     case "$TAILSCALE" in
     "apollo")
         xdg-open https://apollo.saga-pollux.ts.net/
@@ -61,6 +61,9 @@ case "$CHOICE" in
         ;;
     "pdf")
         xdg-open http://100.124.103.23:8080/
+        ;;
+    "emby")
+        xdg-open http://mac-mini-m1-1.saga-pollux.ts.net
         ;;
     esac
     if [ -z "$TAILSCALE" ]; then
