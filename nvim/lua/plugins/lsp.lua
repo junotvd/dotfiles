@@ -149,6 +149,7 @@ return {
         haskell = { 'fourmolu' },
         json = { 'prettier' },
         jsonc = { 'prettier' },
+        toml = { 'prettier' },
       },
     },
   },
