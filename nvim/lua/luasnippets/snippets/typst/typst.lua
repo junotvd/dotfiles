@@ -539,6 +539,18 @@ $<>]],
   as({ trig = 'Vacuum', wordTrig = false }, {
     t('Vacuüm'),
   }),
+  as({ trig = 'initiele', wordTrig = false }, {
+    t('initiële'),
+  }),
+  as({ trig = 'Initiele', wordTrig = false }, {
+    t('Initiële'),
+  }),
+  as({ trig = 'tangentiele', wordTrig = false }, {
+    t('tangentiële'),
+  }),
+  as({ trig = 'Tangentiele', wordTrig = false }, {
+    t('Tangentiële'),
+  }),
 }
 
 ----------------
