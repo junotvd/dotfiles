@@ -1,7 +1,7 @@
 set recolor
 
 set default-bg \#2E3440
-set recolor-lightcolor \#FAF395
+set recolor-lightcolor \#e1e1db
 set recolor-darkcolor \#000000
 set recolor-keephue
 
