@@ -1,4 +1,4 @@
-local active_colorscheme = 'nord'
+local active_colorscheme = 'melange'
 local use_custom_background = false
 local disable_statusline = false
 
@@ -73,4 +73,6 @@ return {
   {
     'RostislavArts/naysayer.nvim',
   },
+
+  { 'savq/melange-nvim' },
 }
