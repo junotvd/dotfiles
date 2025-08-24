@@ -30,6 +30,7 @@ local get_visual = require('luasnippets.helper-funcs').get_visual
 local ls = require('luasnip')
 local as = ls.extend_decorator.apply(s, { snippetType = 'autosnippet' })
 local asm = ls.extend_decorator.apply(s, { snippetType = 'autosnippet', condition = typst.in_mathzone })
+local ast = ls.extend_decorator.apply(s, { snippetType = 'autosnippet', condition = typst.in_textzone })
 
 local M = {
   --------------
@@ -226,6 +227,20 @@ $<>]],
     })
   ),
   asm(
+    { trig = 'blv', name = 'bold vector', dscr = 'bold vector', wordTrig = false },
+    fmta([[bold(vector(<>))<>]], {
+      d(1, get_visual),
+      i(0),
+    })
+  ),
+  asm(
+    { trig = 'blh', name = 'bold hat', dscr = 'bold hat', wordTrig = false },
+    fmta([[bold(hat(<>))<>]], {
+      d(1, get_visual),
+      i(0),
+    })
+  ),
+  asm(
     {
       trig = 'pdv',
       name = 'partial differential equation',
@@ -299,8 +314,8 @@ $<>]],
     })
   ),
   asm({ trig = 'px' }, t('approx')),
-  asm({ trig = 'pm' }, t('plus.minus')),
-  asm({ trig = 'mp' }, t('minus.plus')),
+  asm({ trig = 'plm' }, t('plus.minus')),
+  asm({ trig = 'mpl' }, t('minus.plus')),
   asm({ trig = 'exi' }, t('exists')),
   asm({ trig = 'exin' }, t('exists.not')),
   asm({ trig = 'fal' }, t('forall')),
@@ -349,6 +364,9 @@ $<>]],
   as({ trig = ';b', wordTrig = false }, {
     t('beta'),
   }),
+  as({ trig = ';vb', wordTrig = false }, {
+    t('beta.alt'),
+  }),
   as({ trig = ';g', wordTrig = false }, {
     t('gamma'),
   }),
@@ -370,20 +388,35 @@ $<>]],
   as({ trig = ';z', wordTrig = false }, {
     t('zeta'),
   }),
+  as({ trig = ';Z', wordTrig = false }, {
+    t('Zeta'),
+  }),
   as({ trig = ';h', wordTrig = false }, {
     t('eta'),
   }),
-  as({ trig = ';o', wordTrig = false }, {
+  as({ trig = ';H', wordTrig = false }, {
+    t('Eta'),
+  }),
+  as({ trig = ';t', wordTrig = false }, {
     t('theta'),
   }),
-  as({ trig = ';vo', wordTrig = false }, {
+  as({ trig = ';vt', wordTrig = false }, {
     t('theta.alt'),
   }),
-  as({ trig = ';O', wordTrig = false }, {
+  as({ trig = ';T', wordTrig = false }, {
     t('Theta'),
+  }),
+  as({ trig = ';j', wordTrig = false }, {
+    t('iota'),
+  }),
+  as({ trig = ';J', wordTrig = false }, {
+    t('Iota'),
   }),
   as({ trig = ';k', wordTrig = false }, {
     t('kappa'),
+  }),
+  as({ trig = ';vk', wordTrig = false }, {
+    t('kappa.alt'),
   }),
   as({ trig = ';l', wordTrig = false }, {
     t('lambda'),
@@ -403,8 +436,17 @@ $<>]],
   as({ trig = ';X', wordTrig = false }, {
     t('Xi'),
   }),
+  as({ trig = ';o', wordTrig = false }, {
+    t('omicron'),
+  }),
+  as({ trig = ';O', wordTrig = false }, {
+    t('Omicron'),
+  }),
   as({ trig = ';i', wordTrig = false }, {
     t('pi'),
+  }),
+  as({ trig = ';vi', wordTrig = false }, {
+    t('pi.alt'),
   }),
   as({ trig = ';I', wordTrig = false }, {
     t('Pi'),
@@ -412,14 +454,26 @@ $<>]],
   as({ trig = ';r', wordTrig = false }, {
     t('rho'),
   }),
+  as({ trig = ';R', wordTrig = false }, {
+    t('Rho'),
+  }),
+  as({ trig = ';vr', wordTrig = false }, {
+    t('rho.alt'),
+  }),
   as({ trig = ';s', wordTrig = false }, {
     t('sigma'),
+  }),
+  as({ trig = ';vs', wordTrig = false }, {
+    t('sigma.alt'),
   }),
   as({ trig = ';S', wordTrig = false }, {
     t('Sigma'),
   }),
-  as({ trig = ';t', wordTrig = false }, {
-    t('theta'),
+  as({ trig = ';u', wordTrig = false }, {
+    t('upsilon'),
+  }),
+  as({ trig = ';U', wordTrig = false }, {
+    t('Upsilon'),
   }),
   as({ trig = ';f', wordTrig = false }, {
     t('phi'),
@@ -432,6 +486,9 @@ $<>]],
   }),
   as({ trig = ';c', wordTrig = false }, {
     t('chi'),
+  }),
+  as({ trig = ';C', wordTrig = false }, {
+    t('Chi'),
   }),
   as({ trig = ';p', wordTrig = false }, {
     t('psi'),
@@ -446,110 +503,116 @@ $<>]],
     t('Omega'),
   }),
 
-  as({ trig = 'definieren', wordTrig = false }, {
+  ast({ trig = 'definieren', wordTrig = false }, {
     t('definiëren'),
   }),
-  as({ trig = 'continuiteit', wordTrig = false }, {
+  ast({ trig = 'continuiteit', wordTrig = false }, {
     t('continuïteit'),
   }),
-  as({ trig = 'reele', wordTrig = false }, {
+  ast({ trig = 'reele', wordTrig = false }, {
     t('reële'),
   }),
-  as({ trig = 'reeel', wordTrig = false }, {
+  ast({ trig = 'reeel', wordTrig = false }, {
     t('reëel'),
   }),
-  as({ trig = 'coefficient', wordTrig = false }, {
+  ast({ trig = 'coefficient', wordTrig = false }, {
     t('coëfficiënt'),
   }),
-  as({ trig = 'quotient', wordTrig = false }, {
+  ast({ trig = 'quotient', wordTrig = false }, {
     t('quotiënt'),
   }),
-  as({ trig = ':e:', wordTrig = false }, {
+  ast({ trig = ':e:', wordTrig = false }, {
     t('ë'),
   }),
-  as({ trig = [['e']], wordTrig = false }, {
+  ast({ trig = [['e']], wordTrig = false }, {
     t('é'),
   }),
-  as({ trig = 'coordinaten', wordTrig = false }, {
+  ast({ trig = 'coordinaten', wordTrig = false }, {
     t('coördinaten'),
   }),
-  as({ trig = 'algebraisch', wordTrig = false }, {
+  ast({ trig = 'algebraisch', wordTrig = false }, {
     t('algebraïsch'),
   }),
-  as({ trig = 'coordinaat', wordTrig = false }, {
+  ast({ trig = 'coordinaat', wordTrig = false }, {
     t('coördinaat'),
   }),
-  as({ trig = 'Coordinaat', wordTrig = false }, {
+  ast({ trig = 'Coordinaat', wordTrig = false }, {
     t('Coördinaat'),
   }),
-  as({ trig = 'geisoleerd', wordTrig = false }, {
+  ast({ trig = 'geisoleerd', wordTrig = false }, {
     t('geïsoleerd'),
   }),
-  as({ trig = 'intuitief', wordTrig = false }, {
+  ast({ trig = 'intuitief', wordTrig = false }, {
     t('intuïtief'),
   }),
-  as({ trig = 'intuitieve', wordTrig = false }, {
+  ast({ trig = 'intuitieve', wordTrig = false }, {
     t('intuïtieve'),
   }),
-  as({ trig = 'partiele', wordTrig = false }, {
+  ast({ trig = 'partiele', wordTrig = false }, {
     t('partiële'),
   }),
-  as({ trig = 'gradient', wordTrig = false }, {
+  ast({ trig = 'gradient', wordTrig = false }, {
     t('gradiënt'),
   }),
-  as({ trig = 'georienteerd', wordTrig = false }, {
+  ast({ trig = 'georienteerd', wordTrig = false }, {
     t('georiënteerd'),
   }),
-  as({ trig = 'orienteerbaar', wordTrig = false }, {
+  ast({ trig = 'orienteerbaar', wordTrig = false }, {
     t('oriënteerbaar'),
   }),
-  as({ trig = 'solenoidaal', wordTrig = false }, {
+  ast({ trig = 'solenoidaal', wordTrig = false }, {
     t('solenoïdaal'),
   }),
-  as({ trig = 'Solenoidaal', wordTrig = false }, {
+  ast({ trig = 'Solenoidaal', wordTrig = false }, {
     t('Solenoïdaal'),
   }),
-  as({ trig = 'solenoidale', wordTrig = false }, {
+  ast({ trig = 'solenoidale', wordTrig = false }, {
     t('solenoïdale'),
   }),
-  as({ trig = 'Solenoidale', wordTrig = false }, {
+  ast({ trig = 'Solenoidale', wordTrig = false }, {
     t('Solenoïdale'),
   }),
-  as({ trig = 'potentiele', wordTrig = false }, {
+  ast({ trig = 'potentiele', wordTrig = false }, {
     t('potentiële'),
   }),
-  as({ trig = 'Potentiele', wordTrig = false }, {
+  ast({ trig = 'Potentiele', wordTrig = false }, {
     t('Potentiële'),
   }),
-  as({ trig = 'dielektrisch', wordTrig = false }, {
+  ast({ trig = 'dielektrisch', wordTrig = false }, {
     t('diëlektrisch'),
   }),
-  as({ trig = 'Dielektrisch', wordTrig = false }, {
+  ast({ trig = 'Dielektrisch', wordTrig = false }, {
     t('Diëlektrisch'),
   }),
-  as({ trig = 'dielektrica', wordTrig = false }, {
+  ast({ trig = 'dielektrica', wordTrig = false }, {
     t('diëlektrica'),
   }),
-  as({ trig = 'Dielektrica', wordTrig = false }, {
+  ast({ trig = 'Dielektrica', wordTrig = false }, {
     t('Diëlektrica'),
   }),
-  as({ trig = 'vacuum', wordTrig = false }, {
+  ast({ trig = 'vacuum', wordTrig = false }, {
     t('vacuüm'),
   }),
-  as({ trig = 'Vacuum', wordTrig = false }, {
+  ast({ trig = 'Vacuum', wordTrig = false }, {
     t('Vacuüm'),
   }),
-  as({ trig = 'initiele', wordTrig = false }, {
+  ast({ trig = 'initiele', wordTrig = false }, {
     t('initiële'),
   }),
-  as({ trig = 'Initiele', wordTrig = false }, {
+  ast({ trig = 'Initiele', wordTrig = false }, {
     t('Initiële'),
   }),
-  as({ trig = 'tangentiele', wordTrig = false }, {
+  ast({ trig = 'tangentiele', wordTrig = false }, {
     t('tangentiële'),
   }),
-  as({ trig = 'Tangentiele', wordTrig = false }, {
+  ast({ trig = 'Tangentiele', wordTrig = false }, {
     t('Tangentiële'),
+  }),
+  ast({ trig = 'beinvloed', wordTrig = false }, {
+    t('beïnvloed'),
+  }),
+  ast({ trig = 'Beinvloed', wordTrig = false }, {
+    t('Beïnvloed'),
   }),
 }
 
