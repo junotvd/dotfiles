@@ -13,3 +13,5 @@ vim.keymap.set('v', '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
 vim.keymap.set('n', '<leader>cn', '<cmd>cnext<CR>', { desc = 'next quickfix ' })
 vim.keymap.set('n', '<leader>cp', '<cmd>cprev<CR>', { desc = 'previous quickfix ' })
+
+vim.keymap.set('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true, silent = true })
