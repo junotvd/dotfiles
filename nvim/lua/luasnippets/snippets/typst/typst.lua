@@ -135,18 +135,18 @@ $<>]],
       i(0),
     })
   ),
-  asm(
-    {
-      trig = '\\\\',
-      name = 'fraction',
-      dscr = 'fractian | visual down',
-    },
-    fmta('frac(<>, <>)<>', {
-      i(2),
-      d(1, get_visual),
-      i(0),
-    })
-  ),
+  -- asm(
+  --   {
+  --     trig = '\\\\',
+  --     name = 'fraction',
+  --     dscr = 'fractian | visual down',
+  --   },
+  --   fmta('frac(<>, <>)<>', {
+  --     i(2),
+  --     d(1, get_visual),
+  --     i(0),
+  --   })
+  -- ),
 
   asm(
     { trig = 'cases', wordTrig = false },
@@ -228,7 +228,7 @@ $<>]],
   ),
   asm(
     { trig = 'blv', name = 'bold vector', dscr = 'bold vector', wordTrig = false },
-    fmta([[bold(vector(<>))<>]], {
+    fmta([[bold(arrow(<>))<>]], {
       d(1, get_visual),
       i(0),
     })
@@ -248,6 +248,30 @@ $<>]],
       wordTrig = false,
     },
     fmta([[pdv(<>)<>]], {
+      d(1, get_visual),
+      i(0),
+    })
+  ),
+  asm(
+    {
+      trig = 'dv',
+      name = 'differential equation',
+      dscr = 'dv from the physica package (required)',
+      wordTrig = false,
+    },
+    fmta([[dv(<>)<>]], {
+      d(1, get_visual),
+      i(0),
+    })
+  ),
+  asm(
+    {
+      trig = 'dd',
+      name = 'differential',
+      dscr = 'dd from the physica package (required)',
+      wordTrig = false,
+    },
+    fmta([[dd(<>)<>]], {
       d(1, get_visual),
       i(0),
     })
@@ -323,6 +347,8 @@ $<>]],
   asm({ trig = 'Union' }, t('union.big')),
   asm({ trig = 'bset' }, t('subset')),
   asm({ trig = 'pset' }, t('supset')),
+  asm({ trig = 'subsetq' }, t('subset.eq')),
+  asm({ trig = 'supsetq' }, t('supset.eq')),
   asm({ trig = 'OO' }, t('emptyset')),
   asm({ trig = 'iint' }, t('integral')),
   asm({ trig = 'dint' }, t('integral.double')),
@@ -524,6 +550,9 @@ $<>]],
   ast({ trig = ':e:', wordTrig = false }, {
     t('ë'),
   }),
+  ast({ trig = ':i:', wordTrig = false }, {
+    t('ï'),
+  }),
   ast({ trig = [['e']], wordTrig = false }, {
     t('é'),
   }),
@@ -613,6 +642,18 @@ $<>]],
   }),
   ast({ trig = 'Beinvloed', wordTrig = false }, {
     t('Beïnvloed'),
+  }),
+  ast({ trig = 'Geinduceerd', wordTrig = false }, {
+    t('Geïnduceerd'),
+  }),
+  ast({ trig = 'geinduceerd', wordTrig = false }, {
+    t('geïnduceerd'),
+  }),
+  ast({ trig = 'dielektri', wordTrig = false }, {
+    t('diëlektri'),
+  }),
+  ast({ trig = 'Ampere', wordTrig = false }, {
+    t('Ampère'),
   }),
 }
 
