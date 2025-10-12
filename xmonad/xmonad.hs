@@ -12,7 +12,7 @@ main = do
   xmonad $
     docks
       desktopConfig
-        { modMask = mod1Mask -- Use Super instead of Alt
+        { modMask = mod1Mask
         , terminal = "wezterm"
         , borderWidth = 2
         , normalBorderColor = "#282c34"

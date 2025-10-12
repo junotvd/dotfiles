@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/uni/ ~/uni/bachelor-1/ ~/uni/bachelor-1/semester-1/ ~/uni/bachelor-1/semester-2/ ~/coding/ ~/Documents/ ~/repos ~/suckless/ ~/uni/bachelor-1/semester-1/calculus-1/lesmateriaal/ ~/hogeschool/ ~/hogeschool/bach1/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/ ~/uni/ ~/uni/bachelor-1/ ~/uni/bachelor-1/semester-1/ ~/uni/bachelor-1/semester-2/ ~/coding/ ~/Documents/ ~/repos ~/suckless/ ~/uni/bachelor-1/semester-1/calculus-1/lesmateriaal/ ~/hogeschool/ ~/hogeschool/bach1/ ~/hogeschool/bach1/sem1/ -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
