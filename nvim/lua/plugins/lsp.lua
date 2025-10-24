@@ -150,6 +150,7 @@ return {
         json = { 'prettier' },
         jsonc = { 'prettier' },
         toml = { 'prettier' },
+        css = { 'prettier' },
       },
     },
   },
