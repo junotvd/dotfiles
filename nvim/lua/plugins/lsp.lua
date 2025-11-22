@@ -88,6 +88,8 @@ return {
         'hlint',
 
         'matlab-language-server',
+
+        'typescript-language-server',
       })
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
@@ -151,6 +153,7 @@ return {
         jsonc = { 'prettier' },
         toml = { 'prettier' },
         css = { 'prettier' },
+        javascript = { 'prettier' },
       },
     },
   },
