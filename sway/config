@@ -8,7 +8,8 @@ set $down j
 set $up k
 set $right l
 set $term wezterm
-set $menu wmenu-run
+set $menu fuzzel
+set $browser firefox
 
 ### Output configuration
 #
@@ -25,10 +26,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -53,18 +54,25 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
 
+
+default_border none
+default_floating_border none
+
+
+
+
 ### Key bindings
-#
+# Scripts
+
+    bindsym $mod+m exec select-display-wl
+    bindsym $mod+Shift+w exec websites-wl
+
+
 # Basics:
-#
-    # Start a terminal
     bindsym $mod+t exec $term
-
-    # Kill focused window
     bindsym $mod+q kill
-
-    # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+b exec $browser
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -135,8 +143,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+Shift+b splith
+    bindsym $mod+Shift+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -205,10 +213,6 @@ bindsym $mod+r mode "resize"
     bindsym Print exec grim
 
 
-
-# Border things
-default_floating_border none
-default_border pixel 1
 
 
 
