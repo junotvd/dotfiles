@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+# Dependencies:
+#   - sway
+#   - jq
+#   - fuzzel (running via XWayland is fine)
+
+get_current_resolution() {
+    swaymsg -t get_outputs | jq -r --arg name "$1" '
+        .[] | select(.name == $name) |
+        .current_mode | "\(.width)x\(.height)"
+    '
+}
+
+monoscreen() {
+    local output="$1"
+
+    # Treat any eDP* output as the internal laptop screen
+    if [[ "$output" == eDP* ]]; then
+        rate=$(printf "60\n120" | fuzzel --dmenu -i -p "refresh rate:")
+        [ -z "$rate" ] && exit 1
+
+        # Set internal screen mode and scale (adjust name/mode if needed)
+        swaymsg output "$output" mode 2880x1920@"${rate}Hz" scale 1
+        swaymsg output "$output" position 0,0 enable
+        exit 0
+    fi
+
+    resolution=$(get_current_resolution "$output")
+
+    # Use current resolution, let Sway keep the same refresh rate
+    swaymsg output "$output" mode "$resolution" scale 1 position 0,0 enable
+    exit 0
+}
+
+mirrorscreen() {
+    local primary="$1"
+    local secondary="$2"
+
+    # Configure primary first
+    monoscreen "$primary"
+
+    resolution=$(get_current_resolution "$primary")
+
+    # Place both at the same position so they mirror
+    swaymsg output "$primary" mode "$resolution" position 0,0 scale 1 enable
+    swaymsg output "$secondary" mode "$resolution" position 0,0 scale 0.75 enable
+}
+
+# Get all outputs known by Sway (you can restrict to active ones if you want)
+screens=$(swaymsg -t get_outputs | jq -r '.[] | .name')
+
+screen_count=$(printf "%s\n" "$screens" | wc -l)
+
+if [ "$screen_count" -lt 2 ]; then
+    primary_screen=$(printf "%s\n" "$screens" | head -n1)
+    monoscreen "$primary_screen"
+    fuzzel -e "Only one available screen"
+    exit
+fi
+
+selected=$(printf "%s\n" "$screens" | fuzzel --dmenu -i -p "Select screen:")
+[ -z "$selected" ] && exit 1
+
+other=$(printf "%s\n" "$screens" | grep -v "^$selected$")
+
+if [ -z "$other" ]; then
+    fuzzel -e "No other monitor detected"
+    exit 1
+fi
+
+mirror=$(printf "no\nyes" | fuzzel --dmenu -i -p "Mirror $selected onto $other?")
+
+if [ "$mirror" = "yes" ]; then
+    mirrorscreen "$selected" "$other"
+    exit
+fi
+
+# Single-monitor mode: enable selected, disable all others
+swaymsg output "$selected" enable
+printf "%s\n" "$other" | while read -r o; do
+    [ -n "$o" ] && swaymsg output "$o" disable
+done
