@@ -21,7 +21,7 @@ opt.incsearch = true
 -- opt.list = true
 -- opt.listchars = { trail = '·' }
 
-opt.scrolloff = 10
+opt.scrolloff = 20
 
 opt.spell = true
 
