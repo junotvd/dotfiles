@@ -66,13 +66,7 @@ return {
     end,
   },
 
-  {
-    'vague2k/vague.nvim',
-  },
-
-  {
-    'RostislavArts/naysayer.nvim',
-  },
+  { 'rebelot/kanagawa.nvim' },
 
   { 'savq/melange-nvim' },
 }
