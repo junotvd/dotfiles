@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+OPTION=$(echo -e "monitor\nwallpaper" | fuzzel --dmenu -i -p "idk wat dit is")
+
+case "$OPTION" in
+"monitor")
+    select-display-wl
+    ;;
+"wallpaper")
+    wallpaper-wl
+    ;;
+esac

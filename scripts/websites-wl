@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+CHOICE=$(echo -e "kuleuven\ngithub\nspotify\npearson\ntailscale" | fuzzel --dmenu -i -p "")
+
+if [ -z "$CHOICE" ]; then
+    exit 0
+fi
+
+case "$CHOICE" in
+"kuleuven")
+    KUL=$(echo -e "Toledo\nKU Loket\nKURT\nprint" | fuzzel --dmenu -i -p "")
+    case "$KUL" in
+    "Toledo")
+        xdg-open https://toledo.kuleuven.be/
+        ;;
+    "KU Loket")
+        xdg-open https://www.kuleuven.be/kuloket
+        ;;
+    "KURT")
+        xdg-open https://kurt3.ghum.kuleuven.be/
+        ;;
+    "print")
+        xdg-open https://print.kuleuven.be/
+        ;;
+    esac
+    ;;
+"github")
+    GITHUB=$(echo -e "bachelor-1\ndotfiles\nlatex\nlijstjes" | fuzzel --dmenu -i -p "")
+    case "$GITHUB" in
+    "bachelor-1")
+        xdg-open https://github.com/junotvd/bachelor-1/
+        ;;
+    "latex")
+        xdg-open https://github.com/junotvd/latex/
+        ;;
+    "dotfiles")
+        xdg-open https://github.com/junotvd/dotfiles/
+        ;;
+    "lijstjes")
+        xdg-open https://github.com/junotvd/lijstjes/
+        ;;
+    esac
+    if [ -z "$GITHUB" ]; then
+        xdg-open https://github.com/
+    fi
+    ;;
+"spotify")
+    xdg-open https://open.spotify.com/collection/tracks
+    ;;
+"pearson")
+    xdg-open https://www.pearson.com/en-gb/higher-education/products-services/mylab-and-mastering-login.html
+    ;;
+"tailscale")
+    TAILSCALE=$(echo -e "pdf\napollo\nai\nemby" | fuzzel --dmenu -i -p "")
+    case "$TAILSCALE" in
+    "apollo")
+        xdg-open https://apollo.saga-pollux.ts.net/
+        ;;
+    "ai")
+        xdg-open https://openwebui.saga-pollux.ts.net/
+        ;;
+    "pdf")
+        xdg-open http://100.124.103.23:8080/
+        ;;
+    "emby")
+        xdg-open http://mac-mini-m1-1.saga-pollux.ts.net
+        ;;
+    esac
+    if [ -z "$TAILSCALE" ]; then
+        exit 0
+    fi
+    ;;
+esac
