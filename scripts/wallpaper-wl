@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+OPTION=$(echo -e "picasso\nstantoncity\nstantonvalluga\njapanpow\noff" | fuzzel --dmenu -i -p "wallpaper")
+
+if [ -z "$OPTION" ]; then
+    exit 1
+fi
+
+case "$OPTION" in
+"picasso")
+    swaybg -i '/home/junot/dotfiles/wallpaper/wallpaper.jpg'
+    ;;
+"stantoncity")
+    swaybg -i '/home/junot/dotfiles/wallpaper/stantoncity.jpg'
+    ;;
+"stantonvalluga")
+    swaybg -i '/home/junot/dotfiles/wallpaper/stantonbeluga.jpg'
+    ;;
+"japanpow")
+    swaybg -i '/home/junot/dotfiles/wallpaper/japanpowder.jpg'
+    ;;
+"off")
+    swaybg -i '/home/junot/dotfiles/wallpaper/black.png'
+    ;;
+esac
