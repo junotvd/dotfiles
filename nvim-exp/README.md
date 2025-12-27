@@ -19,6 +19,7 @@
 - `LEADER s` edit previous file
 - `LEADER S` edit previous in split window
 - `LEADER pc` clean packages
+- `saiw+` surround word with +
 
 ### marks
 - `<` start of last visual selection

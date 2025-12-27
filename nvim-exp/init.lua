@@ -39,18 +39,22 @@ map('n', '<leader>lf', vim.lsp.buf.format)
 map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>')
 map({ 'n', 'v', 'x' }, '<leader>S', ':sf #<CR>')
 map({ 'n', 'v', 'x' }, '<leader>v', ':e $MYVIMRC<CR>')
+map('n', '<leader>r', ':update<CR> :make<CR>')
 
 
 vim.pack.add({
 	{ src = 'https://github.com/vague2k/vague.nvim' },
 	{ src = 'https://github.com/stevearc/oil.nvim' },
 	{ src = 'https://github.com/echasnovski/mini.pick' },
+	{ src = 'https://github.com/echasnovski/mini.surround' },
 	{ src = 'https://github.com/chomosuke/typst-preview.nvim' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/mason-org/mason.nvim' },
 	{ src = 'https://github.com/L3MON4D3/LuaSnip' },
 	{ src = 'https://github.com/chentoast/marks.nvim' },
+	{ src = 'https://github.com/barrett-ruth/live-server.nvim' },
 })
+
 
 require 'marks'.setup {
 	builtin_marks = { '<', '>', '^', '"', [[']], '`', '[', ']' }
@@ -59,6 +63,7 @@ require 'marks'.setup {
 
 require 'mason'.setup()
 require 'mini.pick'.setup()
+require 'mini.surround'.setup()
 require 'oil'.setup {
 	lsp_file_methods = {
 		enabled = true,
@@ -84,8 +89,14 @@ require 'nvim-treesitter'.setup({
 require 'luasnip'.setup({ enable_autosnippets = true })
 require 'luasnip.loaders.from_lua'.load({ paths = '~/dotfiles/nvim-exp/snippets/' })
 
+local ls = require 'luasnip'
+map('i', '<C-e>', function() ls.expand() end, { silent = true })
+map({ 'i', 's' }, '<C-J>', function() ls.jump(1) end, { silent = true })
+map({ 'i', 's' }, '<C-K>', function() ls.jump(-1) end, { silent = true })
 
-vim.lsp.enable({ 'lua_ls', 'tinymist' })
+
+
+vim.lsp.enable({ 'lua_ls', 'tinymist', 'basedpyright', 'ruff' })
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('my.lsp', {}),
@@ -126,14 +137,6 @@ local function pack_clean()
 	end
 end
 map('n', '<leader>pc', pack_clean)
-
-
-
-local ls = require 'luasnip'
-map('i', '<C-e>', function() ls.expand() end, { silent = true })
-map({ 'i', 's' }, '<C-J>', function() ls.jump(1) end, { silent = true })
-map({ 'i', 's' }, '<C-K>', function() ls.jump(-1) end, { silent = true })
-
 
 
 
