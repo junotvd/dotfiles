@@ -52,6 +52,7 @@
 
   imports = [
     ./modules/packages.nix
+    ./modules/nixvim.nix
     # ./modules/nix/home.nix
     # ./modules/octave.nix
   ];

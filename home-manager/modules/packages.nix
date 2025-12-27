@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     git
-    neovim
     htop
     curl
     ripgrep
