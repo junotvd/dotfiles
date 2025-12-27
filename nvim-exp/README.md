@@ -20,7 +20,7 @@
 - `LEADER S` edit previous in split window
 - `LEADER pc` clean packages
 
-=== marks
+### marks
 - `<` start of last visual selection
 - `>` end of last visual selection
 - `^` last left insert mode
