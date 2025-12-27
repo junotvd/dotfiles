@@ -12,15 +12,19 @@ vim.o.swapfile = false
 vim.o.termguicolors = true
 vim.o.undofile = true
 vim.o.incsearch = true
+vim.o.hlsearch = false
 vim.o.winborder = "rounded"
+vim.o.guicursor = ''
+vim.o.mouse = ''
 
 local map = vim.keymap.set
 
 vim.g.mapleader = ' '
 map('n', '<leader>o', ':update<CR> :source<CR>')
 
-map({ 'n', 'v', 'x' }, '<leader>y', '":+y<CR>')
-map({ 'n', 'v', 'x' }, '<leader>d', '":+d<CR>')
+map({ 'n', 'v', 'x' }, '<leader>y', '"+y')
+map({ 'n', 'v', 'x' }, '<leader>d', '"+d')
+
 
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
@@ -32,8 +36,9 @@ map('n', '<leader>lf', vim.lsp.buf.format)
 
 -- testing
 -- e: edit, #: alternate file, s: split, f: find (open file)
-map({ 'n', 'v', 'x' }, '<leader> s', ':e #<CR>')
-map({ 'n', 'v', 'x' }, '<leader> S', ':sf #<CR>')
+map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>')
+map({ 'n', 'v', 'x' }, '<leader>S', ':sf #<CR>')
+map({ 'n', 'v', 'x' }, '<leader>v', ':e $MYVIMRC<CR>')
 
 
 vim.pack.add({
@@ -43,23 +48,96 @@ vim.pack.add({
 	{ src = 'https://github.com/chomosuke/typst-preview.nvim' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/mason-org/mason.nvim' },
+	{ src = 'https://github.com/L3MON4D3/LuaSnip' },
+	{ src = 'https://github.com/chentoast/marks.nvim' },
 })
+
+require 'marks'.setup {
+	builtin_marks = { '<', '>', '^', '"', [[']], '`', '[', ']' }
+}
+
 
 require 'mason'.setup()
 require 'mini.pick'.setup()
-require 'oil'.setup()
+require 'oil'.setup {
+	lsp_file_methods = {
+		enabled = true,
+		timeout_ms = 1000,
+		autosave_changes = true,
+	},
+	columns = {
+		"permissions",
+		"icon",
+	},
+	float = {
+		max_width = 0.7,
+		max_height = 0.6,
+		border = 'rounded',
+	}
+}
 
--- require 'nvim-treesitter.configs'.setup({
--- 	ensure_installed = { 'javascript' },
--- 	highlight = { enable = true }
--- })
+require 'nvim-treesitter'.setup({
+	auto_install = true,
+	highlight = { enable = true, }
+})
+
+require 'luasnip'.setup({ enable_autosnippets = true })
+require 'luasnip.loaders.from_lua'.load({ paths = '~/dotfiles/nvim-exp/snippets/' })
+
 
 vim.lsp.enable({ 'lua_ls', 'tinymist' })
 
+vim.api.nvim_create_autocmd('LspAttach', {
+	group = vim.api.nvim_create_augroup('my.lsp', {}),
+	callback = function(args)
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+		if client:supports_method('textDocument/completion') then
+			-- Optional: trigger autocompletion on EVERY keypress. May be slow!
+			local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+			client.server_capabilities.completionProvider.triggerCharacters = chars
+			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+		end
+	end,
+})
+vim.cmd [[set completeopt+=menuone,noselect,popup]]
+
+local function pack_clean()
+	local active_plugins = {}
+	local unused_plugins = {}
+
+	for _, plugin in ipairs(vim.pack.get()) do
+		active_plugins[plugin.spec.name] = plugin.active
+	end
+
+	for _, plugin in ipairs(vim.pack.get()) do
+		if not active_plugins[plugin.spec.name] then
+			table.insert(unused_plugins, plugin.spec.name)
+		end
+	end
+
+	if #unused_plugins == 0 then
+		print("No unused plugins.")
+		return
+	end
+
+	local choice = vim.fn.confirm("Remove unused plugins?", "&Yes\n&No", 2)
+	if choice == 1 then
+		vim.pack.del(unused_plugins)
+	end
+end
+map('n', '<leader>pc', pack_clean)
+
+
+
+local ls = require 'luasnip'
+map('i', '<C-e>', function() ls.expand() end, { silent = true })
+map({ 'i', 's' }, '<C-J>', function() ls.jump(1) end, { silent = true })
+map({ 'i', 's' }, '<C-K>', function() ls.jump(-1) end, { silent = true })
+
+
+
 
 -- colors
-require 'vague'.setup({
-	transparant = true
-})
+require 'vague'.setup({ transparant = true })
 vim.cmd.colorscheme('vague')
 vim.cmd(":hi statusline guibg=NONE")
