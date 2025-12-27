@@ -41,7 +41,7 @@ map({ 'n', 'v', 'x' }, '<leader>S', ':sf #<CR>')
 map({ 'n', 'v', 'x' }, '<leader>v', ':e $MYVIMRC<CR>')
 map('n', '<leader>r', ':update<CR> :make<CR>')
 
-vim.pack.add({
+vim.pack.add {
 	{ src = 'https://github.com/vague2k/vague.nvim' },
 	{ src = 'https://github.com/stevearc/oil.nvim' },
 	{ src = 'https://github.com/echasnovski/mini.pick' },
@@ -51,7 +51,7 @@ vim.pack.add({
 		src = 'https://github.com/nvim-treesitter/nvim-treesitter',
 		data = {
 			run = function(_)
-				vim.cmd('TSUpdate')
+				vim.cmd 'TSUpdate'
 			end,
 		},
 	},
@@ -59,16 +59,16 @@ vim.pack.add({
 	{ src = 'https://github.com/L3MON4D3/LuaSnip' },
 	{ src = 'https://github.com/chentoast/marks.nvim' },
 	{ src = 'https://github.com/barrett-ruth/live-server.nvim' },
-})
+}
 
-require('marks').setup({
+require 'marks'.setup {
 	builtin_marks = { '<', '>', '^', '"', [[']], '`', '[', ']' },
-})
+}
 
-require('mason').setup()
-require('mini.pick').setup()
-require('mini.surround').setup()
-require('oil').setup({
+require 'mason'.setup()
+require 'mini.pick'.setup()
+require 'mini.surround'.setup()
+require 'oil'.setup {
 	default_file_explorer = true,
 	view_options = {
 		show_hidden = true,
@@ -88,19 +88,19 @@ require('oil').setup({
 		max_height = 0.6,
 		border = 'rounded',
 	},
-})
+}
 
-require('nvim-treesitter').setup({
+require 'nvim-treesitter'.setup {
 	auto_install = true,
 	highlight = { enable = true },
-})
+}
 
-require('luasnip').setup({ enable_autosnippets = true })
-require('luasnip.loaders.from_lua').load({
+require 'luasnip'.setup { enable_autosnippets = true }
+require 'luasnip.loaders.from_lua'.load {
 	paths = '~/dotfiles/nvim-exp/snippets/',
-})
+}
 
-local ls = require('luasnip')
+local ls = require 'luasnip'
 map('i', '<C-e>', function()
 	ls.expand()
 end, { silent = true })
@@ -111,7 +111,7 @@ map({ 'i', 's' }, '<C-K>', function()
 	ls.jump(-1)
 end, { silent = true })
 
-vim.lsp.enable({
+vim.lsp.enable {
 	'lua_ls',
 	'tinymist',
 	'basedpyright',
@@ -121,13 +121,13 @@ vim.lsp.enable({
 	'bashls',
 	'nil',
 	'vtsls',
-})
+}
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('my.lsp', {}),
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-		if client:supports_method('textDocument/completion') then
+		if client:supports_method 'textDocument/completion' then
 			-- Optional: trigger autocompletion on EVERY keypress. May be slow!
 			local chars = {}
 			for i = 32, 126 do
@@ -143,7 +143,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end
 	end,
 })
-vim.cmd([[set completeopt+=menuone,noselect,popup]])
+vim.cmd [[set completeopt+=menuone,noselect,popup]]
 
 local function pack_clean()
 	local active_plugins = {}
@@ -160,7 +160,7 @@ local function pack_clean()
 	end
 
 	if #unused_plugins == 0 then
-		print('No unused plugins.')
+		print 'No unused plugins.'
 		return
 	end
 
@@ -174,6 +174,6 @@ map('n', '<leader>pc', pack_clean)
 map('n', '<leader>pu', '<cmd>lua vim.pack.update()<CR>')
 
 -- colors
-require('vague').setup({ transparant = true })
-vim.cmd.colorscheme('vague')
-vim.cmd(':hi statusline guibg=NONE')
+require 'vague'.setup { transparant = true }
+vim.cmd.colorscheme 'vague'
+vim.cmd ':hi statusline guibg=NONE'

@@ -83,12 +83,6 @@ return {
 		'selene.yml',
 		'.git',
 	},
-	-- settings = {
-	--   Lua = {
-	--     codeLens = { enable = true },
-	--     hint = { enable = true, semicolon = 'Disable' },
-	--   },
-	-- },
 	settings = {
 		Lua = {
 			workspace = {
