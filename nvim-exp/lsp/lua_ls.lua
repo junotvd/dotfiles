@@ -93,7 +93,17 @@ return {
 		Lua = {
 			workspace = {
 				library = vim.api.nvim_get_runtime_file('', true),
-			}
+			},
+			format = {
+				enable = true,
+				defaultConfig = {
+					indent_style = 'space',
+					indent_size = '2',
+					quote_style = 'single',
+					trailing_table_seperator = 'always',
+					call_arg_parentheses = 'remove',
+				},
+			},
 		}
 	},
 }

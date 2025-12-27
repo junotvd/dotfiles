@@ -145,6 +145,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
 
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = '*',
+	callback = function(ev)
+		local ft = vim.bo[ev.buf].filetype
+		local formatting = 'lua vim.lsp.buf.format()'
+
+		if ft == 'lua' then
+			formatting = '!stylua %'
+		end
+
+		local cmd = function()
+			vim.cmd.write('write')
+			vim.cmd.write('silent' .. formatting)
+		end
+		map('n', '<leader>ll', cmd, { buffer = ev.buf })
+	end
+})
+
 local function pack_clean()
 	local active_plugins = {}
 	local unused_plugins = {}
