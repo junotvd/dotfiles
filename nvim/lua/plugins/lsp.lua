@@ -17,6 +17,8 @@ return {
         float = {
           border = 'rounded',
           source = 'if_many',
+          wrap = true,
+          max_width = 80,
         },
         underline = { severity = vim.diagnostic.severity.ERROR },
         signs = {
@@ -181,6 +183,7 @@ return {
         yaml = { 'yamllint' },
         haskell = { 'hlint' },
         nix = { 'statix' },
+        html = { 'markuplint' },
       }
 
       vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'InsertLeave' }, {
