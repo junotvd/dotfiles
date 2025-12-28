@@ -95,7 +95,7 @@ return {
 					indent_size = '2',
 					quote_style = 'single',
 					trailing_table_seperator = 'always',
-					call_arg_parentheses = 'remove',
+					call_arg_parentheses = 'keep',
 				},
 			},
 		}
