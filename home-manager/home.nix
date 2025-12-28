@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home = {
     username = "junot";
     homeDirectory = "/home/junot";
@@ -42,17 +40,16 @@
     #
     #  /etc/profiles/per-user/junot/etc/profile.d/hm-session-vars.sh
     #
-    sessionVariables = {
-      # EDITOR = "emacs";
-    };
+    sessionVariables = { EDITOR = "neovim"; };
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  # programs.nixvim.enable = true;
 
   imports = [
     ./modules/packages.nix
-    ./modules/nixvim.nix
+    # ./modules/nixvim.nix
     # ./modules/nix/home.nix
     # ./modules/octave.nix
   ];
