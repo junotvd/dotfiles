@@ -8,7 +8,6 @@
 
 ## normal
 - `k` hover
-- `CTRL w d` definition
 - `CTRL x o` omnicomplete
 - `zg` add to spelling
 - `LEADER lf` (lang format) format current buffer
@@ -21,6 +20,15 @@
 - `LEADER pc` clean packages
 - `LEADER pu` update packages
 - `saiw+` surround word with +
+- `LEADER r` run current file (`:update<CR> :make<CR>`)
+    The make command has to be configured for every filetype.
+- `]d` jump to next diagnostic in buffer
+- `[d` jump to previous diagnostic in buffer
+- `]D` jump to last diagnostic in buffer
+- `[D` jump to first diagnostic in buffer
+- `CTRL w d` diagnostic at cursor in floating window
+
+
 
 ### marks
 - `<` start of last visual selection

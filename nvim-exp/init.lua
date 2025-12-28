@@ -7,6 +7,7 @@ vim.o.shiftwidth = 2
 vim.o.smartindent = true
 vim.o.cursorcolumn = false
 vim.o.ignorecase = true
+vim.o.smartcase = true
 vim.o.signcolumn = 'yes'
 vim.o.swapfile = false
 vim.o.termguicolors = true
@@ -18,9 +19,9 @@ vim.o.guicursor = ''
 vim.o.mouse = ''
 vim.o.scrolloff = 10
 
+vim.g.mapleader = ' '
 local map = vim.keymap.set
 
-vim.g.mapleader = ' '
 map('n', '<leader>o', ':update<CR> :source<CR>')
 
 map({ 'n', 'v', 'x' }, '<leader>y', '"+y')
@@ -43,6 +44,8 @@ map('n', '<leader>r', ':update<CR> :make<CR>')
 
 vim.pack.add {
 	{ src = 'https://github.com/vague2k/vague.nvim' },
+	{ src = 'https://github.com/ricardoraposo/gruvbox-minor.nvim' },
+	{ src = 'https://github.com/savq/melange-nvim' },
 	{ src = 'https://github.com/stevearc/oil.nvim' },
 	{ src = 'https://github.com/echasnovski/mini.pick' },
 	{ src = 'https://github.com/echasnovski/mini.surround' },
@@ -101,15 +104,9 @@ require 'luasnip.loaders.from_lua'.load {
 }
 
 local ls = require 'luasnip'
-map('i', '<C-e>', function()
-	ls.expand()
-end, { silent = true })
-map({ 'i', 's' }, '<C-J>', function()
-	ls.jump(1)
-end, { silent = true })
-map({ 'i', 's' }, '<C-K>', function()
-	ls.jump(-1)
-end, { silent = true })
+map('i', '<C-e>', function() ls.expand() end, { silent = true })
+map({ 'i', 's' }, '<C-J>', function() ls.jump(1) end, { silent = true })
+map({ 'i', 's' }, '<C-K>', function() ls.jump(-1) end, { silent = true })
 
 vim.lsp.enable {
 	'lua_ls',
@@ -121,6 +118,14 @@ vim.lsp.enable {
 	'bashls',
 	'nil',
 	'vtsls',
+	'gopls',
+	'rust_analyzer',
+}
+
+
+vim.diagnostic.config {
+	virtual_text = { severity = vim.diagnostic.severity.ERROR },
+	severity_sort = true
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -174,6 +179,6 @@ map('n', '<leader>pc', pack_clean)
 map('n', '<leader>pu', '<cmd>lua vim.pack.update()<CR>')
 
 -- colors
-require 'vague'.setup { transparant = true }
+require 'vague'.setup { transparent = true }
 vim.cmd.colorscheme 'vague'
 vim.cmd ':hi statusline guibg=NONE'
