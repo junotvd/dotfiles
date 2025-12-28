@@ -6,6 +6,7 @@ nvim nightly (v0.12)
 - `C-e` expand
 - `C-J` move down
 - `C-K` move up
+- `C-S` `vim.lsp.buf.signature_help()`
 
 ## normal
 - `k` hover
@@ -28,6 +29,12 @@ nvim nightly (v0.12)
 - `]D` jump to last diagnostic in buffer
 - `[D` jump to first diagnostic in buffer
 - `CTRL w d` diagnostic at cursor in floating window
+- `grn` `vim.lsp.buf.rename()`
+- `grr` `vim.lsp.buf.references()`
+- `gri` `vim.lsp.buf.implementation()`
+- `gr0` `vim.lsp.buf.document_symbol()`
+- `gra` `vim.lsp.buf.code_action()`
+> voor meer nieuwe 0.11 lsp mappings, zie [gpanders](https://gpanders.com/blog/whats-new-in-neovim-0-11/)
 
 ### in oil.nvim
 - `gx` open file with default application
