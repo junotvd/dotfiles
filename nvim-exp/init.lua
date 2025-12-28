@@ -61,7 +61,11 @@ vim.pack.add {
 	{ src = 'https://github.com/mason-org/mason.nvim' },
 	{ src = 'https://github.com/L3MON4D3/LuaSnip' },
 	{ src = 'https://github.com/chentoast/marks.nvim' },
-	{ src = 'https://github.com/barrett-ruth/live-server.nvim' },
+	-- { src = 'https://github.com/barrett-ruth/live-server.nvim',
+	-- build = 'pnpm add -g live-server',
+	-- cmd = { 'LiveServerStart', 'LiveServerStop' },
+	-- config = true,
+	-- },
 }
 
 require 'marks'.setup {

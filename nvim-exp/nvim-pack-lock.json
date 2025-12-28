@@ -4,6 +4,10 @@
       "rev": "3732756842a2f7e0e76a7b0487e9692072857277",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "gruvbox-minor.nvim": {
+      "rev": "e3616ad7f2982211f0d9fa9e900ca6ba53ee6b12",
+      "src": "https://github.com/ricardoraposo/gruvbox-minor.nvim"
+    },
     "live-server.nvim": {
       "rev": "e8a34bc37fc565c678addbb352a59aa6c1842c2b",
       "src": "https://github.com/barrett-ruth/live-server.nvim"
@@ -15,6 +19,10 @@
     "mason.nvim": {
       "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
       "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "melange-nvim": {
+      "rev": "ce42f6b629beeaa00591ba73a77d3eeac4cf28ce",
+      "src": "https://github.com/savq/melange-nvim"
     },
     "mini.pick": {
       "rev": "0c56dc3ef9b15e9659ce09331fdc82449349701b",
