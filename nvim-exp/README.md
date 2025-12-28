@@ -28,7 +28,8 @@
 - `[D` jump to first diagnostic in buffer
 - `CTRL w d` diagnostic at cursor in floating window
 
-
+### in oil.nvim
+- `gx` open file with default application
 
 ### marks
 - `<` start of last visual selection
