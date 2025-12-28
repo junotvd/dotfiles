@@ -8,10 +8,6 @@
       "rev": "e3616ad7f2982211f0d9fa9e900ca6ba53ee6b12",
       "src": "https://github.com/ricardoraposo/gruvbox-minor.nvim"
     },
-    "live-server.nvim": {
-      "rev": "e8a34bc37fc565c678addbb352a59aa6c1842c2b",
-      "src": "https://github.com/barrett-ruth/live-server.nvim"
-    },
     "marks.nvim": {
       "rev": "f353e8c08c50f39e99a9ed474172df7eddd89b72",
       "src": "https://github.com/chentoast/marks.nvim"
@@ -31,6 +27,10 @@
     "mini.surround": {
       "rev": "88c52297ed3e69ecf9f8652837888ecc727a28ee",
       "src": "https://github.com/echasnovski/mini.surround"
+    },
+    "naysayer.nvim": {
+      "rev": "6c641ea0cfc5fbbc0777996320b2304c3811f246",
+      "src": "https://github.com/RostislavArts/naysayer.nvim"
     },
     "nvim-treesitter": {
       "rev": "36fcb4a4238928f0b627e1ab84ade0acc1facc2c",

@@ -46,6 +46,7 @@ vim.pack.add {
 	{ src = 'https://github.com/vague2k/vague.nvim' },
 	{ src = 'https://github.com/ricardoraposo/gruvbox-minor.nvim' },
 	{ src = 'https://github.com/savq/melange-nvim' },
+	{ src = 'https://github.com/RostislavArts/naysayer.nvim' },
 	{ src = 'https://github.com/stevearc/oil.nvim' },
 	{ src = 'https://github.com/echasnovski/mini.pick' },
 	{ src = 'https://github.com/echasnovski/mini.surround' },
@@ -61,11 +62,6 @@ vim.pack.add {
 	{ src = 'https://github.com/mason-org/mason.nvim' },
 	{ src = 'https://github.com/L3MON4D3/LuaSnip' },
 	{ src = 'https://github.com/chentoast/marks.nvim' },
-	-- { src = 'https://github.com/barrett-ruth/live-server.nvim',
-	-- build = 'pnpm add -g live-server',
-	-- cmd = { 'LiveServerStart', 'LiveServerStop' },
-	-- config = true,
-	-- },
 }
 
 require 'marks'.setup {
@@ -97,10 +93,6 @@ require 'oil'.setup {
 	},
 }
 
-require 'nvim-treesitter'.setup {
-	auto_install = true,
-	highlight = { enable = true },
-}
 
 require 'luasnip'.setup { enable_autosnippets = true }
 require 'luasnip.loaders.from_lua'.load {
