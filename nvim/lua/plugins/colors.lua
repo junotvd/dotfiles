@@ -69,6 +69,7 @@ return {
   { 'rebelot/kanagawa.nvim' },
 
   { 'savq/melange-nvim' },
+  { 'vague2k/vague.nvim' },
 
   {
     'jnurmine/zenburn',
