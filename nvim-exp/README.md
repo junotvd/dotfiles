@@ -50,3 +50,7 @@
 - `LEADER y` yank to system clipboard 
 - `LEADER d` delete to system clipboard 
 
+
+# todo
+- treesitter
+- plugin require calls (opzoeken in docs)
