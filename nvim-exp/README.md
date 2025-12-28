@@ -1,3 +1,4 @@
+nvim nightly (v0.12)
 # to remember
 
 ## insert
