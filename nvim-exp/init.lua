@@ -14,10 +14,9 @@ vim.o.termguicolors = true
 vim.o.undofile = true
 vim.o.incsearch = true
 vim.o.hlsearch = false
-vim.o.winborder = 'rounded'
 vim.o.guicursor = ''
 vim.o.mouse = ''
-vim.o.scrolloff = 10
+vim.o.scrolloff = 100
 
 vim.g.mapleader = ' '
 local map = vim.keymap.set
@@ -44,6 +43,7 @@ map('n', '<leader>r', ':update<CR> :make<CR>')
 
 vim.pack.add {
 	{ src = 'https://github.com/vague2k/vague.nvim' },
+	{ src = 'https://github.com/y9nika/y9nika.nvim' },
 	{ src = 'https://github.com/ricardoraposo/gruvbox-minor.nvim' },
 	{ src = 'https://github.com/savq/melange-nvim' },
 	{ src = 'https://github.com/RostislavArts/naysayer.nvim' },
@@ -76,20 +76,9 @@ require 'oil'.setup {
 	view_options = {
 		show_hidden = true,
 	},
-	lsp_file_methods = {
-		enabled = true,
-		timeout_ms = 1000,
-		autosave_changes = true,
-		watch_for_changes = true,
-	},
 	columns = {
 		'permissions',
 		'size',
-	},
-	float = {
-		max_width = 0.7,
-		max_height = 0.6,
-		border = 'rounded',
 	},
 }
 
@@ -174,7 +163,11 @@ end
 map('n', '<leader>pc', pack_clean)
 map('n', '<leader>pu', '<cmd>lua vim.pack.update()<CR>')
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+	callback = function() vim.highlight.on_yank() end,
+})
+
 -- colors
 require 'vague'.setup { transparent = true }
-vim.cmd.colorscheme 'vague'
+vim.cmd.colorscheme 'y9nika-solar'
 vim.cmd ':hi statusline guibg=NONE'
