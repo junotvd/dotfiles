@@ -63,3 +63,36 @@ nvim nightly (v0.12)
 # todo
 - treesitter
 - plugin require calls (opzoeken in docs)
+
+# nvim
+## loading of files
+0.  runtimepath is constructed
+    - before anything, neovim builds `runtimepath` from:
+        1. `$VIMRUNTIME` (built-in runtime)
+        2. system config paths
+        3. user config (`~/.config/nvim` or `NVIM_APPNAME`)
+        4. packages added via `vim.pack.add()`
+1. `init.lua` / `init.vim`: plugins are not configured here yet, only added to
+   runtimepath
+2. `plugin/`: for always-on startup code (keymaps, general settings, lightweight
+   config)
+3. `after/plugin/`: analoog aan `plugin/` maar aan einde van `runtimepath`,
+   for "override" config, or config that must run after plugins define defaults
+4. filetype detection: at this point, neovim
+    - detects `filetype`
+    - sets `&filetype`
+    - triggers `FileType` event
+    - nothing from `filetype/` is loaded yet -- just detection
+5. `ftplugin/`: filetype-specific and load when a buffer gets
+   a filetype, bv voor `vim.bo.makeprf=...`, for buffer-local settings (indent,
+6. `after/ftplugin/`
+   makeprg, wrap, textwidth, etc)
+7. `indent/` / `after/indent/`: filetype-driven specifiek voor indentation logic
+   `:colorscheme NAME`
+8. `lsp/` / `after/lsp/`: used as config modules for the LSP to load when you
+   enable that server (`vim.lsp.enable()`), `after/lsp` analoog maar dus zoals
+   `after` elders werkt
+- `colors/`: not load automatically, files here are only sourced when you run
+- `lua/`: enkel gebruikt bij `require('my-module')`
+- `snippets/`: loaded by LuaSnip
+- `queries/`: used by treesitter for query overrides
