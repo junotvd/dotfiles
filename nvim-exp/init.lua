@@ -18,6 +18,8 @@ vim.o.hlsearch = false
 vim.o.guicursor = ''
 vim.o.mouse = ''
 vim.o.scrolloff = 100
+vim.o.spell = true
+vim.opt.spelllang = { 'nl', 'en_gb' }
 
 
 vim.pack.add {
@@ -99,7 +101,7 @@ require('luasnip.loaders.from_lua').lazy_load({
 })
 
 require 'vague'.setup { transparent = true }
-vim.cmd.colorscheme 'vague'
+vim.cmd.colorscheme 'melange'
 vim.cmd ':hi statusline guibg=NONE'
 
 vim.api.nvim_create_autocmd('LspAttach', {
