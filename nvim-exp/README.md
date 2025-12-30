@@ -35,6 +35,7 @@ nvim nightly (v0.12)
 - `gr0` `vim.lsp.buf.document_symbol()`
 - `gra` `vim.lsp.buf.code_action()`
 > voor meer nieuwe 0.11 lsp mappings, zie [gpanders](https://gpanders.com/blog/whats-new-in-neovim-0-11/)
+- `[s/]s` jump spelling mistakes
 
 ### in oil.nvim
 - `gx` open file with default application
@@ -84,7 +85,7 @@ nvim nightly (v0.12)
     - triggers `FileType` event
     - nothing from `filetype/` is loaded yet -- just detection
 5. `ftplugin/`: filetype-specific and load when a buffer gets
-   a filetype, bv voor `vim.bo.makeprf=...`, for buffer-local settings (indent,
+   a filetype, bv voor `vim.bo.makeprg=...`, for buffer-local settings (indent,
 6. `after/ftplugin/`
    makeprg, wrap, textwidth, etc)
 7. `indent/` / `after/indent/`: filetype-driven specifiek voor indentation logic
@@ -96,3 +97,14 @@ nvim nightly (v0.12)
 - `lua/`: enkel gebruikt bij `require('my-module')`
 - `snippets/`: loaded by LuaSnip
 - `queries/`: used by treesitter for query overrides
+```
+init.lua
+→ plugin/
+→ after/plugin/
+→ filetype detection
+→ ftplugin/<ft>
+→ after/ftplugin/<ft>
+→ (indent / after/indent)
+→ (lsp files when enabling servers)
+→ (colors when :colorscheme)
+```

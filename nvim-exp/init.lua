@@ -1,4 +1,5 @@
 -- based on https://www.youtube.com/@sylvanfranklin 's config
+vim.g.mapleader = ' '
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.wrap = false
@@ -18,32 +19,10 @@ vim.o.guicursor = ''
 vim.o.mouse = ''
 vim.o.scrolloff = 100
 
-vim.g.mapleader = ' '
-local map = vim.keymap.set
-
-map('n', '<leader>o', ':update<CR> :source<CR>')
-
-map({ 'n', 'v', 'x' }, '<leader>y', '"+y')
-map({ 'n', 'v', 'x' }, '<leader>d', '"+d')
-
-map('v', 'J', ":m '>+1<CR>gv=gv")
-map('v', 'K', ":m '<-2<CR>gv=gv")
-
-map('n', '<leader>pv', vim.cmd.Oil)
-map('n', '<leader>f', ':Pick files<CR>')
-map('n', '<leader>h', ':Pick help<CR>')
-map('n', '<leader>lf', vim.lsp.buf.format)
-
--- testing
--- e: edit, #: alternate file, s: split, f: find (open file)
-map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>')
-map({ 'n', 'v', 'x' }, '<leader>S', ':sf #<CR>')
-map({ 'n', 'v', 'x' }, '<leader>v', ':e $MYVIMRC<CR>')
-map('n', '<leader>r', ':update<CR> :make<CR>')
 
 vim.pack.add {
 	{ src = 'https://github.com/vague2k/vague.nvim' },
-	{ src = 'https://github.com/y9nika/y9nika.nvim' },
+	{ src = 'https://github.com/y9san9/y9nika.nvim' },
 	{ src = 'https://github.com/ricardoraposo/gruvbox-minor.nvim' },
 	{ src = 'https://github.com/savq/melange-nvim' },
 	{ src = 'https://github.com/RostislavArts/naysayer.nvim' },
@@ -64,12 +43,43 @@ vim.pack.add {
 	{ src = 'https://github.com/chentoast/marks.nvim' },
 }
 
-require 'marks'.setup {
-	builtin_marks = { '<', '>', '^', '"', [[']], '`', '[', ']' },
+vim.lsp.enable({
+	'lua_ls',
+	'tinymist',
+	'basedpyright',
+	'ruff',
+	'html',
+	'cssls',
+	'bashls',
+	'nil',
+	'vtsls',
+	'gopls',
+	'rust_analyzer',
+})
+
+vim.diagnostic.config {
+	virtual_text = { severity = vim.diagnostic.severity.ERROR },
+	severity_sort = true
 }
 
+
+require 'marks'.setup { builtin_marks = { '<', '>', '^', '"', [[']], '`', '[', ']' } }
 require 'mason'.setup()
-require 'mini.pick'.setup()
+require 'mini.pick'.setup({
+	window = {
+		config = function()
+			local height = math.floor(0.618 * vim.o.lines)
+			local width = math.floor(0.618 * vim.o.columns)
+			return {
+				anchor = 'NW',
+				height = height,
+				width = width,
+				row = math.floor(0.5 * (vim.o.lines - height)),
+				col = math.floor(0.5 * (vim.o.columns - width)),
+			}
+		end
+	}
+})
 require 'mini.surround'.setup()
 require 'oil'.setup {
 	default_file_explorer = true,
@@ -82,36 +92,15 @@ require 'oil'.setup {
 	},
 }
 
+local ls = require('luasnip')
+ls.setup { enable_autosnippets = true }
+require('luasnip.loaders.from_lua').lazy_load({
+	lazy_paths = '~/dotfiles/nvim-exp/snippets/',
+})
 
-require 'luasnip'.setup { enable_autosnippets = true }
-require 'luasnip.loaders.from_lua'.load {
-	paths = '~/dotfiles/nvim-exp/snippets/',
-}
-
-local ls = require 'luasnip'
-map('i', '<C-e>', function() ls.expand() end, { silent = true })
-map({ 'i', 's' }, '<C-J>', function() ls.jump(1) end, { silent = true })
-map({ 'i', 's' }, '<C-K>', function() ls.jump(-1) end, { silent = true })
-
-vim.lsp.enable {
-	'lua_ls',
-	'tinymist',
-	'basedpyright',
-	'ruff',
-	'html',
-	'cssls',
-	'bashls',
-	'nil',
-	'vtsls',
-	'gopls',
-	'rust_analyzer',
-}
-
-
-vim.diagnostic.config {
-	virtual_text = { severity = vim.diagnostic.severity.ERROR },
-	severity_sort = true
-}
+require 'vague'.setup { transparent = true }
+vim.cmd.colorscheme 'vague'
+vim.cmd ':hi statusline guibg=NONE'
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('my.lsp', {}),
@@ -134,6 +123,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+	callback = function() vim.highlight.on_yank() end,
+})
 
 local function pack_clean()
 	local active_plugins = {}
@@ -160,14 +153,41 @@ local function pack_clean()
 	end
 end
 
+local map = vim.keymap.set
+
+map('n', '<leader>o', '<Cmd>update<CR> <Cmd>source<CR>')
+map('n', '<leader>O', '<Cmd>source $MYVIMRC<CR>')
+
+map({ 'n', 'v', 'x' }, '<leader>y', '"+y')
+map({ 'n', 'v', 'x' }, '<leader>d', '"+d')
+
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")
+
+map('n', '<leader>pv', vim.cmd.Oil)
+map('n', '<leader>f', ':Pick files<CR>')
+map('n', '<leader>h', ':Pick help<CR>')
+map('n', '<leader>b', ':Pick buffers<CR>')
+map('n', '<leader>g', ':Pick grep<CR>')
+
+map('n', '<leader>lf', vim.lsp.buf.format)
+
+map('i', '<C-e>', function() ls.expand() end, { silent = true })
+map({ 'i', 's' }, '<C-J>', function() ls.jump(1) end, { silent = true })
+map({ 'i', 's' }, '<C-K>', function() ls.jump(-1) end, { silent = true })
+
+map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>')
+map({ 'n', 'v', 'x' }, '<leader>S', ':sf #<CR>')
+map({ 'n', 'v', 'x' }, '<leader>v', ':e $MYVIMRC<CR>')
+map('n', '<leader>r', ':update<CR> :make<CR>')
+
+map('n', '<C-q>', ':copen<CR>', { silent = true })
+
+map('n', '<leader>t', '<Cmd>tabnew<CR>')
+map('n', '<leader>x', '<Cmd>tabclose<CR>')
+for i = 1, 9 do
+	map('n', '<leader>' .. i, '<Cmd>tabnext ' .. i .. '<CR>', { noremap = true, silent = true })
+end
+
 map('n', '<leader>pc', pack_clean)
 map('n', '<leader>pu', '<cmd>lua vim.pack.update()<CR>')
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-	callback = function() vim.highlight.on_yank() end,
-})
-
--- colors
-require 'vague'.setup { transparent = true }
-vim.cmd.colorscheme 'y9nika-solar'
-vim.cmd ':hi statusline guibg=NONE'
