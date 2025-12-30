@@ -1,7 +1,4 @@
-local typst_watch = require('typst').watch
-vim.keymap.set('n', '<leader>ll', typst_watch)
--- vim.keymap.set('n', '<leader>lc', ':!typst compile --font-path ~/fonts/cmbright/fonts/ %<CR>')
-vim.keymap.set('n', '<leader>lc', ':!typst compile %<CR>')
+vim.bo.makeprg= 'typst compile %'
 
--- local export_picker = require('export').export_picker
--- vim.keymap.set('n', '<leader>le', export_picker)
+vim.cmd.packadd('typst-preview')
+vim.keymap.set('n', '<leader>p', ':TypstPreview<CR>', { buffer = 0 })

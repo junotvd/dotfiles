@@ -19,9 +19,9 @@ eval "$(fzf --bash)"
 set -o vi
 
 # alias
-alias v="NVIM_APPNAME=nvim-exp nvim"
+alias v=nvim
 alias vm="NVIM_APPNAME=nvim-min nvim"
-alias vo=nvim
+alias vo="NVIM_APPNAME=nvim-old nvim"
 alias py=python
 alias l='ls -la'
 alias q=exit
