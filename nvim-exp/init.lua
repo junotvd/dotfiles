@@ -22,6 +22,7 @@ opt.spell = true
 opt.spelllang = { 'nl', 'en_gb' }
 
 vim.pack.add({
+  { src = 'https://github.com/rose-pine/neovim', name = 'rose-pine' },
   { src = 'https://github.com/vague2k/vague.nvim' },
   { src = 'https://github.com/stevearc/oil.nvim' },
   { src = 'https://github.com/echasnovski/mini.pick' },
@@ -34,6 +35,7 @@ vim.pack.add({
   { src = 'https://github.com/mason-org/mason.nvim' },
   { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
   { src = 'https://github.com/stevearc/conform.nvim' },
+  { src = 'https://github.com/mfussenegger/nvim-lint' },
 })
 
 require('mason').setup()
@@ -72,7 +74,7 @@ local formatters_by_ft = {
   javascript = { 'biome' },
 }
 local prettier_fts = {
-	'typescript',
+  'typescript',
   'css',
   'html',
   'markdown',
@@ -86,6 +88,14 @@ end
 require('conform').setup({
   lsp_format = 'never',
   formatters_by_ft = formatters_by_ft,
+})
+
+-- require('lint').linters_by_ft = {
+--   sh = { 'shellcheck' },
+-- }
+
+vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufWritePre', 'InsertLeave' }, {
+  callback = function() require('lint').try_lint() end,
 })
 
 require('mini.pick').setup({
@@ -163,8 +173,9 @@ local function pack_clean()
   if choice == 1 then vim.pack.del(unused_plugins) end
 end
 
+require('rose-pine').setup({ styles = { transparency = true } })
 require('vague').setup({ transparent = true })
-vim.cmd.colorscheme('vague')
+vim.cmd.colorscheme('rose-pine')
 vim.cmd(':hi statusline guibg=NONE')
 
 local map = vim.keymap.set
