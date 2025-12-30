@@ -1,28 +1,29 @@
--- based on https://www.youtube.com/@sylvanfranklin 's config
+local opt = vim.opt
 vim.g.mapleader = ' '
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.wrap = false
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.smartindent = true
-vim.o.cursorcolumn = false
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.signcolumn = 'yes'
-vim.o.swapfile = false
-vim.o.termguicolors = true
-vim.o.undofile = true
-vim.o.incsearch = true
-vim.o.hlsearch = false
-vim.o.guicursor = ''
-vim.o.mouse = ''
-vim.o.scrolloff = 100
-vim.o.spell = true
-vim.opt.spelllang = { 'nl', 'en_gb' }
+opt.number = true
+opt.relativenumber = true
+opt.wrap = false
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.smartindent = true
+opt.cursorcolumn = false
+opt.ignorecase = true
+opt.smartcase = true
+opt.signcolumn = 'yes'
+opt.swapfile = false
+opt.termguicolors = true
+opt.undofile = true
+opt.incsearch = true
+opt.hlsearch = false
+opt.guicursor = ''
+opt.mouse = ''
+opt.scrolloff = 100
+opt.spell = true
+opt.spelllang = { 'nl', 'en_gb' }
 
 
 vim.pack.add {
+	{ src = 'https://github.com/rose-pine/neovim',                name = 'rosepine' },
 	{ src = 'https://github.com/vague2k/vague.nvim' },
 	{ src = 'https://github.com/y9san9/y9nika.nvim' },
 	{ src = 'https://github.com/ricardoraposo/gruvbox-minor.nvim' },
@@ -32,6 +33,7 @@ vim.pack.add {
 	{ src = 'https://github.com/echasnovski/mini.pick' },
 	{ src = 'https://github.com/echasnovski/mini.surround' },
 	{ src = 'https://github.com/chomosuke/typst-preview.nvim' },
+	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{
 		src = 'https://github.com/nvim-treesitter/nvim-treesitter',
 		data = {
@@ -40,8 +42,9 @@ vim.pack.add {
 			end,
 		},
 	},
-	{ src = 'https://github.com/mason-org/mason.nvim', load = false },
-	{ src = 'https://github.com/L3MON4D3/LuaSnip', load = false },
+	{ src = 'https://github.com/L3MON4D3/LuaSnip' },
+	{ src = 'https://github.com/mason-org/mason.nvim' },
+	{ src = 'https://github.com/stevearc/conform.nvim' },
 	{ src = 'https://github.com/chentoast/marks.nvim' },
 }
 
@@ -64,16 +67,22 @@ vim.diagnostic.config {
 	severity_sort = true
 }
 
+require('conform').setup({
+	lsp_format = 'never',
+	formatters_by_ft = {
+		sh = { 'shfmt' },
+	}
+})
 
 require 'marks'.setup { builtin_marks = { '<', '>', '^', '"', [[']], '`', '[', ']' } }
+require('mason').setup()
 
-vim.api.nvim_create_user_command('Mason', function()
-	pcall(vim.cmd.packadd, 'mason.nvim')
-	require('mason').setup()
-	vim.cmd('Mason')
-end, {})
+-- vim.api.nvim_create_user_command('Mason', function()
+-- 	pcall(vim.cmd.packadd, 'mason.nvim')
+-- require('mason').setup()
+-- 	vim.cmd('Mason')
+-- end, {})
 
--- require 'mason'.setup()
 require 'mini.pick'.setup({
 	window = {
 		config = function()
@@ -104,10 +113,11 @@ require 'oil'.setup {
 vim.api.nvim_create_autocmd('InsertEnter', {
 	once = true,
 	callback = function()
+		pcall(vim.cmd.packadd, 'LuaSnip')
 		local ls = require('luasnip')
 		ls.setup { enable_autosnippets = true }
 		require('luasnip.loaders.from_lua').lazy_load({
-			lazy_paths = { vim.fn.expand('~/dotfiles/nvim-exp/snippets/') },
+			paths = { vim.fn.expand('~/dotfiles/nvim/snippets/') },
 		})
 		local map = vim.keymap.set
 		map('i', '<C-e>', function() ls.expand() end, { silent = true })
@@ -116,8 +126,10 @@ vim.api.nvim_create_autocmd('InsertEnter', {
 	end
 })
 
--- require 'vague'.setup { transparent = true }
-vim.cmd.colorscheme 'gruvbox-minor'
+require 'rose-pine'.setup { styles = {
+	transparency = true
+}}
+vim.cmd.colorscheme 'rose-pine'
 vim.cmd ':hi statusline guibg=NONE'
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -140,7 +152,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end
 	end,
 })
-vim.cmd [[set completeopt+=menuone,noselect,popup]]
+vim.opt.completeopt:append({ 'menuone', 'noselect', 'popup' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
 	callback = function() vim.highlight.on_yank() end,
@@ -171,6 +183,7 @@ local function pack_clean()
 	end
 end
 
+
 local map = vim.keymap.set
 
 map('n', '<leader>o', '<Cmd>update<CR> <Cmd>source<CR>')
@@ -189,6 +202,7 @@ map('n', '<leader>b', ':Pick buffers<CR>')
 map('n', '<leader>g', ':Pick grep<CR>')
 
 map('n', '<leader>lf', vim.lsp.buf.format)
+map('n', '<leader>lF', require('conform').format)
 
 map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>')
 map({ 'n', 'v', 'x' }, '<leader>S', ':sf #<CR>')
