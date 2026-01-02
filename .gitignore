@@ -5,6 +5,7 @@ echo "*.swp" >> .gitignore
 **/.netrwhist
 **/autoload
 **/lazy-lock.json
+**/nvim-pack-lock.json
 suckless/
 *.spl
 *.add.spl
