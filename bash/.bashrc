@@ -20,6 +20,7 @@ set -o vi
 
 # alias
 alias v=nvim
+alias vi="NVIM_APPNAME=nvim-minimax nvim"
 alias ve="NVIM_APPNAME=nvim-exp nvim"
 alias vm="NVIM_APPNAME=nvim-min nvim"
 alias vo="NVIM_APPNAME=nvim-old nvim"
