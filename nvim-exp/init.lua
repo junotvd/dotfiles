@@ -13,8 +13,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
-vim.opt.completeopt:append({ 'menuone', 'noselect', 'popup' })
-vim.o.complete = '.,w,b,kspell'
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.highlight.on_yank() end,

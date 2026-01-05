@@ -6,6 +6,7 @@ vim.g.mapleader = ' '
 opt.number = true
 opt.relativenumber = true
 opt.wrap = true
+opt.linebreak = true
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.smartindent = true
@@ -23,5 +24,7 @@ opt.mouse = ''
 opt.scrolloff = 100
 opt.spell = true
 opt.spelllang = { 'nl', 'en_gb' }
-opt.statusline = '[%n] %<%f %h%w%m%r%=%-14.(%l,%c%V%) %P'
 vim.o.spelloptions = 'camel'
+vim.o.completeopt = 'menuone,noselect,fuzzy,nosort'
+vim.o.complete = '.,w,b,kspell'
+opt.statusline = '[%n] %<%f %h%w%m%r%=%-14.(%l,%c%V%) %P'
