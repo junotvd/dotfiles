@@ -15,7 +15,7 @@ set $browser firefox
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/dotfiles/wallpaper/black.png fill
+# output * bg ~/dotfiles/wallpaper/black.png fill
 #
 # Example configuration:
 #
@@ -69,6 +69,7 @@ default_floating_border none
 
     bindsym $mod+m exec setup-wl
     bindsym $mod+Shift+w exec websites-wl
+    bindsym $mod+Shift+s exec grim -g "$(slurp)" ~/hogeschool/bach1/sem1/screenshot.png
 
 
 # Basics:
