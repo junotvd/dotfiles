@@ -5,6 +5,7 @@ local ensure_installed = {
 	'luadoc',
 	'python',
 	'javascript',
+	'typescript',
 	'bash',
 	'markdown',
 	'markdown_inline',
@@ -15,7 +16,11 @@ local ensure_installed = {
 	'vimdoc',
 	'comment',
 	'vim',
-	'typst'
+	'typst',
+	'c',
+	'cpp',
+	'rust',
+	'go',
 }
 
 -- garandeert dat parses eenmalig geinstalleerd worden, no runtime guessing, no silent failures
