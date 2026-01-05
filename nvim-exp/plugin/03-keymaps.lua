@@ -31,12 +31,8 @@ map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 
 map('n', '<leader>pv', vim.cmd.Oil)
-map('n', '<leader>f', ':Pick files<CR>')
-map('n', '<leader>h', ':Pick help<CR>')
-map('n', '<leader>b', ':Pick buffers<CR>')
-map('n', '<leader>g', ':Pick grep<CR>')
 
-map('n', '<leader>lf', require('conform').format)
+-- map('n', '<leader>lf', require('conform').format)
 
 map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>')
 map({ 'n', 'v', 'x' }, '<leader>S', ':sf #<CR>')

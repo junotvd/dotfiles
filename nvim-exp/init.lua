@@ -19,3 +19,12 @@ vim.o.complete = '.,w,b,kspell'
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.highlight.on_yank() end,
 })
+
+vim.diagnostic.config({
+  virtual_text = {
+    current_line = true,
+    source = 'if_many',
+  },
+  severity_sort = true,
+  update_in_insert = false,
+})
