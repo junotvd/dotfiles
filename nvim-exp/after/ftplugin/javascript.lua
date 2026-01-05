@@ -1,1 +1,1 @@
-vim.cmd([[set makeprg=node\ %]])
+vim.bo.makeprg = 'node %'

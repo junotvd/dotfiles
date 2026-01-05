@@ -1,1 +1,1 @@
-vim.cmd([[set makeprg=python3\ %]])
+vim.bo.makeprg= 'python3 %'

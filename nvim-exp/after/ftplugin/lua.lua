@@ -1,1 +1,1 @@
-vim.cmd([[set makeprg=lua\ %]])
+vim.bo.makeprg = 'lua %'
