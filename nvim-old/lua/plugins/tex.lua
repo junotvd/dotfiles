@@ -2,7 +2,7 @@ return {
 
   {
     'lervag/vimtex',
-    lazy = false,
+    ft = 'tex',
     init = function()
       vim.g.vimtex_syntax_enabled = 1
       vim.g.vimtex_compiler_latexmk_engines = { ['_'] = '-lualatex -shell-escape' }
@@ -17,6 +17,7 @@ return {
 
   {
     'KeitaNakamura/tex-conceal.vim',
+    ft = 'tex',
     config = function()
       vim.o.conceallevel = 2
       vim.g.tex_conceal = 'abdmg'
