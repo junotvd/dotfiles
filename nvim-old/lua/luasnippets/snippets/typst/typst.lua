@@ -1,3 +1,4 @@
+-- stylua: ignore start
 -- TODO: alles wat recursief is
 --
 -- local test = function(_, snip)
@@ -59,6 +60,7 @@ $<>]],
   asm({ trig = 'cb', name = 'cubed', wordTrig = false }, { t('^3') }),
   asm({ trig = 'inv', name = 'inverse', wordTrig = false }, t('^(-1)')),
   asm({ trig = 'td', name = 'tot de ...', wordTrig = false }, fmta('^(<>)<>', { i(1), i(0) })),
+
   -- TODO: originele subscripts zoals bij tex
   asm(
     {
@@ -179,20 +181,20 @@ $<>]],
   ),
 
   -- TODO
-  asm({ trig = 'ubre' }, fmta('underbrace(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'obre' }, fmta('overbrace(<>)<>', { d(1, get_visual), i(0) })),
+  asm({ trig = 'ubre' }, fmta('underbrace(<>)<>',   { d(1, get_visual), i(0) })),
+  asm({ trig = 'obre' }, fmta('overbrace(<>)<>',    { d(1, get_visual), i(0) })),
   asm({ trig = 'ubrk' }, fmta('underbracket(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'obrk' }, fmta('overbracket(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'upar' }, fmta('underparen(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'opar' }, fmta('overparen(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'ushe' }, fmta('undershell(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'oshe' }, fmta('overshell(<>)<>', { d(1, get_visual), i(0) })),
+  asm({ trig = 'obrk' }, fmta('overbracket(<>)<>',  { d(1, get_visual), i(0) })),
+  asm({ trig = 'upar' }, fmta('underparen(<>)<>',   { d(1, get_visual), i(0) })),
+  asm({ trig = 'opar' }, fmta('overparen(<>)<>',    { d(1, get_visual), i(0) })),
+  asm({ trig = 'ushe' }, fmta('undershell(<>)<>',   { d(1, get_visual), i(0) })),
+  asm({ trig = 'oshe' }, fmta('overshell(<>)<>',    { d(1, get_visual), i(0) })),
 
-  asm({ trig = 'stretch' }, fmta('stretch(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'cnl' }, fmta('cancel(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'abs' }, fmta('abs(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'norm' }, fmta('norm(<>)<>', { d(1, get_visual), i(0) })),
-  asm({ trig = 'sqrt', name = 'square root' }, fmta('sqrt(<>)<>', { d(1, get_visual), i(0) })),
+  asm({ trig = 'stretch' }, fmta('stretch(<>)<>',   { d(1,             get_visual), i(0) })),
+  asm({ trig = 'cnl' },     fmta('cancel(<>)<>',    { d(1,             get_visual), i(0) })),
+  asm({ trig = 'abs' },     fmta('abs(<>)<>',       { d(1,             get_visual), i(0) })),
+  asm({ trig = 'norm' },    fmta('norm(<>)<>',      { d(1,             get_visual), i(0) })),
+  asm({ trig = 'sqrt',      name = 'square root' }, fmta('sqrt(<>)<>', { d(1,       get_visual), i(0) })),
 
   -- TODO
   s(
@@ -320,13 +322,14 @@ $<>]],
   --[[ Symbols ]]
   -----------------
 
-  asm({ trig = 'iff', name = 'if and only if' }, t('<==>')),
-  asm({ trig = 'imp', name = 'implies' }, t('==>')),
-  asm({ trig = 'pmi', name = 'implied by' }, t('<==')),
-  asm({ trig = 'xx' }, t('times')),
-  asm({ trig = 'odot' }, t('dot.circle')),
-  asm({ trig = 'Odot' }, t('dot.circle.big')),
+  asm({ trig = 'iff',     name = 'if and only if' }, t('<==>')),
+  asm({ trig = 'imp',     name = 'implies' },        t('==>')),
+  asm({ trig = 'pmi',     name = 'implied by' },     t('<==')),
+  asm({ trig = 'xx' },    t('times')),
+  asm({ trig = 'odot' },  t('dot.circle')),
+  asm({ trig = 'Odot' },  t('dot.circle.big')),
   asm({ trig = 'oplus' }, t('plus.circle.big')),
+
   asm(
     { trig = '([hvdu])dot', regTrig = true, name = 'dots' },
     fmta('<><>', {
@@ -337,26 +340,26 @@ $<>]],
       i(0),
     })
   ),
-  asm({ trig = 'px' }, t('approx')),
-  asm({ trig = 'plm' }, t('plus.minus')),
-  asm({ trig = 'mpl' }, t('minus.plus')),
-  asm({ trig = 'exi' }, t('exists')),
-  asm({ trig = 'exin' }, t('exists.not')),
-  asm({ trig = 'fal' }, t('forall')),
-  asm({ trig = 'Inter' }, t('inter.big')),
-  asm({ trig = 'Union' }, t('union.big')),
-  asm({ trig = 'bset' }, t('subset')),
-  asm({ trig = 'pset' }, t('supset')),
+  asm({ trig = 'px' },      t('approx')),
+  asm({ trig = 'plm' },     t('plus.minus')),
+  asm({ trig = 'mpl' },     t('minus.plus')),
+  asm({ trig = 'exi' },     t('exists')),
+  asm({ trig = 'exin' },    t('exists.not')),
+  asm({ trig = 'fal' },     t('forall')),
+  asm({ trig = 'Inter' },   t('inter.big')),
+  asm({ trig = 'Union' },   t('union.big')),
+  asm({ trig = 'bset' },    t('subset')),
+  asm({ trig = 'pset' },    t('supset')),
   asm({ trig = 'subsetq' }, t('subset.eq')),
   asm({ trig = 'supsetq' }, t('supset.eq')),
-  asm({ trig = 'OO' }, t('emptyset')),
-  asm({ trig = 'iint' }, t('integral')),
-  asm({ trig = 'dint' }, t('integral.double')),
-  asm({ trig = 'tint' }, t('integral.triple')),
-  asm({ trig = 'qint' }, t('integral.quad')),
-  asm({ trig = 'oint' }, t('integral.cont')),
-  asm({ trig = 'sint' }, t('integral.surf')),
-  asm({ trig = 'vint' }, t('integral.vol')),
+  asm({ trig = 'OO' },      t('emptyset')),
+  asm({ trig = 'iint' },    t('integral')),
+  asm({ trig = 'dint' },    t('integral.double')),
+  asm({ trig = 'tint' },    t('integral.triple')),
+  asm({ trig = 'qint' },    t('integral.quad')),
+  asm({ trig = 'oint' },    t('integral.cont')),
+  asm({ trig = 'sint' },    t('integral.surf')),
+  asm({ trig = 'vint' },    t('integral.vol')),
   -- asm(
   --   { trig = '([idtosv])int', name = 'integrals', regTrig = true },
   --   fmta('<><>', {
@@ -374,6 +377,7 @@ $<>]],
   --     i(0),
   --   })
   -- ),
+
   asm({ trig = 'spq' }, t('space.quad')),
   asm({ trig = 'spe' }, t('space.en')),
   asm({ trig = 'spt' }, t('space.thin')),
@@ -381,280 +385,101 @@ $<>]],
   asm({ trig = 'sp3' }, t('space.third')),
   asm({ trig = 'sp4' }, t('space.quarter')),
   asm({ trig = 'sp6' }, t('space.sixth')),
+
   asm({ trig = 'oo', wordTrig = false }, t('infinity')),
 
   -- Greek
-  as({ trig = ';a', wordTrig = false }, {
-    t('alpha'),
-  }),
-  as({ trig = ';b', wordTrig = false }, {
-    t('beta'),
-  }),
-  as({ trig = ';vb', wordTrig = false }, {
-    t('beta.alt'),
-  }),
-  as({ trig = ';g', wordTrig = false }, {
-    t('gamma'),
-  }),
-  as({ trig = ';G', wordTrig = false }, {
-    t('Gamma'),
-  }),
-  as({ trig = ';d', wordTrig = false }, {
-    t('delta'),
-  }),
-  as({ trig = ';D', wordTrig = false }, {
-    t('Delta'),
-  }),
-  as({ trig = ';e', wordTrig = false }, {
-    t('epsilon'),
-  }),
-  as({ trig = ';ve', wordTrig = false }, {
-    t('epsilon.alt'),
-  }),
-  as({ trig = ';z', wordTrig = false }, {
-    t('zeta'),
-  }),
-  as({ trig = ';Z', wordTrig = false }, {
-    t('Zeta'),
-  }),
-  as({ trig = ';h', wordTrig = false }, {
-    t('eta'),
-  }),
-  as({ trig = ';H', wordTrig = false }, {
-    t('Eta'),
-  }),
-  as({ trig = ';t', wordTrig = false }, {
-    t('theta'),
-  }),
-  as({ trig = ';vt', wordTrig = false }, {
-    t('theta.alt'),
-  }),
-  as({ trig = ';T', wordTrig = false }, {
-    t('Theta'),
-  }),
-  as({ trig = ';j', wordTrig = false }, {
-    t('iota'),
-  }),
-  as({ trig = ';J', wordTrig = false }, {
-    t('Iota'),
-  }),
-  as({ trig = ';k', wordTrig = false }, {
-    t('kappa'),
-  }),
-  as({ trig = ';vk', wordTrig = false }, {
-    t('kappa.alt'),
-  }),
-  as({ trig = ';l', wordTrig = false }, {
-    t('lambda'),
-  }),
-  as({ trig = ';L', wordTrig = false }, {
-    t('Lambda'),
-  }),
-  as({ trig = ';m', wordTrig = false }, {
-    t('mu'),
-  }),
-  as({ trig = ';n', wordTrig = false }, {
-    t('nabla'),
-  }),
-  as({ trig = ';x', wordTrig = false }, {
-    t('xi'),
-  }),
-  as({ trig = ';X', wordTrig = false }, {
-    t('Xi'),
-  }),
-  as({ trig = ';o', wordTrig = false }, {
-    t('omicron'),
-  }),
-  as({ trig = ';O', wordTrig = false }, {
-    t('Omicron'),
-  }),
-  as({ trig = ';i', wordTrig = false }, {
-    t('pi'),
-  }),
-  as({ trig = ';vi', wordTrig = false }, {
-    t('pi.alt'),
-  }),
-  as({ trig = ';I', wordTrig = false }, {
-    t('Pi'),
-  }),
-  as({ trig = ';r', wordTrig = false }, {
-    t('rho'),
-  }),
-  as({ trig = ';R', wordTrig = false }, {
-    t('Rho'),
-  }),
-  as({ trig = ';vr', wordTrig = false }, {
-    t('rho.alt'),
-  }),
-  as({ trig = ';s', wordTrig = false }, {
-    t('sigma'),
-  }),
-  as({ trig = ';vs', wordTrig = false }, {
-    t('sigma.alt'),
-  }),
-  as({ trig = ';S', wordTrig = false }, {
-    t('Sigma'),
-  }),
-  as({ trig = ';u', wordTrig = false }, {
-    t('upsilon'),
-  }),
-  as({ trig = ';U', wordTrig = false }, {
-    t('Upsilon'),
-  }),
-  as({ trig = ';f', wordTrig = false }, {
-    t('phi'),
-  }),
-  as({ trig = ';vf', wordTrig = false }, {
-    t('phi.alt'),
-  }),
-  as({ trig = ';F', wordTrig = false }, {
-    t('Phi'),
-  }),
-  as({ trig = ';c', wordTrig = false }, {
-    t('chi'),
-  }),
-  as({ trig = ';C', wordTrig = false }, {
-    t('Chi'),
-  }),
-  as({ trig = ';p', wordTrig = false }, {
-    t('psi'),
-  }),
-  as({ trig = ';P', wordTrig = false }, {
-    t('Psi'),
-  }),
-  as({ trig = ';w', wordTrig = false }, {
-    t('omega'),
-  }),
-  as({ trig = ';W', wordTrig = false }, {
-    t('Omega'),
-  }),
+  as({ trig = ';a',  wordTrig = false }, { t('alpha') }),
+  as({ trig = ';b',  wordTrig = false }, { t('beta') }),
+  as({ trig = ';vb', wordTrig = false }, { t('beta.alt') }),
+  as({ trig = ';g',  wordTrig = false }, { t('gamma') }),
+  as({ trig = ';G',  wordTrig = false }, { t('Gamma') }),
+  as({ trig = ';d',  wordTrig = false }, { t('delta') }),
+  as({ trig = ';D',  wordTrig = false }, { t('Delta') }),
+  as({ trig = ';e',  wordTrig = false }, { t('epsilon') }),
+  as({ trig = ';ve', wordTrig = false }, { t('epsilon.alt') }),
+  as({ trig = ';z',  wordTrig = false }, { t('zeta') }),
+  as({ trig = ';Z',  wordTrig = false }, { t('Zeta') }),
+  as({ trig = ';h',  wordTrig = false }, { t('eta') }),
+  as({ trig = ';H',  wordTrig = false }, { t('Eta') }),
+  as({ trig = ';t',  wordTrig = false }, { t('theta') }),
+  as({ trig = ';vt', wordTrig = false }, { t('theta.alt') }),
+  as({ trig = ';T',  wordTrig = false }, { t('Theta') }),
+  as({ trig = ';j',  wordTrig = false }, { t('iota') }),
+  as({ trig = ';J',  wordTrig = false }, { t('Iota') }),
+  as({ trig = ';k',  wordTrig = false }, { t('kappa') }),
+  as({ trig = ';vk', wordTrig = false }, { t('kappa.alt') }),
+  as({ trig = ';l',  wordTrig = false }, { t('lambda') }),
+  as({ trig = ';L',  wordTrig = false }, { t('Lambda') }),
+  as({ trig = ';m',  wordTrig = false }, { t('mu') }),
+  as({ trig = ';n',  wordTrig = false }, { t('nabla') }),
+  as({ trig = ';x',  wordTrig = false }, { t('xi') }),
+  as({ trig = ';X',  wordTrig = false }, { t('Xi') }),
+  as({ trig = ';o',  wordTrig = false }, { t('omicron') }),
+  as({ trig = ';O',  wordTrig = false }, { t('Omicron') }),
+  as({ trig = ';i',  wordTrig = false }, { t('pi') }),
+  as({ trig = ';vi', wordTrig = false }, { t('pi.alt') }),
+  as({ trig = ';I',  wordTrig = false }, { t('Pi') }),
+  as({ trig = ';r',  wordTrig = false }, { t('rho') }),
+  as({ trig = ';R',  wordTrig = false }, { t('Rho') }),
+  as({ trig = ';vr', wordTrig = false }, { t('rho.alt') }),
+  as({ trig = ';s',  wordTrig = false }, { t('sigma') }),
+  as({ trig = ';vs', wordTrig = false }, { t('sigma.alt') }),
+  as({ trig = ';S',  wordTrig = false }, { t('Sigma') }),
+  as({ trig = ';u',  wordTrig = false }, { t('upsilon') }),
+  as({ trig = ';U',  wordTrig = false }, { t('Upsilon') }),
+  as({ trig = ';f',  wordTrig = false }, { t('phi') }),
+  as({ trig = ';vf', wordTrig = false }, { t('phi.alt') }),
+  as({ trig = ';F',  wordTrig = false }, { t('Phi') }),
+  as({ trig = ';c',  wordTrig = false }, { t('chi') }),
+  as({ trig = ';C',  wordTrig = false }, { t('Chi') }),
+  as({ trig = ';p',  wordTrig = false }, { t('psi') }),
+  as({ trig = ';P',  wordTrig = false }, { t('Psi') }),
+  as({ trig = ';w',  wordTrig = false }, { t('omega') }),
+  as({ trig = ';W',  wordTrig = false }, { t('Omega') }),
 
-  ast({ trig = 'definieren', wordTrig = false }, {
-    t('definiëren'),
-  }),
-  ast({ trig = 'continuiteit', wordTrig = false }, {
-    t('continuïteit'),
-  }),
-  ast({ trig = 'reele', wordTrig = false }, {
-    t('reële'),
-  }),
-  ast({ trig = 'reeel', wordTrig = false }, {
-    t('reëel'),
-  }),
-  ast({ trig = 'coefficient', wordTrig = false }, {
-    t('coëfficiënt'),
-  }),
-  ast({ trig = 'quotient', wordTrig = false }, {
-    t('quotiënt'),
-  }),
-  ast({ trig = ':e:', wordTrig = false }, {
-    t('ë'),
-  }),
-  ast({ trig = ':i:', wordTrig = false }, {
-    t('ï'),
-  }),
-  ast({ trig = [['e']], wordTrig = false }, {
-    t('é'),
-  }),
-  ast({ trig = 'coordinaten', wordTrig = false }, {
-    t('coördinaten'),
-  }),
-  ast({ trig = 'algebraisch', wordTrig = false }, {
-    t('algebraïsch'),
-  }),
-  ast({ trig = 'coordinaat', wordTrig = false }, {
-    t('coördinaat'),
-  }),
-  ast({ trig = 'Coordinaat', wordTrig = false }, {
-    t('Coördinaat'),
-  }),
-  ast({ trig = 'geisoleerd', wordTrig = false }, {
-    t('geïsoleerd'),
-  }),
-  ast({ trig = 'intuitief', wordTrig = false }, {
-    t('intuïtief'),
-  }),
-  ast({ trig = 'intuitieve', wordTrig = false }, {
-    t('intuïtieve'),
-  }),
-  ast({ trig = 'partiele', wordTrig = false }, {
-    t('partiële'),
-  }),
-  ast({ trig = 'gradient', wordTrig = false }, {
-    t('gradiënt'),
-  }),
-  ast({ trig = 'georienteerd', wordTrig = false }, {
-    t('georiënteerd'),
-  }),
-  ast({ trig = 'orienteerbaar', wordTrig = false }, {
-    t('oriënteerbaar'),
-  }),
-  ast({ trig = 'solenoidaal', wordTrig = false }, {
-    t('solenoïdaal'),
-  }),
-  ast({ trig = 'Solenoidaal', wordTrig = false }, {
-    t('Solenoïdaal'),
-  }),
-  ast({ trig = 'solenoidale', wordTrig = false }, {
-    t('solenoïdale'),
-  }),
-  ast({ trig = 'Solenoidale', wordTrig = false }, {
-    t('Solenoïdale'),
-  }),
-  ast({ trig = 'potentiele', wordTrig = false }, {
-    t('potentiële'),
-  }),
-  ast({ trig = 'Potentiele', wordTrig = false }, {
-    t('Potentiële'),
-  }),
-  ast({ trig = 'dielektrisch', wordTrig = false }, {
-    t('diëlektrisch'),
-  }),
-  ast({ trig = 'Dielektrisch', wordTrig = false }, {
-    t('Diëlektrisch'),
-  }),
-  ast({ trig = 'dielektrica', wordTrig = false }, {
-    t('diëlektrica'),
-  }),
-  ast({ trig = 'Dielektrica', wordTrig = false }, {
-    t('Diëlektrica'),
-  }),
-  ast({ trig = 'vacuum', wordTrig = false }, {
-    t('vacuüm'),
-  }),
-  ast({ trig = 'Vacuum', wordTrig = false }, {
-    t('Vacuüm'),
-  }),
-  ast({ trig = 'initiele', wordTrig = false }, {
-    t('initiële'),
-  }),
-  ast({ trig = 'Initiele', wordTrig = false }, {
-    t('Initiële'),
-  }),
-  ast({ trig = 'tangentiele', wordTrig = false }, {
-    t('tangentiële'),
-  }),
-  ast({ trig = 'Tangentiele', wordTrig = false }, {
-    t('Tangentiële'),
-  }),
-  ast({ trig = 'beinvloed', wordTrig = false }, {
-    t('beïnvloed'),
-  }),
-  ast({ trig = 'Beinvloed', wordTrig = false }, {
-    t('Beïnvloed'),
-  }),
-  ast({ trig = 'Geinduceerd', wordTrig = false }, {
-    t('Geïnduceerd'),
-  }),
-  ast({ trig = 'geinduceerd', wordTrig = false }, {
-    t('geïnduceerd'),
-  }),
-  ast({ trig = 'dielektri', wordTrig = false }, {
-    t('diëlektri'),
-  }),
-  ast({ trig = 'Ampere', wordTrig = false }, {
-    t('Ampère'),
-  }),
+  ast({ trig = 'definieren',    wordTrig = false }, { t('definiëren') }),
+  ast({ trig = 'continuiteit',  wordTrig = false }, { t('continuïteit') }),
+  ast({ trig = 'reele',         wordTrig = false }, { t('reële') }),
+  ast({ trig = 'reeel',         wordTrig = false }, { t('reëel') }),
+  ast({ trig = 'coefficient',   wordTrig = false }, { t('coëfficiënt') }),
+  ast({ trig = 'quotient',      wordTrig = false }, { t('quotiënt') }),
+  ast({ trig = ':e:',           wordTrig = false }, { t('ë') }),
+  ast({ trig = ':i:',           wordTrig = false }, { t('ï') }),
+  ast({ trig = [['e']],         wordTrig = false }, { t('é') }),
+  ast({ trig = 'coordinaten',   wordTrig = false }, { t('coördinaten') }),
+  ast({ trig = 'algebraisch',   wordTrig = false }, { t('algebraïsch') }),
+  ast({ trig = 'coordinaat',    wordTrig = false }, { t('coördinaat') }),
+  ast({ trig = 'Coordinaat',    wordTrig = false }, { t('Coördinaat') }),
+  ast({ trig = 'geisoleerd',    wordTrig = false }, { t('geïsoleerd') }),
+  ast({ trig = 'intuitief',     wordTrig = false }, { t('intuïtief') }),
+  ast({ trig = 'intuitieve',    wordTrig = false }, { t('intuïtieve') }),
+  ast({ trig = 'partiele',      wordTrig = false }, { t('partiële') }),
+  ast({ trig = 'gradient',      wordTrig = false }, { t('gradiënt') }),
+  ast({ trig = 'georienteerd',  wordTrig = false }, { t('georiënteerd') }),
+  ast({ trig = 'orienteerbaar', wordTrig = false }, { t('oriënteerbaar') }),
+  ast({ trig = 'solenoidaal',   wordTrig = false }, { t('solenoïdaal') }),
+  ast({ trig = 'Solenoidaal',   wordTrig = false }, { t('Solenoïdaal') }),
+  ast({ trig = 'solenoidale',   wordTrig = false }, { t('solenoïdale') }),
+  ast({ trig = 'Solenoidale',   wordTrig = false }, { t('Solenoïdale') }),
+  ast({ trig = 'potentiele',    wordTrig = false }, { t('potentiële') }),
+  ast({ trig = 'Potentiele',    wordTrig = false }, { t('Potentiële') }),
+  ast({ trig = 'dielektrisch',  wordTrig = false }, { t('diëlektrisch') }),
+  ast({ trig = 'Dielektrisch',  wordTrig = false }, { t('Diëlektrisch') }),
+  ast({ trig = 'dielektrica',   wordTrig = false }, { t('diëlektrica') }),
+  ast({ trig = 'Dielektrica',   wordTrig = false }, { t('Diëlektrica') }),
+  ast({ trig = 'vacuum',        wordTrig = false }, { t('vacuüm') }),
+  ast({ trig = 'Vacuum',        wordTrig = false }, { t('Vacuüm') }),
+  ast({ trig = 'initiele',      wordTrig = false }, { t('initiële') }),
+  ast({ trig = 'Initiele',      wordTrig = false }, { t('Initiële') }),
+  ast({ trig = 'tangentiele',   wordTrig = false }, { t('tangentiële') }),
+  ast({ trig = 'Tangentiele',   wordTrig = false }, { t('Tangentiële') }),
+  ast({ trig = 'beinvloed',     wordTrig = false }, { t('beïnvloed') }),
+  ast({ trig = 'Beinvloed',     wordTrig = false }, { t('Beïnvloed') }),
+  ast({ trig = 'Geinduceerd',   wordTrig = false }, { t('Geïnduceerd') }),
+  ast({ trig = 'geinduceerd',   wordTrig = false }, { t('geïnduceerd') }),
+  ast({ trig = 'dielektri',     wordTrig = false }, { t('diëlektri') }),
+  ast({ trig = 'Ampere',        wordTrig = false }, { t('Ampère') }),
 }
 
 ----------------
@@ -787,3 +612,4 @@ end
 vim.list_extend(M, postfix_math_snippets)
 
 return M
+-- stylua: ignore stop
