@@ -25,6 +25,18 @@ now_if_args(function()
   _G.Config.new_autocmd('FileType', filetypes, ts_start, 'Ensure enabled tree-sitter')
 end)
 
+now_if_args(function()
+  add({ 'https://github.com/stevearc/oil.nvim' })
+  require('oil').setup({
+    view_options = { show_hidden = true },
+    default_file_explorer = true,
+    columns = {
+      'permissions', 'size',
+    },
+  })
+  vim.keymap.set('n', '<leader>pv', vim.cmd.Oil)
+end)
+
 later(function()
   add({ 'https://github.com/mason-org/mason.nvim' })
   require('mason').setup()

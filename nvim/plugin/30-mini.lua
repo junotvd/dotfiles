@@ -39,4 +39,4 @@ end)
 
 later(function() require('mini.bufremove').setup() end)
 later(function() require('mini.surround').setup() end)
-later(function() require('mini.files').setup() end)
+-- later(function() require('mini.files').setup() end)
