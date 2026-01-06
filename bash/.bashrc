@@ -20,10 +20,8 @@ set -o vi
 
 # alias
 alias v=nvim
-alias vi="NVIM_APPNAME=nvim-minimax nvim"
-alias ve="NVIM_APPNAME=nvim-exp nvim"
-alias vm="NVIM_APPNAME=nvim-min nvim"
 alias vo="NVIM_APPNAME=nvim-old nvim"
+alias vv="NVIM_APPNAME=nvim-nov nvim"
 alias py=python
 alias l='ls -la'
 alias q=exit
@@ -38,18 +36,18 @@ alias apollo='firefox https://apollo.saga-pollux.ts.net/'
 alias lualatex='lualatex -interaction nonstopmode'
 
 cd() {
-    if [ $# -eq 0 ]; then
-        if [ -n "$TMUX" ]; then
-            root=$(tmux show-environment TMUX_SESSION_ROOT 2>/dev/null | cut -d= -f2-)
-            if [ -n "$root" ]; then
-                builtin cd "$root"
-                return
-            fi
-        fi
-        builtin cd ~
-    else
-        builtin cd "$@"
-    fi
+	if [ $# -eq 0 ]; then
+		if [ -n "$TMUX" ]; then
+			root=$(tmux show-environment TMUX_SESSION_ROOT 2>/dev/null | cut -d= -f2-)
+			if [ -n "$root" ]; then
+				builtin cd "$root"
+				return
+			fi
+		fi
+		builtin cd ~
+	else
+		builtin cd "$@"
+	fi
 }
 
 # Created by `pipx` on 2024-12-23 10:05:10
