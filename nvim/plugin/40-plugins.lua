@@ -38,6 +38,11 @@ now_if_args(function()
 end)
 
 later(function()
+  add({ 'https://github.com/chomosuke/typst-preview.nvim' })
+  require('typst-preview').setup()
+end)
+
+later(function()
   add({ 'https://github.com/mason-org/mason.nvim' })
   require('mason').setup()
 end)
@@ -114,11 +119,17 @@ later(function()
 end)
 
 later(function()
-  add({ 'https://github.com/L3MON4D3/LuaSnip' })
+  local build = function(args)
+    vim.system({ 'make', 'install_jsregexp' }, { cwd = args.path })
+  end
+  MiniDeps.add({
+    source = 'https://github.com/L3MON4D3/LuaSnip',
+    hooks = { post_install = build, post_checkout = build },
+  })
   local ls = require('luasnip')
   ls.setup({ enable_autosnippets = true })
   require('luasnip.loaders.from_lua').lazy_load({
-    paths = { vim.fn.expand('~/dotfiles/nvim/snippets/') },
+    paths = { vim.fn.expand('~/dotfiles/nvim-old/lua/luasnippets/snippets/') },
   })
   vim.keymap.set('i', '<C-e>', function() ls.expand() end, { silent = true })
   vim.keymap.set({ 'i', 's' }, '<C-j>', function() ls.jump(1) end, { silent = true })
