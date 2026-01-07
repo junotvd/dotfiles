@@ -1,11 +1,13 @@
 -- stylua: ignore start
+local map = vim.keymap.set
 local nmap_leader = function(suffix, rhs, desc)
-  vim.keymap.set('n', '<Leader>' .. suffix, rhs, { desc = desc })
+  map('n', '<Leader>' .. suffix, rhs, { desc = desc })
 end
 local xmap_leader = function(suffix, rhs, desc)
-  vim.keymap.set('x', '<Leader>' .. suffix, rhs, { desc = desc })
+  map('x', '<Leader>' .. suffix, rhs, { desc = desc })
 end
 
+-- b: buffer
 local new_scratch_buffer = function()
   vim.api.nvim_win_set_buf(0, vim.api.nvim_create_buf(true, true))
 end
@@ -27,17 +29,19 @@ local explore_quickfix = function()
   vim.cmd('copen')
 end
 
+-- e: edit
 nmap_leader('ed', '<Cmd>lua MiniFiles.open()<CR>',          'Directory')
 nmap_leader('ef', explore_at_file,                          'File directory')
 nmap_leader('ei', '<Cmd>edit $MYVIMRC<CR>',                 'init.lua')
-nmap_leader('ek', edit_config_file('20_keymaps.lua'),       'Keymaps config')
-nmap_leader('em', edit_config_file('30_mini.lua'),          'MINI config')
+nmap_leader('ek', edit_config_file('20-keymaps.lua'),       'Keymaps config')
+nmap_leader('em', edit_config_file('30-mini.lua'),          'MINI config')
 nmap_leader('en', '<Cmd>lua MiniNotify.show_history()<CR>', 'Notifications')
-nmap_leader('eo', edit_config_file('10_options.lua'),       'Options config')
-nmap_leader('ep', edit_config_file('40_plugins.lua'),       'Plugins config')
+nmap_leader('eo', edit_config_file('10-options.lua'),       'Options config')
+nmap_leader('ep', edit_config_file('40-plugins.lua'),       'Plugins config')
 nmap_leader('es', '<Cmd>lua MiniSessions.select()<CR>',     'Sessions')
 nmap_leader('eq', explore_quickfix,                         'Quickfix')
 
+-- f: file
 local pick_added_hunks_buf = '<Cmd>Pick git_hunks path="%" scope="staged"<CR>'
 local pick_workspace_symbols_live = '<Cmd>Pick lsp scope="workspace_symbol_live"<CR>'
 nmap_leader('f/', '<Cmd>Pick history scope="/"<CR>',            '"/" history')
@@ -66,6 +70,7 @@ nmap_leader('fS', '<Cmd>Pick lsp scope="document_symbol"<CR>',  'Symbols documen
 nmap_leader('fv', '<Cmd>Pick visit_paths cwd=""<CR>',           'Visit paths (all)')
 nmap_leader('fV', '<Cmd>Pick visit_paths<CR>',                  'Visit paths (cwd)')
 
+-- l: language
 local formatting_cmd = '<Cmd>lua require("conform").format({ lsp_fallback = true })<CR>'
 nmap_leader('la', '<Cmd>lua vim.lsp.buf.code_action()<CR>',   'Actions')
 nmap_leader('ld', '<Cmd>lua vim.diagnostic.open_float()<CR>', 'Diagnostic popup')
@@ -74,13 +79,17 @@ nmap_leader('li', '<Cmd>lua vim.lsp.buf.hover()<CR>',         'Hover')
 nmap_leader('lR', '<Cmd>lua vim.lsp.buf.references()<CR>',    'References')
 nmap_leader('lr', '<Cmd>lua vim.lsp.buf.rename()<CR>',        'Rename')
 nmap_leader('ls', '<Cmd>lua vim.lsp.buf.definition()<CR>',    'Source definition')
-
 xmap_leader('lf', formatting_cmd,                             'Format selection')
 
+-- T: terminal
 nmap_leader('TT', '<Cmd>belowright Tnew<CR>',                          'Terminal (horizontal)')
 nmap_leader('Tt', '<Cmd>vertical Tnew<CR>',                            'Terminal (vertical)')
 
-nmap_leader('tn', '<Cmd>tabnew<CR>', 'New tab')
-nmap_leader('tc', '<Cmd>tabclose<CR>', 'Close tab')
-vim.keymap.set('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true, silent = true })
+-- spell
+map('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true, silent = true })
+
+-- misc
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")
+
 -- stylua: ignore end
