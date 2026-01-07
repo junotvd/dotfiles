@@ -70,7 +70,6 @@ _G.Config.new_autocmd('FileType', nil, f, "Proper 'formatoptions'")
 
 -- Diagnostics ================================================================
 local diagnostic_opts = {
-  signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
   virtual_lines = false,
   virtual_text = {
     current_line = true,
