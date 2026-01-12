@@ -10,12 +10,13 @@ set $right l
 set $term footclient
 set $menu fuzzel
 set $browser firefox
+set $Browser brave
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# output * bg ~/dotfiles/wallpaper/black.png fill
+output * bg ~/hogeschool/bach1/sem1/planning/front-end.png fill
 #
 # Example configuration:
 #
@@ -77,6 +78,7 @@ default_floating_border none
     bindsym $mod+q kill
     bindsym $mod+d exec $menu
     bindsym $mod+b exec $browser
+    bindsym $mod+Shift+b exec $Browser
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -147,8 +149,8 @@ default_floating_border none
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+Shift+b splith
-    bindsym $mod+Shift+v splitv
+    # bindsym $mod+Shift+h splith
+    # bindsym $mod+Shift+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
