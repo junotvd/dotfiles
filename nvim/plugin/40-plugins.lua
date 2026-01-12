@@ -31,7 +31,8 @@ now_if_args(function()
     view_options = { show_hidden = true },
     default_file_explorer = true,
     columns = {
-      'permissions', 'size',
+      'permissions',
+      'size',
     },
   })
   vim.keymap.set('n', '<leader>pv', vim.cmd.Oil)
@@ -52,6 +53,8 @@ later(function()
   require('conform').setup({
     formatters_by_ft = {
       javascript = { 'prettier' },
+      html = { 'prettier' },
+      css = { 'prettier' },
       json = { 'prettier' },
       lua = { 'stylua' },
       python = { 'black' },
@@ -73,39 +76,46 @@ later(function()
     'basedpyright',
     'ts_ls',
     'tinymist',
+    'emmet_ls',
+    -- 'emmet_language_server',
   })
+
+  -- local completion = function(args)
+  --   local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+  --   -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
+  --   if client:supports_method('textDocument/completion') then
+  --     -- Optional: trigger autocompletion on EVERY keypress. May be slow!
+  --     local chars = {}
+  --     for i = 32, 126 do
+  --       table.insert(chars, string.char(i))
+  --     end
+  --     client.server_capabilities.completionProvider.triggerCharacters = chars
+  --
+  --     vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+  --   end
+  -- end
+  -- _G.Config.new_autocmd('LspAttach', '*', completion, 'Auto completion')
+end)
+later(function()
+  -- Don't show 'Text' suggestions
+  local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
+  local process_items = function(items, base)
+    return MiniCompletion.default_process_items(items, base, process_items_opts)
+  end
+  require('mini.completion').setup({
+    lsp_completion = { source_func = 'omnifunc', auto_setup = false, process_items = process_items },
+  })
+
+  -- Set up LSP part of completion
+  local on_attach = function(args) vim.bo[args.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp' end
+  _G.Config.new_autocmd('LspAttach', '*', on_attach, 'Custom `on_attach`')
+  if vim.fn.has('nvim-0.11') == 1 then vim.lsp.config('*', { capabilities = MiniCompletion.get_lsp_capabilities() }) end
 end)
 
--- Better built-in terminal ===================================================
+-- Terminal
 later(function()
-  add({ 'https://github.com/kassio/neoterm' })
-
-  -- Enable bracketed paste
-  vim.g.neoterm_bracketed_paste = 1
-
-  -- Default python REPL
-  vim.g.neoterm_repl_python = 'ipython'
-
-  -- Default R REPL
-  vim.g.neoterm_repl_r = 'radian'
-
-  -- Don't add extra call to REPL when sending
-  vim.g.neoterm_direct_open_repl = 1
-
-  -- Open terminal to the right by default
-  vim.g.neoterm_default_mod = 'vertical'
-
-  -- Go into insert mode when terminal is opened
-  vim.g.neoterm_autoinsert = 1
-
-  -- Scroll to recent command when it is executed
-  vim.g.neoterm_autoscroll = 1
-
-  -- Don't automap keys
-  pcall(vim.keymap.del, 'n', ',tt')
-
-  -- Change default shell to zsh (if it is installed)
-  vim.g.neoterm_shell = vim.fn.executable('nu') == 1 and 'nu' or (vim.fn.executable('zsh') == 1 and 'zsh' or 'bash')
+  add({ 'https://github.com/akinsho/toggleterm.nvim' })
+  require('toggleterm').setup()
 end)
 
 -- Filetype: markdown =========================================================
@@ -119,9 +129,7 @@ later(function()
 end)
 
 later(function()
-  local build = function(args)
-    vim.system({ 'make', 'install_jsregexp' }, { cwd = args.path })
-  end
+  local build = function(args) vim.system({ 'make', 'install_jsregexp' }, { cwd = args.path }) end
   MiniDeps.add({
     source = 'https://github.com/L3MON4D3/LuaSnip',
     hooks = { post_install = build, post_checkout = build },

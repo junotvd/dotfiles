@@ -82,8 +82,8 @@ nmap_leader('ls', '<Cmd>lua vim.lsp.buf.definition()<CR>',    'Source definition
 xmap_leader('lf', formatting_cmd,                             'Format selection')
 
 -- T: terminal
-nmap_leader('TT', '<Cmd>belowright Tnew<CR>',                          'Terminal (horizontal)')
-nmap_leader('Tt', '<Cmd>vertical Tnew<CR>',                            'Terminal (vertical)')
+nmap_leader('tv', '<Cmd>ToggleTerm direcion=vertical size=60<CR>', 'Terminal (vertical)')
+nmap_leader('tt', '<Cmd>ToggleTerm<CR>',                           'Terminal (horizontal)')
 
 -- spell
 map('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true, silent = true })
@@ -91,5 +91,7 @@ map('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true, silent = true }
 -- misc
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
+map({'n', 'v', 'x'}, '<Leader>y', '"+y')
+map({'n', 'v', 'x'}, '<Leader>d', '"+d')
 
 -- stylua: ignore end
