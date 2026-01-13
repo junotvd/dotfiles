@@ -14,7 +14,8 @@ now_if_args(function()
     'bash', 'c', 'cpp', 'css', 'diff', 'go',
     'html', 'javascript', 'json', 'python',
     'regex', 'rust', 'toml', 'typescript', 'yaml',
-    'typst', 'vimdoc'
+    'typst', 'vimdoc', 'markdown', 'markdown_inline',
+    'latex',
   }
   local isnt_installed = function(lang) return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0 end
   local to_install = vim.tbl_filter(isnt_installed, ensure_languages)
@@ -56,6 +57,7 @@ later(function()
       html = { 'prettier' },
       css = { 'prettier' },
       json = { 'prettier' },
+      markdown = { 'prettier' },
       lua = { 'stylua' },
       python = { 'black' },
       typst = { 'typstyle' },
@@ -127,6 +129,10 @@ later(function()
   -- Do not close the preview tab when switching to other buffers
   vim.g.mkdp_auto_close = 0
 end)
+later(function()
+  add({ 'https://github.com/MeanderingProgrammer/render-markdown.nvim' })
+  require('render-markdown').setup()
+end)
 
 later(function()
   local build = function(args) vim.system({ 'make', 'install_jsregexp' }, { cwd = args.path }) end
@@ -137,7 +143,7 @@ later(function()
   local ls = require('luasnip')
   ls.setup({ enable_autosnippets = true })
   require('luasnip.loaders.from_lua').lazy_load({
-    paths = { vim.fn.expand('~/dotfiles/nvim-old/lua/luasnippets/snippets/') },
+    paths = { vim.fn.expand('~/dotfiles/nvim/snippets/') },
   })
   vim.keymap.set('i', '<C-e>', function() ls.expand() end, { silent = true })
   vim.keymap.set({ 'i', 's' }, '<C-j>', function() ls.jump(1) end, { silent = true })
