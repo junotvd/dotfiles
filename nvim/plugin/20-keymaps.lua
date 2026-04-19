@@ -86,7 +86,7 @@ nmap_leader('tv', '<Cmd>ToggleTerm direcion=vertical size=60<CR>', 'Terminal (ve
 nmap_leader('tt', '<Cmd>ToggleTerm<CR>',                           'Terminal (horizontal)')
 
 -- spell
-map('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true, silent = true })
+-- map('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true, silent = true })
 
 -- misc
 map('v', 'J', ":m '>+1<CR>gv=gv")

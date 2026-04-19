@@ -31,7 +31,7 @@ vim.o.cursorlineopt  = 'screenline,number'
 if vim.fn.has('nvim-0.12') == 1 then
   vim.o.pummaxwidth = 100
   vim.o.completetimeout = 100
-  require('vim._extui').enable({ enable = true })
+  -- require('vim._extui').enable({ enable = true })
 end
 
 
@@ -65,8 +65,12 @@ vim.o.completeopt   = 'menuone,noselect,fuzzy,nosort'
 -- Autocommands ===============================================================
 -- Don't auto-wrap comments and don't insert comment leader after hitting 'o'.
 -- Do on `FileType` to always override these changes from filetype plugins.
-local f             = function() vim.cmd('setlocal formatoptions-=c formatoptions-=o') end
+local f = function() vim.cmd('setlocal formatoptions-=c formatoptions-=o') end
 _G.Config.new_autocmd('FileType', nil, f, "Proper 'formatoptions'")
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function() vim.highlight.on_yank() end,
+})
 
 -- Diagnostics ================================================================
 local diagnostic_opts = {

@@ -16,7 +16,7 @@ set $Browser brave
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/hogeschool/bach1/sem1/planning/front-end.png fill
+# output * bg ~/hogeschool/bach1/sem1/planning/cs.png fill
 #
 # Example configuration:
 #
@@ -70,7 +70,7 @@ default_floating_border none
 
     bindsym $mod+m exec setup-wl
     bindsym $mod+Shift+w exec websites-wl
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" ~/hogeschool/bach1/sem1/screenshot.png
+    bindsym $mod+Shift+s exec ~/dotfiles/scripts/screenshot-select
 
 
 # Basics:

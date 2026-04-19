@@ -15,7 +15,7 @@ now_if_args(function()
     'html', 'javascript', 'json', 'python',
     'regex', 'rust', 'toml', 'typescript', 'yaml',
     'typst', 'vimdoc', 'markdown', 'markdown_inline',
-    'latex',
+    'latex', 'sql'
   }
   local isnt_installed = function(lang) return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0 end
   local to_install = vim.tbl_filter(isnt_installed, ensure_languages)
@@ -61,6 +61,9 @@ later(function()
       lua = { 'stylua' },
       python = { 'black' },
       typst = { 'typstyle' },
+      sh = { 'shfmt' },
+      bash = { 'shfmt' },
+      sql = { 'pg_format' },
     },
   })
 end)
@@ -79,6 +82,8 @@ later(function()
     'ts_ls',
     'tinymist',
     'emmet_ls',
+    'postgres_lsp',
+    'jdtls',
     -- 'emmet_language_server',
   })
 
@@ -146,6 +151,6 @@ later(function()
     paths = { vim.fn.expand('~/dotfiles/nvim/snippets/') },
   })
   vim.keymap.set('i', '<C-e>', function() ls.expand() end, { silent = true })
-  vim.keymap.set({ 'i', 's' }, '<C-j>', function() ls.jump(1) end, { silent = true })
-  vim.keymap.set({ 'i', 's' }, '<C-k>', function() ls.jump(-1) end, { silent = true })
+  vim.keymap.set({ 'i', 's' }, '<C-l>', function() ls.jump(1) end, { silent = true })
+  vim.keymap.set({ 'i', 's' }, '<C-h>', function() ls.jump(-1) end, { silent = true })
 end)
