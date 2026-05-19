@@ -12,25 +12,36 @@ vim.o.incsearch = true
 vim.o.hlsearch = false
 vim.o.undofile = true
 vim.o.scrolloff = 20
+vim.o.spelllang     = 'en,nl'
+vim.o.spelloptions  = 'camel'
+vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/nl.utf-8.add"
 
 vim.pack.add({
+	-- core things
 	'https://github.com/neovim/nvim-lspconfig',
 	'https://github.com/nvim-treesitter/nvim-treesitter',
 	'https://github.com/stevearc/oil.nvim',
 	'https://github.com/stevearc/conform.nvim',
 	'https://github.com/mason-org/mason.nvim',
 	'https://github.com/mason-org/mason-lspconfig.nvim',
-	'https://github.com/vague-theme/vague.nvim',
 	'https://github.com/j-hui/fidget.nvim',
-	'https://github.com/chomosuke/typst-preview.nvim',
+	-- mini suite
 	'https://github.com/nvim-mini/mini.nvim',
+	-- typst
+	'https://github.com/chomosuke/typst-preview.nvim',
+	-- markdown
 	'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+	-- term
 	'https://github.com/akinsho/toggleterm.nvim',
+	-- colors
+	'https://github.com/vague-theme/vague.nvim',
+	'https://github.com/rebelot/kanagawa.nvim',
+	'https://github.com/rose-pine/neovim',
+	'https://github.com/shaunsingh/nord.nvim',
 })
 
-
 vim.cmd('syntax off')
-vim.cmd.colorscheme('vague')
+vim.cmd.colorscheme('nord')
 
 require('toggleterm').setup()
 
@@ -73,6 +84,7 @@ require('typst-preview').setup()
 
 require('mini.surround').setup()
 require('mini.tabline').setup()
+require('mini.bufremove').setup()
 
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
@@ -123,6 +135,8 @@ local ensure_languages = {
 	'markdown',
 	'markdown_inline',
 	'javascript',
+	'toml',
+	'html',
 }
 
 local isnt_installed = function(lang) return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0 end
@@ -133,14 +147,31 @@ local filetypes = vim.iter(ensure_languages):map(vim.treesitter.language.get_fil
 local ts_start = function(ev) vim.treesitter.start(ev.buf) end
 vim.api.nvim_create_autocmd('FileType', { pattern = filetypes, callback = ts_start })
 
+-- don't insert -- after hitting 'o'
+vim.api.nvim_create_autocmd('FileType', {
+	desc = "Proper 'formatoptions'",
+	callback = function()
+		vim.cmd('setlocal formatoptions-=c formatoptions-=o')
+	end,
+})
+
 
 local map = vim.keymap.set
+
+-- navigation
 map('n', '<leader>pv', vim.cmd.Oil, { silent = true })
+
+-- format
 map('n', '<Leader>lf', '<Cmd>lua require("conform").format({lsp_fallback = true})<CR>')
 
+-- term
+map({ 'n' }, '<leader>tt', '<Cmd>ToggleTerm<CR>')
+
+-- buffer
+map('n', 'bd', '<Cmd>lua MiniBufremove.delete()<CR>')
+
+-- misc
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 map({ 'n', 'v', 'x' }, '<Leader>y', '"+y')
 map({ 'n', 'v', 'x' }, '<Leader>d', '"+d')
-
-map({'n'}, '<leader>tt', '<Cmd>ToggleTerm<CR>')
