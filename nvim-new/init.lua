@@ -3,7 +3,10 @@ vim.o.signcolumn     = 'yes:1'
 vim.o.tabstop        = 2
 vim.o.shiftwidth     = 2
 vim.o.smartindent    = true
+vim.o.breakindent    = true
+vim.o.linebreak      = true
 vim.o.smartcase      = true
+vim.o.infercase      = true
 vim.o.hlsearch       = false
 vim.o.number         = true
 vim.o.relativenumber = true
@@ -13,6 +16,7 @@ vim.o.undofile       = true
 vim.o.scrolloff      = 20
 vim.o.spelllang      = 'en,nl'
 vim.o.spelloptions   = 'camel'
+vim.opt.spellfile    = vim.fn.stdpath("config") .. "/spell/nl.utf-8.add"
 
 vim.pack.add({
 	-- core things
@@ -37,6 +41,13 @@ vim.pack.add({
 	'https://github.com/rose-pine/neovim',
 	'https://github.com/shaunsingh/nord.nvim',
 })
+
+-- require('rose-pine').setup({
+-- 	variant = 'main',
+-- 	styles = {
+-- 		transparency = true
+-- 	}
+-- })
 
 vim.cmd('syntax off')
 vim.cmd.colorscheme('nord')
@@ -109,11 +120,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.o.signcolumn = 'yes:1'
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		if client:supports_method('textDocument/completion') then
-			-- Optional: trigger autocompletion on EVERY keypress. May be slow!
-			local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+			local chars = {};
+			for i = 33, 126 do
+				local c = string.char(i)
+				if not c:match('[:%)%]%}]') then
+					table.insert(chars, string.char(i))
+				end
+			end
 			client.server_capabilities.completionProvider.triggerCharacters = chars
 			vim.o.complete = 'o,.,w,b,u'
-			vim.o.completeopt = 'menu,menuone,popup,noinsert'
+			vim.o.completeopt = 'menu,menuone,popup,noinsert,noselect,fuzzy'
 			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 		end
 	end
@@ -180,7 +196,7 @@ map('n', '<Leader>lf', '<Cmd>lua require("conform").format({lsp_fallback = true}
 map({ 'n' }, '<leader>tt', '<Cmd>ToggleTerm<CR>')
 
 -- buffer
-map('n', 'bd', '<Cmd>lua MiniBufremove.delete()<CR>')
+map('n', '<leader>bd', '<Cmd>lua MiniBufremove.delete()<CR>')
 
 -- misc
 map('v', 'J', ":m '>+1<CR>gv=gv")
