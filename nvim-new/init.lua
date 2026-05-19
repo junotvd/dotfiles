@@ -1,20 +1,18 @@
-vim.g.mapleader = ' '
-vim.o.signcolumn = 'yes:1'
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.smartindent = true
-vim.o.hlsearch = false
-vim.o.number = true
+vim.g.mapleader      = ' '
+vim.o.signcolumn     = 'yes:1'
+vim.o.tabstop        = 2
+vim.o.shiftwidth     = 2
+vim.o.smartindent    = true
+vim.o.smartcase      = true
+vim.o.hlsearch       = false
+vim.o.number         = true
 vim.o.relativenumber = true
-vim.o.guicursor = ''
-vim.o.smartindent = true
-vim.o.incsearch = true
-vim.o.hlsearch = false
-vim.o.undofile = true
-vim.o.scrolloff = 20
-vim.o.spelllang     = 'en,nl'
-vim.o.spelloptions  = 'camel'
-vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/nl.utf-8.add"
+vim.o.guicursor      = ''
+vim.o.smartindent    = true
+vim.o.undofile       = true
+vim.o.scrolloff      = 20
+vim.o.spelllang      = 'en,nl'
+vim.o.spelloptions   = 'camel'
 
 vim.pack.add({
 	-- core things
@@ -85,6 +83,8 @@ require('typst-preview').setup()
 require('mini.surround').setup()
 require('mini.tabline').setup()
 require('mini.bufremove').setup()
+require('mini.pick').setup()
+require('mini.extra').setup()
 
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
@@ -109,12 +109,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.o.signcolumn = 'yes:1'
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		if client:supports_method('textDocument/completion') then
+			-- Optional: trigger autocompletion on EVERY keypress. May be slow!
+			local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+			client.server_capabilities.completionProvider.triggerCharacters = chars
 			vim.o.complete = 'o,.,w,b,u'
 			vim.o.completeopt = 'menu,menuone,popup,noinsert'
 			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 		end
 	end
 })
+
 vim.diagnostic.config({
 	virtual_lines = false,
 	virtual_text = {
@@ -160,6 +164,14 @@ local map = vim.keymap.set
 
 -- navigation
 map('n', '<leader>pv', vim.cmd.Oil, { silent = true })
+map('n', '<leader>fb', '<Cmd>Pick buffers<CR>')
+map('n', '<leader>ff', '<Cmd>Pick files<CR>')
+map('n', '<leader>fd', '<Cmd>Pick diagnostic scope="all"<CR>')
+map('n', '<leader>fD', '<Cmd>Pick diagnostic scope="current"<CR>')
+map('n', '<leader>fh', '<Cmd>Pick help<CR>')
+map('n', '<leader>fH', '<Cmd>Pick history<CR>')
+map('n', '<leader>fg', '<Cmd>Pick grep_live<CR>')
+map('n', '<leader>fG', '<Cmd>Pick grep pattern="<cword>"<CR>')
 
 -- format
 map('n', '<Leader>lf', '<Cmd>lua require("conform").format({lsp_fallback = true})<CR>')
