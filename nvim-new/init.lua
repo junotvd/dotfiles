@@ -97,7 +97,7 @@ vim.pack.add({ { src = "https://github.com/L3MON4D3/LuaSnip", version = vim.vers
 local ls = require('luasnip')
 ls.setup({ enable_autosnippets = true })
 require('luasnip.loaders.from_lua').lazy_load({
-	paths = { vim.fn.expand('~/dotfiles/nvim/snippets/') },
+	paths = { vim.fn.expand('~/dotfiles/nvim-new/lua/luasnippets/snippets/') },
 })
 vim.keymap.set('i', '<C-e>', function() ls.expand() end, { silent = true })
 vim.keymap.set({ 'i', 's' }, '<C-l>', function() ls.jump(1) end, { silent = true })
