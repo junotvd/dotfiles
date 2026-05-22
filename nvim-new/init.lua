@@ -33,10 +33,8 @@ vim.pack.add({
 	"https://github.com/akinsho/toggleterm.nvim",
 	-- colors
 	"https://github.com/vague-theme/vague.nvim",
-	"https://github.com/rebelot/kanagawa.nvim",
 	"https://github.com/rose-pine/neovim",
-	-- 'https://github.com/shaunsingh/nord.nvim',
-	"https://github.com/nordtheme/vim",
+	"https://github.com/gbprod/nord.nvim",
 })
 
 vim.pack.add({
@@ -61,15 +59,13 @@ end
 lazy_ft("markdown", "render-markdown.nvim")
 lazy_ft("typst", "typst-preview.nvim")
 
--- require('rose-pine').setup({
--- 	variant = 'main',
--- 	styles = {
--- 		transparency = true
--- 	}
--- })
-
+require("vague").setup({
+	on_highlights = function(hl, colors)
+		hl.SpellBad = { fg = colors.error, undercurl = false, underline = false }
+	end,
+})
 vim.cmd("syntax off")
-vim.cmd.colorscheme("nord")
+vim.cmd.colorscheme("vague")
 
 require("toggleterm").setup()
 
@@ -122,6 +118,34 @@ require("mini.tabline").setup()
 require("mini.bufremove").setup()
 require("mini.pick").setup()
 require("mini.extra").setup()
+
+vim.api.nvim_create_autocmd("PackChanged", {
+	desc = "Run web-clipper.nvim build step",
+	callback = function(ev)
+		local data = ev.data
+		if data.spec.name == "web-clipper.nvim" and (data.kind == "install" or data.kind == "update") then
+			local cwd = data.path
+			vim.notify("web-clipper.nvim: running npm install...", vim.log.levels.INFO)
+			vim.system(
+				{ "npm", "install", "--prefix", "bin" },
+				{ cwd = cwd },
+				vim.schedule_wrap(function(out)
+					if out.code == 0 then
+						vim.notify("web-clipper.nvim: npm install done", vim.log.levels.INFO)
+					else
+						vim.notify("web-clipper.nvim: npm install failed\n" .. (out.stderr or ""), vim.log.levels.ERROR)
+					end
+				end)
+			)
+		end
+	end,
+})
+vim.pack.add({ "/home/junot/repos/web-clipper.nvim" })
+
+require("web-clipper").setup({
+	vault_dir = "~/Documents/clippings/",
+	-- sites = { ... },
+})
 
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
