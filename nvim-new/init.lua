@@ -179,7 +179,7 @@ local ensure_languages = {
   'html',
   'sql',
   'latex',
-  'bash',
+	'bash',
 }
 
 local isnt_installed = function(lang) return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0 end
