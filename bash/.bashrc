@@ -21,8 +21,8 @@ set -o vi
 # alias
 alias v=nvim
 alias vo="NVIM_APPNAME=nvim-old nvim"
-alias vv="NVIM_APPNAME=nvim-nov nvim"
 alias vl="NVIM_APPNAME=nvim-lazy nvim"
+alias vn="NVIM_APPNAME=nvim-new nvim"
 alias py=python
 alias l='ls -la'
 alias q=exit
