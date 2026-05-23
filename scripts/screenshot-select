@@ -1,0 +1,33 @@
+#!/bin/sh
+set -eu
+
+# Where to save if we can't detect a "current dir"
+fallback="$HOME/Pictures/Screenshots"
+mkdir -p "$fallback"
+
+# Try to get tmux pane's current path (works if tmux is running)
+dir=""
+if command -v tmux >/dev/null 2>&1 && tmux info >/dev/null 2>&1; then
+  dir="$(tmux display-message -p -F "#{pane_current_path}" 2>/dev/null || true)"
+fi
+
+# Validate dir
+if [ -z "${dir}" ] || [ ! -d "${dir}" ] || [ ! -w "${dir}" ]; then
+  dir="$fallback"
+fi
+
+ts="$(date +'%Y-%m-%d_%H-%M-%S')"
+file="$dir/screenshot_${ts}.png"
+
+# Select region and save
+grim -g "$(slurp)" "$file"
+
+# Optional: copy to clipboard (wl-clipboard)
+if command -v wl-copy >/dev/null 2>&1; then
+  wl-copy < "$file"
+fi
+
+# Optional: notify (mako/swaync)
+if command -v notify-send >/dev/null 2>&1; then
+  notify-send "Screenshot saved" "$file"
+fi
