@@ -32,6 +32,7 @@ require('lazy').setup({
   install = { colorscheme = { 'habamax' } },
   -- automatically check for plugin updates
   checker = { enabled = true },
+  -- rocks = { hererocks = true },
 })
 
 vim.g.mapleader = ' '
@@ -47,6 +48,9 @@ vim.o.incsearch = true
 vim.o.hlsearch = false
 vim.o.undofile = true
 vim.o.scrolloff = 20
+
+vim.o.complete = '.,w,b,kspell'
+vim.o.completeopt = 'menuone,noselect,fuzzy,nosort'
 
 vim.lsp.enable({
   'lua_ls',
