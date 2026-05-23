@@ -51,7 +51,7 @@ case "$CHOICE" in
     xdg-open https://www.pearson.com/en-gb/higher-education/products-services/mylab-and-mastering-login.html
     ;;
 "tailscale")
-    TAILSCALE=$(echo -e "pdf\napollo\nai\nemby" | fuzzel --dmenu -i -p "")
+    TAILSCALE=$(echo -e "pdf\napollo\nai\njellyfin" | fuzzel --dmenu -i -p "")
     case "$TAILSCALE" in
     "apollo")
         xdg-open https://apollo.saga-pollux.ts.net/
@@ -62,8 +62,8 @@ case "$CHOICE" in
     "pdf")
         xdg-open http://100.124.103.23:8080/
         ;;
-    "emby")
-        xdg-open http://mac-mini-m1-1.saga-pollux.ts.net
+    "jellyfin")
+        xdg-open https://jellyfin.saga-pollux.ts.net
         ;;
     esac
     if [ -z "$TAILSCALE" ]; then
