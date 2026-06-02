@@ -62,6 +62,35 @@ lazy_ft('typst', 'typst-preview.nvim')
 
 require('vague').setup({
   on_highlights = function(hl, colors) hl.SpellBad = { fg = colors.error, undercurl = false, underline = false } end,
+  colors = {
+    -- backgrounds: your two creams
+    bg = '#fef7ea', -- wit
+    inactiveBg = '#f4eee2', -- wit2
+    fg = '#515151', -- blauw2, near-black blue for body text
+
+    floatBorder = '#515151', -- grijs
+    line = '#f4eee2', -- wit2, subtle cursorline against wit
+    comment = '#7d7d7d', -- lightened grijs, muted but readable
+
+    -- accents: bright + cool, anchored around cyan/blue
+    builtin = '#18457c', -- blauw1
+    func = '#0e7c9c', -- deep cyan, saturated
+    string = '#2a8f8f', -- teal-green
+    number = '#c0563a', -- warm coral pop for contrast
+    property = '#5a5a5a', -- low-emphasis grey
+    constant = '#3a7ec0', -- bright mid-blue
+    parameter = '#2a9ab0', -- cyan, near your #82cfe2 but readable
+    visual = '#cfe8ef', -- pale cyan tint (your color, lightened)
+    error = '#b32d4a',
+    warning = '#c77f1a',
+    hint = '#0e7c9c',
+    keyword = '#18457c', -- blauw1, primary accent
+    operator = '#717171',
+    type = '#1a8a8a', -- vivid teal
+    search = '#a9dde8', -- your #82cfe2 family as a highlight wash
+    plus = '#3a8a5a', -- fresh green
+    delta = '#c77f1a',
+  },
 })
 vim.cmd('syntax off')
 vim.cmd.colorscheme('vague')
