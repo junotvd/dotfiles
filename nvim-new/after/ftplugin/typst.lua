@@ -1,5 +1,6 @@
 vim.cmd('setlocal spell')
 
+vim.api.nvim_buf_set_keymap(0, 'n', '<Leader>c', '<Cmd>!typst c %<CR>', { silent = true })
 vim.api.nvim_buf_set_keymap(0, 'n', '<Leader>o', '<Cmd>!typst c --open zathura %<CR>', { silent = true })
 
 -- bekijk dit eens https://github.com/SylvanFranklin/.config/blob/main/nvim/after/ftplugin/typst.lua;

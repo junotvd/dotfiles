@@ -34,12 +34,14 @@ vim.pack.add({
   -- colors
   'https://github.com/vague-theme/vague.nvim',
   'https://github.com/rose-pine/neovim',
-  'https://github.com/gbprod/nord.nvim',
+  'https://github.com/shaunsingh/nord.nvim',
+  'https://github.com/lunacookies/vim-colors-xcode',
 })
 
 vim.pack.add({
   'https://github.com/MeanderingProgrammer/render-markdown.nvim',
   'https://github.com/chomosuke/typst-preview.nvim',
+  'https://github.com/iamcco/markdown-preview.nvim',
 }, { load = function() end })
 
 local function lazy_ft(ft, plugin, setup)
@@ -55,6 +57,7 @@ local function lazy_ft(ft, plugin, setup)
 end
 
 lazy_ft('markdown', 'render-markdown.nvim')
+lazy_ft('markdown', 'markdown-preview.nvim')
 lazy_ft('typst', 'typst-preview.nvim')
 
 require('vague').setup({
@@ -102,9 +105,9 @@ require('oil').setup({
     show_hidden = true,
   },
   columns = {
-		{'mtime', format = '%d%m%y %T' },
+    { 'mtime', format = '%d%m%y %T' },
     'permissions',
-		'size',
+    'size',
   },
 })
 
@@ -115,7 +118,6 @@ require('mini.tabline').setup()
 require('mini.bufremove').setup()
 require('mini.pick').setup()
 require('mini.extra').setup()
-
 
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
@@ -179,7 +181,7 @@ local ensure_languages = {
   'html',
   'sql',
   'latex',
-	'bash',
+  'bash',
 }
 
 local isnt_installed = function(lang) return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0 end
@@ -217,6 +219,10 @@ map({ 'n' }, '<leader>tt', '<Cmd>ToggleTerm<CR>')
 
 -- buffer
 map('n', '<leader>bd', '<Cmd>lua MiniBufremove.delete()<CR>')
+
+-- spelling
+map('i', '<C-;>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true })
+-- map('i', '<C-g>', '<c-g>u<Esc>[szg`]a<c-g>u', { noremap = true })
 
 -- misc
 map('v', 'J', ":m '>+1<CR>gv=gv")
