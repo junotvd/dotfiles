@@ -58,7 +58,15 @@ end
 
 lazy_ft('markdown', 'render-markdown.nvim')
 lazy_ft('markdown', 'markdown-preview.nvim')
-lazy_ft('typst', 'typst-preview.nvim')
+lazy_ft(
+  'typst',
+  'typst-preview.nvim',
+  function()
+    require('typst-preview').setup({
+      open_cmd = 'chromium --app=%s --user-data-dir=/tmp/typst-preview 2>/dev/null &',
+    })
+  end
+)
 
 require('vague').setup({
   on_highlights = function(hl, colors) hl.SpellBad = { fg = colors.error, undercurl = false, underline = false } end,
