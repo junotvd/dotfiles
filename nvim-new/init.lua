@@ -36,6 +36,13 @@ vim.pack.add({
   'https://github.com/rose-pine/neovim',
   'https://github.com/shaunsingh/nord.nvim',
   'https://github.com/lunacookies/vim-colors-xcode',
+  'https://github.com/folke/snacks.nvim',
+  'https://github.com/nickjvandyke/opencode.nvim',
+  'https://github.com/ellisonleao/gruvbox.nvim',
+  'https://github.com/luisiacc/gruvbox-baby',
+  'https://github.com/folke/tokyonight.nvim',
+  'https://github.com/loctvl842/monokai-pro.nvim',
+  'https://github.com/boningmaple/mac-clear',
 })
 
 vim.pack.add({
@@ -56,7 +63,7 @@ local function lazy_ft(ft, plugin, setup)
   })
 end
 
-lazy_ft('markdown', 'render-markdown.nvim')
+-- lazy_ft('markdown', 'render-markdown.nvim')
 lazy_ft('markdown', 'markdown-preview.nvim')
 lazy_ft(
   'typst',
@@ -68,40 +75,79 @@ lazy_ft(
   end
 )
 
-require('vague').setup({
-  on_highlights = function(hl, colors) hl.SpellBad = { fg = colors.error, undercurl = false, underline = false } end,
-  colors = {
-    -- backgrounds: your two creams
-    bg = '#fef7ea', -- wit
-    inactiveBg = '#f4eee2', -- wit2
-    fg = '#515151', -- blauw2, near-black blue for body text
-
-    floatBorder = '#515151', -- grijs
-    line = '#f4eee2', -- wit2, subtle cursorline against wit
-    comment = '#7d7d7d', -- lightened grijs, muted but readable
-
-    -- accents: bright + cool, anchored around cyan/blue
-    builtin = '#18457c', -- blauw1
-    func = '#0e7c9c', -- deep cyan, saturated
-    string = '#2a8f8f', -- teal-green
-    number = '#c0563a', -- warm coral pop for contrast
-    property = '#5a5a5a', -- low-emphasis grey
-    constant = '#3a7ec0', -- bright mid-blue
-    parameter = '#2a9ab0', -- cyan, near your #82cfe2 but readable
-    visual = '#cfe8ef', -- pale cyan tint (your color, lightened)
-    error = '#b32d4a',
-    warning = '#c77f1a',
-    hint = '#0e7c9c',
-    keyword = '#18457c', -- blauw1, primary accent
-    operator = '#717171',
-    type = '#1a8a8a', -- vivid teal
-    search = '#a9dde8', -- your #82cfe2 family as a highlight wash
-    plus = '#3a8a5a', -- fresh green
-    delta = '#c77f1a',
+require('snacks').setup({
+  input = {}, -- Enhances `ask()`
+  picker = { -- Enhances `select()`
+    actions = {
+      opencode_send = function(...) return require('opencode').snacks_picker_send(...) end,
+    },
+    win = {
+      input = {
+        keys = {
+          ['<a-a>'] = { 'opencode_send', mode = { 'n', 'i' } },
+        },
+      },
+    },
   },
 })
-vim.cmd('syntax off')
-vim.cmd.colorscheme('vague')
+vim.o.autoread = true
+
+vim.keymap.set(
+  { 'n', 'x' },
+  '<C-a>',
+  function() require('opencode').ask('@this: ', { submit = true }) end,
+  { desc = 'Ask opencode…' }
+)
+vim.keymap.set({ 'n', 'x' }, '<C-x>', function() require('opencode').select() end, { desc = 'Select opencode…' })
+
+require('vague').setup({
+  on_highlights = function(hl, colors) hl.SpellBad = { fg = colors.error, undercurl = false, underline = false } end,
+})
+
+-- Local plugin under development: load the working tree directly so live,
+-- uncommitted edits are picked up (vim.pack would clone committed state only).
+vim.opt.rtp:prepend('/home/junot/repos/detijd.nvim')
+
+require('mac-clear').setup({
+  colors_overrides = function(theme) return {} end,
+  groups_overrides = function(theme, colors)
+    return {
+      Comment = { fg = colors.on_surface_low, italic = true },
+      SpellBad = { fg = colors.red_bright },
+      Special = { fg = colors.peach },
+			Type = { fg = colors.cyan },
+      -- Function = { fg = colors.blue_bright, bold = true },
+      ['@markup.heading'] = { bold = true, fg = colors.green_bright },
+      ['@markup.strong'] = { bold = true },
+      ['@markup.italic'] = { italic = true },
+      ['@markup.raw'] = { fg = colors.yellow, bold = false },
+      -- ['@markup.raw.block'] = { bg = colors.surface_container_low, fg = colors.on_surface },
+      ['@function.builtin'] = { link = '', bold = true },
+      -- ['@module.builtin'] = { link = '', fg = colors.red_bright },
+      ['@variable.parameter'] = { italic = true },
+      -- ['@attribute'] = { fg = colors.red_bright, italic = true },
+      -- ['@constant.builtin'] = { link = '', fg = colors.peach, bold = true },
+      --
+      -- ['@constructor'] = { link = 'Special' },
+      -- ['@constructor.python'] = { link = '@constructor' },
+      -- ['@constructor.lua'] = { fg = colors.on_surface },
+      --
+      -- ['@variable.builtin'] = { link = 'Special' },
+      -- ['@label'] = { link = '', fg = colors.red },
+    }
+  end,
+})
+-- vim.api.nvim_create_autocmd('ColorScheme', {
+--   callback = function()
+--     local hl = vim.api.nvim_get_hl(0, { name = '@function' })
+--     hl.bold = true
+--     hl.link = nil
+--     vim.api.nvim_set_hl(0, '@function.builtin', hl)
+--   end,
+-- })
+vim.cmd.colorscheme('mac-clear-light')
+-- vim.cmd('syntax off')
+-- vim.cmd.colorscheme('vague')
 
 require('toggleterm').setup()
 
@@ -146,6 +192,7 @@ require('oil').setup({
     'permissions',
     'size',
   },
+  watch_for_changes = true,
 })
 
 require('fidget').setup()
