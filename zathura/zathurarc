@@ -1,9 +1,9 @@
 set recolor
 
 set default-bg \#2E3440
-# set recolor-lightcolor \#e1e1db
-set recolor-lightcolor \#2E3440
-set recolor-darkcolor \#ECEFF4
+# set recolor-lightcolor \#515151
+set recolor-lightcolor \#FEF7EA
+set recolor-darkcolor \#515151
 set recolor-keephue
 
 set statusbar-fg \#ECEFF4
