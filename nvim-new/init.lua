@@ -113,9 +113,9 @@ require('mac-clear').setup({
   groups_overrides = function(theme, colors)
     return {
       Comment = { fg = colors.on_surface_low, italic = true },
-      SpellBad = { fg = colors.red_bright },
+      SpellBad = { fg = colors.red },
       Special = { fg = colors.peach },
-			Type = { fg = colors.cyan },
+      Type = { fg = colors.cyan },
       -- Function = { fg = colors.blue_bright, bold = true },
       ['@markup.heading'] = { bold = true, fg = colors.green_bright },
       ['@markup.strong'] = { bold = true },
@@ -124,7 +124,7 @@ require('mac-clear').setup({
       -- ['@markup.raw.block'] = { bg = colors.surface_container_low, fg = colors.on_surface },
       ['@function.builtin'] = { link = '', bold = true },
       -- ['@module.builtin'] = { link = '', fg = colors.red_bright },
-      ['@variable.parameter'] = { italic = true },
+      -- ['@variable.parameter'] = { italic = true },
       -- ['@attribute'] = { fg = colors.red_bright, italic = true },
       -- ['@constant.builtin'] = { link = '', fg = colors.peach, bold = true },
       --
