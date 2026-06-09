@@ -7,6 +7,7 @@ eval "$(starship init bash)"
 
 export PATH="${PATH}:${HOME}/bin"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export TERMINAL=alacritty
 export PDF_VIEWER=zathura
 export BROWSER=firefox
