@@ -2,10 +2,10 @@
 # normal = {family = "JuliaMono", style = "Regular"}
 # bold = {family = "JuliaMono", style = "Bold"}
 # italic = {family = "JuliaMono", style = "Italic"}
-normal = {family = "Iosevka Nerd Font", style = "Regular"}
-bold = {family = "Iosevka Nerd Font", style = "Bold"}
-italic = {family = "Iosevka Nerd Font", style = "Italic"}
-size = 17
+normal = {family = "SFMono Nerd Font Mono", style = "Regular"}
+bold = {family = "SFMono Nerd Font Mono", style = "Bold"}
+italic = {family = "SFMono Nerd Font Mono", style = "Italic"}
+size = 13
 
 [env]
 TERM = "xterm-256color"
