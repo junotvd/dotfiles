@@ -43,6 +43,7 @@ vim.pack.add({
   'https://github.com/folke/tokyonight.nvim',
   'https://github.com/loctvl842/monokai-pro.nvim',
   'https://github.com/boningmaple/mac-clear',
+  'https://github.com/oskarnurm/koda.nvim',
 })
 
 vim.pack.add({
@@ -63,7 +64,18 @@ local function lazy_ft(ft, plugin, setup)
   })
 end
 
--- lazy_ft('markdown', 'render-markdown.nvim')
+lazy_ft(
+  'markdown',
+  'render-markdown.nvim',
+  function()
+    require('render-markdown').setup({
+      code = {
+				conceal_delimiters = false,
+				border = 'none',
+      },
+    })
+  end
+)
 lazy_ft('markdown', 'markdown-preview.nvim')
 lazy_ft(
   'typst',
@@ -137,14 +149,6 @@ require('mac-clear').setup({
     }
   end,
 })
--- vim.api.nvim_create_autocmd('ColorScheme', {
---   callback = function()
---     local hl = vim.api.nvim_get_hl(0, { name = '@function' })
---     hl.bold = true
---     hl.link = nil
---     vim.api.nvim_set_hl(0, '@function.builtin', hl)
---   end,
--- })
 vim.cmd.colorscheme('mac-clear-light')
 -- vim.cmd('syntax off')
 -- vim.cmd.colorscheme('vague')
