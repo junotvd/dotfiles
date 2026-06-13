@@ -20,6 +20,7 @@ eval "$(fzf --bash)"
 set -o vi
 
 # alias
+alias ".."="cd ../"
 alias v=nvim
 alias vo="NVIM_APPNAME=nvim-old nvim"
 alias vl="NVIM_APPNAME=nvim-lazy nvim"
@@ -28,7 +29,7 @@ alias py=python
 alias l='ls -la'
 alias q=exit
 
-alias ls='ls --color=auto'
+alias ls='ls -p --color=auto'
 alias grep='grep --color=auto'
 
 alias pdf='firefox http://100.124.103.23:8080/'
